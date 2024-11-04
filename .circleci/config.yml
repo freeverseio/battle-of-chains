@@ -60,9 +60,9 @@ jobs:
       - run:
           name: Trigger deploy
           command: |
-            echo "Triggering deploy $BOC_INFRA"
-            curl --location --request POST 'https://circleci.com/api/v2/project/github/freeverseio/${BOC_INFRA}/pipeline' \
-            --header 'Content-Type: application/json' \
+            echo "Triggering deploy"
+            curl --location --request POST "https://circleci.com/api/v2/project/github/freeverseio/${BOC_INFRA}/pipeline" \
+            --header "Content-Type: application/json" \
             -u "${API_TOKEN}:"
 
 workflows:
@@ -76,3 +76,7 @@ workflows:
             branches:
               only:
                 - main
+
+
+
+   
