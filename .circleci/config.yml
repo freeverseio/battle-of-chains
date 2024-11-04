@@ -1,0 +1,78 @@
+version: 2.1
+
+orbs:
+  kube-orb: circleci/kubernetes@1.3.1
+  helm: circleci/helm@3.0.2
+
+commands:
+
+  dockerize-and-push:
+    parameters:
+      image:
+        type: string
+      folder:
+        type: string
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Docker login
+          command: echo $DOCKER_PASSWD | docker login -u $DOCKER_ID --password-stdin
+      - run:
+          name: Build and push Docker image
+          command: |
+            echo "Docker images for $CIRCLE_SHA1 will be pushed"
+jobs:
+  api-test:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Run boc-api tests
+          command: |
+            echo "Running boc-api tests"
+
+  build-app:
+    parameters:
+      image:
+        type: string
+      isCheck:
+        type: boolean
+      folder:
+        type: string
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: edge
+      - dockerize-and-push:
+          image: << parameters.image >>
+          folder: << parameters.folder >>
+
+  trigger-deploy:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Trigger deploy
+          command: |
+            echo "Triggering deploy"
+            curl --location --request POST 'https://circleci.com/api/v2/project/github/freeverseio/${BOC_INFRA}/pipeline' \
+            --header 'Content-Type: application/json' \
+            -u "${API_TOKEN}:"
+
+workflows:
+  ci-workflow:
+    jobs:
+      - api-test:
+          name: api-test
+      - trigger-deploy:
+          name: trigger-deploy
+          filters:
+            branches:
+              only:
+                - main
