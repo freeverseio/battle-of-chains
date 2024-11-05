@@ -76,12 +76,6 @@ workflows:
     jobs:
       - api-test:
           name: api-test
-      - trigger-deploy:
-          name: trigger-deploy
-          filters:
-            branches:
-              only:
-                - main
       - build-app:
           name: build-indexer
           folder: boc-indexer
@@ -118,6 +112,17 @@ workflows:
             branches:
               only:
                 - main   
+      - trigger-deploy:
+          name: trigger-deploy
+          requires:
+            - build-api
+            - build-postgraphile
+            - build-ui
+            - build-indexer
+          filters:
+            branches:
+              only:
+                - main
 
 
    
