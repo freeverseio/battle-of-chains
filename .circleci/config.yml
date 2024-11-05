@@ -67,7 +67,7 @@ jobs:
             -u "${API_TOKEN}:" \
             --data "{
               \"parameters\": {
-                \"imagetag\": \"${CIRCLE_SHA1}\"
+                \"imageTag\": \"${CIRCLE_SHA1}\"
               }
             }"
 
