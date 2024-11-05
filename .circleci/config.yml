@@ -64,11 +64,12 @@ jobs:
             curl --location --request POST "https://circleci.com/api/v2/project/github/freeverseio/${BOC_INFRA}/pipeline" \
             --header "Content-Type: application/json" \
             -u "${API_TOKEN}:" \
-            --data '{
-              "parameters": {
-                "imagetag": "${CIRCLE_SHA1}"
+            --data "{
+              \"parameters\": {
+                \"imagetag\": \"${CIRCLE_SHA1}\"
               }
-            }'
+            }"
+
 
 
 workflows:
