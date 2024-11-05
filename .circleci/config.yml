@@ -97,7 +97,7 @@ workflows:
       - build-app:
           name: build-api
           folder: boc-api
-          image: freeverseio/battle-of-chains-ui
+          image: freeverseio/boc-api
           context: dockerhub
           filters:
             branches:
@@ -123,6 +123,3 @@ workflows:
             branches:
               only:
                 - main
-
-
-   
