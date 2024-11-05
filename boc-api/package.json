@@ -1,0 +1,51 @@
+{
+  "name": "battle-of-chains-api",
+  "version": "1.0.0",
+  "description": "code for the decentralized battle of chains",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node src/index.ts\"",
+    "start": "ts-node src/index.ts",
+    "test": "jest --watch",
+    "test:ci": "jest --ci --runInBand --silent"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/executor-http": "^1.1.6",
+    "@graphql-tools/schema": "^10.0.6",
+    "@graphql-tools/stitch": "^9.2.10",
+    "@graphql-tools/utils": "^10.5.4",
+    "@graphql-tools/wrap": "^10.0.10",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "cross-fetch": "^4.0.0",
+    "dotenv": "^16.4.5",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-yoga": "^5.7.0",
+    "murmurhash": "^2.0.1",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.7",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "seedrandom": "^3.0.5",
+    "type-graphql": "^2.0.0-rc.2",
+    "typeorm": "^0.3.20",
+    "wait-on": "^8.0.1",
+    "web3-utils": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.5",
+    "@types/seedrandom": "^3.0.8",
+    "@types/wait-on": "^5.3.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}

@@ -1,0 +1,187 @@
+import { Storage, MultichainMintEvent, AssetTypeOptions, AssetType, AssetStatsType, AssetState, AssetLevelDetails } from './types'; // Import the necessary types
+import murmurhash from 'murmurhash'; // Assuming you're using murmurhash
+import { getUserTreasury, evolveTreasuryByAddress, subtractFromTreasury, level2xp, isFactory, isCharacter, applyNoise, getCharacterComment } from './utils';
+import { COST_OF_MINTING_ASSETS_PER_LEVEL, HOMECHAIN_BOOST_FACTOR, LEVEL_BOOST_FACTOR } from './constants';
+import { FactorySpecies, SpeciesTypicalyStats } from './species';
+import seedrandom from 'seedrandom';
+import { AttackSpecies, attackSpeciesStats } from './speciesAttack';
+import { DefendSpecies, defendSpeciesStats } from './speciesDefend';
+
+// Note that the smart contract forces the asest.type and asset.homechain to exist
+export function processMultichainMint(event: MultichainMintEvent, storage: Storage): void {
+    console.log(`Processing MultichainMint Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}, on chain ${event.eventChain}`);
+    evolveTreasuryByAddress(event.user, event.timestamp, storage);
+    for (let chain of storage.chains) {
+        if (isFactory(event.typeId)) {
+            createFactory(chain.chain_id, event, storage);
+        }
+        else if(isCharacter(event.typeId)) {
+            createCharacter(chain.chain_id, event, storage);
+        }
+        else {
+            console.log('WARNING: Multimint with not supported asset type', event.typeId);
+        }
+    }
+}
+
+function getBestFactoryLevel(userAddress: string, type: AssetTypeOptions, chain: number, assets: AssetType[]): number {
+    return assets
+        .filter(a => a.owner === userAddress && a.chain_id === chain && a.type === type)
+        .reduce((max, a) => Math.max(max, a.level), 0);
+}
+
+function maxLevelAllowedByTreasury(factoryLevel: number, treasury: number) : number {
+    if (factoryLevel == 0) return 0;
+    for (let l = 0; l < factoryLevel; l++) {
+        if (treasury < COST_OF_MINTING_ASSETS_PER_LEVEL[l + 1]) return l;
+    }
+    return factoryLevel;
+}
+
+function computeLevelBoost(event: MultichainMintEvent, chain: number, storage: Storage) : AssetLevelDetails {
+    const factoryType = event.typeId === AssetTypeOptions.AttackAsset
+        ? AssetTypeOptions.AttackFactory
+        : AssetTypeOptions.DefenseFactory;
+    const bestFactoryLevel = getBestFactoryLevel(event.user, factoryType, chain, storage.assets);
+    const level = maxLevelAllowedByTreasury(bestFactoryLevel, getUserTreasury(event.user, storage.users));
+    const levelBoost = 1 + LEVEL_BOOST_FACTOR * level;
+    return {
+        level: level,
+        levelBoost: levelBoost,
+        factoryLevelUsed: bestFactoryLevel,
+    };
+}
+
+function computeHomechainLevelBoost(isHomeChain: boolean) : number {
+    return isHomeChain ? 1 + HOMECHAIN_BOOST_FACTOR : 1;
+}
+
+
+function computeSeed(chain: number, event: MultichainMintEvent) : number {
+    return murmurhash.v3(
+        `${chain}${event.homeChain}${event.blockHash}${event.tokenId}${event.typeId}`
+    )
+}
+
+function computeSeeds(nSeeds: number, seed: number): number[] {
+    const rng = seedrandom(seed.toString());
+    let seeds: number[] = [];
+    for (let i = 0; i < nSeeds; i++) {
+        seeds.push(Math.floor(rng() * Number.MAX_SAFE_INTEGER)); // Scale up if needed
+    }
+    return seeds;
+}
+
+
+function selectSpecies(type: AssetTypeOptions, seed: number, storage: Storage) : [AttackSpecies | DefendSpecies, SpeciesTypicalyStats] {
+    let ranges: number[];
+    let maxRnd: number;
+    let stats: [AttackSpecies | DefendSpecies, SpeciesTypicalyStats][];[];
+
+    if (type === AssetTypeOptions.AttackAsset) {
+        maxRnd = storage.attackRanges.maxRnd;
+        ranges = storage.attackRanges.ranges;
+        stats = attackSpeciesStats;
+    } else {
+        maxRnd = storage.defendRanges.maxRnd;
+        ranges = storage.defendRanges.ranges
+        stats = defendSpeciesStats;
+    }
+    const rnd = seed % maxRnd;
+    for (let i = 0; i < ranges.length; i++) {
+        if (rnd < ranges[i]) return stats[i];
+    }
+    throw new Error("No species selected; check ranges and stats configuration.");
+}
+
+// When minting a character, it fetches the most powerful factory for that asset type
+// in the chain where the mint takes place. It then evaluates the level of the asset created by
+// spending as much as possible from the treasury.
+function createCharacter(chain: number, event: MultichainMintEvent, storage: Storage) {
+    const blockSeed = computeSeed(chain, event);
+    const seeds = computeSeeds(5, blockSeed);
+    const isHomeChain = chain == event.homeChain;
+    const [species, _stats] = selectSpecies(event.typeId, blockSeed, storage);
+
+    let stats: AssetStatsType = {
+        "health": applyNoise(10, 50, seeds[0]),
+        "xp": 0,
+        "level": 0,
+        "attack": applyNoise(_stats.attack, 50, seeds[1]),
+        "defense": applyNoise(_stats.defense, 50, seeds[2]),
+        "age": applyNoise(_stats.age, 30, seeds[3]),
+        "travelSpeed": applyNoise(_stats.travelSpeed, 30, seeds[4]),
+        "potential": _stats.potential,
+        "species": species,
+    }
+
+    const assetDetails = computeLevelBoost(event, chain, storage);
+    stats.level = assetDetails.level;
+    stats.xp = level2xp(assetDetails.level);
+    const homechainBoost = computeHomechainLevelBoost(isHomeChain);
+
+    if (event.typeId == AssetTypeOptions.AttackAsset) {
+        stats.attack *= homechainBoost * assetDetails.levelBoost;
+        stats.defense *= homechainBoost * assetDetails.levelBoost;
+    }
+    else {
+        stats.attack *= homechainBoost * assetDetails.levelBoost;
+        stats.defense *= homechainBoost * assetDetails.levelBoost;
+    }
+
+    pushAsset(stats, chain, event, storage);
+
+    const assetCost = COST_OF_MINTING_ASSETS_PER_LEVEL[assetDetails.level];
+    subtractFromTreasury(event.user, event.timestamp, assetCost, storage);
+
+    addAssetMintLog(getCharacterComment(event, chain, assetDetails, assetCost, species), event, storage);
+}
+
+
+function createFactory(chain: number, event: MultichainMintEvent, storage: Storage) {
+    let stats = {
+        "health": 100,
+        "xp": 0,
+        "level": 0,
+        "attack": 0,
+        "defense": 0,
+        "travelSpeed": 0,
+        "age": 0,
+        "potential": 10,
+        "species": event.typeId === AssetTypeOptions.AttackFactory ? FactorySpecies.AttackFactory : FactorySpecies.DefendFactory,
+    }
+    pushAsset(stats, chain, event, storage);
+    const comment = `You have created a factory asset on chain ${chain} with tokenId = ${(event.tokenId).toString()}. You can trade it in that chain, and start using it to create better assets.`;
+    addAssetMintLog(comment, event, storage);
+}
+
+function pushAsset(stats: AssetStatsType, chain: number, event: MultichainMintEvent, storage: Storage) {
+    storage.assets.push({
+        chain_id: chain,
+        token_id: (event.tokenId).toString(),
+        type: (event.typeId).toString(),
+        creation_timestamp: event.timestamp,
+        owner: event.user,
+        xp: stats.xp,
+        health: stats.health,
+        level: stats.level,
+        attack: stats.attack,
+        defense: stats.defense,
+        age: stats.age,
+        potential: stats.potential,
+        travelSpeed: stats.travelSpeed,
+        species: stats.species,
+        statsLastUpdate: event.timestamp,
+        state: AssetState.Free,
+        pendingAttackId: undefined,
+    });
+}
+
+function addAssetMintLog(comment: string, event: MultichainMintEvent, storage: Storage) {
+    storage.logs.push({
+        id: storage.logs.length,
+        user_address: event.user,
+        timestamp: event.timestamp,
+        comment: comment,
+    });
+}

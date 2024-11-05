@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../boc-api/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  boc-postgraphile:
+    build:
+      context: ../boc-postgraphile/
+    container_name: boc-postgraphile
+    command: -d ${DB_HOST}://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
+    ports:
+      - "4001:4001"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  boc-api:
+    build:
+      context: ../boc-api/
+    container_name: boc-api
+    command: npm run dev
+    environment:
+      DB_HOST: postgres
+      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      SSL_ENABLED: ${SSL_ENABLED}
+      POSTGRAPHILE_URL: ${POSTGRAPHILE_URL}
+      LAOS_CHAIN_ID: ${LAOS_CHAIN_ID}
+      LAOS_GRAPHQL: ${LAOS_GRAPHQL}
+      OWNERSHIP_GRAPHQLS: ${OWNERSHIP_GRAPHQLS}
+    volumes:
+      - ../boc-api:/usr/src/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
