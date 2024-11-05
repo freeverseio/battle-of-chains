@@ -1,0 +1,15 @@
+manifestVersion: subsquid.io/v0.1
+name: boc-indexer
+version: 1
+description: 'Traking Battle Of Chains actions and tokens'
+build: 
+deploy:
+  addons:
+    postgres: 
+  processor:
+    - name: ownership_chain-processor
+      cmd: [ "sqd", "process:prod:ownership_chain" ]
+    - name: laos-processor
+      cmd: [ "sqd", "process:prod:laos" ]
+  api:
+    cmd: [ "sqd", "serve:prod" ]

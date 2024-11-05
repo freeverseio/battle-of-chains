@@ -1,0 +1,85 @@
+import React from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { Player, Base } from "./types";
+import { AttackButton } from "../AttackButton";
+interface PlayerBaseProps {
+  player: Player;
+  base: Base;
+  isLoggedInPlayer: boolean;
+  openTooltip: string | null;
+  toggleTooltip: (tooltipId: string) => void;
+}
+
+const PlayerBase: React.FC<PlayerBaseProps> = ({
+  player,
+  base,
+  isLoggedInPlayer,
+  openTooltip,
+  toggleTooltip,
+}) => {
+  const isHomeBase = base.type === "home";
+  const iconColor = isLoggedInPlayer ? "text-yellow-500" : "text-white";
+  const iconSize = isLoggedInPlayer ? "w-10 h-10" : "w-6 h-6";
+  const iconBg = isHomeBase
+    ? isLoggedInPlayer
+      ? "bg-purple-600"
+      : "bg-red-500"
+    : isLoggedInPlayer
+    ? "bg-indigo-600"
+    : "bg-blue-500";
+  const iconStyle = isLoggedInPlayer
+    ? "border-4 border-yellow-300 shadow-lg"
+    : "shadow-md";
+  const tooltipId = `${player.name}-${base.chain}-${base.type}`;
+
+  return (
+    <Tooltip open={openTooltip === tooltipId}>
+      <TooltipTrigger asChild>
+        <div
+          className={`${iconBg} ${iconStyle} rounded-full p-2 cursor-pointer absolute`}
+          style={{
+            left: `${base.x}%`,
+            top: `${base.y}%`,
+            transform: "translate(-50%, -50%)",
+          }}
+          onClick={() => toggleTooltip(tooltipId)}
+        >
+          {isHomeBase ? true : true}
+        </div>
+      </TooltipTrigger>
+      <TooltipContent
+        side="right"
+        align="center"
+        className="bg-[#8B4513] text-[#F4A460] p-3 rounded-md shadow-lg z-50 border-2 border-[#D2B48C]"
+      >
+        <p className="font-bold  text-lg mb-2">
+          {isLoggedInPlayer
+            ? `Your ${isHomeBase ? "Stronghold" : "Portal"}`
+            : `${player.name}'s ${isHomeBase ? "Stronghold" : "Portal"}`}
+        </p>
+        <p className="mb-1">Chain: {base.chain}</p>
+        <p className="mb-1">
+          Coordinates: ({base.x}, {base.y})
+        </p>
+        <p className="mb-1">Archers: {player.troops.archers}</p>
+        <p className="mb-1">Warriors: {player.troops.warriors}</p>
+        <p className="mb-1">Defense: {player.defense}</p>
+        {isHomeBase && <p className="mb-1">Coins: {player.softCoins}</p>}
+        {!isLoggedInPlayer && (
+          <AttackButton
+            targetAddress="0x8e4dfC6D56e84913FA6a901a3dF21De6e9285de8"
+            targetChain={137}
+            className="mt-3"
+          />
+        )}
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
+export default PlayerBase;

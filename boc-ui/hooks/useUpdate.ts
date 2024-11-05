@@ -1,0 +1,26 @@
+// hooks/useUpdate.ts
+import { useMutation } from "@apollo/client";
+import { UPDATE } from "@/graphql/mutations/update";
+
+export const useUpdate = () => {
+  const [updateMutation, { loading, error }] = useMutation(UPDATE, {
+    onCompleted: () => {
+      // Refresh the page on successful mutation
+      window.location.reload();
+    },
+  });
+
+  const update = async () => {
+    try {
+      await updateMutation();
+    } catch (err) {
+      console.error("Error updating:", err);
+    }
+  };
+
+  return {
+    update,
+    isUpdating: loading,
+    error,
+  };
+};

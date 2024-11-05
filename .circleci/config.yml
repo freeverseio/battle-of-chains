@@ -21,7 +21,10 @@ commands:
       - run:
           name: Build and push Docker image
           command: |
+            cd << parameters.folder >>
             echo "Docker images for $CIRCLE_SHA1 will be pushed"
+            docker build -t << parameters.image >>:$CIRCLE_SHA1 .
+            docker push << parameters.image >>:$CIRCLE_SHA1
 jobs:
   api-test:
     docker:
@@ -37,8 +40,6 @@ jobs:
     parameters:
       image:
         type: string
-      isCheck:
-        type: boolean
       folder:
         type: string
     docker:
@@ -70,8 +71,6 @@ jobs:
               }
             }"
 
-
-
 workflows:
   ci-workflow:
     jobs:
@@ -83,7 +82,42 @@ workflows:
             branches:
               only:
                 - main
-
+      - build-app:
+          name: build-indexer
+          folder: boc-indexer
+          image: freeverseio/boc-indexer
+          context: dockerhub
+          filters:
+            branches:
+              only:
+                - main     
+      - build-app:
+          name: build-ui
+          folder: boc-ui
+          image: freeverseio/battle-of-chains-ui
+          context: dockerhub
+          filters:
+            branches:
+              only:
+                - main     
+      - build-app:
+          name: build-api
+          folder: boc-api
+          image: freeverseio/battle-of-chains-ui
+          context: dockerhub
+          filters:
+            branches:
+              only:
+                - main 
+      - build-app:
+          name: build-postgraphile
+          folder: boc-postgraphile
+          image: freeverseio/boc-postgraphile
+          context: dockerhub
+          filters:
+            branches:
+              only:
+                - main   
 
 
    

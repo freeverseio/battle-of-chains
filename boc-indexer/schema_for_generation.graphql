@@ -1,0 +1,158 @@
+type OwnershipContract @entity {
+  id: ID! # ownership_contract
+  laosContract: String  @index
+  assets: [Asset]! @derivedFrom(field: "ownershipContract")
+}
+
+type Asset @entity {
+  id: ID! # ownership_contract + token_id constraint unique missing
+  ownershipContract: OwnershipContract!
+  tokenId: String!
+  owner: String!
+  transfers: [Transfer]! @derivedFrom(field: "asset")
+}
+
+type Transfer @entity {
+  id: ID!
+  asset: Asset!
+  from: String!
+  to: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  txHash: String! @index
+  logIndex: Int!
+  blockHash: String!
+}
+
+type LaosAsset @entity {
+  id: ID!
+  laosContract: String! @index
+  tokenId: String!
+  initialOwner: String!
+  createdAt: DateTime!
+  logIndex: Int!
+  metadata: String  @index
+}
+
+type Metadata @entity {
+  id: ID!
+  laosAsset: LaosAsset!
+  tokenUri: TokenUri!
+  blockNumber: Int!
+  timestamp: DateTime!
+  txHash: String! @index
+}
+
+type TokenUri @entity {
+  id: ID! # token_uri
+  state: String!
+  name: String
+  description: String
+  image: String
+  attributes: [Attribute!]
+  fetched: DateTime
+  metadata: [Metadata!]! @derivedFrom(field: "tokenUri")
+}
+
+type Attribute {
+  traitType: String!
+  value: String!
+}
+
+type Attack @entity {
+  id: ID!
+  tokenIds: [String!]!
+  targetAddress: String!
+  operator: String!
+  attacker: String!
+  targetChain: Int!
+  strategy: Int!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type ChainActionProposal @entity {
+  id: ID!
+  operator: String!
+  user: String!
+  sourceChain: Int!
+  targetChain: Int!
+  actionType: Int!
+  attackArea: Int!
+  attackAddress: String!
+  comment: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type JoinedChain @entity {
+  id: ID!
+  user: String!
+  homeChain: Int!
+  nickname: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type MultichainMint @entity {
+  id: ID!
+  tokenId: String!
+  user: String!
+  typeId: String!
+  homeChain: Int!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type Upgrade @entity {
+  id: ID!
+  operator: String!
+  user: String!
+  chain: Int!
+  tokenId: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type SendTX {
+  recipient: String!
+  amount: String!
+}
+
+type SendGameTreasury @entity {
+  id: ID!
+  from: String!
+  method: Int!
+  sendTXs: [SendTX!]!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}
+
+type AssignOperator @entity {
+  id: ID!
+  from: String!
+  operator: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}

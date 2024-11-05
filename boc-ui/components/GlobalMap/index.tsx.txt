@@ -1,0 +1,57 @@
+"use client";
+
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Slider } from "@/components/ui/slider";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import MapContent from "./MapContent";
+import { blockchains, players } from "./mapData";
+
+export default function GlobalMap() {
+  const [zoom, setZoom] = useState(1);
+  const [loggedInPlayer, setLoggedInPlayer] = useState("Player 1");
+  const [openTooltip, setOpenTooltip] = useState<string | null>(null);
+
+  const handleZoomChange = (newZoom: number[]) => {
+    setZoom(newZoom[0]);
+  };
+
+  const toggleTooltip = (tooltipId: string) => {
+    setOpenTooltip((prevTooltip) =>
+      prevTooltip === tooltipId ? null : tooltipId
+    );
+  };
+
+  return (
+    <TooltipProvider>
+      <Card className="w-full h-[calc(100vh-4rem)] bg-[#D2B48C] border-4 border-[#8B4513] shadow-xl overflow-hidden">
+        <CardHeader className="p-4 bg-[#F4A460] border-b-2 border-[#8B4513]">
+          <CardTitle className="text-3xl font-bold text-[#8B4513]  text-center">
+            Battle of Chains
+          </CardTitle>
+          <div className="absolute top-4 right-4"></div>
+        </CardHeader>
+        <CardContent className="p-0 h-[calc(100%-4rem)] relative overflow-hidden">
+          <MapContent
+            zoom={zoom}
+            blockchains={blockchains}
+            players={players}
+            loggedInPlayer={loggedInPlayer}
+            openTooltip={openTooltip}
+            toggleTooltip={toggleTooltip}
+          />
+          <div className="absolute bottom-4 left-4 right-4">
+            <Slider
+              defaultValue={[1]}
+              max={2}
+              min={0.5}
+              step={0.1}
+              onValueChange={handleZoomChange}
+              className="w-full"
+            />
+          </div>
+        </CardContent>
+      </Card>
+    </TooltipProvider>
+  );
+}

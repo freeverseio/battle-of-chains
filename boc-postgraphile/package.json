@@ -1,0 +1,27 @@
+{
+  "name": "multiverseapi",
+  "version": "1.0.0",
+  "description": "GraphQL API for multiversedb",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "jest",
+    "lint": "npx eslint .",
+    "format": "npx eslint . --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1",
+    "graphile-utils": "^4.12.1",
+    "postgraphile": "^4.12.3",
+    "postgraphile-plugin-connection-filter": "^2.2.2",
+    "postgraphile-plugin-many-create-update-delete": "^1.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.0.4"
+  }
+}
