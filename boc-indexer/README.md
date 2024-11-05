@@ -14,7 +14,7 @@ A custom GraphQL API is provided for real-time data retrieval.
 ## Quickstart
 
 1. **Specify the EVM chain** where bridgeless minting will operate, e.g. Ethereum, Polygon, Base, etc., by creating an `.env` file.
-   - Use `example.env` as a reference.
+   - Use `env.example` as a reference.
    - Provide the appropriate ownership chain RPC endpoint, e.g. `RPC_ENDPOINT=https://rpc.ankr.com/polygon`.
    - Note: Public RPC endpoints often have transaction limits.
 
