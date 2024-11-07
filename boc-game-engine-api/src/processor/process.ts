@@ -122,30 +122,3 @@ export class EventProcessor {
         }
     }
 }
-
-async function compareStorage(storage: Storage, storageFile: string) {
-    const previousStorageData = await fs.readFile(storageFile, 'utf8');
-    const previousStorage = JSON.parse(previousStorageData) as Storage;
-    const areEqual = JSON.stringify(previousStorage) === JSON.stringify(storage);
-    console.log('Storage comparison result:', areEqual ? 'Equal' : 'Different');
-    if (!areEqual) fs.writeFile(storageFile, JSON.stringify(storage, null, 2));
-}
-
-async function main() {
-    if (!DEBUG) return;
-
-    const allChains = await getChains();
-    const debugData = {
-        "deadline": 1730728802,
-        "useHardcodedEvents": true,
-        "eventsFile": './src/processor/test/events.json',
-        "storageFile": './src/processor/test/storage.json',
-    }
-
-    const eventProcessor = new EventProcessor(allChains, debugData);
-    await eventProcessor.update();
-
-    if (debugData.storageFile) await compareStorage(eventProcessor.getStorage(), debugData.storageFile);
-}
-
-main();

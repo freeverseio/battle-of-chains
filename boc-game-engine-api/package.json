@@ -8,7 +8,8 @@
     "dev": "nodemon --watch src --ext ts --exec \"ts-node src/index.ts\"",
     "start": "ts-node src/index.ts",
     "test": "jest --watch",
-    "test:ci": "jest --ci --runInBand --silent"
+    "test:ci": "jest --ci --runInBand --silent",
+    "test:process": "jest src/processor/process.test.ts"
   },
   "keywords": [],
   "author": "",
