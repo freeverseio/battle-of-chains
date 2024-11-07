@@ -17,5 +17,5 @@ schema.graphql
 
 **/node_modules
 
-boc-gamelogic-api/storage.json
+boc-game-engine-api/storage.json
 **.DS_Store
