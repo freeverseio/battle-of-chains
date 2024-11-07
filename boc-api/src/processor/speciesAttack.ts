@@ -1,6 +1,7 @@
+import { ONE_YEAR_IN_SECS } from "./constants";
 import { SpeciesLore, SpeciesTypicalyStats } from "./species";
 
-export enum AttackSpecies {
+export enum AttackSpeciesType {
   WhiteHacker,
   MercenaryHacker,
   HighSchoolHacker,
@@ -12,7 +13,7 @@ export enum AttackSpecies {
   EuropeanBureaucrat,
   NSASurveillor,
   OpenAIBoardMember,
-  MicrosoftBlueScreen,
+  Bullshiter,
   PureMathematician,
   KOL,
   Influencer,
@@ -21,85 +22,85 @@ export enum AttackSpecies {
   GevinWoud
 }
 
-export const AttackSpeciesLore: Record<AttackSpecies, SpeciesLore> = {
-  [AttackSpecies.WhiteHacker]: { 
+export const AttackSpeciesLore: Record<AttackSpeciesType, SpeciesLore> = {
+  [AttackSpeciesType.WhiteHacker]: { 
     name: "White Hacker", 
     description: "The 'ethical' hacker who claims to be on your side… until they aren’t."
   },
-  [AttackSpecies.MercenaryHacker]: { 
+  [AttackSpeciesType.MercenaryHacker]: { 
     name: "Mercenary Hacker", 
     description: "A hacker for hire. They don’t care who you are, as long as the payment clears."
   },
-  [AttackSpecies.HighSchoolHacker]: { 
+  [AttackSpeciesType.HighSchoolHacker]: { 
     name: "High-School Hacker", 
     description: "Just learned SQL injection and thinks they’re the next Anonymous."
   },
-  [AttackSpecies.SECLawyer]: { 
+  [AttackSpeciesType.SECLawyer]: { 
     name: "SEC Lawyer", 
     description: "Attacks with paperwork and regulations. No firewall can block the law."
   },
-  [AttackSpecies.Evangelist]: { 
+  [AttackSpeciesType.Evangelist]: { 
     name: "Evangelist", 
     description: "Relentlessly pushes their chosen tech, regardless of practicality. Can destroy a project from within."
   },
-  [AttackSpecies.SalesGuy]: { 
+  [AttackSpeciesType.SalesGuy]: { 
     name: "Sales Guy", 
     description: "Can sell you back your own data for triple the price. Armed with charm and empty promises."
   },
-  [AttackSpecies.FTXFounder]: { 
+  [AttackSpeciesType.FTXFounder]: { 
     name: "FTX Founder", 
     description: "Master of the 'strategic' rug pull, leaving chaos and lawsuits in their wake."
   },
-  [AttackSpecies.RoundTableConductor]: { 
+  [AttackSpeciesType.RoundTableConductor]: { 
     name: "Round Table Conductor", 
     description: "Hosts endless meetings, draining productivity and morale from the inside."
   },
-  [AttackSpecies.EuropeanBureaucrat]: { 
+  [AttackSpeciesType.EuropeanBureaucrat]: { 
     name: "European Bureaucrat", 
     description: "Regulates anything that moves. Attacks with endless paperwork and compliance forms."
   },
-  [AttackSpecies.NSASurveillor]: { 
+  [AttackSpeciesType.NSASurveillor]: { 
     name: "NSA Surveillor", 
     description: "Sees everything, hears everything. Your secrets are already in their database."
   },
-  [AttackSpecies.OpenAIBoardMember]: { 
+  [AttackSpeciesType.OpenAIBoardMember]: { 
     name: "OpenAI Board Member", 
     description: "Armed with ethical debates and boardroom power moves. Paralyzes projects with bureaucracy."
   },
-  [AttackSpecies.MicrosoftBlueScreen]: { 
-    name: "Microsoft Blue Screen", 
-    description: "Your worst nightmare in digital form. Crashes systems and erases data without mercy."
+  [AttackSpeciesType.Bullshiter]: { 
+    name: "Bullshiter", 
+    description: "A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value."
   },
-  [AttackSpecies.PureMathematician]: { 
+  [AttackSpeciesType.PureMathematician]: { 
     name: "Pure Mathematician", 
     description: "Too abstract to be of any practical use, but always convinced of their own importance."
   },
-  [AttackSpecies.KOL]: { 
+  [AttackSpeciesType.KOL]: { 
     name: "KOL (Key Opinion Leader)", 
     description: "Attacks with influence and hype. Often as clueless as they are powerful."
   },
-  [AttackSpecies.Influencer]: { 
+  [AttackSpeciesType.Influencer]: { 
     name: "Influencer", 
     description: "Wields hype and misinformation like a weapon. A single tweet can bring down entire companies."
   },
-  [AttackSpecies.VilatikTuberin]: { 
+  [AttackSpeciesType.VilatikTuberin]: { 
     name: "Vilatik Tuberin", 
     description: "A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos."
   },
-  [AttackSpecies.SatoshiNakamoto]: { 
+  [AttackSpeciesType.SatoshiNakamoto]: { 
     name: "Satoshi Nakamoto", 
     description: "The myth, the legend. No one knows what he wants, but everyone fears his return."
   },
-  [AttackSpecies.GevinWoud]: { 
+  [AttackSpeciesType.GevinWoud]: { 
     name: "Gevin Woud", 
     description: "The mastermind engineer whose coding skills are so advanced, it’s basically magic."
   }
 };
 
-export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicalyStats> = {
-  [AttackSpecies.WhiteHacker]: {
-    name: AttackSpeciesLore[AttackSpecies.WhiteHacker].name,
-    description: AttackSpeciesLore[AttackSpecies.WhiteHacker].description,
+export const AttackSpeciesCharacteristics: Record<AttackSpeciesType, SpeciesTypicalyStats> = {
+  [AttackSpeciesType.WhiteHacker]: {
+    name: AttackSpeciesLore[AttackSpeciesType.WhiteHacker].name,
+    description: AttackSpeciesLore[AttackSpeciesType.WhiteHacker].description,
     attack: 10,
     defense: 7,
     travelSpeed: 10,
@@ -107,9 +108,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 12,
     rarity: 10
   },
-  [AttackSpecies.MercenaryHacker]: {
-    name: AttackSpeciesLore[AttackSpecies.MercenaryHacker].name,
-    description: AttackSpeciesLore[AttackSpecies.MercenaryHacker].description,
+  [AttackSpeciesType.MercenaryHacker]: {
+    name: AttackSpeciesLore[AttackSpeciesType.MercenaryHacker].name,
+    description: AttackSpeciesLore[AttackSpeciesType.MercenaryHacker].description,
     attack: 8,
     defense: 4,
     travelSpeed: 10,
@@ -117,9 +118,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 6,
     rarity: 5
   },
-  [AttackSpecies.HighSchoolHacker]: {
-    name: AttackSpeciesLore[AttackSpecies.HighSchoolHacker].name,
-    description: AttackSpeciesLore[AttackSpecies.HighSchoolHacker].description,
+  [AttackSpeciesType.HighSchoolHacker]: {
+    name: AttackSpeciesLore[AttackSpeciesType.HighSchoolHacker].name,
+    description: AttackSpeciesLore[AttackSpeciesType.HighSchoolHacker].description,
     attack: 3,
     defense: 2,
     travelSpeed: 12,
@@ -127,9 +128,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 10,
     rarity: 5
   },
-  [AttackSpecies.SECLawyer]: {
-    name: AttackSpeciesLore[AttackSpecies.SECLawyer].name,
-    description: AttackSpeciesLore[AttackSpecies.SECLawyer].description,
+  [AttackSpeciesType.SECLawyer]: {
+    name: AttackSpeciesLore[AttackSpeciesType.SECLawyer].name,
+    description: AttackSpeciesLore[AttackSpeciesType.SECLawyer].description,
     attack: 12,
     defense: 1,
     travelSpeed: 3,
@@ -137,9 +138,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 2,
     rarity: 7
   },
-  [AttackSpecies.Evangelist]: {
-    name: AttackSpeciesLore[AttackSpecies.Evangelist].name,
-    description: AttackSpeciesLore[AttackSpecies.Evangelist].description,
+  [AttackSpeciesType.Evangelist]: {
+    name: AttackSpeciesLore[AttackSpeciesType.Evangelist].name,
+    description: AttackSpeciesLore[AttackSpeciesType.Evangelist].description,
     attack: 5,
     defense: 1,
     travelSpeed: 3,
@@ -147,9 +148,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 5,
     rarity: 6
   },
-  [AttackSpecies.SalesGuy]: {
-    name: AttackSpeciesLore[AttackSpecies.SalesGuy].name,
-    description: AttackSpeciesLore[AttackSpecies.SalesGuy].description,
+  [AttackSpeciesType.SalesGuy]: {
+    name: AttackSpeciesLore[AttackSpeciesType.SalesGuy].name,
+    description: AttackSpeciesLore[AttackSpeciesType.SalesGuy].description,
     attack: 7,
     defense: 1,
     travelSpeed: 10,
@@ -157,9 +158,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 5,
     rarity: 4
   },
-  [AttackSpecies.FTXFounder]: {
-    name: AttackSpeciesLore[AttackSpecies.FTXFounder].name,
-    description: AttackSpeciesLore[AttackSpecies.FTXFounder].description,
+  [AttackSpeciesType.FTXFounder]: {
+    name: AttackSpeciesLore[AttackSpeciesType.FTXFounder].name,
+    description: AttackSpeciesLore[AttackSpeciesType.FTXFounder].description,
     attack: 12,
     defense: 2,
     travelSpeed: 15,
@@ -167,9 +168,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 8,
     rarity: 9
   },
-  [AttackSpecies.RoundTableConductor]: {
-    name: AttackSpeciesLore[AttackSpecies.RoundTableConductor].name,
-    description: AttackSpeciesLore[AttackSpecies.RoundTableConductor].description,
+  [AttackSpeciesType.RoundTableConductor]: {
+    name: AttackSpeciesLore[AttackSpeciesType.RoundTableConductor].name,
+    description: AttackSpeciesLore[AttackSpeciesType.RoundTableConductor].description,
     attack: 4,
     defense: 1,
     travelSpeed: 5,
@@ -177,9 +178,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 2,
     rarity: 4
   },
-  [AttackSpecies.EuropeanBureaucrat]: {
-    name: AttackSpeciesLore[AttackSpecies.EuropeanBureaucrat].name,
-    description: AttackSpeciesLore[AttackSpecies.EuropeanBureaucrat].description,
+  [AttackSpeciesType.EuropeanBureaucrat]: {
+    name: AttackSpeciesLore[AttackSpeciesType.EuropeanBureaucrat].name,
+    description: AttackSpeciesLore[AttackSpeciesType.EuropeanBureaucrat].description,
     attack: 7,
     defense: 2,
     travelSpeed: 2,
@@ -187,9 +188,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 5,
     rarity: 6
   },
-  [AttackSpecies.NSASurveillor]: {
-    name: AttackSpeciesLore[AttackSpecies.NSASurveillor].name,
-    description: AttackSpeciesLore[AttackSpecies.NSASurveillor].description,
+  [AttackSpeciesType.NSASurveillor]: {
+    name: AttackSpeciesLore[AttackSpeciesType.NSASurveillor].name,
+    description: AttackSpeciesLore[AttackSpeciesType.NSASurveillor].description,
     attack: 7,
     defense: 1,
     travelSpeed: 10,
@@ -197,9 +198,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 5,
     rarity: 8
   },
-  [AttackSpecies.OpenAIBoardMember]: {
-    name: AttackSpeciesLore[AttackSpecies.OpenAIBoardMember].name,
-    description: AttackSpeciesLore[AttackSpecies.OpenAIBoardMember].description,
+  [AttackSpeciesType.OpenAIBoardMember]: {
+    name: AttackSpeciesLore[AttackSpeciesType.OpenAIBoardMember].name,
+    description: AttackSpeciesLore[AttackSpeciesType.OpenAIBoardMember].description,
     attack: 8,
     defense: 1,
     travelSpeed: 8,
@@ -207,9 +208,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 8,
     rarity: 15
   },
-  [AttackSpecies.MicrosoftBlueScreen]: {
-    name: AttackSpeciesLore[AttackSpecies.MicrosoftBlueScreen].name,
-    description: AttackSpeciesLore[AttackSpecies.MicrosoftBlueScreen].description,
+  [AttackSpeciesType.Bullshiter]: {
+    name: AttackSpeciesLore[AttackSpeciesType.Bullshiter].name,
+    description: AttackSpeciesLore[AttackSpeciesType.Bullshiter].description,
     attack: 9,
     defense: 1,
     travelSpeed: 3,
@@ -217,9 +218,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 1,
     rarity: 2
   },
-  [AttackSpecies.PureMathematician]: {
-    name: AttackSpeciesLore[AttackSpecies.PureMathematician].name,
-    description: AttackSpeciesLore[AttackSpecies.PureMathematician].description,
+  [AttackSpeciesType.PureMathematician]: {
+    name: AttackSpeciesLore[AttackSpeciesType.PureMathematician].name,
+    description: AttackSpeciesLore[AttackSpeciesType.PureMathematician].description,
     attack: 8,
     defense: 3,
     travelSpeed: 6,
@@ -227,9 +228,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 9,
     rarity: 5
   },
-  [AttackSpecies.KOL]: {
-    name: AttackSpeciesLore[AttackSpecies.KOL].name,
-    description: AttackSpeciesLore[AttackSpecies.KOL].description,
+  [AttackSpeciesType.KOL]: {
+    name: AttackSpeciesLore[AttackSpeciesType.KOL].name,
+    description: AttackSpeciesLore[AttackSpeciesType.KOL].description,
     attack: 3,
     defense: 1,
     travelSpeed: 8,
@@ -237,9 +238,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 2,
     rarity: 3
   },
-  [AttackSpecies.Influencer]: {
-    name: AttackSpeciesLore[AttackSpecies.Influencer].name,
-    description: AttackSpeciesLore[AttackSpecies.Influencer].description,
+  [AttackSpeciesType.Influencer]: {
+    name: AttackSpeciesLore[AttackSpeciesType.Influencer].name,
+    description: AttackSpeciesLore[AttackSpeciesType.Influencer].description,
     attack: 3,
     defense: 1,
     travelSpeed: 7,
@@ -247,9 +248,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 3,
     rarity: 3
   },
-  [AttackSpecies.VilatikTuberin]: {
-    name: AttackSpeciesLore[AttackSpecies.VilatikTuberin].name,
-    description: AttackSpeciesLore[AttackSpecies.VilatikTuberin].description,
+  [AttackSpeciesType.VilatikTuberin]: {
+    name: AttackSpeciesLore[AttackSpeciesType.VilatikTuberin].name,
+    description: AttackSpeciesLore[AttackSpeciesType.VilatikTuberin].description,
     attack: 10,
     defense: 10,
     travelSpeed: 10,
@@ -257,9 +258,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 15,
     rarity: 15
   },
-  [AttackSpecies.SatoshiNakamoto]: {
-    name: AttackSpeciesLore[AttackSpecies.SatoshiNakamoto].name,
-    description: AttackSpeciesLore[AttackSpecies.SatoshiNakamoto].description,
+  [AttackSpeciesType.SatoshiNakamoto]: {
+    name: AttackSpeciesLore[AttackSpeciesType.SatoshiNakamoto].name,
+    description: AttackSpeciesLore[AttackSpeciesType.SatoshiNakamoto].description,
     attack: 12,
     defense: 12,
     travelSpeed: 12,
@@ -267,9 +268,9 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
     potential: 20,
     rarity: 20
   },
-  [AttackSpecies.GevinWoud]: {
-    name: AttackSpeciesLore[AttackSpecies.GevinWoud].name,
-    description: AttackSpeciesLore[AttackSpecies.GevinWoud].description,
+  [AttackSpeciesType.GevinWoud]: {
+    name: AttackSpeciesLore[AttackSpeciesType.GevinWoud].name,
+    description: AttackSpeciesLore[AttackSpeciesType.GevinWoud].description,
     attack: 10,
     defense: 10,
     travelSpeed: 10,
@@ -279,6 +280,11 @@ export const AttackSpeciesCharacteristics: Record<AttackSpecies, SpeciesTypicaly
   }
 };
 
-export const attackSpeciesStats: [AttackSpecies, SpeciesTypicalyStats][] = 
-  Object.values(AttackSpecies).filter(value => typeof value === 'number')
-    .map((key) => [key as AttackSpecies, AttackSpeciesCharacteristics[key as AttackSpecies]]);
+export const attackSpeciesStats: [AttackSpeciesType, SpeciesTypicalyStats][] = 
+  Object.values(AttackSpeciesType)
+    .filter(value => typeof value === 'number')
+    .map((key) => {
+      const stats = { ...AttackSpeciesCharacteristics[key as AttackSpeciesType] };
+      stats.age *= ONE_YEAR_IN_SECS;
+      return [key as AttackSpeciesType, stats];
+    });

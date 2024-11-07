@@ -1,6 +1,11 @@
-import { User, Asset, ChainActionProposal, Log, AssignOperator } from '../db/entity';
-import { UserType, AssetType, ChainActionProposalType, LogType, Storage, AssignOperatorType } from '../processor/types';
+import { User, Asset, ChainActionProposal, Log, AssignOperator, AttackSpecies, DefendSpecies, Chain, NFTType, Info } from '../db/entity';
+import { SpeciesTypicalyStats } from '../processor/species';
+import { attackSpeciesStats, AttackSpeciesType } from '../processor/speciesAttack';
+import { defendSpeciesStats, DefendSpeciesType } from '../processor/speciesDefend';
+import { UserType, AssetType, ChainActionProposalType, LogType, Storage, AssignOperatorType, ChainType, nftTypeNames } from '../processor/types';
 import { toChecksumAddress } from 'web3-utils';
+import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
+import { XP_CHARACTER_PER_LEVEL } from '../processor/constants';
 
 function toChecksum(input: any): any {
   if (typeof input === 'string' && input) {
@@ -10,21 +15,43 @@ function toChecksum(input: any): any {
 }
 
 export type StorageToInsert = {
+  chains: Chain[];
   users: User[];
   assets: Asset[];
   currentPeriodChainActionProposals: ChainActionProposal[];
   assignOperators: AssignOperator[];
   logs: Log[];
+  attackSpecies: AttackSpecies[];
+  defendSpecies: DefendSpecies[];
+  nfttypes: NFTType[];
+  info: Info[];
 }
 
 export function formStorage(storage: Storage): StorageToInsert {
   return {
+    chains: formChains(storage.chains),
     users: formUsers(storage.users),
     assets: formAssets(storage.assets),
     currentPeriodChainActionProposals: formCurrentPeriodChainActionProposals(storage.currentPeriodChainActionProposals),
     assignOperators: formAssignOperators(storage.assignOperators),
     logs: formLogs(storage.logs),
+    attackSpecies: formAttackSpecies(attackSpeciesStats),
+    defendSpecies: formDefendSpecies(defendSpeciesStats),
+    nfttypes: formNFTTypes(),
+    info: formInfo()
   };
+}
+
+function formChains(chains: ChainType[]): Chain[] {
+  const toInsert: ChainType[] = [];
+  for (let c of chains) {
+    const newChain = new Chain();
+    newChain.chain_id = c.chain_id;
+    newChain.name = c.name;
+    newChain.score = c.score;
+    toInsert.push(c);
+  }
+  return toInsert;
 }
 
 function formUsers(processedUsers: UserType[]): User[] {
@@ -114,4 +141,90 @@ function formLogs(processedLogs: LogType[]): Log[] {
     logsToInsert.push(newLog);
   }
   return logsToInsert;
+}
+
+export function formAttackSpecies(speciesStats: [AttackSpeciesType, SpeciesTypicalyStats][]): AttackSpecies[] {
+  const toInsert: AttackSpecies[] = [];
+  for (let i = 0; i < speciesStats.length; i++) {
+    const [speciesKey, stats] = speciesStats[i];
+    const s = new AttackSpecies();
+    s.id = speciesKey;
+    s.name = stats.name;
+    s.description = stats.description;
+    s.rarity = stats.rarity;
+    toInsert.push(s);
+  }
+  return toInsert;
+}
+
+export function formDefendSpecies(speciesStats: [DefendSpeciesType, SpeciesTypicalyStats][]): DefendSpecies[] {
+  const toInsert: DefendSpecies[] = [];
+  for (let i = 0; i < speciesStats.length; i++) {
+    const [speciesKey, stats] = speciesStats[i];
+    const s = new DefendSpecies();
+    s.id = speciesKey;
+    s.name = stats.name;
+    s.description = stats.description;
+    s.rarity = stats.rarity;
+    toInsert.push(s);
+  }
+  return toInsert;
+}
+
+
+export enum AssetTypeOptions {
+  AttackAsset = "0",
+  DefenseAsset = "1",
+  AttackFactory = "2",
+  DefenseFactory = "3",
+}
+
+export function formNFTTypes(): NFTType[] {
+  const toInsert: NFTType[] = [];
+  for (let i = 0; i < nftTypeNames.length; i++) {
+    const s = new NFTType();
+    s.id = i;
+    s.name = nftTypeNames[i];
+    s.xp_levels = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
+      level2xp(level, isFactory(i.toString()))
+    );
+    s.cost_levels = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
+      costToMintAsset(level, isFactory(i.toString()))
+    );
+    toInsert.push(s);
+  }
+  return toInsert;
+}
+
+
+export function formInfo(): Info[] {
+  const toInsert: Info[] = [];
+  const nextChainAction = getNext2pmUTC(Math.floor(Date.now() / 1000));
+  const isFact = true;
+  const homebase_xp = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
+    level2xp(level, isFact)
+  );
+  const homebase_cost = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
+    costToMintAsset(level, isFact)
+  );
+  const homebase_prodrate = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
+    treasuryProdRatePerDay(level)
+  );
+  console.log(XP_CHARACTER_PER_LEVEL.length, homebase_prodrate);
+
+  const items = [
+    { key: 'NEXT_CHAIN_ACTIONS_TIMESTAMP', value: nextChainAction },
+    { key: 'HOMEBASE_DAILY_PRODUCTION_RATE', value: homebase_prodrate },
+    { key: 'HOMEBASE_XP_PER_LEVEL', value: homebase_xp },
+    { key: 'HOMEBASE_COST_PER_LEVEL', value: homebase_cost }
+  ];
+
+  for (const item of items) {
+    const info = new Info();
+    info.key = item.key;
+    info.value = item.value;
+    toInsert.push(info);
+  }
+
+  return toInsert;
 }

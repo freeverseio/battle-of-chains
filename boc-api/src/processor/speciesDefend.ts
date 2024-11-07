@@ -1,6 +1,6 @@
 import { SpeciesLore, SpeciesTypicalyStats } from "./species";
 
-export enum DefendSpecies {
+export enum DefendSpeciesType {
   FullStackDeveloper,
   RustDeveloper,
   PythonDeveloper,
@@ -22,279 +22,283 @@ export enum DefendSpecies {
   GevinWoud
 }
 
-export const DefendSpeciesLore: Record<DefendSpecies, SpeciesLore> = {
-  [DefendSpecies.FullStackDeveloper]: { 
+export const DefendSpeciesLore: Record<DefendSpeciesType, SpeciesLore> = {
+  [DefendSpeciesType.FullStackDeveloper]: { 
     name: "Full Stack Developer", 
     description: "The mythical jack-of-all-trades who knows just enough front-end and back-end to be dangerous." 
   },
-  [DefendSpecies.RustDeveloper]: { 
+  [DefendSpeciesType.RustDeveloper]: { 
     name: "Rust Developer", 
     description: "Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++." 
   },
-  [DefendSpecies.PythonDeveloper]: { 
+  [DefendSpeciesType.PythonDeveloper]: { 
     name: "Python Developer", 
     description: "Can get any job done in five lines of code, but don’t ask them about static typing." 
   },
-  [DefendSpecies.CPlusPlusDeveloper]: { 
+  [DefendSpeciesType.CPlusPlusDeveloper]: { 
     name: "C++ Developer", 
     description: "The wizard of low-level magic, with pointers, manual memory management, and a superiority complex." 
   },
-  [DefendSpecies.MicrosoftDeveloper]: { 
+  [DefendSpeciesType.MicrosoftDeveloper]: { 
     name: "Microsoft Developer", 
     description: "An expert in writing code to fit perfectly with Windows updates. Complains if it has to run on Linux." 
   },
-  [DefendSpecies.HighSchoolDeveloper]: { 
+  [DefendSpeciesType.HighSchoolDeveloper]: { 
     name: "High-School Developer", 
     description: "Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame." 
   },
-  [DefendSpecies.CybersecurityGuru]: { 
+  [DefendSpeciesType.CybersecurityGuru]: { 
     name: "Cybersecurity Guru", 
     description: "Lives for catching vulnerabilities and cryptic log files. Knows ten ways to break your app." 
   },
-  [DefendSpecies.LegalCounselor]: { 
+  [DefendSpeciesType.LegalCounselor]: { 
     name: "Legal Counselor", 
     description: "Specializes in making everything you thought was allowed suddenly forbidden." 
   },
-  [DefendSpecies.VentureCapitalist]: { 
+  [DefendSpeciesType.VentureCapitalist]: { 
     name: "Venture Capitalist", 
     description: "Pumps money into ideas they barely understand but insists on being the ‘visionary’." 
   },
-  [DefendSpecies.AngelInvestor]: { 
+  [DefendSpeciesType.AngelInvestor]: { 
     name: "Angel Investor", 
     description: "Shows up with money, and a smile, and leaves right before things get complicated." 
   },
-  [DefendSpecies.ProductOwner]: { 
+  [DefendSpeciesType.ProductOwner]: { 
     name: "Product Owner", 
     description: "Has never coded a day in their life, but knows exactly why your implementation is wrong." 
   },
-  [DefendSpecies.CommunityManager]: { 
+  [DefendSpeciesType.CommunityManager]: { 
     name: "Community Manager", 
     description: "Keeps the online mobs at bay with memes, emojis, and the occasional thinly veiled PR statement." 
   },
-  [DefendSpecies.AcademicProfessor]: { 
+  [DefendSpeciesType.AcademicProfessor]: { 
     name: "Academic Professor", 
     description: "Highly knowledgeable, but only if the knowledge is 10+ years old and theoretical." 
   },
-  [DefendSpecies.QAGuy]: { 
+  [DefendSpeciesType.QAGuy]: { 
     name: "QA Guy", 
     description: "Lives to find bugs you didn’t even know existed. Always has that ‘Did you test this?’ face." 
   },
-  [DefendSpecies.ITGuy]: { 
+  [DefendSpeciesType.ITGuy]: { 
     name: "IT Guy", 
     description: "Can fix your computer, network, and spirit—all while pretending to be annoyed." 
   },
-  [DefendSpecies.Cook]: { 
+  [DefendSpeciesType.Cook]: { 
     name: "Cook", 
     description: "Knows exactly how to slice, dice, and occasionally burn both food and code. Culinary and debugging expert." 
   },
-  [DefendSpecies.VilatikTuberin]: { 
+  [DefendSpeciesType.VilatikTuberin]: { 
     name: "Vilatik Tuberin", 
     description: "Rumored to be able to fork any project into oblivion. The father of all modern blockchains." 
   },
-  [DefendSpecies.SatoshiNakamoto]: { 
+  [DefendSpeciesType.SatoshiNakamoto]: { 
     name: "Satoshi Nakamoto", 
     description: "The ghostly figure everyone worships but no one has seen. Leaves breadcrumbs of cryptography everywhere." 
   },
-  [DefendSpecies.GevinWoud]: { 
+  [DefendSpeciesType.GevinWoud]: { 
     name: "Gevin Woud", 
     description: "Believes decentralization can solve world hunger, climate change, and probably achieve world peace too." 
   }
 };
 
-export const DefendSpeciesCharacteristics: Record<DefendSpecies, SpeciesTypicalyStats> = {
-  [DefendSpecies.FullStackDeveloper]: { 
+export const DefendSpeciesCharacteristics: Record<DefendSpeciesType, SpeciesTypicalyStats> = {
+  [DefendSpeciesType.FullStackDeveloper]: { 
     attack: 5, 
     defense: 8, 
     travelSpeed: 10, 
     age: 30, 
-    name: DefendSpeciesLore[DefendSpecies.FullStackDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.FullStackDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.FullStackDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.FullStackDeveloper].description,
     potential: 5,
     rarity: 5
   },
-  [DefendSpecies.RustDeveloper]: { 
+  [DefendSpeciesType.RustDeveloper]: { 
     attack: 2, 
     defense: 12, 
     travelSpeed: 2, 
     age: 25, 
-    name: DefendSpeciesLore[DefendSpecies.RustDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.RustDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.RustDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.RustDeveloper].description,
     potential: 10,
     rarity: 6
   },
-  [DefendSpecies.PythonDeveloper]: { 
+  [DefendSpeciesType.PythonDeveloper]: { 
     attack: 4, 
     defense: 4, 
     travelSpeed: 12, 
     age: 45, 
-    name: DefendSpeciesLore[DefendSpecies.PythonDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.PythonDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.PythonDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.PythonDeveloper].description,
     potential: 2,
     rarity: 4
   },
-  [DefendSpecies.CPlusPlusDeveloper]: { 
+  [DefendSpeciesType.CPlusPlusDeveloper]: { 
     attack: 2, 
     defense: 12, 
     travelSpeed: 5, 
     age: 50, 
-    name: DefendSpeciesLore[DefendSpecies.CPlusPlusDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.CPlusPlusDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.CPlusPlusDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.CPlusPlusDeveloper].description,
     potential: 3,
     rarity: 6
   },
-  [DefendSpecies.MicrosoftDeveloper]: { 
+  [DefendSpeciesType.MicrosoftDeveloper]: { 
     attack: 2, 
     defense: 3, 
     travelSpeed: 4, 
     age: 45, 
-    name: DefendSpeciesLore[DefendSpecies.MicrosoftDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.MicrosoftDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.MicrosoftDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.MicrosoftDeveloper].description,
     potential: 1,
     rarity: 3
   },
-  [DefendSpecies.HighSchoolDeveloper]: { 
+  [DefendSpeciesType.HighSchoolDeveloper]: { 
     attack: 1, 
     defense: 6, 
     travelSpeed: 20, 
     age: 5, 
-    name: DefendSpeciesLore[DefendSpecies.HighSchoolDeveloper].name, 
-    description: DefendSpeciesLore[DefendSpecies.HighSchoolDeveloper].description,
+    name: DefendSpeciesLore[DefendSpeciesType.HighSchoolDeveloper].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.HighSchoolDeveloper].description,
     potential: 8,
     rarity: 2
   },
-  [DefendSpecies.CybersecurityGuru]: { 
+  [DefendSpeciesType.CybersecurityGuru]: { 
     attack: 1, 
     defense: 12, 
     travelSpeed: 8, 
     age: 35, 
-    name: DefendSpeciesLore[DefendSpecies.CybersecurityGuru].name, 
-    description: DefendSpeciesLore[DefendSpecies.CybersecurityGuru].description,
+    name: DefendSpeciesLore[DefendSpeciesType.CybersecurityGuru].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.CybersecurityGuru].description,
     potential: 5,
     rarity: 7
   },
-  [DefendSpecies.LegalCounselor]: { 
+  [DefendSpeciesType.LegalCounselor]: { 
     attack: 1, 
     defense: 12, 
     travelSpeed: 3, 
     age: 45, 
-    name: DefendSpeciesLore[DefendSpecies.LegalCounselor].name, 
-    description: DefendSpeciesLore[DefendSpecies.LegalCounselor].description,
+    name: DefendSpeciesLore[DefendSpeciesType.LegalCounselor].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.LegalCounselor].description,
     potential: 5,
     rarity: 4
   },
-  [DefendSpecies.VentureCapitalist]: { 
+  [DefendSpeciesType.VentureCapitalist]: { 
     attack: 1, 
     defense: 12, 
     travelSpeed: 7, 
     age: 45, 
-    name: DefendSpeciesLore[DefendSpecies.VentureCapitalist].name, 
-    description: DefendSpeciesLore[DefendSpecies.VentureCapitalist].description,
+    name: DefendSpeciesLore[DefendSpeciesType.VentureCapitalist].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.VentureCapitalist].description,
     potential: 3,
     rarity: 6
   },
-  [DefendSpecies.AngelInvestor]: { 
+  [DefendSpeciesType.AngelInvestor]: { 
     attack: 1, 
     defense: 8, 
     travelSpeed: 12, 
     age: 35, 
-    name: DefendSpeciesLore[DefendSpecies.AngelInvestor].name, 
-    description: DefendSpeciesLore[DefendSpecies.AngelInvestor].description,
+    name: DefendSpeciesLore[DefendSpeciesType.AngelInvestor].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.AngelInvestor].description,
     potential: 5,
     rarity: 6
   },
-  [DefendSpecies.ProductOwner]: { 
+  [DefendSpeciesType.ProductOwner]: { 
     attack: 1, 
     defense: 7, 
     travelSpeed: 4, 
     age: 35, 
-    name: DefendSpeciesLore[DefendSpecies.ProductOwner].name, 
-    description: DefendSpeciesLore[DefendSpecies.ProductOwner].description,
+    name: DefendSpeciesLore[DefendSpeciesType.ProductOwner].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.ProductOwner].description,
     potential: 3,
     rarity: 4
   },
-  [DefendSpecies.CommunityManager]: { 
+  [DefendSpeciesType.CommunityManager]: { 
     attack: 1, 
     defense: 8, 
     travelSpeed: 12, 
     age: 20, 
-    name: DefendSpeciesLore[DefendSpecies.CommunityManager].name, 
-    description: DefendSpeciesLore[DefendSpecies.CommunityManager].description,
+    name: DefendSpeciesLore[DefendSpeciesType.CommunityManager].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.CommunityManager].description,
     potential: 5,
     rarity: 4
   },
-  [DefendSpecies.AcademicProfessor]: { 
+  [DefendSpeciesType.AcademicProfessor]: { 
     attack: 1, 
     defense: 10, 
     travelSpeed: 4, 
     age: 45, 
-    name: DefendSpeciesLore[DefendSpecies.AcademicProfessor].name, 
-    description: DefendSpeciesLore[DefendSpecies.AcademicProfessor].description,
+    name: DefendSpeciesLore[DefendSpeciesType.AcademicProfessor].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.AcademicProfessor].description,
     potential: 6,
     rarity: 7
   },
-  [DefendSpecies.QAGuy]: { 
+  [DefendSpeciesType.QAGuy]: { 
     attack: 1, 
     defense: 12, 
     travelSpeed: 10, 
     age: 30, 
-    name: DefendSpeciesLore[DefendSpecies.QAGuy].name, 
-    description: DefendSpeciesLore[DefendSpecies.QAGuy].description,
+    name: DefendSpeciesLore[DefendSpeciesType.QAGuy].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.QAGuy].description,
     potential: 3,
     rarity: 5
   },
-  [DefendSpecies.ITGuy]: { 
+  [DefendSpeciesType.ITGuy]: { 
     attack: 1, 
     defense: 10, 
     travelSpeed: 8, 
     age: 30, 
-    name: DefendSpeciesLore[DefendSpecies.ITGuy].name, 
-    description: DefendSpeciesLore[DefendSpecies.ITGuy].description,
+    name: DefendSpeciesLore[DefendSpeciesType.ITGuy].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.ITGuy].description,
     potential: 3,
     rarity: 5
   },
-  [DefendSpecies.Cook]: { 
+  [DefendSpeciesType.Cook]: { 
     attack: 1, 
     defense: 10, 
     travelSpeed: 10, 
     age: 30, 
-    name: DefendSpeciesLore[DefendSpecies.Cook].name, 
-    description: DefendSpeciesLore[DefendSpecies.Cook].description,
+    name: DefendSpeciesLore[DefendSpeciesType.Cook].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.Cook].description,
     potential: 5,
     rarity: 4
   },
-  [DefendSpecies.VilatikTuberin]: { 
+  [DefendSpeciesType.VilatikTuberin]: { 
     attack: 15, 
     defense: 15, 
     travelSpeed: 15, 
     age: 20, 
-    name: DefendSpeciesLore[DefendSpecies.VilatikTuberin].name, 
-    description: DefendSpeciesLore[DefendSpecies.VilatikTuberin].description,
+    name: DefendSpeciesLore[DefendSpeciesType.VilatikTuberin].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.VilatikTuberin].description,
     potential: 15,
     rarity: 15
   },
-  [DefendSpecies.SatoshiNakamoto]: { 
+  [DefendSpeciesType.SatoshiNakamoto]: { 
     attack: 20, 
     defense: 20, 
     travelSpeed: 20, 
     age: 40, 
-    name: DefendSpeciesLore[DefendSpecies.SatoshiNakamoto].name, 
-    description: DefendSpeciesLore[DefendSpecies.SatoshiNakamoto].description,
+    name: DefendSpeciesLore[DefendSpeciesType.SatoshiNakamoto].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.SatoshiNakamoto].description,
     potential: 20,
     rarity: 20
   },
-  [DefendSpecies.GevinWoud]: { 
+  [DefendSpeciesType.GevinWoud]: { 
     attack: 14, 
     defense: 14, 
     travelSpeed: 14, 
     age: 35, 
-    name: DefendSpeciesLore[DefendSpecies.GevinWoud].name, 
-    description: DefendSpeciesLore[DefendSpecies.GevinWoud].description,
+    name: DefendSpeciesLore[DefendSpeciesType.GevinWoud].name, 
+    description: DefendSpeciesLore[DefendSpeciesType.GevinWoud].description,
     potential: 15,
     rarity: 15
   }
 };
 
-export const defendSpeciesStats: [DefendSpecies, SpeciesTypicalyStats][] = 
-  Object.values(DefendSpecies)
+export const defendSpeciesStats: [DefendSpeciesType, SpeciesTypicalyStats][] = 
+  Object.values(DefendSpeciesType)
     .filter(value => typeof value === 'number')
-    .map((key) => [key as DefendSpecies, DefendSpeciesCharacteristics[key as DefendSpecies]]);
+    .map((key) => {
+      const stats = { ...DefendSpeciesCharacteristics[key as DefendSpeciesType] };
+      stats.age *= 1;
+      return [key as DefendSpeciesType, stats];
+    });

@@ -1,15 +1,17 @@
-import { Chain, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails } from './types';
+import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
 import { AssignOperator } from '../db/entity';
-import { DefendSpecies, DefendSpeciesLore } from './speciesDefend';
-import { AttackSpecies, AttackSpeciesLore } from './speciesAttack';
+import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
+import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
+import seedrandom from 'seedrandom';
+import murmurhash from 'murmurhash';
 
 const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
 const midPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(2);
 const quarterPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(4);
 
-export function chainIsNotSupported(chain: Number, chains: Chain[]) : boolean {
+export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
     const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);
     if (chainNotSupported) console.log(`An event tried to act on a chain that is not yet supported: ${chain}`);
     return chainNotSupported;
@@ -70,6 +72,10 @@ export function getFreeInventoryInChain(address: string, chain: number, assets:A
     return assets.filter(a => a.owner === address && a.chain_id === chain && a.state === AssetState.Free);
 }
 
+export function getAliveInventoryInChain(address: string, chain: number, assets:AssetType[]) : AssetType[] {
+    return assets.filter(a => a.owner === address && a.chain_id === chain && a.health > 0);
+}
+
 function assetCanPrepareForAttack(asset: AssetType) : boolean {
     return (
         asset.state === AssetState.Free &&
@@ -107,17 +113,59 @@ export function evolveTreasuryByAddress(address: string, timestamp: number, stor
         console.log('WARNING: trying to update treasury of non-found user address: ', address);
         return;
     }
-    evolveTreasuryByUser(user, timestamp);
+    evolveTreasuryByUser(user, timestamp, storage);
 }
 
-export function evolveTreasuryByUser(user: UserType, timestamp: number) {
-    const timeSinceLast = timestamp - user.treasuryLastUpdate;
-    const treasuryIncrease = Math.floor((user.health * timeSinceLast ) / constants.ONE_DAY_IN_SECS);
-    if (treasuryIncrease < 0) {
-        console.log('WARNING: treasury decreasing over time due to incorrect timestamps');
+export function costToMintCharacter(level: number) {
+    return constants.XP_CHARACTER_PER_LEVEL[level] * constants.COST_PER_XP;
+}
+
+export function costToMintFactory(level: number) {
+    return constants.XP_FACTORY_PER_LEVEL[level] * constants.COST_PER_XP;
+}
+
+export function costToMintAsset(level: number, isFactory: boolean) {
+    return isFactory
+        ? costToMintFactory(level)
+        : costToMintCharacter(level);
+}
+
+export function computeReferenceTreasuryCostAtLevel(level: number) : number {
+    let costOfCreatingCharacterOfRelevantLevel : number;
+    if (level == 0) costOfCreatingCharacterOfRelevantLevel = costToMintCharacter(1);
+    else if (level == 1) costOfCreatingCharacterOfRelevantLevel = 2 * costToMintCharacter(1);
+    else costOfCreatingCharacterOfRelevantLevel = costToMintCharacter(level);
+    return costOfCreatingCharacterOfRelevantLevel;
+}
+
+export function treasuryProdRatePerDay(level: number) : number {
+    return Math.round(constants.ONE_DAY_IN_SECS * treasuryProdRatePerSec(level));
+}
+
+export function treasuryProdRatePerSec(level: number) : number {
+    return computeReferenceTreasuryCostAtLevel(level)
+        * constants.TREASURY_ASSETS_OF_MATCHING_LEVEL_PER_WEEK[level]
+        / constants.ONE_WEEK_IN_SECS;
+}
+
+export function treasuryPenaltyPerSec(level: number, assetCount: number) : number {
+    return computeReferenceTreasuryCostAtLevel(level)
+        *  assetCount * constants.TREASURY_COST_TO_MAINTAIN_ONE_ASSET_PER_WEEK
+        / constants.ONE_WEEK_IN_SECS;
+}
+
+export function evolveTreasuryByUser(user: UserType, timestamp: number, storage: Storage) {
+    const secSinceLast = timestamp - user.treasuryLastUpdate;
+    if (secSinceLast < 0) {
+        console.log('WARNING: trying to evolve a treasury towards the past', user);
         return;
     }
-    user.treasury += treasuryIncrease;
+    const assetCount = storage.assets.filter(a => a.owner === user.address && a.health > 0 && !isFactory(a.type)).length;
+    const treasuryIncrease = Math.floor(
+        secSinceLast *
+        (treasuryProdRatePerSec(user.level) - treasuryPenaltyPerSec(user.level, assetCount))
+    );
+    user.treasury = Math.max(0, user.treasury + treasuryIncrease);
     user.treasuryLastUpdate = timestamp;
 }
 
@@ -129,12 +177,31 @@ export function isCharacter(typeId: string) : boolean {
     return (typeId === AssetTypeOptions.AttackAsset || typeId === AssetTypeOptions.DefenseAsset);
 }
 
-export function increaseAssetHealth(asset: AssetType, amount: number) {
+export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
+    return level2xp(
+        Math.max(1, level),
+        isFactory
+    );
+}
+
+export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
     if (asset.health === 0) {
-        console.log('WARNING: trying to increase the health of a dead asset, ', asset.token_id);
+        console.log('WARNING: trying to modify the health of a dead asset, ', asset.token_id);
         return;
     }
-    asset.health = asset.health + amount < 100 ? asset.health + amount : 100;
+    const intDelta = Math.ceil(delta);
+    if (intDelta < 0) {
+        console.log('decreasing', asset.health, intDelta);
+        asset.health = asset.health + intDelta > 0 ? asset.health + intDelta : 0;
+    } else {
+        const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
+        const newHealth = asset.health + intDelta;
+        asset.health = newHealth > maxHealth ? maxHealth : newHealth;
+    }
+}
+
+export function age2years(ageInSec: number) : number {
+    return ageInSec / constants.ONE_YEAR_IN_SECS;
 }
 
 export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
@@ -144,12 +211,27 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
     }
     const timeSinceLast = (timestamp - asset.statsLastUpdate) * constants.TIME_SPEED_RATIO;
     asset.age += timeSinceLast;
-    const extraHealth = Math.floor(constants.HEALTH_IMPROVE_PER_DAY * timeSinceLast / constants.ONE_DAY_IN_SECS);
-    if (isCharacter(asset.type)) {
-        if (asset.age < 40) increaseAssetHealth(asset, extraHealth);
-        else decreaseHealth(constants.HEALTH_DECREASE_PER_DAY_AFTER_60, [asset]);
-    }
+
+    const isFact = isFactory(asset.type);
+    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
+
+    // the default delta (applied to all factories, and to all young assets)
+    let healthDelta = Math.floor(
+        maxHealth *
+        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
+    );
+
+    if (!isFact && age2years(asset.age) > 60) healthDelta = - healthDelta / 7;
+    else if (!isFact && age2years(asset.age) > 40) healthDelta = healthDelta / 3;
+
+    addHealthDeltaToAsset(healthDelta, asset);
+
     asset.statsLastUpdate = timestamp;
+
+    if (asset.health === 0) {
+        console.log('WARNING: Asset killed by time evolution', asset);
+    }
 }
 
 export function subtractFromTreasury(address: string, timestamp: number, amount: number, storage: Storage) : number {
@@ -178,18 +260,30 @@ export function addToTreasury(address: string, timestamp: number, amount: number
     user.treasuryLastUpdate = timestamp;
 }
 
-export function xp2level(xp: number) : number {
-    for (let level = 0; level < constants.LEVEL_XP_REQUIREMENTS.length - 1; level++) {
-        if (xp < constants.LEVEL_XP_REQUIREMENTS[level + 1]) return level;
+export function xp2level(xp: number, isFactory: boolean) : number {
+    const LEVEL_TO_XP = isFactory
+    ? constants.XP_FACTORY_PER_LEVEL
+    : constants.XP_CHARACTER_PER_LEVEL;
+
+    for (let level = 0; level < LEVEL_TO_XP.length - 1; level++) {
+        if (xp < LEVEL_TO_XP[level + 1]) return level;
     }
-    return constants.LEVEL_XP_REQUIREMENTS.length - 1;
+    return LEVEL_TO_XP.length - 1;
 }
 
-export function level2xp(level: number) : number {
-    const nLevels = constants.LEVEL_XP_REQUIREMENTS.length;
+export function maxXPAtLevel(level: number, isFactory: boolean) : number {
+    return level2xp(level + 1, isFactory);
+}
+
+export function level2xp(level: number, isFactory: boolean) : number {
+    const LEVEL_TO_XP = isFactory
+        ? constants.XP_FACTORY_PER_LEVEL
+        : constants.XP_CHARACTER_PER_LEVEL;
+
+    const nLevels = LEVEL_TO_XP.length;
     return (level < nLevels) ?
-        constants.LEVEL_XP_REQUIREMENTS[level] :
-        constants.LEVEL_XP_REQUIREMENTS[nLevels - 1];
+        LEVEL_TO_XP[level] :
+        LEVEL_TO_XP[nLevels - 1];
 }
 
 export function address2XY(address: string): XY {
@@ -214,7 +308,6 @@ export function xyToAddress(x: bigint, y: bigint): string {
 
 export function isCorrectOperator(operatorAddress: string, userAddress: string, assignOperators: AssignOperator[]) : boolean {
     if (!operatorAddress || !userAddress) return false;
-    console.log('AAA: ', operatorAddress, userAddress);
     if (operatorAddress === userAddress) return true;
     const assignment = assignOperators.find(a => a.operator === operatorAddress && a.assigner === userAddress);
     return assignment ? true : false;
@@ -246,12 +339,6 @@ export function time2travel(addr1: string, addr2: string, speed: number) : numbe
 
 export function time2travelDistance(distance: number, speed: number) : number {
     return Math.ceil(distance / speed / constants.TIME_SPEED_RATIO);
-}
-
-export function decreaseHealth(amount: number, assets: AssetType[]) {
-    for (let asset of assets) {
-        asset.health = (asset.health > amount) ? asset.health - amount : 0;
-    }
 }
 
 export function setAssetsFree(assets: AssetType[]) {
@@ -302,7 +389,7 @@ export function assignUserToChainProposal(userAddress: string, proposalHash: str
 
 export function updateAllTreasuries(timestamp: number, storage: Storage) {
     for (let user of storage.users) {
-        evolveTreasuryByUser(user, timestamp)
+        evolveTreasuryByUser(user, timestamp, storage)
     }
 }
 
@@ -386,9 +473,22 @@ export function shuffleArray<T>(array: T[], seed: number): T[] {
     return array;
 }
 
-export function increaseAssetXP(asset: AssetType, amount: number) {
-    asset.xp += amount;
-    asset.level = xp2level(asset.xp);
+export function increaseAssetHealthByPercent(asset: AssetType, percent: number) {
+    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
+    const newHealth = asset.health + Math.ceil(maxHealth * percent/100);
+    asset.health = newHealth > maxHealth ? maxHealth : newHealth;
+}
+
+export function decreaseAssetHealthByPercent(asset: AssetType, percent: number) {
+    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
+    const newHealth = asset.health - Math.ceil(maxHealth * percent/100);
+    asset.health = newHealth > 0 ? newHealth : 0;
+}
+
+export function increaseAssetXPByPercent(asset: AssetType, percent: number) {
+    const XPAtLevel = maxXPAtLevel(asset.level, isFactory(asset.type));
+    asset.xp += Math.ceil(XPAtLevel * Math.min(100, percent) / 100);
+    asset.level = xp2level(asset.xp, isFactory(asset.type));
 }
 
 export function executeChainImprove(chain: number, storage: Storage) {
@@ -397,8 +497,8 @@ export function executeChainImprove(chain: number, storage: Storage) {
         e.health > 0
     );
     for (const asset of allAliveAssetsInChain) {
-        increaseAssetHealth(asset, 20);
-        increaseAssetXP(asset, 50);
+        increaseAssetHealthByPercent(asset, constants.HEALTH_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE);
+        increaseAssetXPByPercent(asset, constants.XP_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE);
     }
 }
 
@@ -455,8 +555,15 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
     else if (attackArea === AttackArea.East) {
         return assets.filter((a) => a.chain_id === chain && isInEast(a.owner))
     }
-    else {
+    else if (attackArea === AttackArea.West) {
         return assets.filter((a) => a.chain_id === chain && isInWest(a.owner))
+    } 
+    else if (attackArea === AttackArea.All) {
+        return assets.filter((a) => a.chain_id === chain)
+    }
+    else {
+        console.log('WARNING: chain attack area not supported');
+        return [];
     }
 }
 
@@ -491,17 +598,85 @@ export function applyNoise(n: number, noisePercentage: number, seed: number) : n
 }
 
 
-export function getCharacterComment(event: MultichainMintEvent, chain: number, details: AssetLevelDetails, cost: number, species: DefendSpecies | AttackSpecies) : string {
+export function getCharacterComment(event: MultichainMintEvent, chain: number, details: AssetLevelDetails, cost: number, species: DefendSpeciesType | AttackSpeciesType) : string {
     const typeName = event.typeId === AssetTypeOptions.AttackAsset ? "attack" : "defense";
     const lore = event.typeId === AssetTypeOptions.AttackAsset
-        ? AttackSpeciesLore[species as AttackSpecies]
-        : DefendSpeciesLore[species as DefendSpecies];
+        ? AttackSpeciesLore[species as AttackSpeciesType]
+        : DefendSpeciesLore[species as DefendSpeciesType];
 
     let comment = `You have created an asset of type: ${typeName}, and species: ${lore.name}`;
     comment += `, on chain ${chain}, with tokenId = ${(event.tokenId).toString()}`;
     comment += `. ${lore.description}`;
     comment += ` It costed ${cost} from your treasury. The asset has level ${details.level}`;
-    if (details.factoryLevelUsed > 0) comment += `. It benefited from using your factory of level ${details.factoryLevelUsed} in that chain`;
-    comment += `. You can trade it in that chain.`;
+    if (details.level < details.factoryLevelUsed) {
+        comment += `. Depite having a factory of level ${details.factoryLevelUsed} in that chain, your treasury was only enough to produce an asset of level ${details.level}`;
+    }
+    if (details.level > 0 && details.level === details.factoryLevelUsed) {
+        comment += `. It benefited from using your factory of level ${details.factoryLevelUsed} in that chain`;
+    }
+    comment += `. You can trade this asset in that chain.`;
     return comment;
+}
+
+export function upgradeAssetToLevel(asset: AssetType, newLevel: number) {
+    if (newLevel <= asset.level) {
+        console.log('WARNING: Trying to update stats to same or to previous level', asset);
+        return;
+    }
+    const isFact = isFactory(asset.type);
+    const newLevelXP = level2xp(newLevel, isFact);
+    const oldLevelXP = level2xp(asset.level, isFact);
+
+    const increaseRatio = oldLevelXP > 0
+        ? (newLevelXP / oldLevelXP) * (asset.potential / constants.AVERAGE_POTENTIAL)
+        : constants.STATS_FACTOR_TO_NEXT_LEVEL;
+
+    asset.attack = Math.ceil(asset.attack * increaseRatio);
+    asset.defense = Math.ceil(asset.defense * increaseRatio);
+    asset.health = Math.ceil(Math.min(asset.health / oldLevelXP, 1) * newLevelXP);
+
+    asset.xp = level2xp(newLevel, isFact);
+    asset.level = newLevel;
+}
+
+export function maxCharacterLevelAllowedByTreasury(factoryLevel: number, treasury: number) : number {
+    if (factoryLevel == 0) return 0;
+    for (let l = 0; l < factoryLevel; l++) {
+        if (treasury < costToMintCharacter(l + 1)) return l;
+    }
+    return factoryLevel;
+}
+
+export function computeRandoms(nSeeds: number, seed: number): number[] {
+    let rnds: number[] = [murmurhash.v3(seed.toString())];
+    for (let i = 1; i < nSeeds; i++) {
+        rnds.push(murmurhash.v3(rnds[i - 1].toString()));
+    }
+    return rnds;
+}
+
+export function adaptPercetangeToAverage(percent: number, individualValue: number, averageValue: number) {
+    const adapted = Math.round(percent * individualValue / averageValue);
+    const max = Math.min(100, Math.round(2 * percent));
+    const min = Math.round(percent / 2);
+    return Math.max(min, Math.min(max, adapted));
+}
+
+export function isUpgradeHomebase(event: UpgradeEvent) : boolean {
+    return event.tokenId === '0';
+}
+
+export function getNext2pmUTC(referenceTimestamp: number): number {
+    const reference = new Date(referenceTimestamp * 1000);
+    
+    // Create a new Date object for the dat of the reference time, at 2 PM UTC
+    const next2pmUTC = new Date(Date.UTC(reference.getUTCFullYear(), reference.getUTCMonth(), reference.getUTCDate(), 14, 0, 0, 0));
+
+    // If 2 PM UTC today had already passed, set it to 2 PM UTC of the day after
+    if (reference.getUTCHours() >= 14) {
+        next2pmUTC.setUTCDate(next2pmUTC.getUTCDate() + 1);
+    }
+
+    // Return the timestamp (seconds since epoch)
+    return Math.round(next2pmUTC.getTime() / 1000);
 }

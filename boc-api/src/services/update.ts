@@ -1,7 +1,7 @@
 import { AppDataSource } from '../db/AppDataSource';
-import { Log, User, Asset, ChainActionProposal, AssignOperator } from '../db/entity';
+import { Chain, Log, User, Asset, ChainActionProposal, AssignOperator, AttackSpecies, DefendSpecies, NFTType, Info } from '../db/entity';
 import { EventProcessor } from '../processor/process';
-import { getAllChains, ProcessStatusEnum, setStatus } from './chainService';
+import { getAllChains } from './chainService';
 import { formStorage } from './getDataToStore';
 import { QueryRunner } from 'typeorm';
 
@@ -25,14 +25,23 @@ export async function update(context: any): Promise<number> {
                      public.asset,
                      public.log,
                      public.user,
-                     public.chain_action_proposal
+                     public.chain_action_proposal,
+                     public.attack_species,
+                     public.defend_species,
+                     public.nft_type,
+                     public.info
       RESTART IDENTITY CASCADE
     `);
+    await queryRunner.manager.save(Chain, storageToInsert.chains);
     await queryRunner.manager.save(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals);
     await queryRunner.manager.save(User, storageToInsert.users);
     await queryRunner.manager.save(Log, storageToInsert.logs);
     await queryRunner.manager.save(Asset, storageToInsert.assets);
     await queryRunner.manager.save(AssignOperator, storageToInsert.assignOperators);
+    await queryRunner.manager.save(AttackSpecies, storageToInsert.attackSpecies);
+    await queryRunner.manager.save(DefendSpecies, storageToInsert.defendSpecies);
+    await queryRunner.manager.save(NFTType, storageToInsert.nfttypes);
+    await queryRunner.manager.save(Info, storageToInsert.info);
     await queryRunner.commitTransaction();
   } catch (error) {
     await queryRunner.rollbackTransaction();

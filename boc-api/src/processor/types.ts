@@ -1,9 +1,10 @@
 import { FactorySpecies } from "./species";
-import { AttackSpecies } from "./speciesAttack";
-import { DefendSpecies } from "./speciesDefend";
+import { AttackSpeciesType } from "./speciesAttack";
+import { DefendSpeciesType } from "./speciesDefend";
 
 export const actionTypeNames = ["Defend", "Improve", "AttackArea", "AttackAddress"];
 export const actionAreaNames = ["NULL", "NORTH", "SOUTH", "EAST", "WEST", "ALL"];
+export const nftTypeNames = ["Attack Asset", "Defense Asset", "Attack Factory", "Defense Factory"];
 
 export enum AttackArea {
   Null,
@@ -94,7 +95,7 @@ export type XYmeter = {
 }
 
 
-export type Chain = {
+export type ChainType = {
   chain_id: number;
   name: string;
   score: number;
@@ -185,7 +186,7 @@ export type AssetStatsType = {
   travelSpeed: number;
   age: number;
   potential: number;
-  species: AttackSpecies | DefendSpecies | FactorySpecies;
+  species: AttackSpeciesType | DefendSpeciesType | FactorySpecies;
 };
 
 export type AssetType = AssetStatsType & {
@@ -231,7 +232,7 @@ export type RangeSelection = {
 }
 
 export type Storage = {
-  chains: Chain[];
+  chains: ChainType[];
   users: UserType[];
   assets: AssetType[];
   assignOperators: AssignOperatorType[];

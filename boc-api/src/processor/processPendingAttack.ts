@@ -1,7 +1,7 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { addToTreasury, decreaseHealth, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, removePendingAction, setAssetsFree, subtractFromTreasury, time2travel, time2travelDistance, userDoesNotExist } from './utils'
-import { DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
+import { adaptPercetangeToAverage, addToTreasury, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
     console.log(`ProcessPendingAttacks id = ${attack.id}`);
@@ -56,7 +56,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
     const attackedAssets = getFreeInventoryInChain(attack.targetAddress, attack.targetChain, storage.assets);
     evolveAssetsStats(attack.toBeExectutedAt, attackedAssets);
-    const availableAttackedAssets = getAliveAndFree(attackedAssets);
+    const availableAttackedAssets = getAlive(attackedAssets);
     const attackedAttack = availableAttackedAssets.reduce((sum, asset) => sum + asset.attack, 0);
     const attackedDefense = availableAttackedAssets.reduce((sum, asset) => sum + asset.defense, 0) * defenseBoostHomechain;
 
@@ -66,39 +66,73 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     const attackerTreasury = getUserTreasury(attack.attacker, storage.users);
     const attackedTreasury = getUserTreasury(attack.targetAddress, storage.users);
 
-    const salt = `${attack.blockHash}${storage.processedPendingIdx}${attackerTreasury}${attackedTreasury}`;
-    const rnd1 =  murmurhash(salt);
-    const rnd2 =  murmurhash(rnd1.toString());
-    const maxHashValue = 2**32 - 1;
-    const attackResult = Math.round((rnd1 * (attackerAttack - attackedDefense) - 0.5 * rnd2 * (attackedAttack - attackerDefense)) / maxHashValue);
-    // result > 0 means that the attacker attacked successfuly; result < 0 means that the attacked defended successfully
-    console.log(`Attacks result: ${attackResult}`);
-    if (attackResult >= 0) {
-        decreaseHealth(10, availableAttackedAssets);
-    } else {
-        decreaseHealth(10, availableAttackerAssets)
+    const seed = murmurhash.v3(`${attack.blockHash}${storage.processedPendingIdx}${attackerTreasury}${attackedTreasury}`);
+    const rnds = computeRandoms(4, seed);
+    const maxRndValue = 2**32 - 1;
+    // one asset of level N+1 is typically STATS_FACTOR_TO_NEXT_LEVEL stronger than one asset at level N
+    // We want that a 1:1 of N+1 against N makes 50% of damage
+    const damageHPPercentOnTarget =  Math.min(100, Math.round(50 * (rnds[0]/maxRndValue) * (attackerAttack/attackedDefense)));
+    const damageHPPercentOnAttacker = Math.min(100, Math.round(50 * (rnds[1]/maxRndValue) * (attackedAttack/attackerDefense)));
+
+    const increaseHPPercentForAttacker = Math.min(10, Math.round(damageHPPercentOnTarget / 5));
+    const increaseHPPercentForAttacked = Math.min(10, Math.round(damageHPPercentOnAttacker / 5));
+
+    let attackerCasulaties = 0;
+    let attackedCasulaties = 0;
+
+
+    const averageAttackedDefense = attackedDefense / attackedAssets.length;
+    for (let asset of attackedAssets) {
+        decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageAttackedDefense));
+        if (asset.health === 0) {
+            attackedCasulaties++;
+        } else {
+            if (!isFactory(asset.type)){
+                increaseAssetXPByPercent(asset, increaseHPPercentForAttacked * asset.potential / AVERAGE_POTENTIAL);
+            }
+        }
     }
+
+    const averageAttackerDefense = attackerDefense / attackerAssets.length;
+    for (let asset of attackerAssets) {
+        decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
+        if (asset.health === 0) {
+            attackerCasulaties++;
+        } else { 
+            if (!isFactory(asset.type)) {
+                increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL);
+            }
+        }
+    }
+
     let subtractedAmount = 0;
-    if (attackResult >= 0 && isTargetUserInHomechain) {
-        const amount = Math.ceil(0.5 * targetUser.treasury);
+    if (damageHPPercentOnTarget >= 0 && isTargetUserInHomechain) {
+        const amount = Math.ceil(damageHPPercentOnTarget / 100 * targetUser.treasury);
         subtractedAmount = subtractFromTreasury(attack.targetAddress, attack.toBeExectutedAt, amount, storage);
         addToTreasury(attack.attacker, attack.toBeExectutedAt, subtractedAmount, storage);
     }
 
     setAssetsFree(attackerAssets);
     setAssetsFree(availableAttackedAssets);
-    let comment = attackResult > 0 ? 'with success' : 'without success';
-    if (subtractedAmount > 0) comment += `. A total of ${subtractedAmount} from the treasury was stolen in the attack.`
+
+    let attackerComment = `Your troops have attacked at ${attack.targetAddress}, they stole ${subtractedAmount} coins, attacked with ${damageHPPercentOnTarget}% success, and they were harmed by their backfire with ${damageHPPercentOnAttacker}% success`;
+    if (increaseHPPercentForAttacker > 0) attackerComment += `. Your troops gained ${increaseHPPercentForAttacker} percentual XP points`;
+    if (attackerCasulaties > 0) attackerComment += `. You lost ${attackerCasulaties} assets in the fight`;
+
+    let attackedComment = `You were attacked by ${attack.attacker}; they stole ${subtractedAmount} coins, and attacked you with ${damageHPPercentOnTarget}% success; you backfired and harmed them with ${damageHPPercentOnAttacker}% success`;
+    if (increaseHPPercentForAttacked > 0) attackedComment += `. Your troops gained ${increaseHPPercentForAttacked} percentual XP points`;
+    if (attackedCasulaties > 0) attackedComment += `. You lost ${attackedCasulaties} assets in the fight`;
+
     storage.logs.push({
         id: storage.logs.length,
         user_address: attack.attacker,
         timestamp: attack.toBeExectutedAt,
-        comment: `Your troops have attacked at ${attack.targetAddress}, ${comment}`,
+        comment: attackerComment,
     });
     storage.logs.push({
         id: storage.logs.length,
         user_address: attack.targetAddress,
         timestamp: attack.toBeExectutedAt,
-        comment: `You were attacked by ${attack.attacker}, ${comment}`,
+        comment: attackedComment,
     });
 }

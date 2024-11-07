@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Log, Chain, User, Asset, ChainActionProposal, AssignOperator, ProcessStatus } from "./entity";
+import { Log, Chain, User, Asset, ChainActionProposal, AssignOperator, ProcessStatus, AttackSpecies, DefendSpecies, NFTType, Info } from "./entity";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -22,7 +22,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,  // Set to true if you want to automatically sync schema changes in development
   logging: false,
   entities: [ 
-    Log, Chain, User, Asset, ChainActionProposal, AssignOperator, ProcessStatus,
+    Log, Chain, User, Asset, ChainActionProposal, AssignOperator, ProcessStatus, AttackSpecies, DefendSpecies, NFTType, Info,
   ],
   migrations: [],
   subscribers: [],
