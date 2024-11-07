@@ -15,5 +15,5 @@ storage.json
 
 **/node_modules
 
-boc-api/storage.json
+boc-game-engine-api/storage.json
 **.DS_Store

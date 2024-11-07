@@ -96,7 +96,7 @@ workflows:
                 - main     
       - build-app:
           name: build-api
-          folder: boc-api
+          folder: boc-game-engine-api
           image: freeverseio/boc-api
           context: dockerhub
           filters:
@@ -105,7 +105,7 @@ workflows:
                 - main 
       - build-app:
           name: build-postgraphile
-          folder: boc-postgraphile
+          folder: boc-game-engine-postgraphile
           image: freeverseio/boc-postgraphile
           context: dockerhub
           filters:
