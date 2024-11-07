@@ -8,6 +8,7 @@ export const events = {
     JoinedChain: event("0xb76888af89162640d1f93bf6507c4dffd2cee8cbccdffff114d8057a6e679b37", "JoinedChain(address,uint32,string)", {"_user": indexed(p.address), "_homeChain": indexed(p.uint32), "_nickname": p.string}),
     MultichainMint: event("0xb189b714f887ae698b140ddf7c6e07d5df979975e4675f19700ad7149a2e1ca3", "MultichainMint(uint256,address,uint256,uint32)", {"_tokenId": p.uint256, "_user": indexed(p.address), "_type": indexed(p.uint256), "_homeChain": indexed(p.uint32)}),
     OwnershipTransferred: event("0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0", "OwnershipTransferred(address,address)", {"previousOwner": indexed(p.address), "newOwner": indexed(p.address)}),
+    RegisterMercenary: event("0x049b122bdeb72db61d323fd64720bbf17f476f6ec8ea9d994b3d0b9adb96df16", "RegisterMercenary(address,uint32,string)", {"_mercenaryAddress": indexed(p.address), "_mercenaryChain": indexed(p.uint32), "_mercenaryNickname": p.string}),
     Upgrade: event("0xd306cc3329b7d7565083a73d367d13290ee47d58d01fbd8d0f5144d4ad7f0182", "Upgrade(address,address,uint32,uint256)", {"_operator": indexed(p.address), "_user": indexed(p.address), "_chain": p.uint32, "_tokenId": p.uint256}),
 }
 
@@ -29,6 +30,7 @@ export const functions = {
     multichainMint: fun("0x29273aa2", "multichainMint(uint256)", {"_type": p.uint256}, p.uint256),
     nDefinedTypes: viewFun("0x5b3967a3", "nDefinedTypes()", {}, p.uint256),
     owner: viewFun("0x8da5cb5b", "owner()", {}, p.address),
+    registerMercenary: fun("0x61ef0710", "registerMercenary(address,uint32,string)", {"_mercenaryAddress": p.address, "_mercenaryChain": p.uint32, "_mercenaryNickname": p.string}, ),
     renounceOwnership: fun("0x715018a6", "renounceOwnership()", {}, ),
     setSupportedContractsManager: fun("0x9ef46029", "setSupportedContractsManager(address)", {"_newManager": p.address}, ),
     setURIManager: fun("0x198b474a", "setURIManager(address)", {"_newManager": p.address}, ),
@@ -38,6 +40,8 @@ export const functions = {
     tokenURIForType: viewFun("0x556adc4e", "tokenURIForType(uint256)", {"_0": p.uint256}, p.string),
     transferOwnership: fun("0xf2fde38b", "transferOwnership(address)", {"newOwner": p.address}, ),
     upgrade: fun("0xbbf10470", "upgrade(uint32,uint256)", {"_chain": p.uint32, "_tokenId": p.uint256}, ),
+    upgradeHomebase: fun("0x1f1cd576", "upgradeHomebase()", {}, ),
+    upgradeHomebaseOnBehalfOf: fun("0xec8c2270", "upgradeHomebaseOnBehalfOf(address)", {"_user": p.address}, ),
     upgradeOnBehalfOf: fun("0x74b7b3dc", "upgradeOnBehalfOf(address,uint32,uint256)", {"_user": p.address, "_chain": p.uint32, "_tokenId": p.uint256}, ),
     uriManager: viewFun("0x7aef2f32", "uriManager()", {}, p.address),
     voteChainAction: fun("0xe1a8a8d9", "voteChainAction((uint32,uint8,uint8,address),string)", {"_chainAction": p.struct({"targetChain": p.uint32, "actionType": p.uint8, "attackArea": p.uint8, "attackAddress": p.address}), "_comment": p.string}, ),
@@ -113,6 +117,7 @@ export type ChainActionProposalEventArgs = EParams<typeof events.ChainActionProp
 export type JoinedChainEventArgs = EParams<typeof events.JoinedChain>
 export type MultichainMintEventArgs = EParams<typeof events.MultichainMint>
 export type OwnershipTransferredEventArgs = EParams<typeof events.OwnershipTransferred>
+export type RegisterMercenaryEventArgs = EParams<typeof events.RegisterMercenary>
 export type UpgradeEventArgs = EParams<typeof events.Upgrade>
 
 /// Function types
@@ -167,6 +172,9 @@ export type NDefinedTypesReturn = FunctionReturn<typeof functions.nDefinedTypes>
 export type OwnerParams = FunctionArguments<typeof functions.owner>
 export type OwnerReturn = FunctionReturn<typeof functions.owner>
 
+export type RegisterMercenaryParams = FunctionArguments<typeof functions.registerMercenary>
+export type RegisterMercenaryReturn = FunctionReturn<typeof functions.registerMercenary>
+
 export type RenounceOwnershipParams = FunctionArguments<typeof functions.renounceOwnership>
 export type RenounceOwnershipReturn = FunctionReturn<typeof functions.renounceOwnership>
 
@@ -193,6 +201,12 @@ export type TransferOwnershipReturn = FunctionReturn<typeof functions.transferOw
 
 export type UpgradeParams = FunctionArguments<typeof functions.upgrade>
 export type UpgradeReturn = FunctionReturn<typeof functions.upgrade>
+
+export type UpgradeHomebaseParams = FunctionArguments<typeof functions.upgradeHomebase>
+export type UpgradeHomebaseReturn = FunctionReturn<typeof functions.upgradeHomebase>
+
+export type UpgradeHomebaseOnBehalfOfParams = FunctionArguments<typeof functions.upgradeHomebaseOnBehalfOf>
+export type UpgradeHomebaseOnBehalfOfReturn = FunctionReturn<typeof functions.upgradeHomebaseOnBehalfOf>
 
 export type UpgradeOnBehalfOfParams = FunctionArguments<typeof functions.upgradeOnBehalfOf>
 export type UpgradeOnBehalfOfReturn = FunctionReturn<typeof functions.upgradeOnBehalfOf>
