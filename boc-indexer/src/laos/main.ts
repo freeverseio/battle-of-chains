@@ -12,6 +12,7 @@ import { createChainActionProposalModels } from './mapper/chainActionProposalMap
 import { createJoinedChainModels } from './mapper/joinedChainMapper';
 import { createMultichainMintModels } from './mapper/multichainMintMapper';
 import { createUpgradeModels } from './mapper/upgradeMapper';
+import { createRegisterMercenaryModels } from './mapper/registerMercenaryMapper';
 import { processTokenURIs } from './tokenUriProcessor';
 
 const options: TypeormDatabaseOptions = {
@@ -29,6 +30,7 @@ processor.run<Store>(new TypeormDatabase(options) as any, async (ctx) => {
     const joinedChainEvents = detectedEvents.joinedChainEvents;
     const multichainMintEvents = detectedEvents.multichainMintEvents;
     const upgradeEvents = detectedEvents.upgradeEvents;
+    const registerMercenaryEvents = detectedEvents.registerMercenaryEvents; 
     let processTokenUris = false;
 
   if (mintEvents.length > 0) {
@@ -74,6 +76,11 @@ processor.run<Store>(new TypeormDatabase(options) as any, async (ctx) => {
   if (upgradeEvents.length > 0) {
     const upgrades = createUpgradeModels(upgradeEvents);
     await ctx.store.upsert(upgrades.map(upgrade => upgrade.upgrade));
+  }
+
+  if (registerMercenaryEvents.length > 0) {
+    const registerMercenaries = createRegisterMercenaryModels(registerMercenaryEvents);
+    await ctx.store.upsert(registerMercenaries.map(mercenary => mercenary.registerMercenary));
   }
 
 });

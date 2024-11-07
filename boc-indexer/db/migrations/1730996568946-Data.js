@@ -1,5 +1,5 @@
-module.exports = class Data1729762198204 {
-    name = 'Data1729762198204'
+module.exports = class Data1730996568946 {
+    name = 'Data1730996568946'
 
     async up(db) {
         await db.query(`CREATE TABLE "transfer" ("id" character varying NOT NULL, "from" text NOT NULL, "to" text NOT NULL, "timestamp" TIMESTAMP WITH TIME ZONE NOT NULL, "block_number" integer NOT NULL, "tx_hash" text NOT NULL, "log_index" integer NOT NULL, "block_hash" text NOT NULL, "asset_id" character varying, CONSTRAINT "PK_fd9ddbdd49a17afcbe014401295" PRIMARY KEY ("id"))`)
@@ -31,6 +31,8 @@ module.exports = class Data1729762198204 {
         await db.query(`CREATE INDEX "IDX_010d3131085434f97ea24d7d4c" ON "send_game_treasury" ("tx_hash") `)
         await db.query(`CREATE TABLE "assign_operator" ("id" character varying NOT NULL, "from" text NOT NULL, "operator" text NOT NULL, "timestamp" TIMESTAMP WITH TIME ZONE NOT NULL, "block_number" integer NOT NULL, "block_hash" text NOT NULL, "tx_hash" text NOT NULL, "log_index" integer NOT NULL, CONSTRAINT "PK_29da423f6515dc686dcc301d726" PRIMARY KEY ("id"))`)
         await db.query(`CREATE INDEX "IDX_0b7fa9d6593eb62cecfb42af39" ON "assign_operator" ("tx_hash") `)
+        await db.query(`CREATE TABLE "register_mercenary" ("id" character varying NOT NULL, "mercenary_address" text NOT NULL, "mercenary_chain" integer NOT NULL, "mercenary_nickname" text NOT NULL, "timestamp" TIMESTAMP WITH TIME ZONE NOT NULL, "block_number" integer NOT NULL, "block_hash" text NOT NULL, "tx_hash" text NOT NULL, "log_index" integer NOT NULL, CONSTRAINT "PK_0f5540b9ede3cdf8b6468152a63" PRIMARY KEY ("id"))`)
+        await db.query(`CREATE INDEX "IDX_ee63cf0b4465a10b3151a3b126" ON "register_mercenary" ("tx_hash") `)
         await db.query(`ALTER TABLE "transfer" ADD CONSTRAINT "FK_e818cd083f48ed773afe017f7c0" FOREIGN KEY ("asset_id") REFERENCES "asset"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`)
         await db.query(`ALTER TABLE "asset" ADD CONSTRAINT "FK_dc1699251752ca3b19442d8800e" FOREIGN KEY ("ownership_contract_id") REFERENCES "ownership_contract"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`)
         await db.query(`ALTER TABLE "metadata" ADD CONSTRAINT "FK_90484e3241344e9b970c82ea67d" FOREIGN KEY ("laos_asset_id") REFERENCES "laos_asset"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`)
@@ -67,6 +69,8 @@ module.exports = class Data1729762198204 {
         await db.query(`DROP INDEX "public"."IDX_010d3131085434f97ea24d7d4c"`)
         await db.query(`DROP TABLE "assign_operator"`)
         await db.query(`DROP INDEX "public"."IDX_0b7fa9d6593eb62cecfb42af39"`)
+        await db.query(`DROP TABLE "register_mercenary"`)
+        await db.query(`DROP INDEX "public"."IDX_ee63cf0b4465a10b3151a3b126"`)
         await db.query(`ALTER TABLE "transfer" DROP CONSTRAINT "FK_e818cd083f48ed773afe017f7c0"`)
         await db.query(`ALTER TABLE "asset" DROP CONSTRAINT "FK_dc1699251752ca3b19442d8800e"`)
         await db.query(`ALTER TABLE "metadata" DROP CONSTRAINT "FK_90484e3241344e9b970c82ea67d"`)
