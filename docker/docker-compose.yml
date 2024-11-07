@@ -10,7 +10,7 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ../boc-game-engine-api/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../boc-game-engine/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
 
@@ -26,10 +26,10 @@ services:
     networks:
       - app-network
 
-  boc-game-engine-api:
+  boc-game-engine:
     build:
-      context: ../boc-game-engine-api/
-    container_name: boc-game-engine-api
+      context: ../boc-game-engine/
+    container_name: boc-game-engine
     command: npm run dev
     environment:
       DB_HOST: postgres
@@ -43,7 +43,7 @@ services:
       LAOS_GRAPHQL: ${LAOS_GRAPHQL}
       OWNERSHIP_GRAPHQLS: ${OWNERSHIP_GRAPHQLS}
     volumes:
-      - ../boc-game-engine-api:/usr/src/app
+      - ../boc-game-engine:/usr/src/app
       - /usr/src/app/node_modules
     ports:
       - "4000:4000"

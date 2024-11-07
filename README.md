@@ -1,6 +1,6 @@
 # API
 
-## boc-game-engine-api
+## boc-game-engine
 
 API that stitches together the postgraphile read only api + any custom resolver.
 It reads the data from the indexers to populate the DB with the approppriate data for the game.
@@ -22,7 +22,7 @@ Run:
 
 `docker-compose up --build -d`
 
-And that will create a postgresql DB with the schema defined on `boc-game-engine-api/sql/init.sql` script.
+And that will create a postgresql DB with the schema defined on `boc-game-engine/sql/init.sql` script.
 
 And will expose the postgraphile api on `http://localhost:4001/graphql` and the battle of chains api on `http://localhost:4000/graphql`
 
@@ -37,7 +37,7 @@ Run `docker-compose down -v`  This command will stop all the docker containers r
 
 ## boc-ui
 
-Frontend that uses boc-game-engine-api to present relevant data for the users.
+Frontend that uses boc-game-engine to present relevant data for the users.
 
 ### Quickstart
 
