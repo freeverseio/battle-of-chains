@@ -30,6 +30,6 @@ export async function getAllEvents(chains: ChainType[]): Promise<AllEventTypes[]
         allEvents = [...allEvents, ...transferEvents];
     }
 
-    // fs.writeFile('./boc-api/src/processor/test/events.json', JSON.stringify(await sortEvents(allEvents), null, 2));
+    // fs.writeFile('./src/processor/test/events.json', JSON.stringify(await sortEvents(allEvents), null, 2));
     return sortEvents(allEvents);
 }

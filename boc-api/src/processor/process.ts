@@ -134,7 +134,7 @@ async function main() {
     const debugData = {
         "deadline": 1730728802,
         "useHardcodedEvents": true,
-        "eventsFile": './boc-api/src/processor/test/events.json',
+        "eventsFile": './src/processor/test/events.json',
     }
     // const debugData = undefined;
 
