@@ -1,6 +1,6 @@
 # API
 
-## boc-api
+## boc-gamelogic-api
 
 API that stitches together the postgraphile read only api + any custom resolver.
 It reads the data from the indexers to populate the DB with the approppriate data for the game.
@@ -8,7 +8,7 @@ It reads the data from the indexers to populate the DB with the approppriate dat
 First, run the "update" query.
 
 
-## boc-postgraphile
+## boc-gamelogic-postgraphile
 
 Connects to postgresql instance and exposes read methods in a graphql api.
 
@@ -22,7 +22,7 @@ Run:
 
 `docker-compose up --build -d`
 
-And that will create a postgresql DB with the schema defined on `boc-api/sql/init.sql` script.
+And that will create a postgresql DB with the schema defined on `boc-gamelogic-api/sql/init.sql` script.
 
 And will expose the postgraphile api on `http://localhost:4001/graphql` and the battle of chains api on `http://localhost:4000/graphql`
 
@@ -37,7 +37,7 @@ Run `docker-compose down -v`  This command will stop all the docker containers r
 
 ## boc-ui
 
-Frontend that uses boc-api to present relevant data for the users.
+Frontend that uses boc-gamelogic-api to present relevant data for the users.
 
 ### Quickstart
 
