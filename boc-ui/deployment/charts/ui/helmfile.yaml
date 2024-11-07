@@ -1,0 +1,11 @@
+releases:
+  - name: boc-ui-release
+    namespace: '{{ .Values.namespace }}'
+    createNamespace: false
+    chart: .
+    values:
+      - uiHost: {{ .Values.uiHost }}
+      - imageTag: {{ .Values.imageTag }}
+      - contractAddress: {{ .Values.contractAddress }}
+      - bocApiUrl: {{ .Values.bocApiUrl }}
+      - walletConnectProjectId: {{ .Values.walletConnectProjectId }}

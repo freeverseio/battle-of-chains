@@ -1,0 +1,94 @@
+"use client";
+
+import { useAccount } from "wagmi";
+import { useUserAssetsByType } from "@/hooks/useUserAssetsByType";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MultichainMintButton } from "./MintButton";
+import { UpgradeButton } from "./UpgradeButton";
+interface Troop {
+  name: string;
+  requiredLevel: number;
+  type: number; // 0 for attack, 1 for defense
+}
+
+export const Forge = ({ type }: { type: number }) => {
+  const { address } = useAccount();
+
+  // Ensure address is available before making the query
+  const { loading, error, data } = useUserAssetsByType(type, address || "");
+
+  if (loading) return <p></p>;
+  if (error) return <p>Error fetching forge data</p>;
+
+  const assets = data?.allAssets?.nodes || [];
+
+  if (assets.length === 0) {
+    return (
+      <Card className="border border-border w-full md:w-[calc(50%-0.5rem)] card-background">
+        <CardContent>
+          <p>No forge exists</p>
+
+          <MultichainMintButton
+            key={"attack"}
+            className="mr-2 mb-2 text-xl"
+            type={2}
+            label={"attack forge"}
+          />
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const forgeAsset = assets[0]; // Take the first asset
+  const forgeLevel = forgeAsset.level;
+
+  // Define troops based on type
+  const troops: Troop[] =
+    type === 2
+      ? [{ name: "Type O", type: 0, requiredLevel: 1 }]
+      : [{ name: "Type 1", type: 1, requiredLevel: 1 }];
+
+  const forgeName = type === 2 ? "Attacking Forge" : "Defense Forge";
+
+  return (
+    <Card className="border border-border w-full md:w-[calc(50%-0.5rem)] card-background">
+      <CardHeader className="flex flex-row items-center justify-between p-4">
+        <CardTitle className="text-4xl m-0">{forgeName}</CardTitle>
+        <div className="flex items-center">
+          <UpgradeButton
+            className="mr-2 mb-2 text-xl"
+            tokenId={forgeAsset.tokenId}
+            assetType={type}
+          />
+        </div>
+      </CardHeader>
+
+      <CardContent>
+        <p className="text-label-secondary text-3xl mb-2">
+          Level: {forgeLevel}
+        </p>
+        <div>
+          {troops.map((troop) =>
+            forgeLevel >= troop.requiredLevel ? (
+              <MultichainMintButton
+                key={troop.name}
+                className="mr-2 mb-2 text-xl"
+                type={troop.type}
+                label={troop.name}
+              />
+            ) : (
+              <Button
+                key={troop.name}
+                disabled
+                className="mr-2 mb-2 text-xl border-[1px] border-muted text-[#D2B48C] hover:bg-[#A0522D]"
+              >
+                Mint {troop.name} (Requires Level {troop.requiredLevel})
+              </Button>
+            )
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};

@@ -34,7 +34,7 @@ export function useBattleOfChains() {
         args: [homeChain, nickname],
       }),
 
-    multichainMint: (type: number) =>
+    multichainMint: (type: string) =>
       writeContract({
         address: CONTRACT_ADDRESS,
         abi: BattleOfChainsABI,
@@ -63,14 +63,14 @@ export function useBattleOfChains() {
         args: [chainAction, comment],
       }),
 
-    upgrade: (chain: number, tokenId: number) =>
+    upgrade: (chain: number, tokenId: string) =>
       writeContract({
         address: CONTRACT_ADDRESS,
         abi: BattleOfChainsABI,
         functionName: "upgrade",
         args: [chain, tokenId],
       }),
-
+    hash,
     // State variables
     isWritePending,
     isWriteSuccess,

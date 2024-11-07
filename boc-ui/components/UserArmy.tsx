@@ -5,6 +5,10 @@ import { useAccount } from "wagmi";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useUserAssets } from "@/hooks/useUserAssets";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { MultichainMintButton } from "./MintButton";
+import { UpgradeButton } from "./UpgradeButton";
+import { Token } from "graphql";
+import { useNftTypes } from "@/hooks/useNftTypes";
 
 interface Asset {
   attack: string;
@@ -16,6 +20,7 @@ interface Asset {
   defense: string;
   chainByChainId: {
     name: string;
+    chainId: number;
   };
 }
 
@@ -36,6 +41,10 @@ export const UserArmy = () => {
   const { loading, error, data } = useUserAssets(
     address ? `0x${address.toLowerCase().slice(2)}` : "0x"
   );
+  const { loading: nftLoading, error: nftError, nftTypes } = useNftTypes();
+
+  if (nftLoading) return <div></div>;
+  if (nftError) return <div>Error loading asset names: {nftError.message}</div>;
 
   if (isConnecting) return <div>Connecting...</div>;
   if (isDisconnected || !address || address === "0x")
@@ -46,13 +55,11 @@ export const UserArmy = () => {
   const assets = data?.userByAddress?.assetsByOwner?.nodes || [];
   const totalCount = data?.userByAddress?.assetsByOwner?.totalCount || 0;
 
-  const assetsByType = assets.reduce(
-    (acc: { [key: string]: Asset[] }, asset: Asset) => {
-      const type = asset.type;
-      if (!acc[type]) {
-        acc[type] = [];
-      }
-      acc[type].push(asset);
+  const assetTypes = [2, 3, 0, 1];
+
+  const assetsByType = assetTypes.reduce(
+    (acc: { [key: string]: Asset[] }, type) => {
+      acc[type] = assets.filter((asset: Asset) => asset.type === String(type));
       return acc;
     },
     {}
@@ -72,27 +79,37 @@ export const UserArmy = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
-        <CardTitle className="text-4xl">Your Army ({totalCount})</CardTitle>
+        <CardTitle className="text-4xl">
+          Your Inventory ({totalCount})
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue={Object.keys(assetsByType)[0]} className="w-full">
+        <Tabs defaultValue={String(assetTypes[0])} className="w-full">
           <TabsList className="grid grid-cols-4 lg:grid-cols-6 gap-2">
-            {Object.keys(assetsByType).map((type) => (
+            {assetTypes.map((type) => (
               <TabsTrigger
                 key={type}
-                value={type}
-                className="border-foreground border text-lg"
+                value={String(type)}
+                className="border-foreground border text-xl"
               >
-                Type {type} ({assetsByType[type].length})
+                {nftTypes[type] || `Type ${type}`} (
+                {(assetsByType[type] || []).length})
               </TabsTrigger>
             ))}
           </TabsList>
 
-          {Object.entries(assetsByType).map(([type, assets]) => {
-            const assetsByChain = groupAssetsByChain(assets as Asset[]);
+          {assetTypes.map((type) => {
+            const assetsOfType = assetsByType[type] || [];
+            const assetsByChain = groupAssetsByChain(assetsOfType);
 
             return (
-              <TabsContent key={type} value={type}>
+              <TabsContent key={type} value={String(type)}>
+                <div className="mt-6">
+                  <MultichainMintButton
+                    type={String(type)}
+                    label={`${nftTypes[type]}`}
+                  />
+                </div>
                 {Object.entries(assetsByChain).map(([chain, chainAssets]) => (
                   <div key={chain} className="mt-6 mb-8">
                     <h3 className="text-3xl text-label-secondary mb-4 font-semibold">
@@ -102,7 +119,7 @@ export const UserArmy = () => {
                       {chainAssets.map((asset) => (
                         <Card
                           key={asset.tokenId}
-                          className="p-4 hover:shadow-lg transition-shadow"
+                          className="p-4 hover:shadow-lg transition-shadow relative"
                         >
                           <div className="space-y-3">
                             {/* Header with ID and Level */}
@@ -136,6 +153,10 @@ export const UserArmy = () => {
                                 <StatDisplay label="XP" value={asset.xp} />
                               </div>
                             </div>
+                            <UpgradeButton
+                              tokenId={asset.tokenId}
+                              chainId={asset.chainByChainId.chainId}
+                            />
                           </div>
                         </Card>
                       ))}

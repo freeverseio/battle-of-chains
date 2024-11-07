@@ -1,7 +1,6 @@
 "use client";
 
 import { FaGamepad } from "react-icons/fa";
-
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ConnectButton } from "@/components/ConnectButton";
@@ -16,91 +15,83 @@ interface HeaderProps {
 
 export default function Header({ activeTab, setActiveTab }: HeaderProps) {
   const { address, isConnecting, isDisconnected } = useAccount();
-
   const { loading, error, data } = useUserByAddress(address || "0x");
   const user = data?.userByAddress;
+
   return (
     <header className="w-full">
-      <div className="container mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-y-4">
-        {/* Logo and Soft Coins */}
-        <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between w-full sm:w-auto">
+      <div className="container mx-auto px-4 py-2 flex flex-col gap-4">
+        {/* Top Section */}
+        <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Logo */}
           <h1 className="text-3xl font-bold pixel-text">Battle Of Chains</h1>
+
+          {/* Right Side Controls */}
+          <div className="flex flex-wrap items-center gap-4">
+            {!loading && !error && user && (
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-semibold text-label">
+                  Soft Coins:
+                </span>
+                <span className="text-2xl font-semibold text-label-value">
+                  {user.treasury}
+                </span>
+              </div>
+            )}
+            <ConnectButton />
+            <RefreshButton />
+          </div>
         </div>
 
-        {/* Right Side: Tabs, Connect Button */}
-        <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-4">
-          {/* Tabs */}
-          <div className="w-full sm:w-auto">
+        {/* Tabs Section */}
+        <div className="w-full overflow-x-auto scrollbar-hide">
+          <div className="min-w-max">
+            {" "}
+            {/* This ensures the tabs don't get cut off */}
             <Tabs
               value={activeTab}
               onValueChange={setActiveTab}
               className="w-full"
             >
-              <TabsList className="w-full border-[1px] border-border">
+              <TabsList className="border-[1px] border-border w-full flex-nowrap">
                 <TabsTrigger
                   value="home"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
                   Home
                 </TabsTrigger>
-
-                {/*<TabsTrigger
-                  value="map"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
-                >
-                  Map
-                </TabsTrigger>*/}
                 <TabsTrigger
                   value="inventory"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
-                  Army
+                  Inventory
                 </TabsTrigger>
                 <TabsTrigger
                   value="attack"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
                   Attack
                 </TabsTrigger>
-                {/* <TabsTrigger
-                  value="production"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
-                >
-                  Production
-                </TabsTrigger>
-                */}
                 <TabsTrigger
                   value="cdd"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
                   CDD Voting
                 </TabsTrigger>
                 <TabsTrigger
+                  value="leaderboard"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
+                >
+                  Leaderboard
+                </TabsTrigger>
+                <TabsTrigger
                   value="summary"
-                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
                   All Logs
                 </TabsTrigger>
               </TabsList>
             </Tabs>
-          </div>
-          {!loading && !error && user && (
-            <div className="flex items-center space-x-2 mt-2 sm:mt-0 sm:ml-4">
-              <span className="text-2xl font-semibold text-label">
-                Soft Coins:
-              </span>
-              <span className="text-2xl font-semibold text-label-value">
-                {user.treasury}
-              </span>
-            </div>
-          )}
-          {/* Connect Button */}
-          <div>
-            <ConnectButton />
-          </div>
-          <div>
-            <RefreshButton />
           </div>
         </div>
       </div>

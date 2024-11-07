@@ -29,7 +29,7 @@ export function SoftCoinProduction({
         <p className="text-foreground text-2xl mb-2">
           Production Rate: {productionRate} coins/min
         </p>
-        <UpgradeButton className="text-2xl" buildingType="CoinFactory" />
+        {/*<UpgradeButton />*/}
       </CardContent>
     </Card>
   );

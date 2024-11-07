@@ -1,66 +1,82 @@
 // components/UpgradeButton.tsx
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
-import { Button } from "@/components/ui/button";
+import { FaArrowAltCircleUp } from "react-icons/fa";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { ModalContext } from "@/context/ModalContext";
 
 interface UpgradeButtonProps {
-  buildingType: "CoinFactory" | "Teleporter";
+  tokenId: string;
+  chainId: number;
   className?: string;
 }
 
-export function UpgradeButton({ buildingType, className }: UpgradeButtonProps) {
-  const chain = { id: 137 };
+export function UpgradeButton({
+  tokenId,
+  chainId,
+  className,
+}: UpgradeButtonProps) {
+  const {
+    upgrade,
+    hash,
+    isWritePending,
+    isConfirming,
+    isConfirmed,
+    writeError,
+  } = useBattleOfChains();
 
-  const { upgrade, isWritePending, isConfirming, isConfirmed, writeError } =
-    useBattleOfChains();
-
-  const [tokenId, setTokenId] = useState<number | null>(null);
-
-  useEffect(() => {
-    // Map building types to token IDs
-    if (buildingType === "CoinFactory") {
-      setTokenId(1); // Replace with actual tokenId for Coin Factory
-    } else if (buildingType === "Teleporter") {
-      setTokenId(2); // Replace with actual tokenId for Teleporter
-    }
-  }, [buildingType]);
+  const { areButtonsDisabled, openModal, setModalState } =
+    useContext(ModalContext);
 
   const handleUpgrade = () => {
-    if (tokenId === null) {
-      alert("Invalid token ID");
-      return;
-    }
-    if (!chain?.id) {
-      alert("Unable to determine chain ID");
-      return;
-    }
-    upgrade(chain.id, tokenId);
+    openModal(async () => {
+      setModalState("pending_signature");
+      try {
+        await upgrade(chainId, tokenId);
+        // Transaction initiated successfully
+      } catch (err) {
+        console.error("Error:", err);
+        setModalState("transaction_error");
+      }
+    }, "upgrade_confirm");
   };
+  useEffect(() => {
+    if (isConfirmed) {
+      setModalState("transaction_upgrade_success");
+    } else if (writeError) {
+      setModalState("transaction_error");
+    } else if (!isWritePending && hash) {
+      setModalState("upgrading");
+    }
+  }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (
-    <div>
-      <Button
-        onClick={handleUpgrade}
-        disabled={isWritePending || isConfirming}
-        className={`bg-primary border-[1px] border-[#FE07DD] hover:bg-[#FE07DD] hover:text-black ${className} `}
-      >
-        {isWritePending || isConfirming ? "Upgrading..." : "Upgrade"}
-      </Button>
-      {writeError && (
-        <>
-          <p className="text-red-500 text-xl">
-            {writeError.message.toLowerCase().includes("user rejected")
-              ? "Signature rejected by user"
-              : "Oops, something went wrong"}
-          </p>
-          {console.error(writeError.message)}
-        </>
-      )}
-      {isConfirmed && (
-        <p className="text-xl text-green-500">Upgrade successful!</p>
-      )}
+    <div className="absolute -top-2 right-6 transform translate-x-1/2 -translate-y-1/2">
+      <TooltipProvider delayDuration={80}>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <button
+              onClick={handleUpgrade}
+              disabled={areButtonsDisabled}
+              className={`${
+                areButtonsDisabled ? "opacity-50 cursor-not-allowed" : ""
+              } bg-[#4DAA98] border border-white text-background rounded-full`}
+            >
+              <FaArrowAltCircleUp size={24} />
+            </button>
+          </TooltipTrigger>
+          <TooltipContent className="text-lg" side="top">
+            Upgrade
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </div>
   );
 }

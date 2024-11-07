@@ -64,7 +64,7 @@ export const AttackMap = () => {
   };
 
   const getAssetsByChain = (user: User) => {
-    return user.assetsByOwner.nodes.reduce(
+    return user.assetsByOwner?.nodes.reduce(
       (acc: { [key: string]: number }, asset) => {
         const chainName = asset.chainByChainId.name;
         acc[chainName] = (acc[chainName] || 0) + 1;
@@ -162,7 +162,10 @@ export const AttackMap = () => {
                         View Details
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="bg-black border border-border text-foreground max-w-2xl">
+                    <DialogContent
+                      showCloseButton={true}
+                      className="bg-black border border-border text-foreground max-w-2xl"
+                    >
                       <DialogHeader>
                         <DialogTitle className="text-3xl mb-4">
                           {user.name}'s Assets ({formatAddress(user.address)})
