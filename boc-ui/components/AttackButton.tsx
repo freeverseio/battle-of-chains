@@ -24,7 +24,7 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
       const strategy = 1; // Default strategy
       attack(tokenIds, targetAddress, targetChain, strategy);
     } catch (err) {
-      console.log("Error", err);
+      console.log("error", err);
     }
   };
 
