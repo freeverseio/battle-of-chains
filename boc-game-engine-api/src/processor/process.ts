@@ -1,4 +1,3 @@
-import { getChains } from './getChains';
 import {
     EventType,
     JoinedChainEvent, MultichainMintEvent, AttackEvent, ChainActionProposalEvent, UpgradeEvent,
@@ -24,8 +23,7 @@ import * as dotenv from "dotenv";
 import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 dotenv.config();
-const DEBUG = process.env.DEBUG ? true : false;
-const GAME_START_TIMESTAMP= process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
+const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
 
 type DebugData = {
     deadline: number;
