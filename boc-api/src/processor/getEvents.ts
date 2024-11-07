@@ -1,13 +1,14 @@
 import {getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents} from './getEventsQueries';
 import { sortEvents } from './sortEvents';
 import {
-    Chain,
+    ChainType,
     AllEventTypes,
 } from './types';
+import { promises as fs } from 'fs';
 
 
 
-export async function getAllEvents(chains: Chain[]): Promise<AllEventTypes[]> {
+export async function getAllEvents(chains: ChainType[]): Promise<AllEventTypes[]> {
     const joinedChainEvents = await getJoinedChainEvents();
     const multichainMintEvents = await getMultichainMintEvents();
     const attackEvents = await getAttackEvents();
@@ -29,5 +30,6 @@ export async function getAllEvents(chains: Chain[]): Promise<AllEventTypes[]> {
         allEvents = [...allEvents, ...transferEvents];
     }
 
+    // fs.writeFile('./src/processor/test/events.json', JSON.stringify(await sortEvents(allEvents), null, 2));
     return sortEvents(allEvents);
 }

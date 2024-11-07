@@ -5,3 +5,7 @@ export * from "./ChainActionProposal";
 export * from "./Log";
 export * from "./AssignOperator";
 export * from "./ProcessStatus";
+export * from "./AttackSpecies";
+export * from "./DefendSpecies";
+export * from "./NFTType";
+export * from "./Info";

@@ -15,11 +15,11 @@ import { processAttack } from './processAttack';
 import { processChainActionProposal } from './processChainActionProposal';
 import { processUpgrade } from './processUpgrade';
 import { ChainOutput } from '../services/chainService';
-import { promises as fs } from 'fs';  // Import fs.promises
+import { promises as fs } from 'fs';
 import { processAssignOperator } from './processAssignOperator';
 import { processTransfer } from './processTransfer';
 import { processPendingActions } from './processPendingActions';
-import { evolveAllAssetsStats, rarityToRanges, updateAllChainProposalVotes, updateAllScores } from './utils';
+import { evolveAllAssetsStats, getNext2pmUTC, rarityToRanges, updateAllChainProposalVotes, updateAllScores } from './utils';
 import * as dotenv from "dotenv";
 import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
@@ -27,16 +27,24 @@ dotenv.config();
 const DEBUG = process.env.DEBUG ? true : false;
 const GAME_START_TIMESTAMP= process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
 
+type DebugData = {
+    deadline: number;
+    useHardcodedEvents: boolean;
+    eventsFile: string;
+} 
 
 export class EventProcessor {
     private storage: Storage;
+    private debugData?: DebugData;
 
-    constructor(allChains: ChainOutput[]) {
+    constructor(allChains: ChainOutput[], debugData?: DebugData) {
         const initChainProposalAction : PendingChainAction = {  
             id: 0,
             type: PendingActionOption.ChainAction,
             toBeExectutedAt: getNext2pmUTC(GAME_START_TIMESTAMP),
         }
+
+        this.debugData = debugData;
 
         this.storage = {
             chains: allChains,
@@ -63,8 +71,16 @@ export class EventProcessor {
     
     async update() {
         try {
-            const allEvents = await getAllEvents(this.storage.chains);
+            const allEvents = this.debugData?.useHardcodedEvents
+                ? JSON.parse(await fs.readFile(this.debugData.eventsFile, 'utf-8'))
+                : await getAllEvents(this.storage.chains);
+
             for (let event of allEvents) {
+                if (this.debugData?.deadline && event.timestamp > this.debugData.deadline) {
+                    console.log('returning...', event.timestamp)
+                    return;
+                }
+
                 processPendingActions(event.timestamp, this.storage);
 
                 const nextEventTypeToProcess = event.eventType;
@@ -93,7 +109,9 @@ export class EventProcessor {
                     throw new Error(`Event type not supported: ${nextEventTypeToProcess}`);
                 }
             }
-            const now = Math.floor(new Date().getTime()/1000);
+            const now = this.debugData?.deadline
+                ? this.debugData.deadline
+                : Math.floor(new Date().getTime()/1000);
             const evolveUntil = Math.max(now, this.storage.lastProcessedEventAt);
 
             if (evolveUntil > this.storage.lastProcessedEventAt) {
@@ -109,27 +127,18 @@ export class EventProcessor {
     }
 }
 
-export function getNext2pmUTC(referenceTimestamp: number): number {
-    const reference = new Date(referenceTimestamp * 1000);
-    
-    // Create a new Date object for the dat of the reference time, at 2 PM UTC
-    const next2pmUTC = new Date(Date.UTC(reference.getUTCFullYear(), reference.getUTCMonth(), reference.getUTCDate(), 14, 0, 0, 0));
-
-    // If 2 PM UTC today had already passed, set it to 2 PM UTC of the day after
-    if (reference.getUTCHours() >= 14) {
-        next2pmUTC.setUTCDate(next2pmUTC.getUTCDate() + 1);
-    }
-
-    // Return the timestamp (seconds since epoch)
-    return Math.round(next2pmUTC.getTime() / 1000);
-}
-
 async function main() {
     if (!DEBUG) return;
 
     const allChains = await getChains();
+    const debugData = {
+        "deadline": 1730728802,
+        "useHardcodedEvents": true,
+        "eventsFile": './src/processor/test/events.json',
+    }
+    // const debugData = undefined;
 
-    const eventProcessor = new EventProcessor(allChains);
+    const eventProcessor = new EventProcessor(allChains, debugData);
     await eventProcessor.update();
 
     eventProcessor.exportStorage();

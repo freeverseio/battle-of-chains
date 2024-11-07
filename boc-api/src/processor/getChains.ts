@@ -1,8 +1,8 @@
-import { Chain } from "./types";
+import { ChainType } from "./types";
 
-export async function getChains(): Promise<Chain[]> {
+export async function getChains(): Promise<ChainType[]> {
   return new Promise((resolve) => {
-    const events: Chain[] = [
+    const events: ChainType[] = [
       {
         chain_id: 137,
         name: "Polygon PoS Mock",

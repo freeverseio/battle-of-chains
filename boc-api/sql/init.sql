@@ -93,6 +93,40 @@ CREATE TABLE public.operator_assignment (
 	CONSTRAINT assigner_fkey FOREIGN KEY (assigner) REFERENCES public.user(address)
 );
 
+-- DROP TABLE public.attack_species;
+
+CREATE TABLE public.attack_species (
+    id SERIAL PRIMARY KEY,
+	name CITEXT NOT NULL,
+	description CITEXT NOT NULL,
+	rarity INTEGER NOT NULL
+);
+
+-- DROP TABLE public.defend_species;
+
+CREATE TABLE public.defend_species (
+    id SERIAL PRIMARY KEY,
+	name CITEXT NOT NULL,
+	description CITEXT NOT NULL,
+	rarity INTEGER NOT NULL
+);
+
+-- DROP TABLE public.nft_type;
+
+CREATE TABLE public.nft_type (
+	id int4 NOT NULL,
+    name CITEXT NOT NULL,
+    xp_levels int8[] NOT NULL,
+    cost_levels int8[] NOT NULL
+);
+
+-- DROP TABLE public.info;
+
+CREATE TABLE public.info (
+    key TEXT PRIMARY KEY,
+    value JSONB NOT NULL
+);
+
 CREATE TYPE status_enum AS ENUM ('FREE', 'PROCESSING');
 
 -- DROP TABLE public.process_status;

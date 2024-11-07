@@ -3,7 +3,7 @@ import { Storage, ChainActionProposalEvent, ChainActionProposalOption, actionAre
 import { assignUserToChainProposal, chainIsNotSupported, findUser, isCorrectOperator, userDoesNotExist } from './utils'
 
 export function processChainActionProposal(event: ChainActionProposalEvent, storage: Storage): void {
-    console.log(`Processing Chain Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);
+    console.log(`Processing ChainType Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);
 
     if (chainIsNotSupported(event.targetChain, storage.chains)) return;
 
