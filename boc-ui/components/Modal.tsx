@@ -56,6 +56,119 @@ const Modal: React.FC = () => {
               </Button>
             </DialogFooter>
           </>
+        )}{" "}
+        {modalState === "minting" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Multichain Atomic Mint in Progrees</DialogTitle>
+              <DialogDescription>
+                <div className="mb-4">
+                  <Image
+                    src={mintAnimation}
+                    alt="Multi-chain mint"
+                    width={300}
+                    className="mx-auto"
+                  />
+                </div>
+                Minting assets on Ethereum, Polygon, and Arbitrum in a single
+                transaction via LAOS Network. Assets are being created on
+                Ethereum, Polygon and Arbitrum in one single transaction via
+                LAOS Network.
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+        )}
+        {modalState === "transaction_mint_success" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Multichain Atomic Mint Successful</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              Assets have been minted successfully.
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="default" onClick={closeModal}>
+                Done
+              </Button>
+            </DialogFooter>
+          </div>
+        )}
+        {modalState === "upgrading" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Aseet Upgrade in progress</DialogTitle>
+              <DialogDescription>
+                <div className="mb-4"></div>
+                Upgrading asset...
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+        )}
+        {modalState === "transaction_upgrade_success" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Upgrade Successful</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              The asset has been upgraded successfully.
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="default" onClick={closeModal}>
+                Done
+              </Button>
+            </DialogFooter>
+          </div>
+        )}
+        {modalState === "transaction_error" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Oops, Something Went Wrong</DialogTitle>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="secondary" onClick={closeModal}>
+                Close
+              </Button>
+            </DialogFooter>
+          </div>
+        )}
+        {modalState === "upgrade_confirm" && (
+          <>
+            <DialogHeader>
+              <DialogTitle>Asset Upgrade </DialogTitle>
+
+              <DialogDescription>
+                You're about to upgrade an asset.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button
+                className="mb-2"
+                variant="default"
+                onClick={() => {
+                  if (onConfirm) {
+                    onConfirm();
+                  }
+                }}
+              >
+                Upgrade
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+        {modalState === "pending_signature" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Waiting for Confirmation</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              Please confirm the transaction in your wallet.{" "}
+            </DialogDescription>
+          </div>
         )}
         {modalState === "attack_factory_not_minted" && (
           <>
@@ -63,8 +176,10 @@ const Modal: React.FC = () => {
               <DialogTitle>Warning</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              You have no assets of type {nftTypes["2"] || "2"}. You can proceed
-              to mint, but the assets will not be very strong.
+              You currently have no {nftTypes["2"] || "type 2 assets"}. Remember
+              that newly minted assets will adopt the level of your{" "}
+              {nftTypes["2"]}. It’s recommended to first mint an {nftTypes["2"]}
+              ; otherwise, new assets will default to level 0.
             </DialogDescription>
             <DialogFooter style={{ justifyContent: "space-between" }}>
               <Button variant="secondary" onClick={closeModal}>
@@ -82,8 +197,10 @@ const Modal: React.FC = () => {
               <DialogTitle>Warning</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              You have no assets of type {nftTypes["3"] || "3"}. You can proceed
-              to mint, but the assets will not be very strong.
+              You currently have no {nftTypes["3"] || "type 3 assets"}. Remember
+              that newly minted assets will adopt the level of your{" "}
+              {nftTypes["3"]}. It’s recommended to first mint a {nftTypes["3"]};
+              otherwise, new assets will default to level 0.
             </DialogDescription>
             <DialogFooter style={{ justifyContent: "space-between" }}>
               <Button variant="secondary" onClick={closeModal}>
@@ -101,9 +218,15 @@ const Modal: React.FC = () => {
               <DialogTitle>Notice</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              {`You already have an asset of type ${
+              {`You already have ${
+                /^[AEIOUaeiou]/.test(
+                  nftTypes[modalData?.type] || modalData?.type
+                )
+                  ? "an"
+                  : "a"
+              } ${
                 nftTypes[modalData?.type] || modalData?.type
-              }. When minting, it will only consider your asset of highest level.`}
+              }. When minting assets, only the highest-level corresponding factory will be used.`}
             </DialogDescription>
             <DialogFooter style={{ justifyContent: "space-between" }}>
               <Button variant="secondary" onClick={closeModal}>
