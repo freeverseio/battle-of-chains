@@ -38,7 +38,8 @@ export const processor = new EvmBatchProcessor()
             BattleOfChains.events.ChainActionProposal.topic,
             BattleOfChains.events.JoinedChain.topic,
             BattleOfChains.events.MultichainMint.topic,
-            BattleOfChains.events.Upgrade.topic 
+            BattleOfChains.events.Upgrade.topic,
+            BattleOfChains.events.RegisterMercenary.topic
         ],
         address: contractAddresses
     })
