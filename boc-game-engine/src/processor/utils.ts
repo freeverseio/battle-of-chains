@@ -690,12 +690,7 @@ export function getNext2pmUTC(referenceTimestamp: number): number {
 }
 
 export function canUserVoteInChain(user: UserType, chain: number) : boolean {
-    if (hasHomechain(user)) {
-        return user.homechain === chain;
-    }
-    else if (isMercenary(user)) 
-    {
-        return user.mercenaryChain === chain;
-    }
-    return false;
+    return hasHomechain(user)
+        ? user.homechain === chain
+        : false;
 }
