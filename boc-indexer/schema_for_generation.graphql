@@ -159,6 +159,7 @@ type AssignOperator @entity {
 
 type RegisterMercenary @entity {
   id: ID!
+  operator: String!
   mercenaryAddress: String!
   mercenaryChain: Int!
   mercenaryNickname: String!

@@ -10,6 +10,9 @@ export class RegisterMercenary {
     id!: string
 
     @StringColumn_({nullable: false})
+    operator!: string
+
+    @StringColumn_({nullable: false})
     mercenaryAddress!: string
 
     @IntColumn_({nullable: false})

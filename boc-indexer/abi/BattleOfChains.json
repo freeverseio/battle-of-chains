@@ -241,6 +241,12 @@
 		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "_operator",
+				"type": "address"
+			},
+			{
 				"indexed": true,
 				"internalType": "address",
 				"name": "_mercenaryAddress",
