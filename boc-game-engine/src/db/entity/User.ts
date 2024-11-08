@@ -12,6 +12,9 @@ export class User {
   homechain?: number;
 
   @Column({ type: 'integer' })
+  mercenary_chain?: number;
+
+  @Column({ type: 'integer' })
   joined_timestamp!: number;
 
   @Column({ type: 'integer' })

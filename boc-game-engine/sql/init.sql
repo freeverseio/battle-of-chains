@@ -30,6 +30,7 @@ CREATE TABLE public.user (
 	address CITEXT NOT NULL,
 	name text,
 	homechain int4,
+	mercenary_chain int4,
 	joined_timestamp int8,
 	score int8 NOT NULL,
 	treasury int8 NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE public.user (
 	current_supported_chain_action text,
 	CONSTRAINT user_pkey PRIMARY KEY (address),
 	CONSTRAINT user_homechain_fkey FOREIGN KEY (homechain) REFERENCES public.chain(chain_id),
+	CONSTRAINT user_mercenary_chain_fkey FOREIGN KEY (mercenary_chain) REFERENCES public.chain(chain_id),
 	CONSTRAINT current_supported_chain_action_fkey FOREIGN KEY (current_supported_chain_action) REFERENCES public.chain_action_proposal(proposal_hash)
 );
 
