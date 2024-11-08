@@ -1,3 +1,5 @@
+// components/AttackMap.tsx
+
 "use client";
 
 import { useState } from "react";
@@ -19,16 +21,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { AttackButton } from "@/components/AttackButton";
 import { useAllUsers } from "@/hooks/useAllUsers";
-import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { useUserAssets } from "@/hooks/useUserAssets";
 import { User } from "@/types";
 import {
@@ -37,11 +31,24 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useSpecies } from "@/hooks/useSpecies";
+import Image from "next/image";
+
+interface Asset {
+  tokenId: string;
+  level: number;
+  xp: number;
+  species: string;
+  type: string;
+  chainByChainId: {
+    name: string;
+    chainId: number;
+  };
+}
+
 export const AttackMap = () => {
   const { address: currentUserAddress } = useAccount();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [selectedChain, setSelectedChain] = useState<string | null>(null);
-  const [selectedTokenIds, setSelectedTokenIds] = useState<string[]>([]);
   const [selectedTokensPerChain, setSelectedTokensPerChain] = useState<{
     [chainName: string]: string[];
   }>({});
@@ -51,7 +58,44 @@ export const AttackMap = () => {
     currentUserAddress ? `0x${currentUserAddress.toLowerCase().slice(2)}` : "0x"
   );
 
-  if (usersLoading || assetsLoading) return <div>Loading...</div>;
+  const {
+    loading: speciesLoading,
+    error: speciesError,
+    attackSpecies,
+    defendSpecies,
+  } = useSpecies();
+
+  if (usersLoading || assetsLoading || speciesLoading)
+    return <div>Loading...</div>;
+  if (speciesError)
+    return <div>Error loading species data: {speciesError.message}</div>;
+
+  // Map species IDs to names
+  const attackSpeciesMap = attackSpecies.reduce(
+    (acc: { [key: string]: string }, species) => {
+      acc[String(species.id)] = species.name;
+      return acc;
+    },
+    {}
+  );
+
+  const defendSpeciesMap = defendSpecies.reduce(
+    (acc: { [key: string]: string }, species) => {
+      acc[String(species.id)] = species.name;
+      return acc;
+    },
+    {}
+  );
+
+  const getSpeciesName = (asset: Asset): string | null => {
+    if (asset.type === "0") {
+      return attackSpeciesMap[asset.species] || asset.species;
+    } else if (asset.type === "1") {
+      return defendSpeciesMap[asset.species] || asset.species;
+    } else {
+      return null;
+    }
+  };
 
   const users =
     allUsersData?.allUsers?.nodes.filter(
@@ -75,22 +119,16 @@ export const AttackMap = () => {
   };
 
   const getCurrentUserAssetsForChain = (chainName: string) => {
-    console.log(
-      "getCurrentUserAssetsForChain",
-      currentUserAssets?.userByAddress?.assetsByOwner?.nodes.filter(
-        (asset: { chainByChainId: { name: string } }) =>
-          asset.chainByChainId.name === chainName
-      )
-    );
     return (
       currentUserAssets?.userByAddress?.assetsByOwner?.nodes.filter(
-        (asset: { chainByChainId: { name: string } }) =>
-          asset.chainByChainId.name === chainName
+        (asset: Asset) =>
+          asset.chainByChainId.name === chainName &&
+          (asset.type === "0" || asset.type === "1")
       ) || []
     );
   };
+
   const handleAssetSelection = (chainName: string, tokenId: string) => {
-    setSelectedChain(chainName);
     setSelectedTokensPerChain((prev) => {
       const chainTokens = prev[chainName] || [];
       const newChainTokens = chainTokens.includes(tokenId)
@@ -136,7 +174,7 @@ export const AttackMap = () => {
                   {user.name}
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl">
-                  {user.chainByHomechain.name}
+                  {user.chainByHomechain?.name}
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl">
                   {formatAddress(user.address)}
@@ -154,8 +192,7 @@ export const AttackMap = () => {
                         variant="outline"
                         onClick={() => {
                           setSelectedUser(user);
-                          setSelectedTokenIds([]);
-                          setSelectedChain(null);
+                          setSelectedTokensPerChain({});
                         }}
                         className="text-foreground text-xl border border-border hover:bg-gray-900 transition-all duration-200"
                       >
@@ -164,8 +201,23 @@ export const AttackMap = () => {
                     </DialogTrigger>
                     <DialogContent
                       showCloseButton={true}
-                      className="bg-black border border-border text-foreground max-w-2xl"
+                      className="bg-black border border-border text-foreground max-w-2xl max-h-screen h-screen sm:h-auto sm:max-h-[90vh] overflow-y-auto"
                     >
+                      <style jsx>{`
+                        ::-webkit-scrollbar {
+                          width: 8px;
+                        }
+                        ::-webkit-scrollbar-track {
+                          background: transparent;
+                        }
+                        ::-webkit-scrollbar-thumb {
+                          background-color: rgba(255, 255, 255, 0.2);
+                          border-radius: 4px;
+                        }
+                        ::-webkit-scrollbar-thumb:hover {
+                          background-color: rgba(255, 255, 255, 0.4);
+                        }
+                      `}</style>
                       <DialogHeader>
                         <DialogTitle className="text-3xl mb-4">
                           {user.name}'s Assets ({formatAddress(user.address)})
@@ -180,92 +232,158 @@ export const AttackMap = () => {
                             return (
                               <div
                                 key={chain}
-                                className="space-y-4 p-4 border border-border rounded-lg"
+                                className="space-y-6 p-4 border border-border rounded-lg"
                               >
-                                <div className="flex justify-between items-center">
-                                  <div className="space-y-1">
-                                    <p className="text-2xl text-foreground text-label-secondary">
-                                      {chain}
-                                    </p>
-                                    <p className="text-xl text-label">
-                                      Target's assets: {count}
-                                    </p>
-                                    <p className="text-xl text-foreground">
-                                      Your assets: {userAssets.length}
+                                {/* Chain Name */}
+                                <div>
+                                  <h2 className="text-2xl font-bold text-label-secondary mb-2">
+                                    {chain}
+                                  </h2>
+                                  <hr className="border-t border-border" />
+                                </div>
+
+                                {/* Flex container for Target's Assets and Your Assets */}
+                                <div className="flex flex-col md:flex-row md:space-x-4">
+                                  {/* Target's Assets */}
+                                  <div className="md:w-1/2">
+                                    <h3 className="text-xl font-semibold text-label mb-2">
+                                      Target's Assets
+                                    </h3>
+                                    <p className="text-lg text-muted-foreground">
+                                      {user.name} has <strong>{count}</strong>{" "}
+                                      assets on {chain}.
                                     </p>
                                   </div>
 
-                                  {userAssets.length > 0 && (
-                                    <div className="space-y-4">
-                                      <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
-                                          <Button
-                                            variant="outline"
-                                            className="w-[280px] bg-transparent text-foreground  text-lg justify-between"
-                                          >
-                                            {(selectedTokensPerChain[chain]
-                                              ?.length || 0) > 0
-                                              ? `${selectedTokensPerChain[chain].length} assets selected`
-                                              : "Select assets to attack with"}
-                                          </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent
-                                          className="bg-black border border-border w-[280px] max-h-[300px] overflow-y-auto"
-                                          align="end"
-                                        >
-                                          {userAssets.map(
-                                            (asset: {
-                                              tokenId: string;
-                                              level: number;
-                                              xp: number;
-                                            }) => (
-                                              <div
-                                                key={asset.tokenId}
-                                                className="flex l items-center space-x-2 p-2 hover:bg-gray-900 cursor-pointer"
-                                                onClick={() =>
-                                                  handleAssetSelection(
-                                                    chain,
-                                                    asset.tokenId
-                                                  )
-                                                }
-                                              >
-                                                <Checkbox
-                                                  checked={selectedTokensPerChain[
-                                                    chain
-                                                  ]?.includes(asset.tokenId)}
-                                                  className="border-border"
-                                                />
-                                                <span className="text-foreground">
-                                                  Token{" "}
-                                                  {formatAddress(asset.tokenId)}{" "}
-                                                  (Level {asset.level}, XP{" "}
-                                                  {asset.xp})
-                                                </span>
-                                              </div>
-                                            )
-                                          )}
-                                        </DropdownMenuContent>
-                                      </DropdownMenu>
+                                  {/* Your Assets */}
+                                  <div className="md:w-1/2 mt-4 md:mt-0">
+                                    {userAssets.length > 0 ? (
+                                      <div>
+                                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                                          Your Assets
+                                        </h3>
+                                        <p className="text-lg text-muted-foreground mb-2">
+                                          You have{" "}
+                                          <strong>{userAssets.length}</strong>{" "}
+                                          assets on {chain}.
+                                        </p>
 
-                                      {selectedChain === chain &&
-                                        selectedTokensPerChain[chain]?.length >
+                                        {/* Asset Selection Dropdown */}
+                                        <DropdownMenu>
+                                          <DropdownMenuTrigger asChild>
+                                            <Button
+                                              variant="outline"
+                                              className="w-full bg-transparent text-foreground text-lg justify-between"
+                                            >
+                                              {(selectedTokensPerChain[chain]
+                                                ?.length || 0) > 0
+                                                ? `${selectedTokensPerChain[chain].length} assets selected`
+                                                : "Select assets to attack with"}
+                                            </Button>
+                                          </DropdownMenuTrigger>
+                                          <DropdownMenuContent
+                                            className="bg-black border border-border w-full max-h-[300px] overflow-y-auto"
+                                            align="center"
+                                          >
+                                            {/* Select/Unselect All Button */}
+                                            <div className="flex items-center justify-between p-2">
+                                              <span className="text-foreground font-semibold">
+                                                Select Assets
+                                              </span>
+                                              <Button
+                                                variant="ghost"
+                                                size="sm"
+                                                onClick={() => {
+                                                  const allSelected =
+                                                    selectedTokensPerChain[
+                                                      chain
+                                                    ]?.length ===
+                                                    userAssets.length;
+                                                  setSelectedTokensPerChain(
+                                                    (prev) => ({
+                                                      ...prev,
+                                                      [chain]: allSelected
+                                                        ? []
+                                                        : userAssets.map(
+                                                            (asset: Asset) =>
+                                                              asset.tokenId
+                                                          ),
+                                                    })
+                                                  );
+                                                }}
+                                              >
+                                                {selectedTokensPerChain[chain]
+                                                  ?.length === userAssets.length
+                                                  ? "Unselect All"
+                                                  : "Select All"}
+                                              </Button>
+                                            </div>
+                                            {/* Asset List */}
+                                            {userAssets.map((asset: Asset) => {
+                                              const speciesName =
+                                                getSpeciesName(asset);
+
+                                              return (
+                                                <div
+                                                  key={asset.tokenId}
+                                                  className="flex items-center space-x-2 p-2 hover:bg-gray-900 cursor-pointer"
+                                                  onClick={() =>
+                                                    handleAssetSelection(
+                                                      chain,
+                                                      asset.tokenId
+                                                    )
+                                                  }
+                                                >
+                                                  <Checkbox
+                                                    checked={selectedTokensPerChain[
+                                                      chain
+                                                    ]?.includes(asset.tokenId)}
+                                                    className="border-border"
+                                                  />
+                                                  {speciesName ? (
+                                                    <div className="flex items-center">
+                                                      <Image
+                                                        src={`/asset_icons/${
+                                                          asset.type === "0"
+                                                            ? "attack"
+                                                            : "defense"
+                                                        }/${asset.species}.png`}
+                                                        alt={speciesName}
+                                                        width={24}
+                                                        height={24}
+                                                        className="mr-2"
+                                                      />
+                                                      <span className="text-foreground">
+                                                        {speciesName} (Level{" "}
+                                                        {asset.level}, XP{" "}
+                                                        {asset.xp})
+                                                      </span>
+                                                    </div>
+                                                  ) : (
+                                                    <span className="text-foreground">
+                                                      Token{" "}
+                                                      {formatAddress(
+                                                        asset.tokenId
+                                                      )}{" "}
+                                                      (Level {asset.level}, XP{" "}
+                                                      {asset.xp})
+                                                    </span>
+                                                  )}
+                                                </div>
+                                              );
+                                            })}
+                                          </DropdownMenuContent>
+                                        </DropdownMenu>
+                                        {/* Attack Action */}
+                                        {selectedTokensPerChain[chain]?.length >
                                           0 && (
-                                          <div className="space-y-2">
-                                            <p className="text-lg text-muted-foreground">
-                                              Selected{" "}
-                                              {
-                                                selectedTokensPerChain[chain]
-                                                  .length
-                                              }{" "}
-                                              assets for attack
-                                            </p>
+                                          <div className="mt-4">
                                             <AttackButton
                                               targetAddress={user.address}
                                               targetChain={
-                                                getCurrentUserAssetsForChain(
-                                                  chain
-                                                )[0].chainByChainId.chainId
-                                              } // Use the chainId directly
+                                                userAssets[0].chainByChainId
+                                                  .chainId
+                                              }
                                               tokenIds={
                                                 selectedTokensPerChain[chain]
                                               }
@@ -273,8 +391,19 @@ export const AttackMap = () => {
                                             />
                                           </div>
                                         )}
-                                    </div>
-                                  )}
+                                      </div>
+                                    ) : (
+                                      <div>
+                                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                                          Your Assets
+                                        </h3>
+                                        <p className="text-lg text-muted-foreground">
+                                          You have no assets on {chain} to
+                                          attack with.
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             );

@@ -14,6 +14,7 @@ export const USER_ASSETS = gql`
           level
           health
           defense
+          species
           chainByChainId {
             name
             chainId
