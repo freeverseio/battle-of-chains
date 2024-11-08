@@ -131,6 +131,7 @@ export interface RawUpgrade {
 }
 
 export interface RawRegisterMercenary {
+  _operator: string;
   id: string;
   mercenaryAddress: string;
   mercenaryChain: number;

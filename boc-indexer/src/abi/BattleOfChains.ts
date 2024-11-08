@@ -7,7 +7,7 @@ export const events = {
     ChainActionProposal: event("0x8747b87ceb2b2f1164eca74f645e359271ec95927021b6ff6470b000a5693f03", "ChainActionProposal(address,address,uint32,(uint32,uint8,uint8,address),string)", {"_operator": indexed(p.address), "_user": indexed(p.address), "_sourceChain": p.uint32, "_action": p.struct({"targetChain": p.uint32, "actionType": p.uint8, "attackArea": p.uint8, "attackAddress": p.address}), "_comment": p.string}),
     JoinedChain: event("0xb76888af89162640d1f93bf6507c4dffd2cee8cbccdffff114d8057a6e679b37", "JoinedChain(address,uint32,string)", {"_user": indexed(p.address), "_homeChain": indexed(p.uint32), "_nickname": p.string}),
     MultichainMint: event("0xb189b714f887ae698b140ddf7c6e07d5df979975e4675f19700ad7149a2e1ca3", "MultichainMint(uint256,address,uint256,uint32)", {"_tokenId": p.uint256, "_user": indexed(p.address), "_type": indexed(p.uint256), "_homeChain": indexed(p.uint32)}),
-    RegisterMercenary: event("0x049b122bdeb72db61d323fd64720bbf17f476f6ec8ea9d994b3d0b9adb96df16", "RegisterMercenary(address,uint32,string)", {"_mercenaryAddress": indexed(p.address), "_mercenaryChain": indexed(p.uint32), "_mercenaryNickname": p.string}),
+    RegisterMercenary: event("0x818a0e2c16a545bd1e70b4e48059d1cdde1d814eb8b722d7b44503463a4672c5", "RegisterMercenary(address,address,uint32,string)", {"_operator": p.address, "_mercenaryAddress": indexed(p.address), "_mercenaryChain": indexed(p.uint32), "_mercenaryNickname": p.string}),
     Upgrade: event("0xd306cc3329b7d7565083a73d367d13290ee47d58d01fbd8d0f5144d4ad7f0182", "Upgrade(address,address,uint32,uint256)", {"_operator": indexed(p.address), "_user": indexed(p.address), "_chain": p.uint32, "_tokenId": p.uint256}),
 }
 

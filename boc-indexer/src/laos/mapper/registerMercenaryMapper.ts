@@ -4,6 +4,7 @@ import { generateLaosEventUUID } from "../util";
 export function mapRegisterMercenary(raw: RawRegisterMercenary): RegisterMercenaryModels {
   const registerMercenary = new RegisterMercenary({
     id: generateLaosEventUUID(raw.txHash, raw.logIndex),
+    operator: raw._operator,
     mercenaryAddress: raw.mercenaryAddress,
     mercenaryChain: raw.mercenaryChain,
     mercenaryNickname: raw.mercenaryNickname,

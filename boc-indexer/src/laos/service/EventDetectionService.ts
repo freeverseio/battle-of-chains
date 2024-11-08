@@ -198,9 +198,10 @@ export class EventDetectionService {
     if (log.topics[0] === BattleOfChains.events.RegisterMercenary.topic) {
       const logDecoded = BattleOfChains.events.RegisterMercenary.decode(log);
       console.log('RegisterMercenary detected:', logDecoded);
-      const { _mercenaryAddress, _mercenaryChain, _mercenaryNickname } = logDecoded;
+      const { _operator, _mercenaryAddress, _mercenaryChain, _mercenaryNickname } = logDecoded;
       registerMercenaryEvents.push({
         id: log.id,
+        _operator: _operator.toLowerCase(),
         mercenaryAddress: _mercenaryAddress.toLowerCase(),
         mercenaryChain: _mercenaryChain,
         mercenaryNickname: _mercenaryNickname,
