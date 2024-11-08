@@ -17,8 +17,8 @@ describe('Process and Compare Storage', () => {
         const debugData = {
             "deadline": 1730728802,
             "useHardcodedEvents": true,
-            "eventsFile": './src/processor/test/events.json',
-            "storageFile": './src/processor/test/storage.json',
+            "eventsFile": './src/processor/test/events01.json',
+            "storageFile": './src/processor/test/storage01.json',
         };
 
         const allChains = await getChains();
