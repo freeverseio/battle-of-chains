@@ -61,6 +61,7 @@ function formUsers(processedUsers: UserType[]): User[] {
       newUser.address = toChecksum(user.address);
       newUser.name = user.name;
       newUser.homechain = user.homechain;
+      newUser.mercenary_chain = user.mercenaryChain;
       newUser.joined_timestamp = user.joined_timestamp;
       newUser.score = user.score;
       newUser.treasury = user.treasury;
@@ -210,7 +211,6 @@ export function formInfo(): Info[] {
   const homebase_prodrate = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
     treasuryProdRatePerDay(level)
   );
-  console.log(XP_CHARACTER_PER_LEVEL.length, homebase_prodrate);
 
   const items = [
     { key: 'NEXT_CHAIN_ACTIONS_TIMESTAMP', value: nextChainAction },

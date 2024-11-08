@@ -13,12 +13,32 @@ async function compareStorage(storage: Storage, storageFile: string) {
 }
 
 describe('Process and Compare Storage', () => {
-    it('should process hardcoded events and compare storage', async () => {
+    it('should process hardcoded events and compare storage for test suite 1', async () => {
         const debugData = {
             "deadline": 1730728802,
             "useHardcodedEvents": true,
-            "eventsFile": './src/processor/test/events.json',
-            "storageFile": './src/processor/test/storage.json',
+            "eventsFile": './src/processor/test/events01.json',
+            "storageFile": './src/processor/test/storage01.json',
+        };
+
+        const allChains = await getChains();
+        const eventProcessor = new EventProcessor(allChains, debugData);
+
+        await eventProcessor.update();
+        const storage = eventProcessor.getStorage();
+
+        const isStorageEqual = await compareStorage(storage, debugData.storageFile);
+        if (!isStorageEqual) await fs.writeFile(debugData.storageFile, JSON.stringify(storage, null, 2));
+        
+        expect(isStorageEqual).toBe(true);
+    });
+
+    it('should process hardcoded events and compare storage for test suite 2', async () => {
+        const debugData = {
+            "deadline": 1731063388,
+            "useHardcodedEvents": true,
+            "eventsFile": './src/processor/test/events02.json',
+            "storageFile": './src/processor/test/storage02.json',
         };
 
         const allChains = await getChains();

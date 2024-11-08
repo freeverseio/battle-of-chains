@@ -46,6 +46,16 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     const attackerAssets = getAttackingAssets(attack.id, storage.assets);
     evolveAssetsStats(attack.toBeExectutedAt, attackerAssets);
     const availableAttackerAssets = getAlive(attackerAssets);
+    if (availableAttackerAssets.length === 0) {
+        storage.logs.push({
+            id: storage.logs.length,
+            user_address: attack.attacker,
+            timestamp: attack.toBeExectutedAt,
+            comment: `None of your assets arrived to the attack destination in chain ${attack.targetChain}. They either died or were sold.`,
+        });
+        return;
+    }
+
     const attackerAttack = availableAttackerAssets.reduce((sum, asset) => sum + asset.attack, 0);
     const attackerDefense = availableAttackerAssets.reduce((sum, asset) => sum + asset.defense, 0);
 
@@ -113,7 +123,6 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     }
 
     setAssetsFree(attackerAssets);
-    setAssetsFree(availableAttackedAssets);
 
     let attackerComment = `Your troops have attacked at ${attack.targetAddress}, they stole ${subtractedAmount} coins, attacked with ${damageHPPercentOnTarget}% success, and they were harmed by their backfire with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForAttacker > 0) attackerComment += `. Your troops gained ${increaseHPPercentForAttacker} percentual XP points`;

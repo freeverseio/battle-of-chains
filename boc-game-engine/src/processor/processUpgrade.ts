@@ -1,11 +1,16 @@
 import { COST_PER_XP, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from './constants';
-import { Storage, UpgradeEvent } from './types';
-import { chainIsNotSupported, evolveTreasuryByAddress, findUser, getUserTreasury, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
+import { Storage, UpgradeEvent, UserType } from './types';
+import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
 
 export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     console.log(`Processing Upgrade Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}`);
     if (chainIsNotSupported(event.chain, storage.chains)) return;
-    if (userDoesNotExist(event.user, storage.users)) return;
+
+    const user = findUser(event.user, storage.users);
+    if (!user) {
+        console.log(`WARNING: An event tried to act on a user that does not exist: ${user}`);
+        return;
+    }
 
     if (!isCorrectOperator(event.operator, event.user, storage.assignOperators)) {
         console.log(`WARNING: operator ${event.operator} tried a non-authorized authorized upgrade on behalf of ${event.user}`);
@@ -13,7 +18,12 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     }
 
     if (isUpgradeHomebase(event)) {
-        upgradeHomebase(event, storage);
+        upgradeHomebase(user, event, storage);
+        return;
+    }
+
+    if (!canUserAttackOrUpgradeOnChain(user, event.chain)) {
+        console.log(`WARNING: user ${event.user} cannot upgrade on chain ${event.eventChain}`);
         return;
     }
 
@@ -69,14 +79,9 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     });
 }
 
-function upgradeHomebase(event: UpgradeEvent, storage: Storage) {
+function upgradeHomebase(user: UserType, event: UpgradeEvent, storage: Storage) {
     console.log('Upgrading homebase of user', event.user);
-    const user = findUser(event.user, storage.users);
-    if (!user) {
-        console.log('WARNING: homebase upgrade called for a user that was not found');
-        return;
-    }
-    if (!user.homechain) {
+    if (!hasHomechain(user)) {
         console.log('WARNING: user does not have an assigned homebase');
         return;
     }

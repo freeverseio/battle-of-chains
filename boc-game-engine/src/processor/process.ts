@@ -6,6 +6,7 @@ import {
     TransferEvent,
     PendingChainAction,
     PendingActionOption,
+    RegisterMercenaryEvent,
 } from './types';
 import { getAllEvents } from './getEvents';
 import { processJoinedChain } from './processJoinedChain';
@@ -22,7 +23,8 @@ import { evolveAllAssetsStats, getNext2pmUTC, rarityToRanges, updateAllChainProp
 import * as dotenv from "dotenv";
 import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
-dotenv.config();
+import { processRegisterMercenary } from './processRegisterMercenary';
+dotenv.config({ path: '../docker/.env' });
 const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
 
 type DebugData = {
@@ -98,6 +100,9 @@ export class EventProcessor {
                 }
                 else if (nextEventTypeToProcess == EventType.TransferEvent) {
                     processTransfer(event as TransferEvent, this.storage);
+                }
+                else if (nextEventTypeToProcess == EventType.RegisterMercenaryEvent) {
+                    processRegisterMercenary(event as RegisterMercenaryEvent, this.storage);
                 }
                 else {
                     throw new Error(`Event type not supported: ${nextEventTypeToProcess}`);

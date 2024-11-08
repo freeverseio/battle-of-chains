@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import { Log, Chain, User, Asset, ChainActionProposal, AssignOperator, ProcessStatus, AttackSpecies, DefendSpecies, NFTType, Info } from "./entity";
 import * as dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: '../docker/.env' });
 
 const isSSLEnabled = process.env.SSL_ENABLED !== "false"; // Check if SSL is enabled, defaults to true if not set
 

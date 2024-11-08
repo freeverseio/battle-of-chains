@@ -23,6 +23,7 @@ export enum EventType {
   UpgradeEvent,
   AssignOperatorEvent,
   TransferEvent,
+  RegisterMercenaryEvent,
 }
 
 export enum AssetState {
@@ -45,7 +46,8 @@ export type AllEventTypes =
   | ChainActionProposalEvent 
   | UpgradeEvent
   | AssignOperatorEvent
-  | TransferEvent;
+  | TransferEvent
+  | RegisterMercenaryEvent;
 
 export enum PendingState {
   Departing,
@@ -163,9 +165,16 @@ export type TransferEvent = EventWithBlockInfo & {
   tokenId: string;
 }
 
+export type RegisterMercenaryEvent = EventWithBlockInfo & {
+  mercenaryAddress: string;
+  mercenaryChain: number;
+  mercenaryNickname: string;
+}
+
 export type UserType = {
     address: string;
     homechain?: number;
+    mercenaryChain?: number;
     name: string;
     joined_timestamp: number;
     score: number;

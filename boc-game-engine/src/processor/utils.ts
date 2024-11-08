@@ -1,10 +1,9 @@
 import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
-import { AssignOperator } from '../db/entity';
+import { AssignOperator, User } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
-import seedrandom from 'seedrandom';
 import murmurhash from 'murmurhash';
 
 const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
@@ -154,7 +153,16 @@ export function treasuryPenaltyPerSec(level: number, assetCount: number) : numbe
         / constants.ONE_WEEK_IN_SECS;
 }
 
+export function hasHomechain(user: UserType) : boolean {
+    return !!user.homechain;
+}
+
+export function isMercenary(user: UserType) : boolean {
+    return !!user.mercenaryChain;
+}
+
 export function evolveTreasuryByUser(user: UserType, timestamp: number, storage: Storage) {
+    if (!hasHomechain(user)) return;
     const secSinceLast = timestamp - user.treasuryLastUpdate;
     if (secSinceLast < 0) {
         console.log('WARNING: trying to evolve a treasury towards the past', user);
@@ -679,4 +687,16 @@ export function getNext2pmUTC(referenceTimestamp: number): number {
 
     // Return the timestamp (seconds since epoch)
     return Math.round(next2pmUTC.getTime() / 1000);
+}
+
+export function canUserVoteInChain(user: UserType, chain: number) : boolean {
+    return hasHomechain(user)
+        ? user.homechain === chain
+        : false;
+}
+
+export function canUserAttackOrUpgradeOnChain(user: UserType, chain: number) : boolean {
+    if (hasHomechain(user)) return true;
+    if (isMercenary(user)) return user.mercenaryChain === chain;
+    return false;
 }
