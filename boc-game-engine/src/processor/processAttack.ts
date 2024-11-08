@@ -1,12 +1,13 @@
 import { ATTACK_TIME_TO_DEPART } from './constants';
 import { Storage, AttackEvent, PendingState, AssetState, PendingActionOption } from './types';
-import { evolveTreasuryByAddress, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, userDoesNotExist } from './utils';
+import { canUserAttackOnChain, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, userDoesNotExist } from './utils';
 
 
 export function processAttack(event: AttackEvent, storage: Storage): void {
     console.log(`Processing Attack Event ${event.timestamp}, Attacker: ${event.attacker}, Target: ${event.targetAddress}, Timestamp: ${event.timestamp} on chain ${event.eventChain}`);
     
-    if (userDoesNotExist(event.attacker, storage.users)) {
+    const attacker = findUser(event.attacker, storage.users);
+    if (!attacker) {
         console.log('WARNING: Someone tried to perform an attack on behalf of a non existing user ', event.attacker);
         return;
     }
@@ -14,6 +15,11 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     if (!isCorrectOperator(event.operator, event.attacker, storage.assignOperators)) {
         console.log(`WARNING: operator ${event.operator} tried a non-authorized authorized attack on behalf of ${event.attacker}`);
         return
+    }
+
+    if (!canUserAttackOnChain(attacker, event.targetChain)) {
+        console.log(`WARNING: user ${event.attacker} cannot attack on chain ${event.targetChain}`);
+        return;
     }
 
     const availableAssets = (event.tokenIds.length === 0) ?
