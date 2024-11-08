@@ -31,7 +31,8 @@ export interface DetectedLaosEvents {
   chainActionProposalEvents: RawChainActionProposal[];
   joinedChainEvents: RawJoinedChain[];
   multichainMintEvents: RawMultichainMint[];
-  upgradeEvents: RawUpgrade[]
+  upgradeEvents: RawUpgrade[];
+  registerMercenaryEvents: RawRegisterMercenary[]
 }
 
 export interface MetadataAttribute {
@@ -122,6 +123,18 @@ export interface RawUpgrade {
   _user: string;
   _chain: number;
   _tokenId: string;
+  timestamp: Date;
+  blockNumber: number;
+  blockHash: string;
+  txHash: string;
+  logIndex: number;
+}
+
+export interface RawRegisterMercenary {
+  id: string;
+  mercenaryAddress: string;
+  mercenaryChain: number;
+  mercenaryNickname: string;
   timestamp: Date;
   blockNumber: number;
   blockHash: string;

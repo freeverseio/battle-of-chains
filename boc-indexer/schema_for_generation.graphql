@@ -156,3 +156,15 @@ type AssignOperator @entity {
   txHash: String! @index
   logIndex: Int!
 }
+
+type RegisterMercenary @entity {
+  id: ID!
+  mercenaryAddress: String!
+  mercenaryChain: Int!
+  mercenaryNickname: String!
+  timestamp: DateTime!
+  blockNumber: Int!
+  blockHash: String!
+  txHash: String! @index
+  logIndex: Int!
+}

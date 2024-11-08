@@ -9,7 +9,8 @@ import {
     RawChainActionProposal,
     RawJoinedChain,
     RawMultichainMint,
-    RawUpgrade 
+    RawUpgrade,
+    RawRegisterMercenary 
 } from '../../model';
 
 export class EventDetectionService {
@@ -27,6 +28,7 @@ export class EventDetectionService {
     let joinedChainEvents: RawJoinedChain[] = [];
     let multichainMintEvents: RawMultichainMint[] = [];
     let upgradeEvents: RawUpgrade[] = [];
+    let registerMercenaryEvents: RawRegisterMercenary[] = [];
 
     for (const block of this.ctx.blocks) {
       for (const log of block.logs) {
@@ -37,6 +39,7 @@ export class EventDetectionService {
         this.detectJoinedChain(log, joinedChainEvents, block.header.timestamp, block.header.height, block.header.hash);
         this.detectMultichainMint(log, multichainMintEvents, block.header.timestamp, block.header.height, block.header.hash);
         this.detectUpgrade(log, upgradeEvents, block.header.timestamp, block.header.height, block.header.hash);
+        this.detectRegisterMercenary(log, registerMercenaryEvents, block.header.timestamp, block.header.height, block.header.hash);
       }
     }
     return {
@@ -46,7 +49,8 @@ export class EventDetectionService {
       chainActionProposalEvents,
       joinedChainEvents,
       multichainMintEvents,
-      upgradeEvents
+      upgradeEvents,
+      registerMercenaryEvents
     };
   }
 
@@ -189,4 +193,24 @@ export class EventDetectionService {
       });
     }
   }
+
+  private detectRegisterMercenary(log: any, registerMercenaryEvents: RawRegisterMercenary[], timestamp: number, blockNumber: number, blockHash: string): void {
+    if (log.topics[0] === BattleOfChains.events.RegisterMercenary.topic) {
+      const logDecoded = BattleOfChains.events.RegisterMercenary.decode(log);
+      console.log('RegisterMercenary detected:', logDecoded);
+      const { _mercenaryAddress, _mercenaryChain, _mercenaryNickname } = logDecoded;
+      registerMercenaryEvents.push({
+        id: log.id,
+        mercenaryAddress: _mercenaryAddress.toLowerCase(),
+        mercenaryChain: _mercenaryChain,
+        mercenaryNickname: _mercenaryNickname,
+        timestamp: new Date(timestamp),
+        blockNumber: blockNumber,
+        blockHash: blockHash,
+        txHash: log.transactionHash,
+        logIndex: log.logIndex,
+      });
+    }
+  }
+
 }
