@@ -26,15 +26,21 @@ commands:
             docker build -t << parameters.image >>:$CIRCLE_SHA1 .
             docker push << parameters.image >>:$CIRCLE_SHA1
 jobs:
-  api-test:
+  game-engine-test:
     docker:
       - image: cimg/node:lts
+    parameters:
+      folder:
+        type: string
+        default: "boc-game-engine"
     steps:
       - checkout
       - run:
-          name: Run boc-api tests
+          name: Run tests
           command: |
-            echo "Running boc-api tests"
+            cd << parameters.folder >>
+            npm ci
+            npm run test:ci
 
   build-app:
     parameters:
@@ -74,8 +80,8 @@ jobs:
 workflows:
   ci-workflow:
     jobs:
-      - api-test:
-          name: api-test
+      - game-engine-test:
+          name: game-engine-test
       - build-app:
           name: build-indexer
           folder: boc-indexer

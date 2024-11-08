@@ -1,4 +1,3 @@
-storage.json
 /node_modules
 /lib
 /builds
@@ -17,5 +16,4 @@ schema.graphql
 
 **/node_modules
 
-boc-game-engine/storage.json
 **.DS_Store

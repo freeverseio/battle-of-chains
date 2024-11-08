@@ -1,4 +1,3 @@
-import { getChains } from './getChains';
 import {
     EventType,
     JoinedChainEvent, MultichainMintEvent, AttackEvent, ChainActionProposalEvent, UpgradeEvent,
@@ -24,8 +23,7 @@ import * as dotenv from "dotenv";
 import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 dotenv.config();
-const DEBUG = process.env.DEBUG ? true : false;
-const GAME_START_TIMESTAMP= process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
+const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
 
 type DebugData = {
     deadline: number;
@@ -65,10 +63,6 @@ export class EventProcessor {
         return this.storage;
     }
 
-    exportStorage() {
-        fs.writeFile('storage.json', JSON.stringify(this.storage, null, 2));
-    }
-    
     async update() {
         try {
             const allEvents = this.debugData?.useHardcodedEvents
@@ -126,22 +120,3 @@ export class EventProcessor {
         }
     }
 }
-
-async function main() {
-    if (!DEBUG) return;
-
-    const allChains = await getChains();
-    const debugData = {
-        "deadline": 1730728802,
-        "useHardcodedEvents": true,
-        "eventsFile": './src/processor/test/events.json',
-    }
-    // const debugData = undefined;
-
-    const eventProcessor = new EventProcessor(allChains, debugData);
-    await eventProcessor.update();
-
-    eventProcessor.exportStorage();
-}
-
-main();
