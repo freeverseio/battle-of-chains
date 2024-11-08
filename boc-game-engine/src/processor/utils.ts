@@ -153,7 +153,12 @@ export function treasuryPenaltyPerSec(level: number, assetCount: number) : numbe
         / constants.ONE_WEEK_IN_SECS;
 }
 
+export function hasHomechain(user: UserType) : boolean {
+    return !!user.homechain;
+}
+
 export function evolveTreasuryByUser(user: UserType, timestamp: number, storage: Storage) {
+    if (!hasHomechain(user)) return;
     const secSinceLast = timestamp - user.treasuryLastUpdate;
     if (secSinceLast < 0) {
         console.log('WARNING: trying to evolve a treasury towards the past', user);
