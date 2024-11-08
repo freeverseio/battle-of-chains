@@ -1,6 +1,6 @@
 import { ATTACK_TIME_TO_DEPART } from './constants';
 import { Storage, AttackEvent, PendingState, AssetState, PendingActionOption } from './types';
-import { canUserAttackOnChain, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, userDoesNotExist } from './utils';
+import { canUserAttackOrUpgradeOnChain, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, userDoesNotExist } from './utils';
 
 
 export function processAttack(event: AttackEvent, storage: Storage): void {
@@ -17,7 +17,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
         return
     }
 
-    if (!canUserAttackOnChain(attacker, event.targetChain)) {
+    if (!canUserAttackOrUpgradeOnChain(attacker, event.targetChain)) {
         console.log(`WARNING: user ${event.attacker} cannot attack on chain ${event.targetChain}`);
         return;
     }

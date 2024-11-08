@@ -695,7 +695,7 @@ export function canUserVoteInChain(user: UserType, chain: number) : boolean {
         : false;
 }
 
-export function canUserAttackOnChain(user: UserType, chain: number) : boolean {
+export function canUserAttackOrUpgradeOnChain(user: UserType, chain: number) : boolean {
     if (hasHomechain(user)) return true;
     if (isMercenary(user)) return user.mercenaryChain === chain;
     return false;
