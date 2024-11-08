@@ -6,7 +6,6 @@ import GlobalMap from "@/components/GlobalMap";
 import Inventory from "@/components/Inventory";
 import { AttackMap } from "@/components/AttackMap";
 import CDDVoting from "@/components/CDDVoting";
-import { SoftCoinProduction } from "./SoftCoinProduction";
 import { SummaryTable } from "./SummaryTable";
 import { useAccount } from "wagmi";
 import { useUserByAddress } from "@/hooks/useUserByAddress";

@@ -1,13 +1,12 @@
-// HomeBase.tsx
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import dynamic from "next/dynamic";
+import { useAccount } from "wagmi";
 import { UserInfo } from "./UserInfo";
 import { UserActivity } from "./UserActivity";
-import { useAccount } from "wagmi";
-import { SoftCoinProduction } from "@/components/SoftCoinProduction"; // Import the new component
+import HomeBaseInfo from "@/components/HomeBaseInfo";
+import Modal from "./Modal";
 
 // Dynamically import Progress with ssr: false
 const Progress = dynamic(
@@ -26,14 +25,17 @@ export default function HomeBase() {
   if (!address) {
     return <div className="text-3xl">Please connect your wallet</div>;
   }
+
   return (
     <>
-      <div className="mb-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
         <UserInfo />
+        <HomeBaseInfo />
       </div>
       <div className="mb-2">
         <UserActivity />
       </div>
+      <Modal />
     </>
   );
 }

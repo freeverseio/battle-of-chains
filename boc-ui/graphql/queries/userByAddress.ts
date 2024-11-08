@@ -12,6 +12,8 @@ export const USER_BY_ADDRESS = gql`
       score
       name
       treasury
+      level
+      xp
     }
   }
 `;
