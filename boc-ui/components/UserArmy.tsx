@@ -1,4 +1,5 @@
 // components/UserArmy.tsx
+
 "use client";
 
 import { useAccount } from "wagmi";
@@ -7,8 +8,10 @@ import { useUserAssets } from "@/hooks/useUserAssets";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { MultichainMintButton } from "./MintButton";
 import { UpgradeButton } from "./UpgradeButton";
-import { Token } from "graphql";
 import { useNftTypes } from "@/hooks/useNftTypes";
+import { AssetViewerButton } from "./AssetViewerButton";
+import { useSpecies } from "@/hooks/useSpecies";
+import Image from "next/image"; // Import Image from Next.js
 
 interface Asset {
   attack: string;
@@ -16,6 +19,7 @@ interface Asset {
   type: string;
   tokenId: string;
   level: string;
+  species: string;
   health: string;
   defense: string;
   chainByChainId: {
@@ -42,9 +46,17 @@ export const UserArmy = () => {
     address ? `0x${address.toLowerCase().slice(2)}` : "0x"
   );
   const { loading: nftLoading, error: nftError, nftTypes } = useNftTypes();
+  const {
+    loading: speciesLoading,
+    error: speciesError,
+    attackSpecies,
+    defendSpecies,
+  } = useSpecies();
 
-  if (nftLoading) return <div></div>;
+  if (nftLoading || speciesLoading) return <div>Loading data...</div>;
   if (nftError) return <div>Error loading asset names: {nftError.message}</div>;
+  if (speciesError)
+    return <div>Error loading species data: {speciesError.message}</div>;
 
   if (isConnecting) return <div>Connecting...</div>;
   if (isDisconnected || !address || address === "0x")
@@ -74,6 +86,34 @@ export const UserArmy = () => {
       acc[chain].push(asset);
       return acc;
     }, {});
+  };
+
+  // Map species IDs to names
+  const attackSpeciesMap = attackSpecies.reduce(
+    (acc: { [key: string]: string }, species) => {
+      acc[String(species.id)] = species.name;
+      return acc;
+    },
+    {}
+  );
+
+  const defendSpeciesMap = defendSpecies.reduce(
+    (acc: { [key: string]: string }, species) => {
+      acc[String(species.id)] = species.name;
+      return acc;
+    },
+    {}
+  );
+
+  const getSpeciesName = (asset: Asset): string | null => {
+    if (asset.type === "0") {
+      return attackSpeciesMap[asset.species] || asset.species;
+    } else if (asset.type === "1") {
+      return defendSpeciesMap[asset.species] || asset.species;
+    } else {
+      // For types 2 and 3, do not return species name
+      return null;
+    }
   };
 
   return (
@@ -116,50 +156,81 @@ export const UserArmy = () => {
                       {chain}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                      {chainAssets.map((asset) => (
-                        <Card
-                          key={asset.tokenId}
-                          className="p-4 hover:shadow-lg transition-shadow relative"
-                        >
-                          <div className="space-y-3">
-                            {/* Header with ID and Level */}
-                            <div className="flex justify-between items-center border-b border-border pb-2">
-                              <span className="text-muted-foreground text-lg">
+                      {chainAssets.map((asset) => {
+                        const speciesName = getSpeciesName(asset);
+
+                        return (
+                          <Card
+                            key={asset.tokenId}
+                            className="p-4 hover:shadow-lg transition-shadow relative"
+                          >
+                            <div className="space-y-3">
+                              {/* Header with Species Name and Level */}
+                              <div className="flex justify-between items-center border-b border-border pb-2">
+                                {/* Conditionally display species name and icon */}
+                                {speciesName ? (
+                                  <div className="flex items-center">
+                                    <Image
+                                      src={`/asset_icons/${
+                                        asset.type === "0"
+                                          ? "attack"
+                                          : "defense"
+                                      }/${asset.species}.png`}
+                                      alt={speciesName}
+                                      width={24}
+                                      height={24}
+                                      className="mr-2"
+                                    />
+                                    <span className="text-muted-foreground text-lg">
+                                      {speciesName}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <span className="text-muted-foreground text-lg">
+                                    {`${nftTypes[type]}`}
+                                  </span>
+                                )}
+                                <span className="text-foreground font-bold text-xl">
+                                  Level {asset.level}
+                                </span>
+                              </div>
+                              {/* ID */}
+                              <span className="text-muted-foreground text-md">
                                 ID: {asset.tokenId.slice(0, 6)}...
                                 {asset.tokenId.slice(-4)}
                               </span>
-                              <span className="text-foreground font-bold text-xl">
-                                Level {asset.level}
-                              </span>
-                            </div>
-
-                            {/* Combat Stats */}
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="space-y-2">
-                                <StatDisplay
-                                  label="Attack"
-                                  value={asset.attack}
-                                />
-                                <StatDisplay
-                                  label="Defense"
-                                  value={asset.defense}
+                              {/* Combat Stats */}
+                              <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                  <StatDisplay
+                                    label="Attack"
+                                    value={asset.attack}
+                                  />
+                                  <StatDisplay
+                                    label="Defense"
+                                    value={asset.defense}
+                                  />
+                                </div>
+                                <div className="space-y-2">
+                                  <StatDisplay
+                                    label="Health"
+                                    value={asset.health}
+                                  />
+                                  <StatDisplay label="XP" value={asset.xp} />
+                                </div>
+                                <AssetViewerButton
+                                  tokenId={asset.tokenId}
+                                  chainId={asset.chainByChainId.chainId}
                                 />
                               </div>
-                              <div className="space-y-2">
-                                <StatDisplay
-                                  label="Health"
-                                  value={asset.health}
-                                />
-                                <StatDisplay label="XP" value={asset.xp} />
-                              </div>
+                              <UpgradeButton
+                                tokenId={asset.tokenId}
+                                chainId={asset.chainByChainId.chainId}
+                              />
                             </div>
-                            <UpgradeButton
-                              tokenId={asset.tokenId}
-                              chainId={asset.chainByChainId.chainId}
-                            />
-                          </div>
-                        </Card>
-                      ))}
+                          </Card>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
