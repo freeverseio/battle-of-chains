@@ -13,13 +13,13 @@ async function compareStorage(storage: Storage, storageFile: string): Promise<bo
 }
 
 async function main() {
-    // const debugData = {
-    //     "deadline": 1730728802,
-    //     "useHardcodedEvents": true,
-    //     "eventsFile": './src/processor/test/events01.json',
-    //     "storageFile": './src/processor/test/storage01.json',
-    // };
-    const debugData = undefined;
+    const debugData = {
+        "deadline": 1731063388,
+        "useHardcodedEvents": true,
+        "eventsFile": './src/processor/test/events02.json',
+        "storageFile": './src/processor/test/storage02.json',
+    };
+    // const debugData = undefined;
 
     const allChains = await getChains();
     const eventProcessor = new EventProcessor(allChains, debugData);
@@ -27,14 +27,14 @@ async function main() {
     await eventProcessor.update();
     const storage = eventProcessor.getStorage();
 
-    // if (!debugData) return;
-    // const isStorageEqual = await compareStorage(storage, debugData.storageFile);
-    // if (!isStorageEqual) {
-    //     console.log('Storage differs. Updating storage file.');
-    //     await fs.writeFile(debugData.storageFile, JSON.stringify(storage, null, 2));
-    // } else {
-    //     console.log('Storage is the same. No update needed.');
-    // }
+    if (!debugData) return;
+    const isStorageEqual = await compareStorage(storage, debugData.storageFile);
+    if (!isStorageEqual) {
+        console.log('Storage differs. Updating storage file.');
+        await fs.writeFile(debugData.storageFile, JSON.stringify(storage, null, 2));
+    } else {
+        console.log('Storage is the same. No update needed.');
+    }
 }
 
 main().catch(error => {
