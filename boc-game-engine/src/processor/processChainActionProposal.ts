@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
 import { Storage, ChainActionProposalEvent, ChainActionProposalOption, actionAreaNames, actionTypeNames } from './types';
-import { assignUserToChainProposal, chainIsNotSupported, findUser, isCorrectOperator, userDoesNotExist } from './utils'
+import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, findUser, hasHomechain, isCorrectOperator, userDoesNotExist } from './utils'
 
 export function processChainActionProposal(event: ChainActionProposalEvent, storage: Storage): void {
     console.log(`Processing ChainType Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);
@@ -19,9 +19,9 @@ export function processChainActionProposal(event: ChainActionProposalEvent, stor
         return
     }
 
-    if (!user.homechain || user.homechain !== event.sourceChain) {
-        console.log(`WARNING: chain proposal was made for a user that lives in a different chain:`, user.homechain);
-        return
+    if (!canUserVoteInChain(user, event.sourceChain)) {
+        console.log(`WARNING: chain proposal was made for a user cannot operate in chain:`, user.homechain);
+        return;
     }
 
     const proposalHash = generateProposalHash(event);
