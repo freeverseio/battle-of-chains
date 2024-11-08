@@ -1,4 +1,4 @@
-import {getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents} from './getEventsQueries';
+import {getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents, getRegisterMercenaryEvents} from './getEventsQueries';
 import { sortEvents } from './sortEvents';
 import {
     ChainType,
@@ -14,13 +14,15 @@ export async function getAllEvents(chains: ChainType[]): Promise<AllEventTypes[]
     const attackEvents = await getAttackEvents();
     const chainActionProposalEvents = await getChainActionProposalEvents();
     const upgradeEvents = await getUpgradeEvents();
+    const registerMercenaryEvents = await getRegisterMercenaryEvents();
 
     let allEvents: AllEventTypes[] = [
         ...joinedChainEvents,
         ...multichainMintEvents,
         ...attackEvents,
         ...chainActionProposalEvents,
-        ...upgradeEvents
+        ...upgradeEvents,
+        ...registerMercenaryEvents
       ];
     
     for (let i = 0; i < chains.length; i++) {

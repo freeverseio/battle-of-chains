@@ -43,7 +43,7 @@ const allowedOrigins = process.env.CORS_ALLOWED_DOMAINS
   : '*';
 
 (async () => {
-  dotenv.config();
+  dotenv.config({ path: '../docker/.env' });
   const schema = await makeGatewaySchema();
 
   // Yoga server setup

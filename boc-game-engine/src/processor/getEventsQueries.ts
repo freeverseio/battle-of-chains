@@ -1,7 +1,8 @@
 import {  EventType, AllEventTypes } from "./types";
 
 import * as dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: '../docker/.env' });
+
 const LAOS_CHAIN_ID = process.env.LAOS_CHAIN_ID ? Number(process.env.LAOS_CHAIN_ID) : 6283;
 const LAOS_GRAPHQL = process.env.LAOS_GRAPHQL ? process.env.LAOS_GRAPHQL : '';
 const OWNERSHIP_GRAPHQLS = process.env.OWNERSHIP_GRAPHQLS ? process.env.OWNERSHIP_GRAPHQLS.split(',') : [];
@@ -175,3 +176,20 @@ export async function getTransferEvents(chainIdx: number, chain_id: number): Pro
   return enrichEvents(data.transfers, chain_id, EventType.TransferEvent);
 }
 
+export async function getRegisterMercenaryEvents(): Promise<AllEventTypes[]> {
+  const query = `
+    query {
+      registerMercenaries {
+        mercenaryAddress
+        mercenaryChain
+        mercenaryNickname
+        timestamp
+        blockNumber
+        logIndex
+      }
+    }
+  `;
+
+  const data = await fetchGraphQL(LAOS_GRAPHQL, query);
+  return enrichEvents(data.registerMercenaries, LAOS_CHAIN_ID, EventType.RegisterMercenaryEvent);
+}

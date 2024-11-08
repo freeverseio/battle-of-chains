@@ -4,7 +4,6 @@ import { isAddress } from 'web3-validator';
 import { AssignOperator } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
-import seedrandom from 'seedrandom';
 import murmurhash from 'murmurhash';
 
 const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
