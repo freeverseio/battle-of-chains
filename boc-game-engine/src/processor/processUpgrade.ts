@@ -53,15 +53,10 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     const balance = getUserTreasury(event.user, storage.users);
 
     if (cost > balance) {
-        let comment = `You tried to upgrade to level ${asset.level + 1} your asset ${event.tokenId} on chain ${event.chain}`;
+        let comment = `You tried to upgrade to level ${asset.level + 1} your asset ${event.tokenId} on ${chainName(event.chain, storage.chains)}`;
         comment += `. The asset is still ${neededXP} XP away from next level, which costs ${cost}`
         comment += `. You only have ${balance} in your treasury.`
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.user,
-            timestamp: event.timestamp,
-            comment: comment,
-        });
+        log2user(event.user, comment, event.timestamp, storage.logs);
         return;        
     }
 

@@ -1124,7 +1124,7 @@
       "id": 86,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059796,
-      "comment": "You tried to upgrade to level 1 your asset 83446625163342592366414844621478417611926946360383865896400272686624216332715 on chain 1. The asset is still 100 XP away from next level, which costs 100. You only have 8 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 83446625163342592366414844621478417611926946360383865896400272686624216332715 on Ethereum. The asset is still 100 XP away from next level, which costs 100. You only have 8 in your treasury."
     },
     {
       "id": 87,
@@ -1256,13 +1256,13 @@
       "id": 108,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061596,
-      "comment": "You tried to upgrade to level 1 your asset 94618716169324811285993915134933272529774888099172133737223208870062047217222 on chain 1. The asset is still 100 XP away from next level, which costs 100. You only have 9 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 94618716169324811285993915134933272529774888099172133737223208870062047217222 on Ethereum. The asset is still 100 XP away from next level, which costs 100. You only have 9 in your treasury."
     },
     {
       "id": 109,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061620,
-      "comment": "You tried to upgrade to level 1 your asset 94618716169324811285993915134933272529774888099172133737223208870062047217222 on chain 1. The asset is still 100 XP away from next level, which costs 100. You only have 9 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 94618716169324811285993915134933272529774888099172133737223208870062047217222 on Ethereum. The asset is still 100 XP away from next level, which costs 100. You only have 9 in your treasury."
     },
     {
       "id": 110,

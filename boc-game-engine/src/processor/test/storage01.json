@@ -7133,7 +7133,7 @@
       "id": 8,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729164384,
-      "comment": "You tried to upgrade to level 1 your asset 1104016550523782237079842312905441614446811889623235855066604937361421930101 on chain 137. The asset is still 10 XP away from next level, which costs 10. You only have 8 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 1104016550523782237079842312905441614446811889623235855066604937361421930101 on Polygon. The asset is still 10 XP away from next level, which costs 10. You only have 8 in your treasury."
     },
     {
       "id": 9,
@@ -8261,13 +8261,13 @@
       "id": 196,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730123388,
-      "comment": "You tried to upgrade to level 1 your asset 66258585831666074377383806324317429829385711978927021497010286390266175852149 on chain 137. The asset is still 100 XP away from next level, which costs 100. You only have 89 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 66258585831666074377383806324317429829385711978927021497010286390266175852149 on Polygon. The asset is still 100 XP away from next level, which costs 100. You only have 89 in your treasury."
     },
     {
       "id": 197,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730123472,
-      "comment": "You tried to upgrade to level 1 your asset 66258585831666074377383806324317429829385711978927021497010286390266175852149 on chain 137. The asset is still 100 XP away from next level, which costs 100. You only have 89 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 66258585831666074377383806324317429829385711978927021497010286390266175852149 on Polygon. The asset is still 100 XP away from next level, which costs 100. You only have 89 in your treasury."
     },
     {
       "id": 198,
@@ -9377,7 +9377,7 @@
       "id": 382,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730200236,
-      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on chain 137. The asset is still 2000 XP away from next level, which costs 2000. You only have 311 in your treasury."
+      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on Polygon. The asset is still 2000 XP away from next level, which costs 2000. You only have 311 in your treasury."
     },
     {
       "id": 383,
@@ -10691,7 +10691,7 @@
       "id": 601,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730368308,
-      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on chain 137. The asset is still 2000 XP away from next level, which costs 2000. You only have 8 in your treasury."
+      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on Polygon. The asset is still 2000 XP away from next level, which costs 2000. You only have 8 in your treasury."
     },
     {
       "id": 602,
