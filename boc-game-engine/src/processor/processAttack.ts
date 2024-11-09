@@ -32,7 +32,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
             `You tried to attack ${event.attacker} on ${chainName(event.eventChain, storage.chains)}, but you do not have available assets in that chain.`,
             event.timestamp,
             storage.logs,
-        )
+        );
         return
     }
 
@@ -62,7 +62,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
         `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${toBeExectutedAt}`,
         event.timestamp,
         storage.logs,
-    )
+    );
 
     if (userDoesNotExist(event.targetAddress, storage.users)) {
         console.log('WARNING: An attack will likely hit an empty location', event.targetAddress);
@@ -74,5 +74,5 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
         `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${toBeExectutedAt}`,
         event.timestamp,
         storage.logs,
-    )
+    );
 }

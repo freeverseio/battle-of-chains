@@ -57,7 +57,7 @@ export function createDAO(storage: Storage, address: string, chain: number, time
         `A user has been created without homechain, currently playing as a DAO on ${chainName(chain, storage.chains)}`,
         timestamp,
         storage.logs,
-    )
+    );
 }
 
 export function findUser(address: string, users: UserType[]) : UserType  | undefined {

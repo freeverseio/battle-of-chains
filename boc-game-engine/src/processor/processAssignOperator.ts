@@ -24,7 +24,7 @@ export function processAssignOperator(event: AssignOperatorEvent, storage: Stora
             `Added new operator assignment to ${event.operator} on ${chainName(event.eventChain, storage.chains)}`,
             event.timestamp,
             storage.logs,
-        )
+        );
         return;
     }
 
@@ -32,12 +32,12 @@ export function processAssignOperator(event: AssignOperatorEvent, storage: Stora
         storage.assignOperators = storage.assignOperators.filter(
             operator => !(operator.assigner === event.from && operator.chain_id === event.eventChain)
         );
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.from,
-            timestamp: event.timestamp,
-            comment: `Removed the previous operator assignment to ${event.operator} on chain ${event.eventChain}`,
-        });
+        log2user(
+            event.from,
+            `Removed the previous operator assignment to ${event.operator} on ${chainName(event.eventChain, storage.chains)}`,
+            event.timestamp,
+            storage.logs,
+        );
         return;
     }
 

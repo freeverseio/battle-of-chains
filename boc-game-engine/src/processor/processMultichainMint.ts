@@ -121,7 +121,7 @@ function createCharacter(chain: number, event: MultichainMintEvent, storage: Sto
         getCharacterComment(event, chainName(chain, storage.chains), assetDetails, assetCost, species),
         event.timestamp,
         storage.logs
-    )
+    );
 }
 
 
