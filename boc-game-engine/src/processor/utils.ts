@@ -52,12 +52,12 @@ export function createDAO(storage: Storage, address: string, chain: number, time
             level: 0
         }
     );
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: address,
-        timestamp: timestamp,
-        comment: `A user has been created without homechain, currently playing as a DAO on chain ${chain}`,
-    });
+    log2user(
+        address,
+        `A user has been created without homechain, currently playing as a DAO on ${chainName(chain, storage.chains)}`,
+        timestamp,
+        storage.logs,
+    )
 }
 
 export function findUser(address: string, users: UserType[]) : UserType  | undefined {
