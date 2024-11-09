@@ -11,12 +11,12 @@ export function processPendingAttack(attack: PendingAttack, storage: Storage) {
     }
     if (attack.currentState === PendingState.Travelling) {
         if (userDoesNotExist(attack.targetAddress, storage.users)) {
-            storage.logs.push({
-                id: storage.logs.length,
-                user_address: attack.attacker,
-                timestamp: attack.toBeExectutedAt,
-                comment: `Your troops arrived at ${attack.targetAddress} but found noone to attack. They're heading back`,
-            });
+            log2user(
+                attack.attacker,
+                `Your troops arrived at ${attack.targetAddress} but found noone to attack. They're heading back`,
+                attack.toBeExectutedAt,
+                storage.logs
+            );
         } else {
             processAttackArrival(attack, storage);
         }
@@ -32,13 +32,7 @@ function processDepartToTravel(attack: PendingAttack, storage: Storage) {
     let comment = `Your troops have departed towards ${attack.targetAddress}, which is ${Math.round(distance/1000)}Km away`;
     comment += `, and will take ${Math.round(travelTime * TIME_SPEED_RATIO / 3600)} hours of game time to arrive`;
     comment += `. Since gametime is x${TIME_SPEED_RATIO} compared to real life, this amounts to ${Math.round(travelTime / 60)} min.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.attacker,
-        timestamp: attack.toBeExectutedAt,
-        comment: comment,
-    });
+    log2user(attack.attacker, comment, attack.toBeExectutedAt, storage.logs);
 }
 
 function processAttackArrival(attack: PendingAttack, storage: Storage) {
@@ -54,7 +48,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
     const attackerAttack = availableAttackerAssets.reduce((sum, asset) => sum + asset.attack, 0);
     const attackerDefense = availableAttackerAssets.reduce((sum, asset) => sum + asset.defense, 0);
-
+ 
     // Attacked:
     const targetUser = findUser(attack.targetAddress, storage.users);
     const isTargetUserInHomechain = targetUser?.homechain === attack.targetChain;
