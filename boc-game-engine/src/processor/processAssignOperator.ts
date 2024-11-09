@@ -43,10 +43,10 @@ export function processAssignOperator(event: AssignOperatorEvent, storage: Stora
 
     existingAssignment.operator = event.operator;
     existingAssignment.timestamp = event.timestamp;
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.from,
-        timestamp: event.timestamp,
-        comment: `Updated the previous operator assignment on chain ${event.eventChain}}, now assigned to ${event.operator}`,
-    });
+    log2user(
+        event.from,
+        `Updated the previous operator assignment ${chainName(event.eventChain, storage.chains)}}, now assigned to ${event.operator}`,
+        event.timestamp,
+        storage.logs,
+    );
 }
