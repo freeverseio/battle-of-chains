@@ -26,6 +26,15 @@ export function log2user(address: string, comment: string, timestamp: number, lo
     });
 }
 
+export function log2chain(chain: number, comment: string, timestamp: number, logs: Log[]) {
+    logs.push({
+        id: logs.length,
+        chain: chain,
+        timestamp: timestamp,
+        comment: comment,
+    });
+}
+
 export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
     const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);
     if (chainNotSupported) console.log(`An event tried to act on a chain that is not yet supported: ${chain}`);
