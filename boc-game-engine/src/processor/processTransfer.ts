@@ -4,6 +4,8 @@ import { chainName, createDAO, log2user, setAssetsFree, userDoesNotExist } from 
 export function processTransfer(event: TransferEvent, storage: Storage): void {
     console.log(`Processing Transfer Event ${event.tokenId}, From: ${event.from}, Operator: ${event.to}, Timestamp: ${event.timestamp}`);
 
+    if (event.from === event.to) return;
+
     if (userDoesNotExist(event.from, storage.users)) {
         createDAO(storage, event.from, event.eventChain, event.timestamp);
         console.log(`WARNING: someone not in the game yet sold an asset: user = ${event.from}, tokenId = ${event.tokenId}, chain = ${event.eventChain}`);
