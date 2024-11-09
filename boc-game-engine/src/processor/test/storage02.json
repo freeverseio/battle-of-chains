@@ -1118,7 +1118,7 @@
       "id": 85,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059736,
-      "comment": "You tried to upgrade an asset in chain 1 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Ethereum that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 86,

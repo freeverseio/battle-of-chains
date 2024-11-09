@@ -1,6 +1,6 @@
 import { COST_PER_XP, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from './constants';
 import { Storage, UpgradeEvent, UserType } from './types';
-import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
+import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
 
 export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     console.log(`Processing Upgrade Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}`);
@@ -29,12 +29,12 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
 
     const asset = storage.assets.find(a => a.token_id === event.tokenId && a.chain_id === event.chain && a.owner === event.user && a.health > 0);
     if (!asset) {
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.user,
-            timestamp: event.timestamp,
-            comment: `You tried to upgrade an asset in chain ${event.chain} that either does not exist, is not alive, or that you do not own`,
-        });
+        log2user(
+            event.user,
+            `You tried to upgrade an asset on ${chainName(event.chain, storage.chains)} that either does not exist, is not alive, or that you do not own`,
+            event.timestamp,
+            storage.logs,
+        )
         return;
     }
 

@@ -7139,7 +7139,7 @@
       "id": 9,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1729169916,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 10,
@@ -7175,13 +7175,13 @@
       "id": 15,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729174956,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 16,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729175028,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 17,
@@ -7265,13 +7265,13 @@
       "id": 30,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729258920,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 31,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729258980,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 32,
@@ -7343,7 +7343,7 @@
       "id": 43,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729516500,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 44,
@@ -7433,7 +7433,7 @@
       "id": 58,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729518396,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 59,
@@ -7457,7 +7457,7 @@
       "id": 62,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729583568,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 63,
@@ -7583,13 +7583,13 @@
       "id": 83,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1729766412,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 84,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1729773672,
-      "comment": "You tried to upgrade an asset in chain 137 that either does not exist, is not alive, or that you do not own"
+      "comment": "You tried to upgrade an asset on Polygon that either does not exist, is not alive, or that you do not own"
     },
     {
       "id": 85,
