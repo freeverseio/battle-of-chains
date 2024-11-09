@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
@@ -131,17 +131,6 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     let attackedComment = `You were attacked by ${attack.attacker}; they stole ${subtractedAmount} coins, and attacked you with ${damageHPPercentOnTarget}% success; you backfired and harmed them with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForAttacked > 0) attackedComment += `. Your troops gained ${increaseHPPercentForAttacked} percentual XP points`;
     if (attackedCasulaties > 0) attackedComment += `. You lost ${attackedCasulaties} assets in the fight`;
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.attacker,
-        timestamp: attack.toBeExectutedAt,
-        comment: attackerComment,
-    });
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.targetAddress,
-        timestamp: attack.toBeExectutedAt,
-        comment: attackedComment,
-    });
+    log2user(attack.attacker, attackerComment, attack.toBeExectutedAt, storage.logs);
+    log2user(attack.targetAddress, attackedComment, attack.toBeExectutedAt, storage.logs);
 }
