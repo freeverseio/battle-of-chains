@@ -2,7 +2,7 @@
   "chains": [
     {
       "chain_id": 137,
-      "name": "Polygon PoS Mock",
+      "name": "Polygon",
       "score": 242
     },
     {
@@ -7085,13 +7085,13 @@
       "id": 0,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729162728,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 1,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1729163364,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 2,
@@ -7205,7 +7205,7 @@
       "id": 20,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729243836,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 21,
@@ -7505,7 +7505,7 @@
       "id": 70,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1729588992,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 71,
@@ -7571,7 +7571,7 @@
       "id": 81,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1729692684,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 82,
@@ -7583,13 +7583,13 @@
       "id": 83,
       "user_address": "0x02073d366786c2056c521d9d9b90c89fa589c8a2",
       "timestamp": 1729694808,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 84,
       "user_address": "0x9b1564fd53ba3b8da342b05ea52ac3576c9d3191",
       "timestamp": 1729766232,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 85,
@@ -7709,19 +7709,19 @@
       "id": 104,
       "user_address": "0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd",
       "timestamp": 1729862544,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 105,
       "user_address": "0x21074d35e05d6acf1960fb545e7b41728925b4ce",
       "timestamp": 1729863588,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 106,
       "user_address": "0x5d4ff079b104022472c96fa1da7c193398e7e9be",
       "timestamp": 1729863888,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 107,
@@ -7949,13 +7949,13 @@
       "id": 144,
       "user_address": "0x0c092cc69c10d01d8aa643be23f52c14ebfa2414",
       "timestamp": 1730111616,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 145,
       "user_address": "0xa818cef865c0868ca4cc494f673fcdaad6a77cea",
       "timestamp": 1730111772,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 146,
@@ -8579,7 +8579,7 @@
       "id": 249,
       "user_address": "0xb954055d5e99ced9889faf7e986e85693579bf99",
       "timestamp": 1730125812,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 250,
@@ -8639,13 +8639,13 @@
       "id": 259,
       "user_address": "0xb4f4458aea2d60dba9b3582664b6e80936398a50",
       "timestamp": 1730126400,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 260,
       "user_address": "0x083c01f8867781d86146b8c53c627b5b4b84a06f",
       "timestamp": 1730126436,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 261,
@@ -8669,7 +8669,7 @@
       "id": 264,
       "user_address": "0xda13d4c848c1116206fbc583a59c8e094edf3103",
       "timestamp": 1730126484,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 265,
@@ -8843,7 +8843,7 @@
       "id": 293,
       "user_address": "0x82ea9c354c80655f7b2237afe1603791e5ddadfe",
       "timestamp": 1730127408,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 294,
@@ -9341,7 +9341,7 @@
       "id": 376,
       "user_address": "0x014862be027383841a40cc3b3945ed2b406ff627",
       "timestamp": 1730199684,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 377,
@@ -9593,19 +9593,19 @@
       "id": 418,
       "user_address": "0x5bdae8790c747e901403ef610e63f362fedadd8e",
       "timestamp": 1730209728,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 419,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730209788,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 420,
       "user_address": "0xb7469c43535c826e29c30d25a9f3a035759cf132",
       "timestamp": 1730209908,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 421,
@@ -9707,7 +9707,7 @@
       "id": 437,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730210544,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 438,
@@ -9929,7 +9929,7 @@
       "id": 474,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730213988,
-      "comment": "You have joined the game, supporting the chain 137. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Polygon. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 475,
@@ -10061,7 +10061,7 @@
       "id": 496,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216256,
-      "comment": "You have joined the game, supporting the chain 42161. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 497,
@@ -11177,7 +11177,7 @@
       "id": 682,
       "user_address": "0xb94f0b27235db6cbdfcc0c69f1c0d3dd7f4251ea",
       "timestamp": 1730398584,
-      "comment": "You have joined the game, supporting the chain 1. Go ahead and do your first multichain atomic mints."
+      "comment": "You have joined the game, supporting Ethereum. Go ahead and do your first multichain atomic mints."
     },
     {
       "id": 683,

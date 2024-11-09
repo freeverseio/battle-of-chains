@@ -1,7 +1,7 @@
 import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
-import { AssignOperator, User } from '../db/entity';
+import { AssignOperator, Log, User } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
 import murmurhash from 'murmurhash';
@@ -9,6 +9,22 @@ import murmurhash from 'murmurhash';
 const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
 const midPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(2);
 const quarterPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(4);
+
+export function chainName(chain: Number, chains: ChainType[]) : string {
+    for (const c of chains) {
+        if (c.chain_id === chain) return c.name;
+    }
+    return chain.toString();
+} 
+
+export function log2user(address: string, comment: string, timestamp: number, logs: Log[]) {
+    logs.push({
+        id: logs.length,
+        user_address: address,
+        timestamp: timestamp,
+        comment: comment,
+    });
+}
 
 export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
     const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);

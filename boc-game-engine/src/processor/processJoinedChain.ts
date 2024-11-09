@@ -1,5 +1,5 @@
 import { Storage, JoinedChainEvent } from './types';
-import { chainIsNotSupported } from './utils'
+import { chainIsNotSupported, chainName, log2user } from './utils'
 import * as constants from './constants';
 
 export function processJoinedChain(event: JoinedChainEvent, storage: Storage): void {
@@ -31,10 +31,7 @@ export function processJoinedChain(event: JoinedChainEvent, storage: Storage): v
         });
     }
 
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.user,
-        timestamp: event.timestamp,
-        comment: `You have joined the game, supporting the chain ${event.homeChain}. Go ahead and do your first multichain atomic mints.`,
-    });
+    let comment = `You have joined the game, supporting ${chainName(event.homeChain, storage.chains)}`;
+    comment += `. Go ahead and do your first multichain atomic mints.`;
+    log2user(event.user, comment, event.timestamp, storage.logs);
 }

@@ -5,7 +5,7 @@ export async function getChains(): Promise<ChainType[]> {
     const events: ChainType[] = [
       {
         chain_id: 137,
-        name: "Polygon PoS Mock",
+        name: "Polygon",
         score: 242,
       },
       {
