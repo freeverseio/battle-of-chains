@@ -7115,13 +7115,13 @@
       "id": 5,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1729163592,
-      "comment": "You acquired asset with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain 137"
+      "comment": "You acquired asset with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on Polygon"
     },
     {
       "id": 6,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1729163592,
-      "comment": "You sold the asset your previously owned with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain 137"
+      "comment": "You sold the asset your previously owned with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain Polygon"
     },
     {
       "id": 7,
@@ -7631,13 +7631,13 @@
       "id": 91,
       "user_address": "0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd",
       "timestamp": 1729778787,
-      "comment": "You acquired asset with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain 137"
+      "comment": "You acquired asset with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on Polygon"
     },
     {
       "id": 92,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1729778787,
-      "comment": "You sold the asset your previously owned with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain 137"
+      "comment": "You sold the asset your previously owned with tokenId 66057979215653289099562052760734921540679241766849125926542385189126540013744 on chain Polygon"
     },
     {
       "id": 93,
