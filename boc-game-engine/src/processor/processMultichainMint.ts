@@ -1,6 +1,6 @@
 import { Storage, MultichainMintEvent, AssetTypeOptions, AssetType, AssetStatsType, AssetState, AssetLevelDetails } from './types'; // Import the necessary types
 import murmurhash from 'murmurhash'; // Assuming you're using murmurhash
-import { getUserTreasury, evolveTreasuryByAddress, subtractFromTreasury, level2xp, isFactory, isCharacter, applyNoise, getCharacterComment, costToMintCharacter, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, computeRandoms } from './utils';
+import { getUserTreasury, evolveTreasuryByAddress, subtractFromTreasury, level2xp, isFactory, isCharacter, applyNoise, getCharacterComment, costToMintCharacter, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, computeRandoms, log2user } from './utils';
 import { AVERAGE_POTENTIAL, HOMECHAIN_BOOST_FACTOR, LEVEL_BOOST_FACTOR } from './constants';
 import { FactorySpecies, SpeciesTypicalyStats } from './species';
 import { AttackSpeciesType, attackSpeciesStats } from './speciesAttack';
@@ -116,7 +116,12 @@ function createCharacter(chain: number, event: MultichainMintEvent, storage: Sto
     const assetCost = costToMintCharacter(assetDetails.level);
     subtractFromTreasury(event.user, event.timestamp, assetCost, storage);
 
-    addAssetMintLog(getCharacterComment(event, chain, assetDetails, assetCost, species), event, storage);
+    log2user(
+        event.user,
+        getCharacterComment(event, chain, assetDetails, assetCost, species),
+        event.timestamp,
+        storage.logs
+    )
 }
 
 
@@ -134,7 +139,7 @@ function createFactory(chain: number, event: MultichainMintEvent, storage: Stora
     }
     pushAsset(stats, chain, event, storage);
     const comment = `You have created a factory asset on chain ${chain} with tokenId = ${(event.tokenId).toString()}. You can trade it in that chain, and start using it to create better assets.`;
-    addAssetMintLog(comment, event, storage);
+    log2user(event.user, comment, event.timestamp, storage.logs);
 }
 
 function pushAsset(stats: AssetStatsType, chain: number, event: MultichainMintEvent, storage: Storage) {
