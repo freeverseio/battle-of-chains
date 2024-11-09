@@ -7151,7 +7151,7 @@
       "id": 11,
       "chain": 137,
       "timestamp": 1729170252,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 12,
@@ -7199,67 +7199,67 @@
       "id": 19,
       "chain": 137,
       "timestamp": 1729247364,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 1, on the area: ALL"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Ethereum, on the area: ALL"
     },
     {
       "id": 20,
       "chain": 137,
       "timestamp": 1729247652,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 1, on the area: ALL"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Ethereum, on the area: ALL"
     },
     {
       "id": 21,
       "chain": 137,
       "timestamp": 1729251168,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 22,
       "chain": 137,
       "timestamp": 1729251264,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 23,
       "chain": 137,
       "timestamp": 1729257240,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 24,
       "chain": 137,
       "timestamp": 1729257324,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 25,
       "chain": 137,
       "timestamp": 1729257396,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 1, on the area: NORTH"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Ethereum, on the area: NORTH"
     },
     {
       "id": 26,
       "chain": 137,
       "timestamp": 1729257552,
-      "comment": "You are now supporting that chain 137 performs an AttackAddress action. The attack is to be done on chain_id: 1, on the address: 0x22194be82e86fe2d24fa19f509d7d5f0b0065783"
+      "comment": "You are now supporting that Polygon performs an AttackAddress action. The attack is to be done  on Ethereum}, on the address: 0x22194be82e86fe2d24fa19f509d7d5f0b0065783"
     },
     {
       "id": 27,
       "chain": 137,
       "timestamp": 1729257660,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 28,
       "chain": 137,
       "timestamp": 1729257756,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 29,
       "chain": 137,
       "timestamp": 1729258572,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 30,
@@ -7349,7 +7349,7 @@
       "id": 44,
       "chain": 137,
       "timestamp": 1729516584,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 45,
@@ -7487,7 +7487,7 @@
       "id": 67,
       "chain": 137,
       "timestamp": 1729583700,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 1, on the area: SOUTH"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Ethereum, on the area: SOUTH"
     },
     {
       "id": 68,
@@ -7517,25 +7517,25 @@
       "id": 72,
       "chain": 1,
       "timestamp": 1729608108,
-      "comment": "You are now supporting that chain 1 performs an Defend action."
+      "comment": "You are now supporting that Ethereum performs an Defend action."
     },
     {
       "id": 73,
       "chain": 137,
       "timestamp": 1729610652,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 1, on the area: EAST"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Ethereum, on the area: EAST"
     },
     {
       "id": 74,
       "chain": 137,
       "timestamp": 1729611840,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 75,
       "chain": 137,
       "timestamp": 1729671012,
-      "comment": "You are now supporting that chain 137 performs an AttackAddress action. The attack is to be done on chain_id: 1, on the address: 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646"
+      "comment": "You are now supporting that Polygon performs an AttackAddress action. The attack is to be done  on Ethereum}, on the address: 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646"
     },
     {
       "id": 76,
@@ -7565,7 +7565,7 @@
       "id": 80,
       "chain": 1,
       "timestamp": 1729693872,
-      "comment": "You are now supporting that chain 1 performs an Defend action."
+      "comment": "You are now supporting that Ethereum performs an Defend action."
     },
     {
       "id": 81,
@@ -7685,13 +7685,13 @@
       "id": 100,
       "chain": 1,
       "timestamp": 1729862160,
-      "comment": "You are now supporting that chain 1 performs an Improve action."
+      "comment": "You are now supporting that Ethereum performs an Improve action."
     },
     {
       "id": 101,
       "chain": 137,
       "timestamp": 1729862400,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 102,
@@ -7991,7 +7991,7 @@
       "id": 151,
       "chain": 137,
       "timestamp": 1730112288,
-      "comment": "You are now supporting that chain 137 performs an AttackArea action. The attack is to be done on chain_id: 42161, on the area: SOUTH"
+      "comment": "You are now supporting that Polygon performs an AttackArea action. The attack is to be done on Arbitrum, on the area: SOUTH"
     },
     {
       "id": 152,
@@ -8207,7 +8207,7 @@
       "id": 187,
       "chain": 137,
       "timestamp": 1730121936,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 188,
@@ -8309,7 +8309,7 @@
       "id": 204,
       "chain": 137,
       "timestamp": 1730124228,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 205,
@@ -8513,7 +8513,7 @@
       "id": 238,
       "chain": 137,
       "timestamp": 1730125128,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 239,
@@ -8603,7 +8603,7 @@
       "id": 253,
       "chain": 42161,
       "timestamp": 1730125884,
-      "comment": "You are now supporting that chain 42161 performs an Improve action."
+      "comment": "You are now supporting that Arbitrum performs an Improve action."
     },
     {
       "id": 254,
@@ -8837,7 +8837,7 @@
       "id": 292,
       "chain": 1,
       "timestamp": 1730127468,
-      "comment": "You are now supporting that chain 1 performs an AttackArea action. The attack is to be done on chain_id: 137, on the area: NORTH"
+      "comment": "You are now supporting that Ethereum performs an AttackArea action. The attack is to be done on Polygon, on the area: NORTH"
     },
     {
       "id": 293,
@@ -8957,7 +8957,7 @@
       "id": 312,
       "chain": 137,
       "timestamp": 1730128824,
-      "comment": "You are now supporting that chain 137 performs an AttackAddress action. The attack is to be done on chain_id: 1, on the address: 0x971af926ae88704f804c8c847711285a743ab0b0"
+      "comment": "You are now supporting that Polygon performs an AttackAddress action. The attack is to be done  on Ethereum}, on the address: 0x971af926ae88704f804c8c847711285a743ab0b0"
     },
     {
       "id": 313,
@@ -9497,13 +9497,13 @@
       "id": 402,
       "chain": 42161,
       "timestamp": 1730201796,
-      "comment": "You are now supporting that chain 42161 performs an AttackAddress action. The attack is to be done on chain_id: 1, on the address: 0x4e6da57f62b9954fbb6bab531f556be08e128e75"
+      "comment": "You are now supporting that Arbitrum performs an AttackAddress action. The attack is to be done  on Ethereum}, on the address: 0x4e6da57f62b9954fbb6bab531f556be08e128e75"
     },
     {
       "id": 403,
       "chain": 137,
       "timestamp": 1730201868,
-      "comment": "You are now supporting that chain 137 performs an AttackAddress action. The attack is to be done on chain_id: 1, on the address: 0x014862be027383841a40cc3b3945ed2b406ff627"
+      "comment": "You are now supporting that Polygon performs an AttackAddress action. The attack is to be done  on Ethereum}, on the address: 0x014862be027383841a40cc3b3945ed2b406ff627"
     },
     {
       "id": 404,
@@ -9665,7 +9665,7 @@
       "id": 430,
       "chain": 1,
       "timestamp": 1730210388,
-      "comment": "You are now supporting that chain 1 performs an Defend action."
+      "comment": "You are now supporting that Ethereum performs an Defend action."
     },
     {
       "id": 431,
@@ -9983,7 +9983,7 @@
       "id": 483,
       "chain": 137,
       "timestamp": 1730214420,
-      "comment": "You are now supporting that chain 137 performs an Defend action."
+      "comment": "You are now supporting that Polygon performs an Defend action."
     },
     {
       "id": 484,
@@ -10169,7 +10169,7 @@
       "id": 514,
       "chain": 42161,
       "timestamp": 1730217852,
-      "comment": "You are now supporting that chain 42161 performs an Defend action."
+      "comment": "You are now supporting that Arbitrum performs an Defend action."
     },
     {
       "id": 515,
@@ -10493,7 +10493,7 @@
       "id": 568,
       "chain": 137,
       "timestamp": 1730361144,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
       "id": 569,
@@ -11297,7 +11297,7 @@
       "id": 702,
       "chain": 137,
       "timestamp": 1730718444,
-      "comment": "You are now supporting that chain 137 performs an Improve action."
+      "comment": "You are now supporting that Polygon performs an Improve action."
     }
   ],
   "currentPeriodChainActionProposals": [
