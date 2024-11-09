@@ -14,7 +14,7 @@ export function chainName(chain: Number, chains: ChainType[]) : string {
     for (const c of chains) {
         if (c.chain_id === chain) return c.name;
     }
-    return chain.toString();
+    return `chain ${chain}`;
 } 
 
 export function log2user(address: string, comment: string, timestamp: number, logs: Log[]) {
