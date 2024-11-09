@@ -1022,19 +1022,19 @@
       "id": 69,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731056568,
-      "comment": "You have created a factory asset on chain 137 with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Polygon with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 70,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731056568,
-      "comment": "You have created a factory asset on chain 1 with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Ethereum with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 71,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731056568,
-      "comment": "You have created a factory asset on chain 42161 with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Arbitrum with tokenId = 94618716169324811285993915134933272529774888099172133737223208870062047217222. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 72,
@@ -1082,37 +1082,37 @@
       "id": 79,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059676,
-      "comment": "You have created a factory asset on chain 137 with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Polygon with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 80,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059676,
-      "comment": "You have created a factory asset on chain 1 with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Ethereum with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 81,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059676,
-      "comment": "You have created a factory asset on chain 42161 with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Arbitrum with tokenId = 83446625163342592366414844621478417611926946360383865896400272686624216332715. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 82,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059724,
-      "comment": "You have created a factory asset on chain 137 with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Polygon with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 83,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059724,
-      "comment": "You have created a factory asset on chain 1 with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Ethereum with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 84,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059724,
-      "comment": "You have created a factory asset on chain 42161 with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
+      "comment": "You have created a factory asset on Arbitrum with tokenId = 2890146185899921142405516721440150940437787760868692258600338239757941881259. You can trade it in that chain, and start using it to create better assets."
     },
     {
       "id": 85,
@@ -1130,37 +1130,37 @@
       "id": 87,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059832,
-      "comment": "You have created an asset of type: attack, and species: Round Table Conductor, on chain 137, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. Hosts endless meetings, draining productivity and morale from the inside. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Round Table Conductor, on Polygon, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. Hosts endless meetings, draining productivity and morale from the inside. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 88,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059832,
-      "comment": "You have created an asset of type: attack, and species: Bullshiter, on chain 1, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Bullshiter, on Ethereum, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 89,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059832,
-      "comment": "You have created an asset of type: attack, and species: Bullshiter, on chain 42161, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Bullshiter, on Arbitrum, with tokenId = 69825801546389271994595880891315708473805311517935554158938057319702925556139. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 90,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059892,
-      "comment": "You have created an asset of type: defense, and species: Rust Developer, on chain 137, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: Rust Developer, on Polygon, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 91,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059892,
-      "comment": "You have created an asset of type: defense, and species: Rust Developer, on chain 1, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: Rust Developer, on Ethereum, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 92,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731059892,
-      "comment": "You have created an asset of type: defense, and species: IT Guy, on chain 42161, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Can fix your computer, network, and spirit—all while pretending to be annoyed. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: IT Guy, on Arbitrum, with tokenId = 13010472223292890644747983926681207829397678343145741675468287114315494472107. Can fix your computer, network, and spirit—all while pretending to be annoyed. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 93,
@@ -1172,19 +1172,19 @@
       "id": 94,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731060084,
-      "comment": "You have created an asset of type: attack, and species: Sales Guy, on chain 137, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. Can sell you back your own data for triple the price. Armed with charm and empty promises. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Sales Guy, on Polygon, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. Can sell you back your own data for triple the price. Armed with charm and empty promises. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 95,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731060084,
-      "comment": "You have created an asset of type: attack, and species: Vilatik Tuberin, on chain 1, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Vilatik Tuberin, on Ethereum, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 96,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731060084,
-      "comment": "You have created an asset of type: attack, and species: White Hacker, on chain 42161, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. The 'ethical' hacker who claims to be on your side… until they aren’t. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: White Hacker, on Arbitrum, with tokenId = 47467204930341560785823668434005702745114849661273532759050631431652217570886. The 'ethical' hacker who claims to be on your side… until they aren’t. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 97,
@@ -1202,55 +1202,55 @@
       "id": 99,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061440,
-      "comment": "You have created an asset of type: attack, and species: Bullshiter, on chain 137, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Bullshiter, on Polygon, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 100,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061440,
-      "comment": "You have created an asset of type: attack, and species: Vilatik Tuberin, on chain 1, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Vilatik Tuberin, on Ethereum, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 101,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061440,
-      "comment": "You have created an asset of type: attack, and species: Sales Guy, on chain 42161, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. Can sell you back your own data for triple the price. Armed with charm and empty promises. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: Sales Guy, on Arbitrum, with tokenId = 13578319754279521619585568446922798231901181890759134030549937861644318524998. Can sell you back your own data for triple the price. Armed with charm and empty promises. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 102,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061524,
-      "comment": "You have created an asset of type: defense, and species: Satoshi Nakamoto, on chain 137, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. The ghostly figure everyone worships but no one has seen. Leaves breadcrumbs of cryptography everywhere. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: Satoshi Nakamoto, on Polygon, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. The ghostly figure everyone worships but no one has seen. Leaves breadcrumbs of cryptography everywhere. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 103,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061524,
-      "comment": "You have created an asset of type: defense, and species: Angel Investor, on chain 1, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. Shows up with money, and a smile, and leaves right before things get complicated. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: Angel Investor, on Ethereum, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. Shows up with money, and a smile, and leaves right before things get complicated. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 104,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061524,
-      "comment": "You have created an asset of type: defense, and species: IT Guy, on chain 42161, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. Can fix your computer, network, and spirit—all while pretending to be annoyed. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: IT Guy, on Arbitrum, with tokenId = 79934257272465688290308269839044197148573160324631829898257013021816027203142. Can fix your computer, network, and spirit—all while pretending to be annoyed. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 105,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061548,
-      "comment": "You have created an asset of type: defense, and species: QA Guy, on chain 137, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Lives to find bugs you didn’t even know existed. Always has that ‘Did you test this?’ face. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: QA Guy, on Polygon, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Lives to find bugs you didn’t even know existed. Always has that ‘Did you test this?’ face. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 106,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061548,
-      "comment": "You have created an asset of type: defense, and species: High-School Developer, on chain 1, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: High-School Developer, on Ethereum, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 107,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731061548,
-      "comment": "You have created an asset of type: defense, and species: High-School Developer, on chain 42161, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: defense, and species: High-School Developer, on Arbitrum, with tokenId = 92579564731089476595600783700775797399664405539539367755450072329835466049094. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
       "id": 108,

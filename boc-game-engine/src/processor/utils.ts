@@ -622,14 +622,14 @@ export function applyNoise(n: number, noisePercentage: number, seed: number) : n
 }
 
 
-export function getCharacterComment(event: MultichainMintEvent, chain: number, details: AssetLevelDetails, cost: number, species: DefendSpeciesType | AttackSpeciesType) : string {
+export function getCharacterComment(event: MultichainMintEvent, chain: string, details: AssetLevelDetails, cost: number, species: DefendSpeciesType | AttackSpeciesType) : string {
     const typeName = event.typeId === AssetTypeOptions.AttackAsset ? "attack" : "defense";
     const lore = event.typeId === AssetTypeOptions.AttackAsset
         ? AttackSpeciesLore[species as AttackSpeciesType]
         : DefendSpeciesLore[species as DefendSpeciesType];
 
     let comment = `You have created an asset of type: ${typeName}, and species: ${lore.name}`;
-    comment += `, on chain ${chain}, with tokenId = ${(event.tokenId).toString()}`;
+    comment += `, on ${chain}, with tokenId = ${(event.tokenId).toString()}`;
     comment += `. ${lore.description}`;
     comment += ` It costed ${cost} from your treasury. The asset has level ${details.level}`;
     if (details.level < details.factoryLevelUsed) {
