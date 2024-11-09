@@ -1,5 +1,5 @@
 import { Storage, AssignOperatorEvent } from './types';
-import { createDAO, userDoesNotExist } from './utils'
+import { chainName, createDAO, log2user, userDoesNotExist } from './utils'
 
 export function processAssignOperator(event: AssignOperatorEvent, storage: Storage): void {
     console.log(`Processing AssignOperator Event ${event.timestamp}, From: ${event.from}, Operator: ${event.operator}, Timestamp: ${event.timestamp}, on chain ${event.eventChain}`);
@@ -19,12 +19,12 @@ export function processAssignOperator(event: AssignOperatorEvent, storage: Stora
             chain_id: event.eventChain,
             timestamp: event.timestamp
         });
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.from,
-            timestamp: event.timestamp,
-            comment: `Added new operator assignment to ${event.operator} on chain ${event.eventChain}`,
-        });
+        log2user(
+            event.from,
+            `Added new operator assignment to ${event.operator} on ${chainName(event.eventChain, storage.chains)}`,
+            event.timestamp,
+            storage.logs,
+        )
         return;
     }
 
