@@ -1,6 +1,6 @@
 import { ATTACK_TIME_TO_DEPART } from './constants';
 import { Storage, AttackEvent, PendingState, AssetState, PendingActionOption } from './types';
-import { canUserAttackOrUpgradeOnChain, chainName, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, log2user, userDoesNotExist } from './utils';
+import { canUserAttackOrUpgradeOnChain, chainName, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, log2user, readableDate, userDoesNotExist } from './utils';
 
 
 export function processAttack(event: AttackEvent, storage: Storage): void {
@@ -59,7 +59,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     storage.processedPendingIdx += 1;
     log2user(
         event.attacker,
-        `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${toBeExectutedAt}`,
+        `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${readableDate(toBeExectutedAt)}`,
         event.timestamp,
         storage.logs,
     );
@@ -71,7 +71,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     evolveTreasuryByAddress(event.targetAddress, event.timestamp, storage);
     log2user(
         event.targetAddress,
-        `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${toBeExectutedAt}`,
+        `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${readableDate(toBeExectutedAt)}`,
         event.timestamp,
         storage.logs,
     );

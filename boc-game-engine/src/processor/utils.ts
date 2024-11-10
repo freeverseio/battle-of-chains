@@ -10,6 +10,19 @@ const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
 const midPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(2);
 const quarterPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(4);
 
+export function readableDate(timestamp: number): string {
+    const date = new Date(timestamp * 1000);
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const year = date.getUTCFullYear();
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+    return `${day}/${month}/${year}, ${hours}:${minutes}, UTC`;
+}
+
+
+
 export function chainName(chain: Number | undefined, chains: ChainType[]) : string {
     if (!chain) return '';
     for (const c of chains) {

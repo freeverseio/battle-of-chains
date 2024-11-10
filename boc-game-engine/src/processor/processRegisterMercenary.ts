@@ -1,6 +1,5 @@
-import { Storage, JoinedChainEvent, RegisterMercenaryEvent } from './types';
-import { chainIsNotSupported, chainName, findUser, isCorrectOperator, log2user, userDoesNotExist } from './utils'
-import * as constants from './constants';
+import { Storage, RegisterMercenaryEvent } from './types';
+import { chainIsNotSupported, chainName, findUser, isCorrectOperator, log2user } from './utils'
 
 export function processRegisterMercenary(event: RegisterMercenaryEvent, storage: Storage): void {
     console.log(`Processing RegisterMercenary Event ${event.timestamp}, ${event.mercenaryAddress}, Chain: ${event.mercenaryChain}, Timestamp: ${event.timestamp}`);
