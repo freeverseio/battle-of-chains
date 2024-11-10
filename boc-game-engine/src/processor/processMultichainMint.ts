@@ -163,12 +163,3 @@ function pushAsset(stats: AssetStatsType, chain: number, event: MultichainMintEv
         pendingAttackId: undefined,
     });
 }
-
-function addAssetMintLog(comment: string, event: MultichainMintEvent, storage: Storage) {
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.user,
-        timestamp: event.timestamp,
-        comment: comment,
-    });
-}
