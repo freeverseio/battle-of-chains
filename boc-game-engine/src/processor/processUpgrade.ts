@@ -34,7 +34,7 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
             `You tried to upgrade an asset on ${chainName(event.chain, storage.chains)} that either does not exist, is not alive, or that you do not own`,
             event.timestamp,
             storage.logs,
-        )
+        );
         return;
     }
 
