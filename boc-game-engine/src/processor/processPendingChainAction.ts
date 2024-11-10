@@ -1,5 +1,5 @@
 import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea } from './types';
-import { chainIsNotSupported, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
+import { chainIsNotSupported, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
 import { INTERVAL_BETWEEN_CHAIN_ACTIONS } from './constants';
 import murmurhash from 'murmurhash';
 
@@ -42,30 +42,30 @@ function wasActionMissed(action: ChainActionProposalType | undefined) : boolean 
 
 function executeChainAction(action: ChainActionProposalType, timestamp: number, allActions: ChainActionProposalType[], storage: Storage) {
     if (wasActionMissed(action)) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `Chain Action missed! ChainType ${action.sourceChain} did not have any proposal in the current period`,
-        });
+        log2chain(
+            action.sourceChain,
+            `Chain Action missed! ChainType ${action.sourceChain} did not have any proposal in the current period`,
+            timestamp,
+            storage.logs,
+        );
         return;
     }
     if (action.actionType === ChainActionProposalOption.Defend) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `ChainType Action selected! ChainType ${action.sourceChain} decided to Defend`,
-        });
+        log2chain(
+            action.sourceChain,
+            `ChainType Action selected! ChainType ${action.sourceChain} decided to Defend`,
+            timestamp,
+            storage.logs,
+        );
         return;
     }
     if (action.actionType === ChainActionProposalOption.Improve) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `ChainType Action selected! ChainType ${action.sourceChain} decided to Improve. All assets in chain improved their XP and Health`,
-        });
+        log2chain(
+            action.sourceChain,
+            `ChainType Action selected! ChainType ${action.sourceChain} decided to Improve. All assets in chain improved their XP and Health`,
+            timestamp,
+            storage.logs,
+        );
         executeChainImprove(action.sourceChain, storage);
         return;
     }
@@ -106,11 +106,5 @@ function executeChainAction(action: ChainActionProposalType, timestamp: number, 
     }
    
     comment += `. The target chain was ${!isTargetChainDefending ? 'NOT ': ''}defending, which resulted into ${isTargetChainDefending ? 'reduced': 'increased'} damage.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        chain: action.sourceChain,
-        timestamp: timestamp,
-        comment: comment,
-    });
+    log2chain(action.sourceChain, comment, timestamp, storage.logs);
 }
