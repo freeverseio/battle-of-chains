@@ -1,5 +1,5 @@
 import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea } from './types';
-import { chainIsNotSupported, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
+import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
 import { INTERVAL_BETWEEN_CHAIN_ACTIONS } from './constants';
 import murmurhash from 'murmurhash';
 
@@ -8,7 +8,7 @@ export function processChainActions(action: PendingChainAction, storage: Storage
 
     // Get the most voted actions per chain (do not execute them yet)
     for (let chain of storage.chains) {
-        console.log(`Processing ChainType Action for chain ${chain.chain_id}`);
+        console.log(`Processing Chain Action for chain ${chain.chain_id}`);
         let mostVoted = selectMostVotedChainAction(chain.chain_id, action.toBeExectutedAt, storage);
         if (!mostVoted) {
             mostVoted = {hash: "0", sourceChain: chain.chain_id, votes: 0, actionType: 0};     
@@ -42,36 +42,36 @@ function wasActionMissed(action: ChainActionProposalType | undefined) : boolean 
 
 function executeChainAction(action: ChainActionProposalType, timestamp: number, allActions: ChainActionProposalType[], storage: Storage) {
     if (wasActionMissed(action)) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `Chain Action missed! ChainType ${action.sourceChain} did not have any proposal in the current period`,
-        });
+        log2chain(
+            action.sourceChain,
+            `Chain Action missed! ${chainName(action.sourceChain, storage.chains)} did not have any proposal in the current period`,
+            timestamp,
+            storage.logs,
+        );
         return;
     }
     if (action.actionType === ChainActionProposalOption.Defend) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `ChainType Action selected! ChainType ${action.sourceChain} decided to Defend`,
-        });
+        log2chain(
+            action.sourceChain,
+            `Chain Action selected! ${chainName(action.sourceChain, storage.chains)} decided to Defend`,
+            timestamp,
+            storage.logs,
+        );
         return;
     }
     if (action.actionType === ChainActionProposalOption.Improve) {
-        storage.logs.push({
-            id: storage.logs.length,
-            chain: action.sourceChain,
-            timestamp: timestamp,
-            comment: `ChainType Action selected! ChainType ${action.sourceChain} decided to Improve. All assets in chain improved their XP and Health`,
-        });
+        log2chain(
+            action.sourceChain,
+            `Chain Action selected! ${chainName(action.sourceChain, storage.chains)} decided to Improve. All assets in chain improved their XP and Health`,
+            timestamp,
+            storage.logs,
+        );
         executeChainImprove(action.sourceChain, storage);
         return;
     }
 
-    let comment = `Attack ChainType Action Selected! ChainType ${action.sourceChain} decided to perform an ${actionTypeNames[action.actionType]} action.`;
-    comment += ` The attack is on chain_id: ${action.targetChain}`;
+    let comment = `Attack Chain Action Selected! ${chainName(action.sourceChain, storage.chains)} decided to perform an ${actionTypeNames[action.actionType]} action.`;
+    comment += ` The attack is on ${chainName(action.targetChain, storage.chains)}`;
 
     if (!action.targetChain || chainIsNotSupported(action.targetChain, storage.chains)) {
         console.log('WARNING: targetChain should have been defined or supported!', action);
@@ -106,11 +106,5 @@ function executeChainAction(action: ChainActionProposalType, timestamp: number, 
     }
    
     comment += `. The target chain was ${!isTargetChainDefending ? 'NOT ': ''}defending, which resulted into ${isTargetChainDefending ? 'reduced': 'increased'} damage.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        chain: action.sourceChain,
-        timestamp: timestamp,
-        comment: comment,
-    });
+    log2chain(action.sourceChain, comment, timestamp, storage.logs);
 }

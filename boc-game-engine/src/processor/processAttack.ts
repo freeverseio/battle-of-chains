@@ -1,6 +1,6 @@
 import { ATTACK_TIME_TO_DEPART } from './constants';
 import { Storage, AttackEvent, PendingState, AssetState, PendingActionOption } from './types';
-import { canUserAttackOrUpgradeOnChain, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, userDoesNotExist } from './utils';
+import { canUserAttackOrUpgradeOnChain, chainName, evolveTreasuryByAddress, findUser, getAllAssetsThatCanPrepareForAttack, getAllAssetsThatCanPrepareForAttackAmong, isCorrectOperator, log2user, readableDate, userDoesNotExist } from './utils';
 
 
 export function processAttack(event: AttackEvent, storage: Storage): void {
@@ -27,12 +27,12 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
         getAllAssetsThatCanPrepareForAttackAmong(event.attacker, event.targetChain, storage.assets, event.tokenIds);
 
     if (availableAssets.length == 0) {
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.attacker,
-            timestamp: event.timestamp,
-            comment: `You tried to attack ${event.attacker} on chain ${event.eventChain}, but you do not have available assets in that chain.`,
-        });
+        log2user(
+            event.attacker,
+            `You tried to attack ${event.attacker} on ${chainName(event.eventChain, storage.chains)}, but you do not have available assets in that chain.`,
+            event.timestamp,
+            storage.logs,
+        );
         return
     }
 
@@ -57,23 +57,22 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
         type: PendingActionOption.Attack,
     });
     storage.processedPendingIdx += 1;
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.attacker,
-        timestamp: event.timestamp,
-        comment: `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${toBeExectutedAt}`,
-    });
+    log2user(
+        event.attacker,
+        `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${readableDate(toBeExectutedAt)}`,
+        event.timestamp,
+        storage.logs,
+    );
 
     if (userDoesNotExist(event.targetAddress, storage.users)) {
         console.log('WARNING: An attack will likely hit an empty location', event.targetAddress);
         return;
     }
     evolveTreasuryByAddress(event.targetAddress, event.timestamp, storage);
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.targetAddress,
-        timestamp: event.timestamp,
-        comment: `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${toBeExectutedAt}`,
-    });
+    log2user(
+        event.targetAddress,
+        `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${readableDate(toBeExectutedAt)}`,
+        event.timestamp,
+        storage.logs,
+    );
 }

@@ -1,6 +1,5 @@
-import { Storage, JoinedChainEvent, RegisterMercenaryEvent } from './types';
-import { chainIsNotSupported, findUser, isCorrectOperator, userDoesNotExist } from './utils'
-import * as constants from './constants';
+import { Storage, RegisterMercenaryEvent } from './types';
+import { chainIsNotSupported, chainName, findUser, isCorrectOperator, log2user } from './utils'
 
 export function processRegisterMercenary(event: RegisterMercenaryEvent, storage: Storage): void {
     console.log(`Processing RegisterMercenary Event ${event.timestamp}, ${event.mercenaryAddress}, Chain: ${event.mercenaryChain}, Timestamp: ${event.timestamp}`);
@@ -29,10 +28,7 @@ export function processRegisterMercenary(event: RegisterMercenaryEvent, storage:
     existingUser.joined_timestamp = event.timestamp;
     existingUser.treasuryLastUpdate = event.timestamp;
 
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.mercenaryAddress,
-        timestamp: event.timestamp,
-        comment: `You have registered as a Mercenary in chain ${event.mercenaryAddress}. You can now acquire assets, attack and upgrade. You cannot mint, but you can share your treasury.`,
-    });
+    let comment = `You have registered as a Mercenary on ${chainName(event.mercenaryChain, storage.chains)}`;
+    comment += `. You can now acquire assets, attack and upgrade. You cannot mint, but you can share your treasury.`;
+    log2user(event.mercenaryAddress, comment, event.timestamp, storage.logs);
 }

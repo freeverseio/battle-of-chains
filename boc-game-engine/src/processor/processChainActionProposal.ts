@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
 import { Storage, ChainActionProposalEvent, ChainActionProposalOption, actionAreaNames, actionTypeNames } from './types';
-import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, findUser, hasHomechain, isCorrectOperator, userDoesNotExist } from './utils'
+import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, chainName, findUser, hasHomechain, isCorrectOperator, log2chain, userDoesNotExist } from './utils'
 
 export function processChainActionProposal(event: ChainActionProposalEvent, storage: Storage): void {
     console.log(`Processing ChainType Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);
@@ -40,22 +40,16 @@ export function processChainActionProposal(event: ChainActionProposalEvent, stor
     }
     assignUserToChainProposal(event.user, proposalHash, storage.users, storage.currentPeriodChainActionProposals);
 
-    let comment = `You are now supporting that chain ${event.sourceChain} performs an ${actionTypeNames[event.actionType]} action.`;
+    let comment = `You are now supporting that ${chainName(event.sourceChain, storage.chains)} performs an ${actionTypeNames[event.actionType]} action.`;
     if (event.actionType == ChainActionProposalOption.AttackArea) {
-        comment += ` The attack is to be done on chain_id: ${event.targetChain}`;
+        comment += ` The attack is to be done on ${chainName(event.targetChain, storage.chains)}`;
         comment += `, on the area: ${actionAreaNames[event.attackArea]}`;
     }
     if (event.actionType == ChainActionProposalOption.AttackAddress) {
-        comment += ` The attack is to be done on chain_id: ${event.targetChain}`;
+        comment += ` The attack is to be done  on ${chainName(event.targetChain, storage.chains)}}`;
         comment += `, on the address: ${event.attackAddress}`;
     }
-
-    storage.logs.push({
-        id: storage.logs.length,
-        chain: event.sourceChain,
-        timestamp: event.timestamp,
-        comment: comment,
-    });
+    log2chain(event.sourceChain, comment, event.timestamp, storage.logs);
 }
 
 

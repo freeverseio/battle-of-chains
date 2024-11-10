@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
@@ -11,12 +11,12 @@ export function processPendingAttack(attack: PendingAttack, storage: Storage) {
     }
     if (attack.currentState === PendingState.Travelling) {
         if (userDoesNotExist(attack.targetAddress, storage.users)) {
-            storage.logs.push({
-                id: storage.logs.length,
-                user_address: attack.attacker,
-                timestamp: attack.toBeExectutedAt,
-                comment: `Your troops arrived at ${attack.targetAddress} but found noone to attack. They're heading back`,
-            });
+            log2user(
+                attack.attacker,
+                `Your troops arrived at ${attack.targetAddress} but found noone to attack. They're heading back`,
+                attack.toBeExectutedAt,
+                storage.logs
+            );
         } else {
             processAttackArrival(attack, storage);
         }
@@ -32,13 +32,7 @@ function processDepartToTravel(attack: PendingAttack, storage: Storage) {
     let comment = `Your troops have departed towards ${attack.targetAddress}, which is ${Math.round(distance/1000)}Km away`;
     comment += `, and will take ${Math.round(travelTime * TIME_SPEED_RATIO / 3600)} hours of game time to arrive`;
     comment += `. Since gametime is x${TIME_SPEED_RATIO} compared to real life, this amounts to ${Math.round(travelTime / 60)} min.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.attacker,
-        timestamp: attack.toBeExectutedAt,
-        comment: comment,
-    });
+    log2user(attack.attacker, comment, attack.toBeExectutedAt, storage.logs);
 }
 
 function processAttackArrival(attack: PendingAttack, storage: Storage) {
@@ -47,18 +41,14 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     evolveAssetsStats(attack.toBeExectutedAt, attackerAssets);
     const availableAttackerAssets = getAlive(attackerAssets);
     if (availableAttackerAssets.length === 0) {
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: attack.attacker,
-            timestamp: attack.toBeExectutedAt,
-            comment: `None of your assets arrived to the attack destination in chain ${attack.targetChain}. They either died or were sold.`,
-        });
+        const comment = `None of your assets arrived to the attack destination on ${chainName(attack.targetChain, storage.chains)}. They either died or were sold.`;
+        log2user(attack.attacker, comment, attack.toBeExectutedAt, storage.logs);
         return;
     }
 
     const attackerAttack = availableAttackerAssets.reduce((sum, asset) => sum + asset.attack, 0);
     const attackerDefense = availableAttackerAssets.reduce((sum, asset) => sum + asset.defense, 0);
-
+ 
     // Attacked:
     const targetUser = findUser(attack.targetAddress, storage.users);
     const isTargetUserInHomechain = targetUser?.homechain === attack.targetChain;
@@ -132,16 +122,6 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     if (increaseHPPercentForAttacked > 0) attackedComment += `. Your troops gained ${increaseHPPercentForAttacked} percentual XP points`;
     if (attackedCasulaties > 0) attackedComment += `. You lost ${attackedCasulaties} assets in the fight`;
 
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.attacker,
-        timestamp: attack.toBeExectutedAt,
-        comment: attackerComment,
-    });
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: attack.targetAddress,
-        timestamp: attack.toBeExectutedAt,
-        comment: attackedComment,
-    });
+    log2user(attack.attacker, attackerComment, attack.toBeExectutedAt, storage.logs);
+    log2user(attack.targetAddress, attackedComment, attack.toBeExectutedAt, storage.logs);
 }

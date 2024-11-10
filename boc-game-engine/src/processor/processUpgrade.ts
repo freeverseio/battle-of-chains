@@ -1,6 +1,6 @@
 import { COST_PER_XP, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from './constants';
 import { Storage, UpgradeEvent, UserType } from './types';
-import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
+import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
 
 export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     console.log(`Processing Upgrade Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}`);
@@ -29,12 +29,12 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
 
     const asset = storage.assets.find(a => a.token_id === event.tokenId && a.chain_id === event.chain && a.owner === event.user && a.health > 0);
     if (!asset) {
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.user,
-            timestamp: event.timestamp,
-            comment: `You tried to upgrade an asset in chain ${event.chain} that either does not exist, is not alive, or that you do not own`,
-        });
+        log2user(
+            event.user,
+            `You tried to upgrade an asset on ${chainName(event.chain, storage.chains)} that either does not exist, is not alive, or that you do not own`,
+            event.timestamp,
+            storage.logs,
+        );
         return;
     }
 
@@ -53,15 +53,10 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     const balance = getUserTreasury(event.user, storage.users);
 
     if (cost > balance) {
-        let comment = `You tried to upgrade to level ${asset.level + 1} your asset ${event.tokenId} on chain ${event.chain}`;
+        let comment = `You tried to upgrade to level ${asset.level + 1} your asset ${event.tokenId} on ${chainName(event.chain, storage.chains)}`;
         comment += `. The asset is still ${neededXP} XP away from next level, which costs ${cost}`
         comment += `. You only have ${balance} in your treasury.`
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.user,
-            timestamp: event.timestamp,
-            comment: comment,
-        });
+        log2user(event.user, comment, event.timestamp, storage.logs);
         return;        
     }
 
@@ -70,13 +65,7 @@ export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
 
     let comment = `You successfully upgraded to level ${asset.level} your asset ${event.tokenId} on chain ${event.chain}`;
     comment += `. It was ${neededXP} XP away from next level; it costed ${cost} from your treasury.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.user,
-        timestamp: event.timestamp,
-        comment: comment,
-    });
+    log2user(event.user, comment, event.timestamp, storage.logs);
 }
 
 function upgradeHomebase(user: UserType, event: UpgradeEvent, storage: Storage) {
@@ -104,13 +93,8 @@ function upgradeHomebase(user: UserType, event: UpgradeEvent, storage: Storage) 
         let comment = `You tried to upgrade your homebase to level ${user.level + 1}`;
         comment += `. You are still ${neededXP} XP away from next level, which costs ${cost}`
         comment += `. You only have ${balance} in your treasury.`
-        storage.logs.push({
-            id: storage.logs.length,
-            user_address: event.user,
-            timestamp: event.timestamp,
-            comment: comment,
-        });
-        return;        
+        log2user(event.user, comment, event.timestamp, storage.logs);
+        return;
     }
 
     subtractFromTreasury(event.user, event.timestamp, cost, storage);
@@ -119,11 +103,5 @@ function upgradeHomebase(user: UserType, event: UpgradeEvent, storage: Storage) 
 
     let comment = `You successfully upgraded to level ${user.level} your homebase`;
     comment += `. It was ${neededXP} XP away from next level; it costed ${cost} from your treasury.`
-
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.user,
-        timestamp: event.timestamp,
-        comment: comment,
-    });
+    log2user(event.user, comment, event.timestamp, storage.logs);
 }

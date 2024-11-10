@@ -1,8 +1,10 @@
 import { AssetState, PendingActionOption, PendingAttack, PendingState, Storage, TransferEvent } from './types';
-import { createDAO, setAssetsFree, userDoesNotExist } from './utils'
+import { chainName, createDAO, log2user, setAssetsFree, userDoesNotExist } from './utils'
 
 export function processTransfer(event: TransferEvent, storage: Storage): void {
     console.log(`Processing Transfer Event ${event.tokenId}, From: ${event.from}, Operator: ${event.to}, Timestamp: ${event.timestamp}`);
+
+    if (event.from === event.to) return;
 
     if (userDoesNotExist(event.from, storage.users)) {
         createDAO(storage, event.from, event.eventChain, event.timestamp);
@@ -27,16 +29,16 @@ export function processTransfer(event: TransferEvent, storage: Storage): void {
     }
 
     asset.owner = event.to;
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.to,
-        timestamp: event.timestamp,
-        comment: `You acquired asset with tokenId ${event.tokenId} on chain ${event.eventChain}`,
-    });
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: event.from,
-        timestamp: event.timestamp,
-        comment: `You sold the asset your previously owned with tokenId ${event.tokenId} on chain ${event.eventChain}`,
-    });
+    log2user(
+        event.to,
+        `You acquired asset with tokenId ${event.tokenId} on ${chainName(event.eventChain, storage.chains)}`,
+        event.timestamp,
+        storage.logs,
+    );
+    log2user(
+        event.from,
+        `You sold the asset your previously owned with tokenId ${event.tokenId} on chain ${chainName(event.eventChain, storage.chains)}`,
+        event.timestamp,
+        storage.logs,
+    );
 }

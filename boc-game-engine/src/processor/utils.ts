@@ -1,7 +1,7 @@
 import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
-import { AssignOperator, User } from '../db/entity';
+import { AssignOperator, Log, User } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
 import murmurhash from 'murmurhash';
@@ -9,6 +9,45 @@ import murmurhash from 'murmurhash';
 const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
 const midPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(2);
 const quarterPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(4);
+
+export function readableDate(timestamp: number): string {
+    const date = new Date(timestamp * 1000);
+    const day = String(date.getUTCDate()).padStart(2, '0');
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are 0-based
+    const year = date.getUTCFullYear();
+    const hours = String(date.getUTCHours()).padStart(2, '0');
+    const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+
+    return `${day}/${month}/${year}, ${hours}:${minutes}, UTC`;
+}
+
+
+
+export function chainName(chain: Number | undefined, chains: ChainType[]) : string {
+    if (!chain) return '';
+    for (const c of chains) {
+        if (c.chain_id === chain) return c.name;
+    }
+    return `chain ${chain}`;
+} 
+
+export function log2user(address: string, comment: string, timestamp: number, logs: Log[]) {
+    logs.push({
+        id: logs.length,
+        user_address: address,
+        timestamp: timestamp,
+        comment: comment,
+    });
+}
+
+export function log2chain(chain: number, comment: string, timestamp: number, logs: Log[]) {
+    logs.push({
+        id: logs.length,
+        chain: chain,
+        timestamp: timestamp,
+        comment: comment,
+    });
+}
 
 export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
     const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);
@@ -36,12 +75,12 @@ export function createDAO(storage: Storage, address: string, chain: number, time
             level: 0
         }
     );
-    storage.logs.push({
-        id: storage.logs.length,
-        user_address: address,
-        timestamp: timestamp,
-        comment: `A user has been created without homechain, currently playing as a DAO on chain ${chain}`,
-    });
+    log2user(
+        address,
+        `A user has been created without homechain, currently playing as a DAO on ${chainName(chain, storage.chains)}`,
+        timestamp,
+        storage.logs,
+    );
 }
 
 export function findUser(address: string, users: UserType[]) : UserType  | undefined {
@@ -606,14 +645,14 @@ export function applyNoise(n: number, noisePercentage: number, seed: number) : n
 }
 
 
-export function getCharacterComment(event: MultichainMintEvent, chain: number, details: AssetLevelDetails, cost: number, species: DefendSpeciesType | AttackSpeciesType) : string {
+export function getCharacterComment(event: MultichainMintEvent, chain: string, details: AssetLevelDetails, cost: number, species: DefendSpeciesType | AttackSpeciesType) : string {
     const typeName = event.typeId === AssetTypeOptions.AttackAsset ? "attack" : "defense";
     const lore = event.typeId === AssetTypeOptions.AttackAsset
         ? AttackSpeciesLore[species as AttackSpeciesType]
         : DefendSpeciesLore[species as DefendSpeciesType];
 
     let comment = `You have created an asset of type: ${typeName}, and species: ${lore.name}`;
-    comment += `, on chain ${chain}, with tokenId = ${(event.tokenId).toString()}`;
+    comment += `, on ${chain}, with tokenId = ${(event.tokenId).toString()}`;
     comment += `. ${lore.description}`;
     comment += ` It costed ${cost} from your treasury. The asset has level ${details.level}`;
     if (details.level < details.factoryLevelUsed) {
