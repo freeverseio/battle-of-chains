@@ -25,26 +25,31 @@ import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 import { processRegisterMercenary } from './processRegisterMercenary';
 dotenv.config({ path: '../docker/.env' });
-const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
 
 type DebugData = {
     deadline: number;
     useHardcodedEvents: boolean;
     eventsFile: string;
+    gameStartTime: number;
 } 
+
+function getGameStart(debugData: DebugData | undefined) {
+    if (debugData?.gameStartTime) return debugData.gameStartTime;
+    return process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1731073872);
+}
 
 export class EventProcessor {
     private storage: Storage;
     private debugData?: DebugData;
 
     constructor(allChains: ChainOutput[], debugData?: DebugData) {
+        this.debugData = debugData;
+
         const initChainProposalAction : PendingChainAction = {  
             id: 0,
             type: PendingActionOption.ChainAction,
-            toBeExectutedAt: getNext2pmUTC(GAME_START_TIMESTAMP),
+            toBeExectutedAt: getNext2pmUTC(getGameStart(debugData)),
         }
-
-        this.debugData = debugData;
 
         this.storage = {
             chains: allChains,

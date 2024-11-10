@@ -14,6 +14,7 @@ async function compareStorage(storage: Storage, storageFile: string): Promise<bo
 
 async function main() {
     const debugData = {
+        "gameStartTime": 1729168020,
         "deadline": 1731063388,
         "useHardcodedEvents": true,
         "eventsFile": './src/processor/test/events02.json',
