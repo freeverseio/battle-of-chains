@@ -45,7 +45,7 @@ export function processAssignOperator(event: AssignOperatorEvent, storage: Stora
     existingAssignment.timestamp = event.timestamp;
     log2user(
         event.from,
-        `Updated the previous operator assignment ${chainName(event.eventChain, storage.chains)}}, now assigned to ${event.operator}`,
+        `Updated the previous operator assignment, now assigned to ${event.operator}`,
         event.timestamp,
         storage.logs,
     );
