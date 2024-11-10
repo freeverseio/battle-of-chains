@@ -25,7 +25,7 @@ import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 import { processRegisterMercenary } from './processRegisterMercenary';
 dotenv.config({ path: '../docker/.env' });
-const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1729168020);
+const GAME_START_TIMESTAMP = process.env.GAME_START_TIMESTAMP ? Number(process.env.GAME_START_TIMESTAMP) : Number(1731073872);
 
 type DebugData = {
     deadline: number;
