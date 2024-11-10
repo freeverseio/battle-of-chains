@@ -608,379 +608,379 @@
       "id": 0,
       "chain": 42161,
       "timestamp": 1729173600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 1,
       "chain": 137,
       "timestamp": 1729173600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 2,
       "chain": 1,
       "timestamp": 1729173600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 3,
       "chain": 1,
       "timestamp": 1729260000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 4,
       "chain": 137,
       "timestamp": 1729260000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 5,
       "chain": 42161,
       "timestamp": 1729260000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 6,
       "chain": 42161,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 7,
       "chain": 1,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 8,
       "chain": 137,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 9,
       "chain": 137,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 10,
       "chain": 42161,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 11,
       "chain": 1,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 12,
       "chain": 137,
       "timestamp": 1729519200,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 13,
       "chain": 42161,
       "timestamp": 1729519200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 14,
       "chain": 1,
       "timestamp": 1729519200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 15,
       "chain": 42161,
       "timestamp": 1729605600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 16,
       "chain": 1,
       "timestamp": 1729605600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 17,
       "chain": 137,
       "timestamp": 1729605600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 18,
       "chain": 42161,
       "timestamp": 1729692000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 19,
       "chain": 137,
       "timestamp": 1729692000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 20,
       "chain": 1,
       "timestamp": 1729692000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 21,
       "chain": 42161,
       "timestamp": 1729778400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 22,
       "chain": 1,
       "timestamp": 1729778400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 23,
       "chain": 137,
       "timestamp": 1729778400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 24,
       "chain": 42161,
       "timestamp": 1729864800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 25,
       "chain": 1,
       "timestamp": 1729864800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 26,
       "chain": 137,
       "timestamp": 1729864800,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 27,
       "chain": 42161,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 28,
       "chain": 137,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 29,
       "chain": 1,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 30,
       "chain": 137,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 31,
       "chain": 42161,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 32,
       "chain": 1,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 33,
       "chain": 137,
       "timestamp": 1730124000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 34,
       "chain": 1,
       "timestamp": 1730124000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 35,
       "chain": 42161,
       "timestamp": 1730124000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 36,
       "chain": 1,
       "timestamp": 1730210400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 37,
       "chain": 137,
       "timestamp": 1730210400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 38,
       "chain": 42161,
       "timestamp": 1730210400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 39,
       "chain": 137,
       "timestamp": 1730296800,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 40,
       "chain": 42161,
       "timestamp": 1730296800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 41,
       "chain": 1,
       "timestamp": 1730296800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 42,
       "chain": 42161,
       "timestamp": 1730383200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 43,
       "chain": 137,
       "timestamp": 1730383200,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 44,
       "chain": 1,
       "timestamp": 1730383200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 45,
       "chain": 137,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 46,
       "chain": 42161,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 47,
       "chain": 1,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 48,
       "chain": 137,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 49,
       "chain": 42161,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 50,
       "chain": 1,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 51,
       "chain": 1,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 52,
       "chain": 42161,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 53,
       "chain": 137,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 54,
       "chain": 1,
       "timestamp": 1730728800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 55,
       "chain": 137,
       "timestamp": 1730728800,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 56,
       "chain": 42161,
       "timestamp": 1730728800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 57,
       "chain": 1,
       "timestamp": 1730815200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 58,
       "chain": 42161,
       "timestamp": 1730815200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 59,
       "chain": 137,
       "timestamp": 1730815200,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 60,
       "chain": 137,
       "timestamp": 1730901600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 61,
       "chain": 1,
       "timestamp": 1730901600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 62,
       "chain": 42161,
       "timestamp": 1730901600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 63,
@@ -998,19 +998,19 @@
       "id": 65,
       "chain": 137,
       "timestamp": 1730988000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 66,
       "chain": 1,
       "timestamp": 1730988000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 67,
       "chain": 42161,
       "timestamp": 1730988000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 68,

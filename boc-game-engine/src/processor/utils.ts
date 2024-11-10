@@ -10,7 +10,8 @@ const maxPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF');
 const midPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(2);
 const quarterPoint = BigInt('0xFFFFFFFFFFFFFFFFFFFF') / BigInt(4);
 
-export function chainName(chain: Number, chains: ChainType[]) : string {
+export function chainName(chain: Number | undefined, chains: ChainType[]) : string {
+    if (!chain) return '';
     for (const c of chains) {
         if (c.chain_id === chain) return c.name;
     }

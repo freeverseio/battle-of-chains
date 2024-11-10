@@ -7157,19 +7157,19 @@
       "id": 12,
       "chain": 42161,
       "timestamp": 1729173600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 13,
       "chain": 137,
       "timestamp": 1729173600,
-      "comment": "ChainType Action selected! ChainType 137 decided to Defend"
+      "comment": "Chain Action selected! Polygon decided to Defend"
     },
     {
       "id": 14,
       "chain": 1,
       "timestamp": 1729173600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 15,
@@ -7277,55 +7277,55 @@
       "id": 32,
       "chain": 1,
       "timestamp": 1729260000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 33,
       "chain": 137,
       "timestamp": 1729260000,
-      "comment": "ChainType Action selected! ChainType 137 decided to Defend"
+      "comment": "Chain Action selected! Polygon decided to Defend"
     },
     {
       "id": 34,
       "chain": 42161,
       "timestamp": 1729260000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 35,
       "chain": 42161,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 36,
       "chain": 1,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 37,
       "chain": 137,
       "timestamp": 1729346400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 38,
       "chain": 137,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 39,
       "chain": 42161,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 40,
       "chain": 1,
       "timestamp": 1729432800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 41,
@@ -7439,19 +7439,19 @@
       "id": 59,
       "chain": 137,
       "timestamp": 1729519200,
-      "comment": "ChainType Action selected! ChainType 137 decided to Defend"
+      "comment": "Chain Action selected! Polygon decided to Defend"
     },
     {
       "id": 60,
       "chain": 42161,
       "timestamp": 1729519200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 61,
       "chain": 1,
       "timestamp": 1729519200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 62,
@@ -7499,19 +7499,19 @@
       "id": 69,
       "chain": 42161,
       "timestamp": 1729605600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 70,
       "chain": 1,
       "timestamp": 1729605600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 71,
       "chain": 137,
       "timestamp": 1729605600,
-      "comment": "Attack ChainType Action Selected! ChainType 137 decided to perform an AttackArea action. The attack is on chain_id: 1, on the area: SOUTH. The target chain was NOT defending, which resulted into increased damage."
+      "comment": "Attack Chain Action Selected! Polygon decided to perform an AttackArea action. The attack is on Ethereum, on the area: SOUTH. The target chain was NOT defending, which resulted into increased damage."
     },
     {
       "id": 72,
@@ -7541,19 +7541,19 @@
       "id": 76,
       "chain": 42161,
       "timestamp": 1729692000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 77,
       "chain": 137,
       "timestamp": 1729692000,
-      "comment": "Attack ChainType Action Selected! ChainType 137 decided to perform an AttackAddress action. The attack is on chain_id: 1, on the address: 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. The target chain was defending, which resulted into reduced damage."
+      "comment": "Attack Chain Action Selected! Polygon decided to perform an AttackAddress action. The attack is on Ethereum, on the address: 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. The target chain was defending, which resulted into reduced damage."
     },
     {
       "id": 78,
       "chain": 1,
       "timestamp": 1729692000,
-      "comment": "ChainType Action selected! ChainType 1 decided to Defend"
+      "comment": "Chain Action selected! Ethereum decided to Defend"
     },
     {
       "id": 79,
@@ -7595,19 +7595,19 @@
       "id": 85,
       "chain": 42161,
       "timestamp": 1729778400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 86,
       "chain": 1,
       "timestamp": 1729778400,
-      "comment": "ChainType Action selected! ChainType 1 decided to Defend"
+      "comment": "Chain Action selected! Ethereum decided to Defend"
     },
     {
       "id": 87,
       "chain": 137,
       "timestamp": 1729778400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 88,
@@ -7715,19 +7715,19 @@
       "id": 105,
       "chain": 42161,
       "timestamp": 1729864800,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 106,
       "chain": 1,
       "timestamp": 1729864800,
-      "comment": "ChainType Action selected! ChainType 1 decided to Improve. All assets in chain improved their XP and Health"
+      "comment": "Chain Action selected! Ethereum decided to Improve. All assets in chain improved their XP and Health"
     },
     {
       "id": 107,
       "chain": 137,
       "timestamp": 1729864800,
-      "comment": "ChainType Action selected! ChainType 137 decided to Improve. All assets in chain improved their XP and Health"
+      "comment": "Chain Action selected! Polygon decided to Improve. All assets in chain improved their XP and Health"
     },
     {
       "id": 108,
@@ -7883,19 +7883,19 @@
       "id": 133,
       "chain": 42161,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 134,
       "chain": 137,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 135,
       "chain": 1,
       "timestamp": 1729951200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 136,
@@ -7919,19 +7919,19 @@
       "id": 139,
       "chain": 137,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 140,
       "chain": 42161,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 141,
       "chain": 1,
       "timestamp": 1730037600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 142,
@@ -8291,19 +8291,19 @@
       "id": 201,
       "chain": 137,
       "timestamp": 1730124000,
-      "comment": "Attack ChainType Action Selected! ChainType 137 decided to perform an AttackArea action. The attack is on chain_id: 42161, on the area: SOUTH. The target chain was NOT defending, which resulted into increased damage."
+      "comment": "Attack Chain Action Selected! Polygon decided to perform an AttackArea action. The attack is on Arbitrum, on the area: SOUTH. The target chain was NOT defending, which resulted into increased damage."
     },
     {
       "id": 202,
       "chain": 1,
       "timestamp": 1730124000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 203,
       "chain": 42161,
       "timestamp": 1730124000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 204,
@@ -9671,19 +9671,19 @@
       "id": 431,
       "chain": 1,
       "timestamp": 1730210400,
-      "comment": "Attack ChainType Action Selected! ChainType 1 decided to perform an AttackArea action. The attack is on chain_id: 137, on the area: NORTH. The target chain was NOT defending, which resulted into increased damage."
+      "comment": "Attack Chain Action Selected! Ethereum decided to perform an AttackArea action. The attack is on Polygon, on the area: NORTH. The target chain was NOT defending, which resulted into increased damage."
     },
     {
       "id": 432,
       "chain": 137,
       "timestamp": 1730210400,
-      "comment": "Attack ChainType Action Selected! ChainType 137 decided to perform an AttackAddress action. The attack is on chain_id: 1, on the address: 0x014862be027383841a40cc3b3945ed2b406ff627. The target chain was NOT defending, which resulted into increased damage."
+      "comment": "Attack Chain Action Selected! Polygon decided to perform an AttackAddress action. The attack is on Ethereum, on the address: 0x014862be027383841a40cc3b3945ed2b406ff627. The target chain was NOT defending, which resulted into increased damage."
     },
     {
       "id": 433,
       "chain": 42161,
       "timestamp": 1730210400,
-      "comment": "ChainType Action selected! ChainType 42161 decided to Improve. All assets in chain improved their XP and Health"
+      "comment": "Chain Action selected! Arbitrum decided to Improve. All assets in chain improved their XP and Health"
     },
     {
       "id": 434,
@@ -10295,19 +10295,19 @@
       "id": 535,
       "chain": 137,
       "timestamp": 1730296800,
-      "comment": "ChainType Action selected! ChainType 137 decided to Defend"
+      "comment": "Chain Action selected! Polygon decided to Defend"
     },
     {
       "id": 536,
       "chain": 42161,
       "timestamp": 1730296800,
-      "comment": "ChainType Action selected! ChainType 42161 decided to Defend"
+      "comment": "Chain Action selected! Arbitrum decided to Defend"
     },
     {
       "id": 537,
       "chain": 1,
       "timestamp": 1730296800,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 538,
@@ -11009,19 +11009,19 @@
       "id": 654,
       "chain": 42161,
       "timestamp": 1730383200,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 655,
       "chain": 137,
       "timestamp": 1730383200,
-      "comment": "ChainType Action selected! ChainType 137 decided to Improve. All assets in chain improved their XP and Health"
+      "comment": "Chain Action selected! Polygon decided to Improve. All assets in chain improved their XP and Health"
     },
     {
       "id": 656,
       "chain": 1,
       "timestamp": 1730383200,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 657,
@@ -11225,55 +11225,55 @@
       "id": 690,
       "chain": 137,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 691,
       "chain": 42161,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 692,
       "chain": 1,
       "timestamp": 1730469600,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 693,
       "chain": 137,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 694,
       "chain": 42161,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 695,
       "chain": 1,
       "timestamp": 1730556000,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 696,
       "chain": 1,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 1 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
       "id": 697,
       "chain": 42161,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 42161 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Arbitrum did not have any proposal in the current period"
     },
     {
       "id": 698,
       "chain": 137,
       "timestamp": 1730642400,
-      "comment": "Chain Action missed! ChainType 137 did not have any proposal in the current period"
+      "comment": "Chain Action missed! Polygon did not have any proposal in the current period"
     },
     {
       "id": 699,
