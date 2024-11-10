@@ -15,6 +15,7 @@ async function compareStorage(storage: Storage, storageFile: string) {
 describe('Process and Compare Storage', () => {
     it('should process hardcoded events and compare storage for test suite 1', async () => {
         const debugData = {
+            "gameStartTime": 1729168020,
             "deadline": 1730728802,
             "useHardcodedEvents": true,
             "eventsFile": './src/processor/test/events01.json',
@@ -35,6 +36,7 @@ describe('Process and Compare Storage', () => {
 
     it('should process hardcoded events and compare storage for test suite 2', async () => {
         const debugData = {
+            "gameStartTime": 1729168020,
             "deadline": 1731063388,
             "useHardcodedEvents": true,
             "eventsFile": './src/processor/test/events02.json',
