@@ -70,10 +70,8 @@ const Modal: React.FC = () => {
                     className="mx-auto"
                   />
                 </div>
-                Minting assets on Ethereum, Polygon, and Arbitrum in a single
-                transaction via LAOS Network. Assets are being created on
-                Ethereum, Polygon and Arbitrum in one single transaction via
-                LAOS Network.
+                You are about to mint assets on Ethereum, Polygon and Arbitrum in one single transaction via LAOS Network.
+                This action will requires only a small gas fee on LAOS. No gas fees will be charged on any other chain.
               </DialogDescription>
             </DialogHeader>
           </div>
@@ -96,10 +94,11 @@ const Modal: React.FC = () => {
         {modalState === "upgrading" && (
           <div className="flex flex-col items-center">
             <DialogHeader>
-              <DialogTitle>Aseet Upgrade in progress</DialogTitle>
+              <DialogTitle>Sending Asset Upgrade Transaction</DialogTitle>
               <DialogDescription>
                 <div className="mb-4"></div>
-                Upgrading asset...
+                The transaction is being sent. Please wait until
+                full finality is confirmed.
               </DialogDescription>
             </DialogHeader>
           </div>
@@ -107,10 +106,12 @@ const Modal: React.FC = () => {
         {modalState === "transaction_upgrade_success" && (
           <div className="flex flex-col items-center">
             <DialogHeader>
-              <DialogTitle>Upgrade Successful</DialogTitle>
+              <DialogTitle>Upgrade Transaction Sent Successfully</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              The asset has been upgraded successfully.
+              The upgrade transaction was successfully sent.
+              Please check your logs to confirm if your treasury
+              had sufficient funds to complete the asset upgrade. 
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
