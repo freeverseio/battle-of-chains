@@ -70,10 +70,8 @@ const Modal: React.FC = () => {
                     className="mx-auto"
                   />
                 </div>
-                Minting assets on Ethereum, Polygon, and Arbitrum in a single
-                transaction via LAOS Network. Assets are being created on
-                Ethereum, Polygon and Arbitrum in one single transaction via
-                LAOS Network.
+                You are about to mint assets on Ethereum, Polygon and Arbitrum in one single transaction via LAOS Network.
+                This action will requires only a small gas fee on LAOS. No gas fees will be charged on any other chain.
               </DialogDescription>
             </DialogHeader>
           </div>
