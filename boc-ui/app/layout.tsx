@@ -14,6 +14,9 @@ const myFont = localFont({
 export const metadata: Metadata = {
   title: "Blockchain Strategy Game",
   description: "A blockchain-based strategy game with a single-page interface",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
