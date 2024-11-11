@@ -106,7 +106,7 @@ const Modal: React.FC = () => {
         {modalState === "transaction_upgrade_success" && (
           <div className="flex flex-col items-center">
             <DialogHeader>
-              <DialogTitle>Upgrade Transaction Sent Successful</DialogTitle>
+              <DialogTitle>Upgrade Transaction Sent Successfully</DialogTitle>
             </DialogHeader>
             <DialogDescription>
               The upgrade transaction was successfully sent.
