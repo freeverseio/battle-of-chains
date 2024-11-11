@@ -41,7 +41,7 @@ Frontend that uses boc-game-engine to present relevant data for the users.
 
 ### Quickstart
 
-Go to `boc-ui` folder and run:
+Go to `boc-ui` folder, rename the `.env.template` as `.env`, fill in the corresponding fields, and run:
 
 ```
 $ npm ci

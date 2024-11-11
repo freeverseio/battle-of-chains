@@ -97,7 +97,7 @@ export default function SubmitVoteButton({
         disabled={!selectedOption || isConfirming}
         className={`bg-primary border-[1px] border-[#FE07DD] hover:bg-[#FE07DD] hover:text-black text-2xl ${className}`}
       >
-        {isConfirming ? "Voting..." : "Submit Vote"}
+        {isConfirming ? "Voting. Awaiting finality..." : "Submit Vote"}
       </Button>
 
       {writeError && (
