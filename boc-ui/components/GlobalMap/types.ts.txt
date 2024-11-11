@@ -20,5 +20,5 @@ export interface Player {
     warriors: number;
   };
   defense: number;
-  softCoins: number;
+  treasury: number;
 }

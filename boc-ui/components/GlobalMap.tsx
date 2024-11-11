@@ -70,7 +70,7 @@ const players = [
     ],
     troops: { archers: 10, warriors: 15 },
     defense: 50,
-    softCoins: 1000,
+    treasury: 1000,
   },
   {
     name: "Player 2",
@@ -100,7 +100,7 @@ const players = [
     ],
     troops: { archers: 8, warriors: 12 },
     defense: 40,
-    softCoins: 800,
+    treasury: 800,
   },
   {
     name: "Player 3",
@@ -130,7 +130,7 @@ const players = [
     ],
     troops: { archers: 12, warriors: 10 },
     defense: 45,
-    softCoins: 900,
+    treasury: 900,
   },
 ];
 
@@ -312,7 +312,7 @@ export default function GlobalMap() {
           {isHomeBase && (
             <p className="mb-1">
               <FaCoins className="inline-block w-4 h-4 mr-1 text-[#F4A460]" />{" "}
-              Soft Coins: {player.softCoins}
+              Treasury: {player.treasury}
             </p>
           )}
           {!isLoggedInPlayer && (

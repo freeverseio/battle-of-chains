@@ -87,7 +87,7 @@ const HomeBaseInfo: React.FC = () => {
           <p className="text-3xl">
             <span className="text-label">Cost for Next Level: </span>
             <span className="text-label-value">
-              {costForNextLevel} Soft Coins
+              {costForNextLevel} treasury
             </span>
           </p>
         </div>
