@@ -14,7 +14,7 @@ export default function Footer() {
           </button>*/}
         </div>
         <div className="ml-auto text-lg text--primary-foreground">
-          &copy; 2024 Battle of Chains
+          &copy; 2024 LAOSNetwork.io
         </div>
       </div>
     </footer>
