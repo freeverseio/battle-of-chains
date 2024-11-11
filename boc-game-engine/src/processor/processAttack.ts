@@ -59,7 +59,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     storage.processedPendingIdx += 1;
     log2user(
         event.attacker,
-        `Your troops are getting ready to depart towards ${event.targetAddress}. They will depart at ${readableDate(toBeExectutedAt)}`,
+        `Your troops on ${chainName(event.targetChain, storage.chains)} are getting ready to depart towards ${event.targetAddress}. They will depart at ${readableDate(toBeExectutedAt)}`,
         event.timestamp,
         storage.logs,
     );
@@ -71,7 +71,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     evolveTreasuryByAddress(event.targetAddress, event.timestamp, storage);
     log2user(
         event.targetAddress,
-        `Troops by user ${event.attacker} are getting ready to travel towards your location to attack. They will depart at ${readableDate(toBeExectutedAt)}`,
+        `Troops by user ${event.attacker} are getting ready to travel towards your location on ${chainName(event.targetChain, storage.chains)} to attack. They will depart at ${readableDate(toBeExectutedAt)}`,
         event.timestamp,
         storage.logs,
     );

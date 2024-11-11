@@ -7739,13 +7739,13 @@
       "id": 109,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729866456,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:29, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:29, UTC"
     },
     {
       "id": 110,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729866456,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 25/10/2024, 14:29, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 25/10/2024, 14:29, UTC"
     },
     {
       "id": 111,
@@ -7757,13 +7757,13 @@
       "id": 112,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729867044,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:39, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:39, UTC"
     },
     {
       "id": 113,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729867044,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 25/10/2024, 14:39, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 25/10/2024, 14:39, UTC"
     },
     {
       "id": 114,
@@ -7787,13 +7787,13 @@
       "id": 117,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1729868268,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:59, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 25/10/2024, 14:59, UTC"
     },
     {
       "id": 118,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1729868268,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 25/10/2024, 14:59, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 25/10/2024, 14:59, UTC"
     },
     {
       "id": 119,
@@ -7901,7 +7901,7 @@
       "id": 136,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730018244,
-      "comment": "Your troops are getting ready to depart towards 0x6b6f742352a92a301e2b4f6247403cf088ec4da3. They will depart at 27/10/2024, 08:39, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x6b6f742352a92a301e2b4f6247403cf088ec4da3. They will depart at 27/10/2024, 08:39, UTC"
     },
     {
       "id": 137,
@@ -7967,13 +7967,13 @@
       "id": 147,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730112132,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 28/10/2024, 10:44, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 28/10/2024, 10:44, UTC"
     },
     {
       "id": 148,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730112132,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 10:44, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 28/10/2024, 10:44, UTC"
     },
     {
       "id": 149,
@@ -8075,13 +8075,13 @@
       "id": 165,
       "user_address": "0xa818cef865c0868ca4cc494f673fcdaad6a77cea",
       "timestamp": 1730116524,
-      "comment": "Your troops are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 28/10/2024, 11:57, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 28/10/2024, 11:57, UTC"
     },
     {
       "id": 166,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730116524,
-      "comment": "Troops by user 0xa818cef865c0868ca4cc494f673fcdaad6a77cea are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 11:57, UTC"
+      "comment": "Troops by user 0xa818cef865c0868ca4cc494f673fcdaad6a77cea are getting ready to travel towards your location on Polygon to attack. They will depart at 28/10/2024, 11:57, UTC"
     },
     {
       "id": 167,
@@ -8315,13 +8315,13 @@
       "id": 205,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730124420,
-      "comment": "Your troops are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 28/10/2024, 14:09, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 28/10/2024, 14:09, UTC"
     },
     {
       "id": 206,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730124420,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 14:09, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 28/10/2024, 14:09, UTC"
     },
     {
       "id": 207,
@@ -8423,13 +8423,13 @@
       "id": 223,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730124768,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 28/10/2024, 14:14, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 28/10/2024, 14:14, UTC"
     },
     {
       "id": 224,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730124768,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 14:14, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Ethereum to attack. They will depart at 28/10/2024, 14:14, UTC"
     },
     {
       "id": 225,
@@ -8477,13 +8477,13 @@
       "id": 232,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730124972,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 28/10/2024, 14:18, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 28/10/2024, 14:18, UTC"
     },
     {
       "id": 233,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730124972,
-      "comment": "Troops by user 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 14:18, UTC"
+      "comment": "Troops by user 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23 are getting ready to travel towards your location on Arbitrum to attack. They will depart at 28/10/2024, 14:18, UTC"
     },
     {
       "id": 234,
@@ -8681,13 +8681,13 @@
       "id": 266,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730126808,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 28/10/2024, 14:48, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 28/10/2024, 14:48, UTC"
     },
     {
       "id": 267,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730126808,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 14:48, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Ethereum to attack. They will depart at 28/10/2024, 14:48, UTC"
     },
     {
       "id": 268,
@@ -8735,13 +8735,13 @@
       "id": 275,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730127072,
-      "comment": "Your troops are getting ready to depart towards 0x02073d366786c2056c521d9d9b90c89fa589c8a2. They will depart at 28/10/2024, 14:53, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x02073d366786c2056c521d9d9b90c89fa589c8a2. They will depart at 28/10/2024, 14:53, UTC"
     },
     {
       "id": 276,
       "user_address": "0x02073d366786c2056c521d9d9b90c89fa589c8a2",
       "timestamp": 1730127072,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 14:53, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Ethereum to attack. They will depart at 28/10/2024, 14:53, UTC"
     },
     {
       "id": 277,
@@ -8843,13 +8843,13 @@
       "id": 293,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730127480,
-      "comment": "Your troops are getting ready to depart towards 0x9b1564fd53ba3b8da342b05ea52ac3576c9d3191. They will depart at 28/10/2024, 15:00, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x9b1564fd53ba3b8da342b05ea52ac3576c9d3191. They will depart at 28/10/2024, 15:00, UTC"
     },
     {
       "id": 294,
       "user_address": "0x9b1564fd53ba3b8da342b05ea52ac3576c9d3191",
       "timestamp": 1730127480,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 15:00, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 28/10/2024, 15:00, UTC"
     },
     {
       "id": 295,
@@ -8879,13 +8879,13 @@
       "id": 299,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730128128,
-      "comment": "Your troops are getting ready to depart towards 0x21074d35e05d6acf1960fb545e7b41728925b4ce. They will depart at 28/10/2024, 15:10, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x21074d35e05d6acf1960fb545e7b41728925b4ce. They will depart at 28/10/2024, 15:10, UTC"
     },
     {
       "id": 300,
       "user_address": "0x21074d35e05d6acf1960fb545e7b41728925b4ce",
       "timestamp": 1730128128,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 15:10, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Arbitrum to attack. They will depart at 28/10/2024, 15:10, UTC"
     },
     {
       "id": 301,
@@ -8921,13 +8921,13 @@
       "id": 306,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730128692,
-      "comment": "Your troops are getting ready to depart towards 0x21074d35e05d6acf1960fb545e7b41728925b4ce. They will depart at 28/10/2024, 15:20, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x21074d35e05d6acf1960fb545e7b41728925b4ce. They will depart at 28/10/2024, 15:20, UTC"
     },
     {
       "id": 307,
       "user_address": "0x21074d35e05d6acf1960fb545e7b41728925b4ce",
       "timestamp": 1730128692,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 15:20, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Arbitrum to attack. They will depart at 28/10/2024, 15:20, UTC"
     },
     {
       "id": 308,
@@ -8975,13 +8975,13 @@
       "id": 315,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730129016,
-      "comment": "Your troops are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 28/10/2024, 15:25, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 28/10/2024, 15:25, UTC"
     },
     {
       "id": 316,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730129016,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 28/10/2024, 15:25, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 28/10/2024, 15:25, UTC"
     },
     {
       "id": 317,
@@ -9149,13 +9149,13 @@
       "id": 344,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730188872,
-      "comment": "Your troops are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 29/10/2024, 08:03, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 29/10/2024, 08:03, UTC"
     },
     {
       "id": 345,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730188872,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 08:03, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 08:03, UTC"
     },
     {
       "id": 346,
@@ -9185,25 +9185,25 @@
       "id": 350,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730191116,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 08:40, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 08:40, UTC"
     },
     {
       "id": 351,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730191116,
-      "comment": "Troops by user 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 08:40, UTC"
+      "comment": "Troops by user 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23 are getting ready to travel towards your location on Ethereum to attack. They will depart at 29/10/2024, 08:40, UTC"
     },
     {
       "id": 352,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730191224,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 29/10/2024, 08:42, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 29/10/2024, 08:42, UTC"
     },
     {
       "id": 353,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730191224,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 08:42, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 08:42, UTC"
     },
     {
       "id": 354,
@@ -9227,13 +9227,13 @@
       "id": 357,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730192028,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 08:55, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 08:55, UTC"
     },
     {
       "id": 358,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730192028,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 08:55, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Ethereum to attack. They will depart at 29/10/2024, 08:55, UTC"
     },
     {
       "id": 359,
@@ -9311,13 +9311,13 @@
       "id": 371,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730197140,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 10:21, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 10:21, UTC"
     },
     {
       "id": 372,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730197140,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 10:21, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 10:21, UTC"
     },
     {
       "id": 373,
@@ -9353,13 +9353,13 @@
       "id": 378,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730200020,
-      "comment": "Your troops are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 29/10/2024, 11:09, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646. They will depart at 29/10/2024, 11:09, UTC"
     },
     {
       "id": 379,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730200020,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 11:09, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 11:09, UTC"
     },
     {
       "id": 380,
@@ -9479,13 +9479,13 @@
       "id": 399,
       "user_address": "0x014862be027383841a40cc3b3945ed2b406ff627",
       "timestamp": 1730201652,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 11:36, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 11:36, UTC"
     },
     {
       "id": 400,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730201652,
-      "comment": "Troops by user 0x014862be027383841a40cc3b3945ed2b406ff627 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 11:36, UTC"
+      "comment": "Troops by user 0x014862be027383841a40cc3b3945ed2b406ff627 are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 11:36, UTC"
     },
     {
       "id": 401,
@@ -9563,13 +9563,13 @@
       "id": 413,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730209296,
-      "comment": "Your troops are getting ready to depart towards 0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd. They will depart at 29/10/2024, 13:43, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd. They will depart at 29/10/2024, 13:43, UTC"
     },
     {
       "id": 414,
       "user_address": "0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd",
       "timestamp": 1730209296,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 13:43, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 13:43, UTC"
     },
     {
       "id": 415,
@@ -9635,25 +9635,25 @@
       "id": 425,
       "user_address": "0x5bdae8790c747e901403ef610e63f362fedadd8e",
       "timestamp": 1730210220,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 13:59, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 13:59, UTC"
     },
     {
       "id": 426,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730210220,
-      "comment": "Troops by user 0x5bdae8790c747e901403ef610e63f362fedadd8e are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 13:59, UTC"
+      "comment": "Troops by user 0x5bdae8790c747e901403ef610e63f362fedadd8e are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 13:59, UTC"
     },
     {
       "id": 427,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730210328,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 14:00, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 14:00, UTC"
     },
     {
       "id": 428,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730210328,
-      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 14:00, UTC"
+      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 14:00, UTC"
     },
     {
       "id": 429,
@@ -9737,13 +9737,13 @@
       "id": 442,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730210844,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 14:09, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 14:09, UTC"
     },
     {
       "id": 443,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730210844,
-      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 14:09, UTC"
+      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 14:09, UTC"
     },
     {
       "id": 444,
@@ -9905,13 +9905,13 @@
       "id": 470,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730213916,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 15:00, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 15:00, UTC"
     },
     {
       "id": 471,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730213916,
-      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 15:00, UTC"
+      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 15:00, UTC"
     },
     {
       "id": 472,
@@ -9989,25 +9989,25 @@
       "id": 484,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730214468,
-      "comment": "Your troops are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 15:09, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75. They will depart at 29/10/2024, 15:09, UTC"
     },
     {
       "id": 485,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730214468,
-      "comment": "Troops by user 0x529f48318fd5af1955bb65afb082889a5808b678 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 15:09, UTC"
+      "comment": "Troops by user 0x529f48318fd5af1955bb65afb082889a5808b678 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 15:09, UTC"
     },
     {
       "id": 486,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730214480,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 29/10/2024, 15:10, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 29/10/2024, 15:10, UTC"
     },
     {
       "id": 487,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730214480,
-      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 15:10, UTC"
+      "comment": "Troops by user 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6 are getting ready to travel towards your location on Polygon to attack. They will depart at 29/10/2024, 15:10, UTC"
     },
     {
       "id": 488,
@@ -10103,13 +10103,13 @@
       "id": 503,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216580,
-      "comment": "Your troops are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 15:45, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 15:45, UTC"
     },
     {
       "id": 504,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730216580,
-      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 15:45, UTC"
+      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 15:45, UTC"
     },
     {
       "id": 505,
@@ -10187,25 +10187,25 @@
       "id": 517,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219700,
-      "comment": "Your troops are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
       "id": 518,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730219700,
-      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 16:37, UTC"
+      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location on Ethereum to attack. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
       "id": 519,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219712,
-      "comment": "Your troops are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
+      "comment": "Your troops on Arbitrum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
       "id": 520,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730219712,
-      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location to attack. They will depart at 29/10/2024, 16:37, UTC"
+      "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
       "id": 521,
@@ -10265,13 +10265,13 @@
       "id": 530,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730280648,
-      "comment": "Your troops are getting ready to depart towards 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6. They will depart at 30/10/2024, 09:32, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6. They will depart at 30/10/2024, 09:32, UTC"
     },
     {
       "id": 531,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730280648,
-      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location to attack. They will depart at 30/10/2024, 09:32, UTC"
+      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location on Polygon to attack. They will depart at 30/10/2024, 09:32, UTC"
     },
     {
       "id": 532,
@@ -10475,13 +10475,13 @@
       "id": 565,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730360796,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 31/10/2024, 07:48, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 31/10/2024, 07:48, UTC"
     },
     {
       "id": 566,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730360796,
-      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location to attack. They will depart at 31/10/2024, 07:48, UTC"
+      "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Ethereum to attack. They will depart at 31/10/2024, 07:48, UTC"
     },
     {
       "id": 567,
@@ -10979,13 +10979,13 @@
       "id": 649,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730374812,
-      "comment": "Your troops are getting ready to depart towards 0x529f48318fd5af1955bb65afb082889a5808b678. They will depart at 31/10/2024, 11:42, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x529f48318fd5af1955bb65afb082889a5808b678. They will depart at 31/10/2024, 11:42, UTC"
     },
     {
       "id": 650,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730374812,
-      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location to attack. They will depart at 31/10/2024, 11:42, UTC"
+      "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location on Ethereum to attack. They will depart at 31/10/2024, 11:42, UTC"
     },
     {
       "id": 651,
@@ -11045,13 +11045,13 @@
       "id": 660,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730384004,
-      "comment": "Your troops are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 31/10/2024, 14:15, UTC"
+      "comment": "Your troops on Ethereum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 31/10/2024, 14:15, UTC"
     },
     {
       "id": 661,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730384004,
-      "comment": "Troops by user 0x529f48318fd5af1955bb65afb082889a5808b678 are getting ready to travel towards your location to attack. They will depart at 31/10/2024, 14:15, UTC"
+      "comment": "Troops by user 0x529f48318fd5af1955bb65afb082889a5808b678 are getting ready to travel towards your location on Ethereum to attack. They will depart at 31/10/2024, 14:15, UTC"
     },
     {
       "id": 662,

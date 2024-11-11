@@ -1268,13 +1268,13 @@
       "id": 110,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731063288,
-      "comment": "Your troops are getting ready to depart towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab. They will depart at 08/11/2024, 10:56, UTC"
+      "comment": "Your troops on Polygon are getting ready to depart towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab. They will depart at 08/11/2024, 10:56, UTC"
     },
     {
       "id": 111,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731063288,
-      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location to attack. They will depart at 08/11/2024, 10:56, UTC"
+      "comment": "Troops by user 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646 are getting ready to travel towards your location on Polygon to attack. They will depart at 08/11/2024, 10:56, UTC"
     }
   ],
   "currentPeriodChainActionProposals": [
