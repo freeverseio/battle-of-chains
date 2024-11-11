@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
 import { Storage, ChainActionProposalEvent, ChainActionProposalOption, actionAreaNames, actionTypeNames } from './types';
-import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, chainName, findUser, hasHomechain, isCorrectOperator, log2chain, userDoesNotExist } from './utils'
+import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, chainName, findUser, hasHomechain, isCorrectOperator, log2chain, log2user, userDoesNotExist } from './utils'
 
 export function processChainActionProposal(event: ChainActionProposalEvent, storage: Storage): void {
     console.log(`Processing ChainType Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);
@@ -40,7 +40,7 @@ export function processChainActionProposal(event: ChainActionProposalEvent, stor
     }
     assignUserToChainProposal(event.user, proposalHash, storage.users, storage.currentPeriodChainActionProposals);
 
-    let comment = `You are now supporting that ${chainName(event.sourceChain, storage.chains)} performs an ${actionTypeNames[event.actionType]} action.`;
+    let comment = ` now supporting that ${chainName(event.sourceChain, storage.chains)} performs an ${actionTypeNames[event.actionType]} action.`;
     if (event.actionType == ChainActionProposalOption.AttackArea) {
         comment += ` The attack is to be done on ${chainName(event.targetChain, storage.chains)}`;
         comment += `, on the area: ${actionAreaNames[event.attackArea]}`;
@@ -49,7 +49,8 @@ export function processChainActionProposal(event: ChainActionProposalEvent, stor
         comment += ` The attack is to be done  on ${chainName(event.targetChain, storage.chains)}}`;
         comment += `, on the address: ${event.attackAddress}`;
     }
-    log2chain(event.sourceChain, comment, event.timestamp, storage.logs);
+    log2chain(event.sourceChain, `User ${user.address} is` + comment, event.timestamp, storage.logs);
+    log2user(user.address, `You are` + comment, event.timestamp, storage.logs);
 }
 
 
