@@ -2,6 +2,7 @@
 
 "use client";
 
+import React, { useState } from "react";
 import { useAccount } from "wagmi";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useUserAssets } from "@/hooks/useUserAssets";
@@ -11,7 +12,7 @@ import { UpgradeButton } from "./UpgradeButton";
 import { useNftTypes } from "@/hooks/useNftTypes";
 import { AssetViewerButton } from "./AssetViewerButton";
 import { useSpecies } from "@/hooks/useSpecies";
-import Image from "next/image"; // Import Image from Next.js
+import Image from "next/image";
 
 interface Asset {
   attack: string;
@@ -52,6 +53,21 @@ export const UserArmy = () => {
     attackSpecies,
     defendSpecies,
   } = useSpecies();
+
+  const [copiedTokenId, setCopiedTokenId] = useState<string | null>(null);
+
+  const copyTokenIdToClipboard = async (tokenId: string) => {
+    try {
+      await navigator.clipboard.writeText(tokenId);
+      setCopiedTokenId(tokenId);
+      // Clear the message after 2 seconds
+      setTimeout(() => {
+        setCopiedTokenId(null);
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
 
   if (nftLoading || speciesLoading) return <div>Loading data...</div>;
   if (nftError) return <div>Error loading asset names: {nftError.message}</div>;
@@ -162,8 +178,14 @@ export const UserArmy = () => {
                         return (
                           <Card
                             key={asset.tokenId}
-                            className="p-4 hover:shadow-lg transition-shadow relative"
+                            className="relative p-4 hover:shadow-lg transition-shadow"
                           >
+                            {/* Copied to Clipboard Message */}
+                            {copiedTokenId === asset.tokenId && (
+                              <div className="absolute top-16 right-16 bg-black text-card-foreground px-2 py-1 rounded text-sm">
+                                Copied to clipboard
+                              </div>
+                            )}
                             <div className="space-y-3">
                               {/* Header with Species Name and Level */}
                               <div className="flex justify-between items-center border-b border-border pb-2">
@@ -194,11 +216,16 @@ export const UserArmy = () => {
                                   Level {asset.level}
                                 </span>
                               </div>
-                              {/* ID */}
-                              <span className="text-muted-foreground text-md">
+                              {/* Token ID with Copy Functionality */}
+                              <button
+                                onClick={() =>
+                                  copyTokenIdToClipboard(asset.tokenId)
+                                }
+                                className="text-muted-foreground text-md hover:underline cursor-pointer"
+                              >
                                 ID: {asset.tokenId.slice(0, 6)}...
                                 {asset.tokenId.slice(-4)}
-                              </span>
+                              </button>
                               {/* Combat Stats */}
                               <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">

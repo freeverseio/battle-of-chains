@@ -31,7 +31,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
             {!loading && !error && user && (
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-semibold text-label">
-                  Soft Coins:
+                  Treasury:
                 </span>
                 <span className="text-2xl font-semibold text-label-value">
                   {user.treasury}
