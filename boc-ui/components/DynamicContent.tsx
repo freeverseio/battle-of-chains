@@ -45,7 +45,7 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
 
     switch (activeTab) {
       case "cdd":
-        return <CDDVoting softCoinBalance={10} />;
+        return <CDDVoting treasury={10} />;
       case "summary":
         return <SummaryTable />;
       case "inventory":
@@ -63,7 +63,7 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
             <SoftCoinProduction
               coinFactoryHealth={100}
               productionRate={10}
-              softCoinBalance={softCoinBalance}
+              treasury={treasury}
             />
           </div>
         );

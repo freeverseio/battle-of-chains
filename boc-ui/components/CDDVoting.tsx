@@ -20,10 +20,10 @@ import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { ChainSelection } from "./ChainSelection";
 
 interface CDDVotingProps {
-  softCoinBalance: number;
+  treasury: number;
 }
 
-export default function CDDVoting({ softCoinBalance }: CDDVotingProps) {
+export default function CDDVoting({ treasury }: CDDVotingProps) {
   const { address } = useAccount();
   const { data: userData, loading } = useUserByAddress(address || "0x");
 
@@ -52,7 +52,7 @@ export default function CDDVoting({ softCoinBalance }: CDDVotingProps) {
         <CardContent className="space-y-6">
           {/*} <p className="text-3xl mb-2">
             <span className="text-label">Voting Power:</span>
-            <span className="text-label-value ml-2"> {softCoinBalance}</span>
+            <span className="text-label-value ml-2"> {treasury}</span>
           </p>*/}
 
           <div className="space-y-6">

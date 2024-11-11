@@ -158,7 +158,7 @@ export const AttackMap = () => {
               <TableHead className="text-foreground text-2xl">
                 Address
               </TableHead>
-              <TableHead className="text-label text-2xl">Soft Coins</TableHead>
+              <TableHead className="text-label text-2xl">Treasury</TableHead>
               <TableHead className="text-foreground text-2xl">
                 Total Assets
               </TableHead>
