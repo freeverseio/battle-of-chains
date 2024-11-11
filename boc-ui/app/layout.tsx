@@ -12,8 +12,8 @@ const myFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Blockchain Strategy Game",
-  description: "A blockchain-based strategy game with a single-page interface",
+  title: "Battle of Chains",
+  description: "A Fully Decentralized Multichain Strategy Game",
   icons: {
     icon: "/favicon.png",
   },
