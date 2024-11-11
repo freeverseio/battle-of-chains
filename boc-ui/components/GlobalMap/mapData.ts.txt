@@ -19,7 +19,7 @@ export const players: Player[] = [
     ],
     troops: { archers: 10, warriors: 15 },
     defense: 50,
-    softCoins: 1000,
+    treasury: 1000,
   },
   {
     name: 'Player 2',
@@ -32,7 +32,7 @@ export const players: Player[] = [
     ],
     troops: { archers: 8, warriors: 12 },
     defense: 40,
-    softCoins: 800,
+    treasury: 800,
   },
   {
     name: 'Player 3',
@@ -45,6 +45,6 @@ export const players: Player[] = [
     ],
     troops: { archers: 12, warriors: 10 },
     defense: 45,
-    softCoins: 900,
+    treasury: 900,
   },
 ];
