@@ -37,7 +37,7 @@ describe('Process and Compare Storage', () => {
     it('should process hardcoded events and compare storage for test suite 2', async () => {
         const debugData = {
             "gameStartTime": 1729168020,
-            "deadline": 1731063388,
+            "deadline": 1731402544,
             "useHardcodedEvents": true,
             "eventsFile": './src/processor/test/events02.json',
             "storageFile": './src/processor/test/storage02.json',
