@@ -5,7 +5,7 @@ import { defendSpeciesStats, DefendSpeciesType } from '../processor/speciesDefen
 import { UserType, AssetType, ChainActionProposalType, LogType, Storage, AssignOperatorType, ChainType, nftTypeNames } from '../processor/types';
 import { toChecksumAddress } from 'web3-utils';
 import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
-import { XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
+import { COST_PER_XP, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
 
 function toChecksum(input: any): any {
   if (typeof input === 'string' && input) {
@@ -205,8 +205,8 @@ export function formInfo(): Info[] {
   const homebase_xp = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
     XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY * level2xp(level, isFact)
   );
-  const homebase_cost = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
-    costToMintAsset(level, isFact)
+  const homebase_cost = Array.from({ length: homebase_xp.length }, (_, level) => 
+    COST_PER_XP * homebase_xp[level]
   );
   const homebase_prodrate = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
     treasuryProdRatePerDay(level)
