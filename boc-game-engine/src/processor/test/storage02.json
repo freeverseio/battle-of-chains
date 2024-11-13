@@ -3,12 +3,12 @@
     {
       "chain_id": 137,
       "name": "Polygon",
-      "score": 209
+      "score": 324
     },
     {
       "chain_id": 1,
       "name": "Ethereum",
-      "score": 108
+      "score": 74
     },
     {
       "chain_id": 42161,
@@ -23,7 +23,7 @@
       "name": "Godzilla",
       "joined_timestamp": 1731074280,
       "score": 0,
-      "treasury": 121,
+      "treasury": 247,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -34,8 +34,8 @@
       "homechain": 137,
       "name": "Godzilla",
       "joined_timestamp": 1731075888,
-      "score": 167,
-      "treasury": 49,
+      "score": 282,
+      "treasury": 62,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -59,7 +59,7 @@
       "name": "Not GLogic",
       "joined_timestamp": 1731081300,
       "score": 42,
-      "treasury": 115,
+      "treasury": 239,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -71,7 +71,7 @@
       "name": "yooo",
       "joined_timestamp": 1731082176,
       "score": 0,
-      "treasury": 118,
+      "treasury": 241,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -82,8 +82,8 @@
       "homechain": 1,
       "name": "dani",
       "joined_timestamp": 1731082416,
-      "score": 60,
-      "treasury": 90,
+      "score": 28,
+      "treasury": 214,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -94,8 +94,8 @@
       "homechain": 1,
       "name": "dether",
       "joined_timestamp": 1731325860,
-      "score": 48,
-      "treasury": 28,
+      "score": 46,
+      "treasury": 66,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -107,7 +107,7 @@
       "name": "cubu",
       "joined_timestamp": 1731330888,
       "score": 0,
-      "treasury": 31,
+      "treasury": 68,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -119,7 +119,7 @@
       "name": "dani poly",
       "joined_timestamp": 1731401604,
       "score": 0,
-      "treasury": 8,
+      "treasury": 20,
       "treasuryLastUpdate": 1731402544,
       "health": 100,
       "xp": 0,
@@ -134,8 +134,8 @@
       "type": "0",
       "creation_timestamp": 1731075936,
       "owner": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
-      "xp": 121,
-      "health": 38,
+      "xp": 126,
+      "health": 44,
       "level": 2,
       "attack": 200,
       "defense": 50,
@@ -152,8 +152,8 @@
       "type": "0",
       "creation_timestamp": 1731075936,
       "owner": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
-      "xp": 2,
-      "health": 6,
+      "xp": 1,
+      "health": 9,
       "level": 0,
       "attack": 16,
       "defense": 8,
@@ -207,15 +207,15 @@
       "creation_timestamp": 1731075972,
       "owner": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "xp": 1,
-      "health": 0,
+      "health": 9,
       "level": 0,
       "attack": 1,
       "defense": 17,
-      "age": 13951479,
+      "age": 16981779,
       "potential": 5,
       "travelSpeed": 3,
       "species": 7,
-      "statsLastUpdate": 1731344269,
+      "statsLastUpdate": 1731402544,
       "state": 0
     },
     {
@@ -566,8 +566,8 @@
       "type": "0",
       "creation_timestamp": 1731318384,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 7,
+      "xp": 4,
+      "health": 4,
       "level": 0,
       "attack": 4,
       "defense": 2,
@@ -585,7 +585,7 @@
       "creation_timestamp": 1731318384,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 1,
-      "health": 9,
+      "health": 10,
       "level": 0,
       "attack": 44,
       "defense": 4,
@@ -620,8 +620,8 @@
       "type": "0",
       "creation_timestamp": 1731318912,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 7,
+      "xp": 4,
+      "health": 4,
       "level": 0,
       "attack": 9,
       "defense": 1,
@@ -639,7 +639,7 @@
       "creation_timestamp": 1731318912,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 1,
-      "health": 9,
+      "health": 10,
       "level": 0,
       "attack": 16,
       "defense": 4,
@@ -674,8 +674,8 @@
       "type": "0",
       "creation_timestamp": 1731318936,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 6,
+      "xp": 4,
+      "health": 3,
       "level": 0,
       "attack": 3,
       "defense": 1,
@@ -693,7 +693,7 @@
       "creation_timestamp": 1731318936,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 1,
-      "health": 9,
+      "health": 10,
       "level": 0,
       "attack": 24,
       "defense": 4,
@@ -729,7 +729,7 @@
       "creation_timestamp": 1731319056,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 3,
-      "health": 8,
+      "health": 3,
       "level": 0,
       "attack": 2,
       "defense": 3,
@@ -747,7 +747,7 @@
       "creation_timestamp": 1731319056,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 1,
-      "health": 6,
+      "health": 7,
       "level": 0,
       "attack": 4,
       "defense": 28,
@@ -782,16 +782,16 @@
       "type": "1",
       "creation_timestamp": 1731319260,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 4,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 2,
       "defense": 13,
-      "age": 4330793,
+      "age": 782365,
       "potential": 10,
       "travelSpeed": 2,
       "species": 1,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -836,16 +836,16 @@
       "type": "1",
       "creation_timestamp": 1731319632,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 4,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 8,
-      "age": 4311466,
+      "age": 763038,
       "potential": 3,
       "travelSpeed": 4,
       "species": 10,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -890,16 +890,16 @@
       "type": "1",
       "creation_timestamp": 1731319836,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 4,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 8,
-      "age": 4300841,
+      "age": 752413,
       "potential": 3,
       "travelSpeed": 4,
       "species": 10,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -944,16 +944,16 @@
       "type": "1",
       "creation_timestamp": 1731319860,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 4,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 8,
-      "age": 4299601,
+      "age": 751173,
       "potential": 3,
       "travelSpeed": 11,
       "species": 13,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -999,7 +999,7 @@
       "creation_timestamp": 1731321060,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 3,
-      "health": 8,
+      "health": 3,
       "level": 0,
       "attack": 3,
       "defense": 3,
@@ -1052,16 +1052,16 @@
       "type": "1",
       "creation_timestamp": 1731321156,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
-      "xp": 3,
-      "health": 7,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 4,
-      "age": 4232215,
+      "age": 683787,
       "potential": 1,
       "travelSpeed": 5,
       "species": 4,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -1107,7 +1107,7 @@
       "creation_timestamp": 1731321192,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 3,
-      "health": 9,
+      "health": 6,
       "level": 0,
       "attack": 12,
       "defense": 1,
@@ -1178,11 +1178,11 @@
       "type": "2",
       "creation_timestamp": 1731321228,
       "owner": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
-      "xp": 0,
-      "health": 100,
-      "level": 0,
-      "attack": 2,
-      "defense": 10,
+      "xp": 100,
+      "health": 92,
+      "level": 1,
+      "attack": 10,
+      "defense": 50,
       "age": 4228432,
       "potential": 6,
       "travelSpeed": 0,
@@ -1269,15 +1269,15 @@
       "creation_timestamp": 1731321732,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 20,
-      "health": 47,
+      "health": 0,
       "level": 0,
       "attack": 2,
       "defense": 10,
-      "age": 4202224,
+      "age": 653796,
       "potential": 6,
       "travelSpeed": 0,
       "species": 1,
-      "statsLastUpdate": 1731402544,
+      "statsLastUpdate": 1731334305,
       "state": 0
     },
     {
@@ -1323,7 +1323,7 @@
       "creation_timestamp": 1731321756,
       "owner": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "xp": 3,
-      "health": 9,
+      "health": 6,
       "level": 0,
       "attack": 6,
       "defense": 2,
@@ -1502,7 +1502,7 @@
       "type": "0",
       "creation_timestamp": 1731326532,
       "owner": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
-      "xp": 2,
+      "xp": 1,
       "health": 10,
       "level": 0,
       "attack": 36,
@@ -1556,7 +1556,7 @@
       "type": "1",
       "creation_timestamp": 1731326556,
       "owner": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
-      "xp": 2,
+      "xp": 1,
       "health": 9,
       "level": 0,
       "attack": 4,
@@ -1718,11 +1718,11 @@
       "type": "0",
       "creation_timestamp": 1731339996,
       "owner": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
-      "xp": 0,
+      "xp": 10,
       "health": 10,
-      "level": 0,
-      "attack": 5,
-      "defense": 2,
+      "level": 1,
+      "attack": 20,
+      "defense": 8,
       "age": 2360883856,
       "potential": 5,
       "travelSpeed": 2,
@@ -2368,7 +2368,7 @@
       "id": 101,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731313560,
-      "comment": "You tried to upgrade your homebase to level 1. You are still 300 XP away from next level, which costs 300. You only have 27 in your treasury."
+      "comment": "You tried to upgrade your homebase to level 1. You are still 300 XP away from next level, which costs 300. You only have 121 in your treasury."
     },
     {
       "id": 102,
@@ -2500,13 +2500,13 @@
       "id": 123,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731318957,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 1% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 11% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 124,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731318957,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 1% success. You lost 3 assets in the fight"
+      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 11% success. Your troops gained 2 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 125,
@@ -2710,7 +2710,7 @@
       "id": 158,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731321396,
-      "comment": "You tried to upgrade to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on Ethereum. The asset is still 100 XP away from next level, which costs 100. You only have 28 in your treasury."
+      "comment": "You successfully upgraded to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on chain 1. It was 100 XP away from next level; it costed 100 from your treasury."
     },
     {
       "id": 159,
@@ -2752,7 +2752,7 @@
       "id": 165,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731322920,
-      "comment": "You tried to upgrade to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on Polygon. The asset is still 100 XP away from next level, which costs 100. You only have 28 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on Polygon. The asset is still 100 XP away from next level, which costs 100. You only have 25 in your treasury."
     },
     {
       "id": 166,
@@ -2860,13 +2860,13 @@
       "id": 183,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731327009,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 12% success, and they were harmed by their backfire with 24% success. Your troops gained 2 percentual XP points"
+      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 10% success, and they were harmed by their backfire with 17% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 184,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731327009,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 12% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points"
+      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 10% success; you backfired and harmed them with 17% success. Your troops gained 3 percentual XP points"
     },
     {
       "id": 185,
@@ -2914,13 +2914,13 @@
       "id": 192,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731334305,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 32% success, and they were harmed by their backfire with 26% success. Your troops gained 6 percentual XP points"
+      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 16% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 193,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731334305,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 32% success; you backfired and harmed them with 26% success. Your troops gained 5 percentual XP points. You lost 3 assets in the fight"
+      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 16% success. Your troops gained 3 percentual XP points. You lost 9 assets in the fight"
     },
     {
       "id": 194,
@@ -2968,7 +2968,7 @@
       "id": 201,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731339996,
-      "comment": "You have created an asset of type: attack, and species: European Bureaucrat, on Ethereum, with tokenId = 31482472036557873225879078219878646028255621547691808640932779074835487999348. Regulates anything that moves. Attacks with endless paperwork and compliance forms. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
+      "comment": "You have created an asset of type: attack, and species: European Bureaucrat, on Ethereum, with tokenId = 31482472036557873225879078219878646028255621547691808640932779074835487999348. Regulates anything that moves. Attacks with endless paperwork and compliance forms. It costed 10 from your treasury. The asset has level 1. It benefited from using your factory of level 1 in that chain. You can trade this asset in that chain."
     },
     {
       "id": 202,
@@ -2998,7 +2998,7 @@
       "id": 206,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731340308,
-      "comment": "You tried to upgrade to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on Polygon. The asset is still 80 XP away from next level, which costs 80. You only have 31 in your treasury."
+      "comment": "You tried to upgrade to level 1 your asset 46865693343699821618154611813477917701503974535180373538087840121245302867316 on Polygon. The asset is still 80 XP away from next level, which costs 80. You only have 23 in your treasury."
     },
     {
       "id": 207,
@@ -3016,13 +3016,13 @@
       "id": 209,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731344269,
-      "comment": "Your troops have attacked at 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, they stole 1 coins, attacked with 1% success, and they were harmed by their backfire with 62% success. You lost 1 assets in the fight"
+      "comment": "Your troops have attacked at 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, they stole 1 coins, attacked with 1% success, and they were harmed by their backfire with 6% success"
     },
     {
       "id": 210,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731344269,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 1 coins, and attacked you with 1% success; you backfired and harmed them with 62% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 1 coins, and attacked you with 1% success; you backfired and harmed them with 6% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 211,
@@ -3046,7 +3046,7 @@
       "id": 214,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731401796,
-      "comment": "You tried to upgrade your homebase to level 1. You are still 300 XP away from next level, which costs 300. You only have 8 in your treasury."
+      "comment": "You tried to upgrade your homebase to level 1. You are still 300 XP away from next level, which costs 300. You only have 20 in your treasury."
     }
   ],
   "currentPeriodChainActionProposals": [
@@ -3056,14 +3056,14 @@
       "targetChain": 1,
       "actionType": 3,
       "attackAddress": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
-      "votes": 49
+      "votes": 62
     },
     {
       "hash": "116b3197120f080b0a5e19b46cf4a865fa0226f36398a1ffa28d695c29e92cd9",
       "sourceChain": 137,
       "actionType": 0,
       "attackAddress": "0x0000000000000000000000000000000000000000",
-      "votes": 8
+      "votes": 20
     }
   ],
   "pendingActions": [

@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "nodemon --watch src --ext ts --exec \"ts-node src/index.ts\"",
     "start": "ts-node src/index.ts",
-    "test": "jest --watch",
+    "test": "jest",
     "test:ci": "jest --ci --runInBand --silent",
     "test:process": "jest src/processor/process.test.ts"
   },
