@@ -72,7 +72,7 @@ const Modal: React.FC = () => {
                 </div>
                 You are about to mint assets on Ethereum, Polygon and Arbitrum
                 in one single transaction via LAOS Network. This action will
-                requires only a small gas fee on LAOS. No gas fees will be
+                require only a small gas fee on LAOS. No gas fees will be
                 charged on any other chain.
               </DialogDescription>
             </DialogHeader>
