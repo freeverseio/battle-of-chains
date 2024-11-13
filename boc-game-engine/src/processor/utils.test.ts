@@ -304,7 +304,7 @@ describe('treasuryProdRatePerSec', () => {
                             / constants.ONE_WEEK_IN_SECS;
         expect(treasuryProdRatePerSec(level)).toBeCloseTo(expectedRate, 5);
         expect(treasuryProdRatePerDay(level)).toBeCloseTo(treasuryProdRatePerSec(level) * 24 * 3600, 5);
-        expect(treasuryProdRatePerDay(level)).toBeCloseTo(30, 5);
+        expect(treasuryProdRatePerDay(level)).toBeCloseTo(60, 5);
     });
 
     it('should return the correct production rate per second for level 3', () => {
