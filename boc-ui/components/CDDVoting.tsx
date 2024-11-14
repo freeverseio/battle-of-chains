@@ -18,6 +18,7 @@ import { ChainActionProposals } from "./ChainActionProposals";
 import { chainIdMapping } from "@/utils/chainIdMapping";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { ChainSelection } from "./ChainSelection";
+import Modal from "./Modal";
 
 interface CDDVotingProps {
   treasury: number;
@@ -223,6 +224,7 @@ export default function CDDVoting({ treasury }: CDDVotingProps) {
         </CardContent>
       </Card>
       <ChainActionProposals />
+      <Modal />
     </>
   );
 }
