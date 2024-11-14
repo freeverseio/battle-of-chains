@@ -98,10 +98,10 @@ export async function getAttackEventsInBatch(limit: number, offset: number): Pro
   return enrichEvents(data.attacks, LAOS_CHAIN_ID, EventType.AttackEvent);
 }
 
-export async function getChainActionProposalEvents(): Promise<AllEventTypes[]> {
+export async function getChainActionProposalEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      chainActionProposals {
+      chainActionProposals(limit: ${limit}, offset: ${offset}) {
         operator
         user
         sourceChain
