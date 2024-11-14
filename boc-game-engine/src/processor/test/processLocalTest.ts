@@ -12,7 +12,6 @@ async function test(debugData: DebugData) {
     await eventProcessor.update();
     const storage = eventProcessor.getStorage();
 
-    if (!debugData) return;
     const isStorageEqual = await compareStorage(storage, debugData.storageFile);
     if (!isStorageEqual) {
         console.log('Storage differs. Updating storage file.');
