@@ -57,9 +57,9 @@ function computeSeed(chain: number, event: MultichainMintEvent) : number {
 function selectSpecies(type: AssetTypeOptions, seed: number, storage: Storage) : [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats] {
     let ranges: number[];
     let maxRnd: number;
-    let stats: [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats][];[];
+    let stats: [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats][];
 
-    if (type === AssetTypeOptions.AttackAsset) {
+    if (type === AssetTypeOptions.AttackAsset) {
         maxRnd = storage.attackRanges.maxRnd;
         ranges = storage.attackRanges.ranges;
         stats = attackSpeciesStats;

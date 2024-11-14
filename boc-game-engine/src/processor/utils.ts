@@ -224,7 +224,7 @@ export function isCharacter(typeId: string) : boolean {
     return (typeId === AssetTypeOptions.AttackAsset || typeId === AssetTypeOptions.DefenseAsset);
 }
 
-export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
+export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
     return level2xp(
         Math.max(1, level),
         isFactory
