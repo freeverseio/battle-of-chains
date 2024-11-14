@@ -21,7 +21,7 @@ async function test(debugData: DebugData) {
     }
 }
 
-async function testHardcodedEvents() {
+async function main() {
     const debugData = {
         "gameStartTime": 1729168020,
         "deadline": 1731402544,
@@ -30,28 +30,6 @@ async function testHardcodedEvents() {
         "storageFile": './src/processor/test/storage02.json',
     };
     await test(debugData);
-}
-
-async function testRealTimeEvents() {
-    const allChains = await getChains();
-    const eventProcessor = new EventProcessor(allChains, undefined);
-
-    await eventProcessor.update();
-    const storage = eventProcessor.getStorage();
-
-    const storageFile = './src/processor/test/storage02.json';
-    const isStorageEqual = await compareStorage(storage, storageFile);
-    if (!isStorageEqual) {
-        console.log('Storage differs. Updating storage file.');
-        await fs.writeFile(storageFile, JSON.stringify(storage, null, 2));
-    } else {
-        console.log('Storage is the same. No update needed.');
-    }
-}
-
-async function main() {
-    await testHardcodedEvents();
-    // await testRealTimeEvents();
 }
 
 main().catch(error => {
