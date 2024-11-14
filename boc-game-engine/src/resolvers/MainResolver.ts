@@ -14,21 +14,21 @@ function isReadyToProcess(st: ProcessStatusOutput) : boolean {
 
 export const localResolvers = {
   Mutation: {
-    async update(_: any, __: any, context: any): Promise<number> {
+    async update(_: unknown, __: unknown, _context: unknown): Promise<number> {
       const s = await getStatus();
       if (!isReadyToProcess(s[0])) return 0;
 
       let nProcessedEvents = 0;
       try {
         await setStatus(ProcessStatusEnum.PROCESSING);
-        nProcessedEvents = await update(context);
+        nProcessedEvents = await update();
       } catch (error) {
         console.error("Error during reprocessing:", error);
         throw new Error("Reprocessing failed. Please try again later.");
       } finally {
         await setStatus(ProcessStatusEnum.FREE);
-        return nProcessedEvents;
       }
+      return nProcessedEvents;
     },
   },
 };
