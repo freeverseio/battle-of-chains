@@ -79,7 +79,7 @@ export class EventProcessor {
             for (let event of allEvents) {
                 if (this.debugData?.deadline && event.timestamp > this.debugData.deadline) {
                     console.log('returning...', event.timestamp)
-                    return;
+                    continue;
                 }
 
                 processPendingActions(event.timestamp, this.storage);
