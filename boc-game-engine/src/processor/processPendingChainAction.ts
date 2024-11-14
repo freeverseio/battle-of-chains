@@ -1,13 +1,13 @@
 import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea } from './types';
-import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
+import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
 import { INTERVAL_BETWEEN_CHAIN_ACTIONS } from './constants';
 import murmurhash from 'murmurhash';
 
 export function processChainActions(action: PendingChainAction, storage: Storage) {
-    let mostVotedActions: ChainActionProposalType[] = [];
+    const mostVotedActions: ChainActionProposalType[] = [];
 
     // Get the most voted actions per chain (do not execute them yet)
-    for (let chain of storage.chains) {
+    for (const chain of storage.chains) {
         console.log(`Processing Chain Action for chain ${chain.chain_id}`);
         let mostVoted = selectMostVotedChainAction(chain.chain_id, action.toBeExectutedAt, storage);
         if (!mostVoted) {
@@ -87,7 +87,7 @@ function executeChainAction(action: ChainActionProposalType, timestamp: number, 
         let damageHPPercent = action.attackArea === AttackArea.All ? 8 : 40;
         if (isTargetChainDefending) damageHPPercent /= 8;
         const assetsInArea = findAllAssetsInArea(action.targetChain, action.attackArea, storage.assets);
-        for (let asset of assetsInArea) {
+        for (const asset of assetsInArea) {
             decreaseAssetHealthByPercent(asset, damageHPPercent);
         }
     }
@@ -100,7 +100,7 @@ function executeChainAction(action: ChainActionProposalType, timestamp: number, 
             return;
         }
         const assetsOfTargetUser = getAliveInventoryInChain(action.attackAddress, action.targetChain, storage.assets);
-        for (let asset of assetsOfTargetUser) {
+        for (const asset of assetsOfTargetUser) {
             decreaseAssetHealthByPercent(asset, damageHPPercent);
         }
     }

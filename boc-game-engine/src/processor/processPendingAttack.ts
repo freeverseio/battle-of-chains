@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
@@ -82,7 +82,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
 
     const averageAttackedDefense = attackedDefense / attackedAssets.length;
-    for (let asset of attackedAssets) {
+    for (const asset of attackedAssets) {
         decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageAttackedDefense));
         if (asset.health === 0) {
             attackedCasulaties++;
@@ -94,7 +94,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     }
 
     const averageAttackerDefense = attackerDefense / attackerAssets.length;
-    for (let asset of attackerAssets) {
+    for (const asset of attackerAssets) {
         decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
         if (asset.health === 0) {
             attackerCasulaties++;

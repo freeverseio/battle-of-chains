@@ -5,7 +5,7 @@ import { getAllChains } from './chainService';
 import { formStorage } from './getDataToStore';
 import { QueryRunner } from 'typeorm';
 
-export async function update(context: any): Promise<number> {
+export async function update(): Promise<number> {
   const allChains = await getAllChains();
   const eventProcessor = new EventProcessor(allChains);
   await eventProcessor.update();

@@ -1,7 +1,6 @@
-import { adaptPercetangeToAverage, applyNoise, computeReferenceTreasuryCostAtLevel, costToMintAsset, costToMintCharacter, decreaseAssetHealthByPercent, getNext2pmUTC, isFactory, level2xp, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, rarityToRanges, treasuryPenaltyPerSec, treasuryProdRatePerDay, treasuryProdRatePerSec, xp2level } from './utils';
+import { adaptPercetangeToAverage, applyNoise, computeReferenceTreasuryCostAtLevel, costToMintCharacter, decreaseAssetHealthByPercent, getNext2pmUTC, isFactory, level2xp, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, rarityToRanges, treasuryPenaltyPerSec, treasuryProdRatePerDay, treasuryProdRatePerSec, xp2level } from './utils';
 import * as constants from './constants';
 import { AssetState, AssetType, AssetTypeOptions, RangeSelection } from './types';
-import { Asset } from '../db/entity';
 import { AttackSpeciesType } from './speciesAttack';
 
 describe('level2xp function', () => {

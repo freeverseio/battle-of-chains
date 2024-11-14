@@ -2,7 +2,7 @@
 import { promises as fs } from 'fs';
 import { getChains } from '../getChains';
 import { EventProcessor } from '../process';
-import { DebugData, Storage } from '../types';
+import { DebugData } from '../types';
 import { compareStorage } from './testingUtils';
 
 async function test(debugData: DebugData) {

@@ -70,9 +70,9 @@ export class EventProcessor {
                 ? JSON.parse(await fs.readFile(this.debugData.eventsFile, 'utf-8'))
                 : await getAllEvents(this.storage.chains);
 
-            for (let event of allEvents) {
+            for (const event of allEvents) {
                 if (this.debugData?.deadline && event.timestamp > this.debugData.deadline) {
-                    console.log('returning...', event.timestamp)
+                    console.log('[DEBUG_MODE] bypassing event beyond deadline...', event.timestamp)
                     continue;
                 }
 
