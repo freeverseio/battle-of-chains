@@ -56,10 +56,10 @@ export async function getJoinedChainEventsInBatch(limit: number, offset: number)
   return enrichEvents(data.joinedChains, LAOS_CHAIN_ID, EventType.JoinedChainEvent);
 }
 
-export async function getMultichainMintEvents(): Promise<AllEventTypes[]> {
+export async function getMultichainMintEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      multichainMints {
+      multichainMints(limit: ${limit}, offset: ${offset}) {
         tokenId
         user
         typeId
