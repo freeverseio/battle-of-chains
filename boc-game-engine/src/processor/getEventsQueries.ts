@@ -123,10 +123,10 @@ export async function getChainActionProposalEventsInBatch(limit: number, offset:
   return enrichEvents(data.chainActionProposals, LAOS_CHAIN_ID, EventType.ChainActionProposalEvent);
 }
 
-export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
+export async function getUpgradeEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      upgrades {
+      upgrades(limit: ${limit}, offset: ${offset}) {
         operator
         user
         chain

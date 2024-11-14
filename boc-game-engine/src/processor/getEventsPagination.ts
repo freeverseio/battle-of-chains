@@ -1,4 +1,4 @@
-import { getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch } from "./getEventsQueries";
+import { getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
 import {  AllEventTypes } from "./types";
 import * as dotenv from "dotenv";
 
@@ -21,6 +21,11 @@ export async function getAttackEvents(): Promise<AllEventTypes[]> {
 export async function getChainActionProposalEvents(): Promise<AllEventTypes[]> {
   return fetchAllEvents(getChainActionProposalEventsInBatch);
 }
+
+export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
+  return fetchAllEvents(getUpgradeEventsInBatch);
+}
+
 
 async function fetchAllEvents(
   fetchBatchFunction: (limit: number, offset: number) => Promise<AllEventTypes[]>
