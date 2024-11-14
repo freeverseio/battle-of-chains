@@ -8,7 +8,7 @@ const LAOS_GRAPHQL = process.env.LAOS_GRAPHQL ? process.env.LAOS_GRAPHQL : '';
 const OWNERSHIP_GRAPHQLS = process.env.OWNERSHIP_GRAPHQLS ? process.env.OWNERSHIP_GRAPHQLS.split(',') : [];
 
 
-async function fetchGraphQL(endpoint: string, query: string, variables: any = {}) {
+async function fetchGraphQL(endpoint: string, query: string, variables: Record<string, unknown> = {}) {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -27,7 +27,7 @@ async function fetchGraphQL(endpoint: string, query: string, variables: any = {}
   return result.data;
 }
 
-function enrichEvents<T>(events: AllEventTypes[], eventChain: number, eventType: EventType): AllEventTypes[] {
+function enrichEvents(events: AllEventTypes[], eventChain: number, eventType: EventType): AllEventTypes[] {
   return events.map(event => ({
     ...event,
     timestamp: Math.floor(new Date(event.timestamp).getTime() / 1000),
