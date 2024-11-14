@@ -7,11 +7,8 @@ import { toChecksumAddress } from 'web3-utils';
 import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
 import { COST_PER_XP, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
 
-function toChecksum(input: any): any {
-  if (typeof input === 'string' && input) {
-    return toChecksumAddress(input);
-  }
-  return input;
+function toChecksumIfDefined(input: string | undefined): string | undefined {
+  return input ? toChecksumAddress(input) : undefined;
 }
 
 export type StorageToInsert = {
@@ -58,7 +55,7 @@ function formUsers(processedUsers: UserType[]): User[] {
     const usersToInsert: User[] = [];
     for (const user of processedUsers) {
       const newUser = new User();
-      newUser.address = toChecksum(user.address);
+      newUser.address = toChecksumAddress(user.address);
       newUser.name = user.name;
       newUser.homechain = user.homechain;
       newUser.mercenary_chain = user.mercenaryChain;
@@ -83,7 +80,7 @@ function formAssets(processedAssets: AssetType[]): Asset[] {
     newAsset.token_id = asset.token_id;
     newAsset.type = asset.type;
     newAsset.creation_timestamp = asset.creation_timestamp;
-    newAsset.owner = toChecksum(asset.owner);
+    newAsset.owner = toChecksumAddress(asset.owner);
     newAsset.xp = asset.xp;
     newAsset.health = asset.health;
     newAsset.level = asset.level;
@@ -110,7 +107,7 @@ function formCurrentPeriodChainActionProposals(processedProposals: ChainActionPr
     newProposal.target_chain_id = proposal.targetChain;
     newProposal.type = proposal.actionType;
     newProposal.attack_area = proposal.attackArea;
-    newProposal.attack_address = toChecksum(proposal.attackAddress);
+    newProposal.attack_address = toChecksumIfDefined(proposal.attackAddress);
     newProposal.votes = proposal.votes;
     proposalsToInsert.push(newProposal);
   }
@@ -121,8 +118,8 @@ function formAssignOperators(processedAssignedOperators: AssignOperatorType[]): 
   const toInsert: AssignOperator[] = [];
   for (const assignment of processedAssignedOperators) {
     const newAssign = new AssignOperator();
-    newAssign.assigner = toChecksum(assignment.assigner);
-    newAssign.operator = toChecksum(assignment.operator);
+    newAssign.assigner = toChecksumAddress(assignment.assigner);
+    newAssign.operator = toChecksumAddress(assignment.operator);
     newAssign.chain_id = assignment.chain_id;
     newAssign.timestamp = assignment.timestamp;
     toInsert.push(newAssign);
@@ -135,7 +132,7 @@ function formLogs(processedLogs: LogType[]): Log[] {
   for (const log of processedLogs) {
     const newLog = new Log();
     newLog.id = log.id;
-    newLog.user_address = toChecksum(log.user_address);
+    newLog.user_address = toChecksumIfDefined(log.user_address);
     newLog.chain = log.chain;
     newLog.timestamp = log.timestamp;
     newLog.comment = log.comment;
