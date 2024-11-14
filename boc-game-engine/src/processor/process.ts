@@ -72,7 +72,7 @@ export class EventProcessor {
 
             for (const event of allEvents) {
                 if (this.debugData?.deadline && event.timestamp > this.debugData.deadline) {
-                    console.log('returning...', event.timestamp)
+                    console.log('[DEBUG_MODE] bypassing event beyond deadline...', event.timestamp)
                     continue;
                 }
 
