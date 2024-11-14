@@ -14,7 +14,7 @@ function isReadyToProcess(st: ProcessStatusOutput) : boolean {
 
 export const localResolvers = {
   Mutation: {
-    async update(_: unknown, __: unknown, _context: unknown): Promise<number> {
+    async update(): Promise<number> {
       const s = await getStatus();
       if (!isReadyToProcess(s[0])) return 0;
 
