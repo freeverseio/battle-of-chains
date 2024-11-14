@@ -7,7 +7,7 @@ import { toChecksumAddress } from 'web3-utils';
 import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
 import { COST_PER_XP, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
 
-function toChecksum(input: unknown): string | unknown {
+function toChecksum(input: any): any {
   if (typeof input === 'string' && input) {
     return toChecksumAddress(input);
   }
