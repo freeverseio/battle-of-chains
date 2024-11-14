@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAliveAndFree, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {

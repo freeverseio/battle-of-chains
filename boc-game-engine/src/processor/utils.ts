@@ -1,7 +1,7 @@
 import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
-import { AssignOperator, Log, User } from '../db/entity';
+import { AssignOperator, Log } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
 import murmurhash from 'murmurhash';

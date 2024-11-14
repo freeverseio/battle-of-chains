@@ -1,5 +1,5 @@
 import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea } from './types';
-import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, findAllAssetsNearAddress, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
+import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
 import { INTERVAL_BETWEEN_CHAIN_ACTIONS } from './constants';
 import murmurhash from 'murmurhash';
 

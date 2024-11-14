@@ -1,6 +1,6 @@
 import { COST_PER_XP, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from './constants';
 import { Storage, UpgradeEvent, UserType } from './types';
-import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, subtractFromTreasury, upgradeAssetToLevel, userDoesNotExist } from './utils'
+import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, subtractFromTreasury, upgradeAssetToLevel } from './utils'
 
 export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     console.log(`Processing Upgrade Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}`);
