@@ -36,10 +36,10 @@ function enrichEvents<T>(events: AllEventTypes[], eventChain: number, eventType:
   }));
 }
 
-export async function getJoinedChainEvents(): Promise<AllEventTypes[]> {
+export async function getJoinedChainEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      joinedChains {
+      joinedChains(limit: ${limit}, offset: ${offset}) {
         user
         homeChain
         nickname
@@ -51,14 +51,15 @@ export async function getJoinedChainEvents(): Promise<AllEventTypes[]> {
       }
     }
   `;
+
   const data = await fetchGraphQL(LAOS_GRAPHQL, query);
   return enrichEvents(data.joinedChains, LAOS_CHAIN_ID, EventType.JoinedChainEvent);
 }
 
-export async function getMultichainMintEvents(): Promise<AllEventTypes[]> {
+export async function getMultichainMintEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      multichainMints {
+      multichainMints(limit: ${limit}, offset: ${offset}) {
         tokenId
         user
         typeId
@@ -75,10 +76,10 @@ export async function getMultichainMintEvents(): Promise<AllEventTypes[]> {
   return enrichEvents(data.multichainMints, LAOS_CHAIN_ID, EventType.MultichainMintEvent);
 }
 
-export async function getAttackEvents(): Promise<AllEventTypes[]> {
+export async function getAttackEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      attacks {
+      attacks(limit: ${limit}, offset: ${offset}) {
         tokenIds
         targetAddress
         operator
@@ -97,10 +98,10 @@ export async function getAttackEvents(): Promise<AllEventTypes[]> {
   return enrichEvents(data.attacks, LAOS_CHAIN_ID, EventType.AttackEvent);
 }
 
-export async function getChainActionProposalEvents(): Promise<AllEventTypes[]> {
+export async function getChainActionProposalEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      chainActionProposals {
+      chainActionProposals(limit: ${limit}, offset: ${offset}) {
         operator
         user
         sourceChain
@@ -122,10 +123,10 @@ export async function getChainActionProposalEvents(): Promise<AllEventTypes[]> {
   return enrichEvents(data.chainActionProposals, LAOS_CHAIN_ID, EventType.ChainActionProposalEvent);
 }
 
-export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
+export async function getUpgradeEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      upgrades {
+      upgrades(limit: ${limit}, offset: ${offset}) {
         operator
         user
         chain
@@ -143,10 +144,10 @@ export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
   return enrichEvents(data.upgrades, LAOS_CHAIN_ID, EventType.UpgradeEvent);
 }
 
-export async function getAssignOperatorEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+export async function getAssignOperatorEventsInBatch(chainIdx: number, chain_id: number, limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      assignOperators {
+      assignOperators(limit: ${limit}, offset: ${offset}) {
         operator
         from
         timestamp
@@ -159,10 +160,10 @@ export async function getAssignOperatorEvents(chainIdx: number, chain_id: number
   return enrichEvents(data.assignOperators, chain_id, EventType.AssignOperatorEvent);
 }
 
-export async function getTransferEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+export async function getTransferEventsInBatch(chainIdx: number, chain_id: number, limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      transfers {
+      transfers(pagination: { limit: ${limit}, offset: ${offset} }) {
         from
         to
         tokenId
@@ -176,10 +177,10 @@ export async function getTransferEvents(chainIdx: number, chain_id: number): Pro
   return enrichEvents(data.transfers, chain_id, EventType.TransferEvent);
 }
 
-export async function getRegisterMercenaryEvents(): Promise<AllEventTypes[]> {
+export async function getRegisterMercenaryEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      registerMercenaries {
+      registerMercenaries(limit: ${limit}, offset: ${offset}) {
         mercenaryAddress
         mercenaryChain
         mercenaryNickname

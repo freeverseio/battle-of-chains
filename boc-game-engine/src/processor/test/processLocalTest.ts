@@ -25,7 +25,7 @@ async function main() {
     const debugData = {
         "gameStartTime": 1729168020,
         "deadline": 1731402544,
-        "useHardcodedEvents": true,
+        "useHardcodedEvents": false,
         "eventsFile": './src/processor/test/events02.json',
         "storageFile": './src/processor/test/storage02.json',
     };
