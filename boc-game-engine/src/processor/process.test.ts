@@ -2,15 +2,7 @@
 import { promises as fs } from 'fs';
 import { EventProcessor } from './process';
 import { getChains } from './getChains';
-import { Storage } from './types';
-
-async function compareStorage(storage: Storage, storageFile: string) {
-    const previousStorageData = await fs.readFile(storageFile, 'utf8');
-    const previousStorage = JSON.parse(previousStorageData) as Storage;
-    const areEqual = JSON.stringify(previousStorage) === JSON.stringify(storage);
-    console.log('Storage comparison result:', areEqual ? 'Equal' : 'Different');
-    return areEqual;
-}
+import { compareStorage } from './test/testingUtils';
 
 describe('Process and Compare Storage', () => {
     it('should process hardcoded events and compare storage for test suite 1', async () => {
