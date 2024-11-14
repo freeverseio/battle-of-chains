@@ -23,7 +23,7 @@ export function readableDate(timestamp: number): string {
 
 
 
-export function chainName(chain: Number | undefined, chains: ChainType[]) : string {
+export function chainName(chain: number | undefined, chains: ChainType[]) : string {
     if (!chain) return '';
     for (const c of chains) {
         if (c.chain_id === chain) return c.name;
@@ -49,14 +49,14 @@ export function log2chain(chain: number, comment: string, timestamp: number, log
     });
 }
 
-export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
-    const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);
+export function chainIsNotSupported(chain: number, chains: ChainType[]) : boolean {
+    const chainNotSupported = !!chain && !chains.some(u => u.chain_id === chain);
     if (chainNotSupported) console.log(`An event tried to act on a chain that is not yet supported: ${chain}`);
     return chainNotSupported;
 }
 
-export function userDoesNotExist(user: String, users: UserType[]) : boolean {
-    const userDoesNotExist = user && !users.find(u => u.address.toLowerCase() === user.toLowerCase());
+export function userDoesNotExist(user: string, users: UserType[]) : boolean {
+    const userDoesNotExist = !!user && !users.some(u => u.address.toLowerCase() === user.toLowerCase());
     if (userDoesNotExist) console.log(`An event tried to act on a user that does not exist: ${user}`);
     return userDoesNotExist;
 }
@@ -389,7 +389,7 @@ export function time2travelDistance(distance: number, speed: number) : number {
 }
 
 export function setAssetsFree(assets: AssetType[]) {
-    for (let asset of assets) {
+    for (const asset of assets) {
         asset.state = AssetState.Free;
         asset.pendingAttackId = undefined;
     }
@@ -435,28 +435,28 @@ export function assignUserToChainProposal(userAddress: string, proposalHash: str
 }
 
 export function updateAllTreasuries(timestamp: number, storage: Storage) {
-    for (let user of storage.users) {
+    for (const user of storage.users) {
         evolveTreasuryByUser(user, timestamp, storage)
     }
 }
 
 export function evolveAllAssetsStats(timestamp: number, storage: Storage) {
-    for (let asset of storage.assets.filter((a) => a.health > 0)) {
+    for (const asset of storage.assets.filter((a) => a.health > 0)) {
         evolveAssetStatsByAsset(asset, timestamp)
     }
 }
 
 export function evolveAssetsStats(timestamp: number, assets: AssetType[]) {
-    for (let asset of assets) {
+    for (const asset of assets) {
         evolveAssetStatsByAsset(asset, timestamp)
     }
 }
 
 export function updateAllScores(storage: Storage) {
-    for (let chain of storage.chains) {
+    for (const chain of storage.chains) {
         const usersInChain = storage.users.filter((u) => u.homechain === chain.chain_id);
         let chainScore = 0;
-        for (let user of usersInChain) {
+        for (const user of usersInChain) {
             const score = storage.assets
                 .filter(asset => asset.owner === user.address && asset.health > 0)
                 .reduce((sum, asset) => sum + asset.xp, 0);
@@ -469,7 +469,7 @@ export function updateAllScores(storage: Storage) {
 
 export function updateAllChainProposalVotes(timestamp: number, storage: Storage) {
     updateAllTreasuries(timestamp, storage);
-    for (let proposal of storage.currentPeriodChainActionProposals) {
+    for (const proposal of storage.currentPeriodChainActionProposals) {
         const supporters = storage.users.filter(u => u.currentSupportedChainAction === proposal.hash);
         proposal.votes = supporters.reduce((sum, supporter) => sum + supporter.treasury, 0);
     }
@@ -497,7 +497,7 @@ export function selectMostVotedChainAction(chainId: number, timestamp: number, s
 }
 
 export function removeAllUserSupportedActions(users: UserType[]) {
-    for (let u of users) {
+    for (const u of users) {
         u.currentSupportedChainAction = undefined;
     }
 }
@@ -623,9 +623,9 @@ export function rarityToRanges(rarities : number[]) : RangeSelection {
     const maxRarity = Math.max(...rarities);
     // Min width is 1000, max width is max * 1000:
     const intervalWidths: number[] = rarities.map(rarity => Math.ceil((maxRarity * 1000) / rarity));
-    let ranges: number[] = [];
+    const ranges: number[] = [];
     let current = 0;
-    for (let width of intervalWidths) {
+    for (const width of intervalWidths) {
       current += width;
       ranges.push(current);
     }
@@ -695,7 +695,7 @@ export function maxCharacterLevelAllowedByTreasury(factoryLevel: number, treasur
 }
 
 export function computeRandoms(nSeeds: number, seed: number): number[] {
-    let rnds: number[] = [murmurhash.v3(seed.toString())];
+    const rnds: number[] = [murmurhash.v3(seed.toString())];
     for (let i = 1; i < nSeeds; i++) {
         rnds.push(murmurhash.v3(rnds[i - 1].toString()));
     }

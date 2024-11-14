@@ -44,7 +44,7 @@ export function formStorage(storage: Storage): StorageToInsert {
 
 function formChains(chains: ChainType[]): Chain[] {
   const toInsert: ChainType[] = [];
-  for (let c of chains) {
+  for (const c of chains) {
     const newChain = new Chain();
     newChain.chain_id = c.chain_id;
     newChain.name = c.name;
@@ -56,7 +56,7 @@ function formChains(chains: ChainType[]): Chain[] {
 
 function formUsers(processedUsers: UserType[]): User[] {
     const usersToInsert: User[] = [];
-    for (let user of processedUsers) {
+    for (const user of processedUsers) {
       const newUser = new User();
       newUser.address = toChecksum(user.address);
       newUser.name = user.name;
@@ -77,7 +77,7 @@ function formUsers(processedUsers: UserType[]): User[] {
 
 function formAssets(processedAssets: AssetType[]): Asset[] {
   const assetsToInsert: Asset[] = [];
-  for (let asset of processedAssets) {
+  for (const asset of processedAssets) {
     const newAsset = new Asset();
     newAsset.chain_id = asset.chain_id;
     newAsset.token_id = asset.token_id;
@@ -103,7 +103,7 @@ function formAssets(processedAssets: AssetType[]): Asset[] {
 
 function formCurrentPeriodChainActionProposals(processedProposals: ChainActionProposalType[]): ChainActionProposal[] {
   const proposalsToInsert: ChainActionProposal[] = [];
-  for (let proposal of processedProposals) {
+  for (const proposal of processedProposals) {
     const newProposal = new ChainActionProposal();
     newProposal.proposal_hash = proposal.hash;
     newProposal.source_chain_id = proposal.sourceChain;
@@ -119,7 +119,7 @@ function formCurrentPeriodChainActionProposals(processedProposals: ChainActionPr
 
 function formAssignOperators(processedAssignedOperators: AssignOperatorType[]): AssignOperator[] {
   const toInsert: AssignOperator[] = [];
-  for (let assignment of processedAssignedOperators) {
+  for (const assignment of processedAssignedOperators) {
     const newAssign = new AssignOperator();
     newAssign.assigner = toChecksum(assignment.assigner);
     newAssign.operator = toChecksum(assignment.operator);
@@ -132,7 +132,7 @@ function formAssignOperators(processedAssignedOperators: AssignOperatorType[]): 
 
 function formLogs(processedLogs: LogType[]): Log[] {
   const logsToInsert: Log[] = [];
-  for (let log of processedLogs) {
+  for (const log of processedLogs) {
     const newLog = new Log();
     newLog.id = log.id;
     newLog.user_address = toChecksum(log.user_address);
