@@ -1,5 +1,4 @@
-import { getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents } from './getEventsPagination';
-import { getRegisterMercenaryEvents} from './getEventsQueries';
+import { getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents, getRegisterMercenaryEvents } from './getEventsPagination';
 import { sortEvents } from './sortEvents';
 import {
     ChainType,

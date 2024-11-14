@@ -177,10 +177,10 @@ export async function getTransferEventsInBatch(chainIdx: number, chain_id: numbe
   return enrichEvents(data.transfers, chain_id, EventType.TransferEvent);
 }
 
-export async function getRegisterMercenaryEvents(): Promise<AllEventTypes[]> {
+export async function getRegisterMercenaryEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      registerMercenaries {
+      registerMercenaries(limit: ${limit}, offset: ${offset}) {
         mercenaryAddress
         mercenaryChain
         mercenaryNickname
