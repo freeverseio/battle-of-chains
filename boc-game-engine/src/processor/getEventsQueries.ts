@@ -36,10 +36,10 @@ function enrichEvents<T>(events: AllEventTypes[], eventChain: number, eventType:
   }));
 }
 
-export async function getJoinedChainEvents(): Promise<AllEventTypes[]> {
+export async function getJoinedChainEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      joinedChains {
+      joinedChains(limit: ${limit}, offset: ${offset}) {
         user
         homeChain
         nickname
@@ -51,6 +51,7 @@ export async function getJoinedChainEvents(): Promise<AllEventTypes[]> {
       }
     }
   `;
+
   const data = await fetchGraphQL(LAOS_GRAPHQL, query);
   return enrichEvents(data.joinedChains, LAOS_CHAIN_ID, EventType.JoinedChainEvent);
 }
