@@ -123,7 +123,14 @@ export const AttackMap = () => {
   };
 
   const getAssetsByChain = (user: User) => {
-    return user.assetsByOwner?.nodes.reduce(
+    if (!user.assetsByOwner?.nodes || user.assetsByOwner.nodes.length === 0) {
+      // Return an object with the user's home chain if they have no assets
+      return user.chainByHomechain?.name
+        ? { [user.chainByHomechain.name]: 0 }
+        : { "Unknown Chain": 0 };
+    }
+
+    return user.assetsByOwner.nodes.reduce(
       (acc: { [key: string]: number }, asset) => {
         const chainName = asset.chainByChainId.name;
         acc[chainName] = (acc[chainName] || 0) + 1;
@@ -260,7 +267,6 @@ export const AttackMap = () => {
                                   key={chain}
                                   className="space-y-6 p-4 border border-border rounded-lg"
                                 >
-                                  {/* Chain Name */}
                                   <div>
                                     <h2 className="text-2xl font-bold text-label-secondary mb-2">
                                       {chain}
@@ -268,9 +274,7 @@ export const AttackMap = () => {
                                     <hr className="border-t border-border" />
                                   </div>
 
-                                  {/* Flex container for Target's Assets and Your Assets */}
                                   <div className="flex flex-col md:flex-row md:space-x-4">
-                                    {/* Target's Assets */}
                                     <div className="md:w-1/2">
                                       <h3 className="text-xl font-semibold text-label mb-2">
                                         Target's Assets
@@ -281,7 +285,6 @@ export const AttackMap = () => {
                                       </p>
                                     </div>
 
-                                    {/* Your Assets */}
                                     <div className="md:w-1/2 mt-4 md:mt-0">
                                       {userAssets.length > 0 ? (
                                         <div>
@@ -294,7 +297,6 @@ export const AttackMap = () => {
                                             assets on {chain}.
                                           </p>
 
-                                          {/* Asset Selection Dropdown */}
                                           <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
                                               <Button
@@ -311,7 +313,6 @@ export const AttackMap = () => {
                                               className="bg-black border border-border w-full max-h-[300px] overflow-y-auto"
                                               align="center"
                                             >
-                                              {/* Select/Unselect All Button */}
                                               <div className="flex items-center justify-between p-2">
                                                 <span className="text-foreground font-semibold">
                                                   Select Assets
@@ -345,7 +346,6 @@ export const AttackMap = () => {
                                                     : "Select All"}
                                                 </Button>
                                               </div>
-                                              {/* Asset List */}
                                               {userAssets.map(
                                                 (asset: Asset) => {
                                                   const speciesName =
@@ -407,15 +407,17 @@ export const AttackMap = () => {
                                               )}
                                             </DropdownMenuContent>
                                           </DropdownMenu>
-                                          {/* Attack Action */}
                                           {selectedTokensPerChain[chain]
                                             ?.length > 0 && (
                                             <div className="mt-4">
                                               <AttackButton
                                                 targetAddress={user.address}
                                                 targetChain={
-                                                  userAssets[0].chainByChainId
-                                                    .chainId
+                                                  chain === "Unknown Chain"
+                                                    ? user.chainByHomechain
+                                                        ?.chainId
+                                                    : userAssets[0]
+                                                        ?.chainByChainId.chainId
                                                 }
                                                 tokenIds={
                                                   selectedTokensPerChain[chain]
