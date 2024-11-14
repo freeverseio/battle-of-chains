@@ -1,4 +1,4 @@
-import { getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
+import { getAssignOperatorEventsInBatch, getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
 import {  AllEventTypes } from "./types";
 import * as dotenv from "dotenv";
 
@@ -7,27 +7,30 @@ const INDEXER_MAX_BATCH_PER_PAGE = process.env.INDEXER_MAX_BATCH_PER_PAGE ? Numb
 
 
 export async function getJoinedChainEvents(): Promise<AllEventTypes[]> {
-  return fetchAllEvents(getJoinedChainEventsInBatch);
+  return fetchAllEventsInLAOS(getJoinedChainEventsInBatch);
 }
 
 export async function getMultichainMintEvents(): Promise<AllEventTypes[]> {
-  return fetchAllEvents(getMultichainMintEventsInBatch);
+  return fetchAllEventsInLAOS(getMultichainMintEventsInBatch);
 }
 
 export async function getAttackEvents(): Promise<AllEventTypes[]> {
-  return fetchAllEvents(getAttackEventsInBatch);
+  return fetchAllEventsInLAOS(getAttackEventsInBatch);
 }
 
 export async function getChainActionProposalEvents(): Promise<AllEventTypes[]> {
-  return fetchAllEvents(getChainActionProposalEventsInBatch);
+  return fetchAllEventsInLAOS(getChainActionProposalEventsInBatch);
 }
 
 export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
-  return fetchAllEvents(getUpgradeEventsInBatch);
+  return fetchAllEventsInLAOS(getUpgradeEventsInBatch);
 }
 
+export async function getAssignOperatorEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+  return fetchAllEventsInChain(chainIdx, chain_id, getAssignOperatorEventsInBatch);
+}
 
-async function fetchAllEvents(
+async function fetchAllEventsInLAOS(
   fetchBatchFunction: (limit: number, offset: number) => Promise<AllEventTypes[]>
 ): Promise<AllEventTypes[]> {
   let offset = 0;
@@ -43,6 +46,26 @@ async function fetchAllEvents(
       hasMore = false;
     }
   }
+  return allEvents;
+}
 
+async function fetchAllEventsInChain(
+  chainIdx: number,
+  chain_id: number,
+  fetchBatchFunction: (chainIdx: number, chain_id: number, limit: number, offset: number) => Promise<AllEventTypes[]>
+): Promise<AllEventTypes[]> {
+  let offset = 0;
+  let allEvents: AllEventTypes[] = [];
+  let hasMore = true;
+
+  while (hasMore) {
+    const events = await fetchBatchFunction(chainIdx, chain_id, INDEXER_MAX_BATCH_PER_PAGE, offset);
+    allEvents = allEvents.concat(events);
+    offset += INDEXER_MAX_BATCH_PER_PAGE;
+
+    if (events.length < INDEXER_MAX_BATCH_PER_PAGE) {
+      hasMore = false;
+    }
+  }
   return allEvents;
 }

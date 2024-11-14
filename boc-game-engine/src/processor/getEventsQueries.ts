@@ -144,10 +144,10 @@ export async function getUpgradeEventsInBatch(limit: number, offset: number): Pr
   return enrichEvents(data.upgrades, LAOS_CHAIN_ID, EventType.UpgradeEvent);
 }
 
-export async function getAssignOperatorEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+export async function getAssignOperatorEventsInBatch(chainIdx: number, chain_id: number, limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      assignOperators {
+      assignOperators(limit: ${limit}, offset: ${offset}) {
         operator
         from
         timestamp
