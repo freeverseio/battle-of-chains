@@ -1,4 +1,4 @@
-import { getAssignOperatorEventsInBatch, getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
+import { getAssignOperatorEventsInBatch, getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getTransferEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
 import {  AllEventTypes } from "./types";
 import * as dotenv from "dotenv";
 
@@ -29,6 +29,12 @@ export async function getUpgradeEvents(): Promise<AllEventTypes[]> {
 export async function getAssignOperatorEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
   return fetchAllEventsInChain(chainIdx, chain_id, getAssignOperatorEventsInBatch);
 }
+
+export async function getTransferEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+  return fetchAllEventsInChain(chainIdx, chain_id, getTransferEventsInBatch);
+}
+
+
 
 async function fetchAllEventsInLAOS(
   fetchBatchFunction: (limit: number, offset: number) => Promise<AllEventTypes[]>

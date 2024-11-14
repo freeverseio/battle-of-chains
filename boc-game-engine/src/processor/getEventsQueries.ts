@@ -160,10 +160,10 @@ export async function getAssignOperatorEventsInBatch(chainIdx: number, chain_id:
   return enrichEvents(data.assignOperators, chain_id, EventType.AssignOperatorEvent);
 }
 
-export async function getTransferEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+export async function getTransferEventsInBatch(chainIdx: number, chain_id: number, limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      transfers {
+      transfers(pagination: { limit: ${limit}, offset: ${offset} }) {
         from
         to
         tokenId
