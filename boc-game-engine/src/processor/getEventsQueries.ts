@@ -76,10 +76,10 @@ export async function getMultichainMintEventsInBatch(limit: number, offset: numb
   return enrichEvents(data.multichainMints, LAOS_CHAIN_ID, EventType.MultichainMintEvent);
 }
 
-export async function getAttackEvents(): Promise<AllEventTypes[]> {
+export async function getAttackEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
-      attacks {
+      attacks(limit: ${limit}, offset: ${offset}) {
         tokenIds
         targetAddress
         operator
