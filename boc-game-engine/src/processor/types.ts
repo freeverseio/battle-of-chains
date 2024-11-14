@@ -259,3 +259,11 @@ export type AssetLevelDetails = {
   levelBoost: number;
   factoryLevelUsed: number;
 }
+
+export type DebugData = {
+  deadline: number;
+  useHardcodedEvents: boolean;
+  eventsFile: string;
+  gameStartTime: number;
+  storageFile: string;
+} 

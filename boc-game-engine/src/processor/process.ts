@@ -7,6 +7,7 @@ import {
     PendingChainAction,
     PendingActionOption,
     RegisterMercenaryEvent,
+    DebugData,
 } from './types';
 import { getAllEvents } from './getEvents';
 import { processJoinedChain } from './processJoinedChain';
@@ -25,13 +26,6 @@ import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 import { processRegisterMercenary } from './processRegisterMercenary';
 dotenv.config({ path: '../docker/.env' });
-
-type DebugData = {
-    deadline: number;
-    useHardcodedEvents: boolean;
-    eventsFile: string;
-    gameStartTime: number;
-} 
 
 function getGameStart(debugData: DebugData | undefined) {
     if (debugData?.gameStartTime) return debugData.gameStartTime;

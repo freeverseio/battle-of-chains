@@ -2,7 +2,7 @@
 import { promises as fs } from 'fs';
 import { getChains } from '../getChains';
 import { EventProcessor } from '../process';
-import { Storage } from '../types';
+import { DebugData, Storage } from '../types';
 
 async function compareStorage(storage: Storage, storageFile: string): Promise<boolean> {
     const previousStorageData = await fs.readFile(storageFile, 'utf8');
@@ -12,14 +12,7 @@ async function compareStorage(storage: Storage, storageFile: string): Promise<bo
     return areEqual;
 }
 
-async function testHardcodedEvents() {
-    const debugData = {
-        "gameStartTime": 1729168020,
-        "deadline": 1731402544,
-        "useHardcodedEvents": true,
-        "eventsFile": './src/processor/test/events02.json',
-        "storageFile": './src/processor/test/storage02.json',
-    };
+async function test(debugData: DebugData) {
     const allChains = await getChains();
     const eventProcessor = new EventProcessor(allChains, debugData);
 
@@ -36,34 +29,15 @@ async function testHardcodedEvents() {
     }
 }
 
-async function testRealTimeEvents() {
+async function main() {
     const debugData = {
         "gameStartTime": 1729168020,
         "deadline": 1731402544,
-        "useHardcodedEvents": false,
-        "eventsFile": '',
+        "useHardcodedEvents": true,
+        "eventsFile": './src/processor/test/events02.json',
         "storageFile": './src/processor/test/storage02.json',
     };
-    
-    const allChains = await getChains();
-    const eventProcessor = new EventProcessor(allChains, debugData);
-
-    await eventProcessor.update();
-    const storage = eventProcessor.getStorage();
-
-    const storageFile = './src/processor/test/storage02.json';
-    const isStorageEqual = await compareStorage(storage, storageFile);
-    if (!isStorageEqual) {
-        console.log('Storage differs. Updating storage file.');
-        await fs.writeFile(storageFile, JSON.stringify(storage, null, 2));
-    } else {
-        console.log('Storage is the same. No update needed.');
-    }
-}
-
-async function main() {
-    await testHardcodedEvents();
-    // await testRealTimeEvents();
+    await test(debugData);
 }
 
 main().catch(error => {
