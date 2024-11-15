@@ -1,3 +1,5 @@
+// components/AttackMap.tsx
+
 "use client";
 
 import { useState } from "react";
@@ -32,6 +34,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
 import Modal from "./Modal";
+import { ModalContext } from "@/context/ModalContext";
 
 interface Asset {
   tokenId: string;
@@ -39,6 +42,7 @@ interface Asset {
   xp: number;
   species: string;
   type: string;
+  health: string;
   chainByChainId: {
     name: string;
     chainId: number;
@@ -121,9 +125,10 @@ export const AttackMap = () => {
     ) || [];
 
   const formatAddress = (address: string) => {
-    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    return `${address?.slice(0, 6)}...${address?.slice(-4)}`;
   };
 
+  // Function to get alive assets by chain for a user
   const getAssetsByChain = (user: User) => {
     if (!user.assetsByOwner?.nodes || user.assetsByOwner.nodes.length === 0) {
       // Return an object with the user's home chain if they have no assets
@@ -141,13 +146,14 @@ export const AttackMap = () => {
       {}
     );
   };
-
+  // Function to get current user's alive assets for a specific chain
   const getCurrentUserAssetsForChain = (chainName: string) => {
     return (
       currentUserAssets?.userByAddress?.assetsByOwner?.nodes.filter(
         (asset: Asset) =>
           asset.chainByChainId.name === chainName &&
-          (asset.type === "0" || asset.type === "1")
+          (asset.type === "0" || asset.type === "1") &&
+          parseInt(asset.health) > 0 // Only alive assets
       ) || []
     );
   };
@@ -217,7 +223,11 @@ export const AttackMap = () => {
                   {user.treasury}
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl">
-                  {user.assetsByOwner.totalCount}
+                  {
+                    (user.assetsByOwner.nodes as Asset[]).filter(
+                      (asset: Asset) => parseInt(asset.health) > 0
+                    ).length
+                  }
                 </TableCell>
                 <TableCell>
                   <Dialog>
@@ -264,6 +274,15 @@ export const AttackMap = () => {
                               const userAssets =
                                 getCurrentUserAssetsForChain(chain);
 
+                              // Get target's alive assets for display
+                              const targetAssets = (
+                                user.assetsByOwner.nodes as Asset[]
+                              ).filter(
+                                (asset: Asset) =>
+                                  asset.chainByChainId.name === chain &&
+                                  parseInt(asset.health) > 0 // Only alive assets
+                              );
+
                               return (
                                 <div
                                   key={chain}
@@ -281,10 +300,20 @@ export const AttackMap = () => {
                                       <h3 className="text-xl font-semibold text-label mb-2">
                                         Target's Assets
                                       </h3>
-                                      <p className="text-lg text-muted-foreground">
-                                        {user.name} has <strong>{count}</strong>{" "}
-                                        assets on {chain}.
-                                      </p>
+                                      {targetAssets.length > 0 ? (
+                                        <div>
+                                          <p className="text-lg text-muted-foreground">
+                                            {user.name} has{" "}
+                                            <strong>{count}</strong> assets on{" "}
+                                            {chain}.
+                                          </p>
+                                        </div>
+                                      ) : (
+                                        <p className="text-lg text-muted-foreground">
+                                          {user.name} has no alive assets on{" "}
+                                          {chain}.
+                                        </p>
+                                      )}
                                     </div>
 
                                     <div className="md:w-1/2 mt-4 md:mt-0">
@@ -435,8 +464,8 @@ export const AttackMap = () => {
                                             Your Assets
                                           </h3>
                                           <p className="text-lg text-muted-foreground">
-                                            You have no assets on {chain} to
-                                            attack with.
+                                            You have no alive assets on {chain}{" "}
+                                            to attack with.
                                           </p>
                                         </div>
                                       )}
