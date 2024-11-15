@@ -1,7 +1,9 @@
 // components/AttackButton.tsx
-import React from "react";
+
+import React, { useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
+import { ModalContext } from "@/context/ModalContext";
 
 interface AttackButtonProps {
   targetAddress: `0x${string}`;
@@ -16,17 +18,39 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
   tokenIds,
   className,
 }) => {
-  const { attack, isConfirming, isConfirmed, isWritePending, writeError } =
-    useBattleOfChains();
+  const {
+    attack,
+    hash,
+    isWritePending,
+    isConfirming,
+    isConfirmed,
+    writeError,
+  } = useBattleOfChains();
+  const { openModal, setModalState } = useContext(ModalContext);
 
   const handleAttack = async () => {
-    try {
-      const strategy = 1; // Default strategy
-      attack(tokenIds, targetAddress, targetChain, strategy);
-    } catch (err) {
-      console.log("error", err);
-    }
+    openModal(async () => {
+      setModalState("pending_signature");
+      try {
+        const strategy = 1; // Default strategy
+        await attack(tokenIds, targetAddress, targetChain, strategy);
+      } catch (err) {
+        console.error("Error:", err);
+        setModalState("transaction_error");
+      }
+    }, "attack_confirm");
   };
+
+  useEffect(() => {
+    if (isConfirmed) {
+      setModalState("transaction_attack_success");
+    } else if (writeError) {
+      console.log(writeError);
+      setModalState("transaction_error");
+    } else if (!isWritePending && hash) {
+      setModalState("attacking");
+    }
+  }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (
     <div className="space-y-2">
@@ -44,20 +68,6 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
           ? "Confirming..."
           : "Attack"}
       </Button>
-      {(isWritePending || isConfirming) && (
-        <div className="text-muted-foreground">Waiting for confirmation...</div>
-      )}
-      {isConfirmed && <p className="text-green-500">Attack confirmed!</p>}
-      {writeError && (
-        <>
-          <p className="text-red-500 text-xl">
-            {writeError.message.toLowerCase().includes("user rejected")
-              ? "Signature rejected by user"
-              : "Oops, something went wrong"}
-          </p>
-          {console.error(writeError.message)}
-        </>
-      )}
     </div>
   );
 };

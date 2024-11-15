@@ -70,8 +70,10 @@ const Modal: React.FC = () => {
                     className="mx-auto"
                   />
                 </div>
-                You are about to mint assets on Ethereum, Polygon and Arbitrum in one single transaction via LAOS Network.
-                This action will requires only a small gas fee on LAOS. No gas fees will be charged on any other chain.
+                You are about to mint assets on Ethereum, Polygon and Arbitrum
+                in one single transaction via LAOS Network. This action will
+                requires only a small gas fee on LAOS. No gas fees will be
+                charged on any other chain.
               </DialogDescription>
             </DialogHeader>
           </div>
@@ -97,8 +99,8 @@ const Modal: React.FC = () => {
               <DialogTitle>Sending Asset Upgrade Transaction</DialogTitle>
               <DialogDescription>
                 <div className="mb-4"></div>
-                The transaction is being sent. Please wait until
-                full finality is confirmed.
+                The transaction is being sent. Please wait until full finality
+                is confirmed.
               </DialogDescription>
             </DialogHeader>
           </div>
@@ -109,9 +111,36 @@ const Modal: React.FC = () => {
               <DialogTitle>Upgrade Transaction Sent Successfully</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              The upgrade transaction was successfully sent.
-              Please check your logs to confirm if your treasury
-              had sufficient funds to complete the asset upgrade. 
+              The upgrade transaction was successfully sent. Please check your
+              logs to confirm if your treasury had sufficient funds to complete
+              the asset upgrade.
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="default" onClick={closeModal}>
+                Done
+              </Button>
+            </DialogFooter>
+          </div>
+        )}
+        {modalState === "voting" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Sending Vote Transaction</DialogTitle>
+              <DialogDescription>
+                <div className="mb-4"></div>
+                The transaction is being sent. Please wait until full finality
+                is confirmed.
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+        )}
+        {modalState === "transaction_vote_success" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Vote Transaction Sent Successfully</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              The vote transaction was successfully sent.
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
@@ -157,6 +186,35 @@ const Modal: React.FC = () => {
                 }}
               >
                 Upgrade
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+        {modalState === "vote_confirm" && (
+          <>
+            <DialogHeader>
+              <DialogTitle>Vote Action </DialogTitle>
+
+              <DialogDescription>
+                You're about to vote for your chain daily decision.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button
+                className="mb-2"
+                variant="default"
+                onClick={() => {
+                  if (onConfirm) {
+                    onConfirm();
+                  }
+                }}
+              >
+                Vote
               </Button>
             </DialogFooter>
           </>
@@ -238,6 +296,97 @@ const Modal: React.FC = () => {
               </Button>
             </DialogFooter>
           </>
+        )}
+        {/* Attack Confirmation Modal */}
+        {modalState === "attack_confirm" && (
+          <>
+            <DialogHeader>
+              <DialogTitle>Confirm Attack</DialogTitle>
+              <DialogDescription>
+                You’re about to attack a user. Please confirm to proceed.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter style={{ justifyContent: "space-between" }}>
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button variant="default" onClick={onConfirm}>
+                Confirm Attack
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+        {/* Attacking Modal */}
+        {modalState === "attacking" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Attack in Progress</DialogTitle>
+              <DialogDescription>
+                The attack transaction is being processed. Please wait until the
+                transaction reaches full finality.
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+        )}
+        {/* Attack Success Modal */}
+        {modalState === "transaction_attack_success" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Attack Successful</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              The attack transaction was successfully completed.
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="default" onClick={closeModal}>
+                Done
+              </Button>
+            </DialogFooter>
+          </div>
+        )}
+        {modalState === "join_confirm" && (
+          <>
+            <DialogHeader>
+              <DialogTitle>Confirm Join Home Chain</DialogTitle>
+              <DialogDescription>
+                You’re about to join a home chain. Please confirm to proceed.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter style={{ justifyContent: "space-between" }}>
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button variant="default" onClick={onConfirm}>
+                Confirm Join
+              </Button>
+            </DialogFooter>
+          </>
+        )}
+        {modalState === "joining" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Joining Home Chain</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              The join transaction is being processed. Please wait until the
+              transaction reaches full finality.
+            </DialogDescription>
+          </div>
+        )}
+        {modalState === "transaction_join_success" && (
+          <div className="flex flex-col items-center">
+            <DialogHeader>
+              <DialogTitle>Successfully Joined Home Chain</DialogTitle>
+            </DialogHeader>
+            <DialogDescription>
+              You have successfully joined your chosen home chain.
+            </DialogDescription>
+            <DialogFooter>
+              <Button variant="default" onClick={closeModal}>
+                Done
+              </Button>
+            </DialogFooter>
+          </div>
         )}
       </DialogContent>
     </Dialog>

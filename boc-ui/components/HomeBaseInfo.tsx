@@ -30,8 +30,8 @@ const HomeBaseInfo: React.FC = () => {
   infoData.allInfos.nodes.forEach((node: any) => {
     infoDict[node.key] = JSON.parse(node.value) as number[];
   });
-  const currentLevel = userData.userByAddress.level;
-  const currentXp = userData.userByAddress.xp;
+  const currentLevel = userData.userByAddress?.level;
+  const currentXp = userData.userByAddress?.xp;
 
   const xpPerLevel = infoDict["HOMEBASE_XP_PER_LEVEL"];
   const costPerLevel = infoDict["HOMEBASE_COST_PER_LEVEL"];
@@ -59,7 +59,7 @@ const HomeBaseInfo: React.FC = () => {
       <CardHeader className="space-y-2">
         <div className="flex justify-between items-center">
           <CardTitle className="text-4xl">Home Base</CardTitle>
-          <UpgradeButton tokenId={"0"} chainId={user.chain?.chainId} />
+          <UpgradeButton tokenId={"0"} chainId={user?.chain?.chainId} />
         </div>
         <div className="flex justify-between items-center">
           <p className="text-3xl">

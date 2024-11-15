@@ -31,6 +31,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
+import Modal from "./Modal";
 
 interface Asset {
   tokenId: string;
@@ -452,6 +453,7 @@ export const AttackMap = () => {
           </TableBody>
         </Table>
       </CardContent>
+      <Modal />
     </Card>
   );
 };

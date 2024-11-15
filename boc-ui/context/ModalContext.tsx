@@ -4,7 +4,13 @@ import React, { createContext, useState, ReactNode } from "react";
 export type ModalState =
   | "idle"
   | "mint_confirm"
+  | "vote_confirm"
+  | "attack_confirm"
+  | "join_confirm"
   | "minting"
+  | "voting"
+  | "attacking"
+  | "joining"
   | "pending_signature"
   | "transaction_upgrade_success"
   | "defense_factory_not_minted"
@@ -13,7 +19,10 @@ export type ModalState =
   | "transaction_error"
   | "upgrade_confirm"
   | "upgrading"
-  | "transaction_mint_success";
+  | "transaction_vote_success"
+  | "transaction_mint_success"
+  | "transaction_join_success"
+  | "transaction_attack_success";
 type TransactionStatus = "idle" | "pending" | "success" | "error";
 
 interface ModalContextType {
