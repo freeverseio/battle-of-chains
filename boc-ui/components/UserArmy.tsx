@@ -141,12 +141,12 @@ export const UserArmy = () => {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue={String(assetTypes[0])} className="w-full">
-          <TabsList className="grid grid-cols-4 lg:grid-cols-6 gap-2">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 w-full">
             {assetTypes.map((type) => (
               <TabsTrigger
                 key={type}
                 value={String(type)}
-                className="border-foreground border text-xl"
+                className="border-foreground border text-md mb-8 sm:mb-0 sm:text-md lg:text-xl whitespace-nowrap overflow-hidden text-ellipsis"
               >
                 {nftTypes[type] || `Type ${type}`} (
                 {(assetsByType[type] || []).length})
@@ -160,7 +160,7 @@ export const UserArmy = () => {
 
             return (
               <TabsContent key={type} value={String(type)}>
-                <div className="mt-6">
+                <div className="mt-14 sm:mt-6">
                   <MultichainMintButton
                     type={String(type)}
                     label={`${nftTypes[type]}`}

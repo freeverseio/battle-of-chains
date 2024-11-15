@@ -72,7 +72,8 @@ const Modal: React.FC = () => {
                 </div>
                 You are about to mint assets on Ethereum, Polygon and Arbitrum
                 in one single transaction via LAOS Network. This action will
-                requires only a small gas fee on LAOS. No gas fees will be
+                require only a small gas fee on LAOS. No gas fees will be
+
                 charged on any other chain.
               </DialogDescription>
             </DialogHeader>
@@ -114,6 +115,7 @@ const Modal: React.FC = () => {
               The upgrade transaction was successfully sent. Please check your
               logs to confirm if your treasury had sufficient funds to complete
               the asset upgrade.
+
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
@@ -244,7 +246,7 @@ const Modal: React.FC = () => {
               <Button variant="secondary" onClick={closeModal}>
                 Cancel
               </Button>
-              <Button variant="default" onClick={onConfirm}>
+              <Button className="mb-2" variant="default" onClick={onConfirm}>
                 Proceed
               </Button>
             </DialogFooter>
@@ -265,7 +267,7 @@ const Modal: React.FC = () => {
               <Button variant="secondary" onClick={closeModal}>
                 Cancel
               </Button>
-              <Button variant="default" onClick={onConfirm}>
+              <Button className="mb-2" variant="default" onClick={onConfirm}>
                 Proceed
               </Button>
             </DialogFooter>
@@ -291,7 +293,7 @@ const Modal: React.FC = () => {
               <Button variant="secondary" onClick={closeModal}>
                 Cancel
               </Button>
-              <Button variant="default" onClick={onConfirm}>
+              <Button className="mb-2" variant="default" onClick={onConfirm}>
                 Proceed
               </Button>
             </DialogFooter>
