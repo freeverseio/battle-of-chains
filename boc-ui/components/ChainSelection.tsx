@@ -1,45 +1,15 @@
-// components/ChainSelection.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
+import { ModalContext } from "@/context/ModalContext";
+import Modal from "./Modal";
 
 interface ChainSelectionProps {
   onJoinSuccess: () => void;
 }
-{
-  /*const CHAIN_OPTIONS = [
-  {
-    id: 1,
-    name: "Ethereum",
-    displayName: "Ethereum Foundation",
-    icon: "/logos/ethereum.svg",
-    color: "from-blue-400 to-blue-600",
-  },
-  {
-    id: 137,
-    name: "Polygon",
-    displayName: "Polygon Chain",
-    icon: "/logos/polygon.svg",
-    color: "from-purple-400 to-purple-600",
-  },
-  {
-    id: 56,
-    name: "Binance",
-    displayName: "Binance Chain",
-    icon: "/logos/binance.svg",
-    color: "from-yellow-400 to-yellow-600",
-  },
-  {
-    id: 42161,
-    name: "Arbitrum",
-    displayName: "Arbitrum Chain",
-    icon: "/logos/arbitrum.svg",
-    color: "from-teal-400 to-teal-600",
-  },
-];*/
-}
+
 const CHAIN_OPTIONS = [
   {
     id: 1,
@@ -69,27 +39,46 @@ export function ChainSelection({ onJoinSuccess }: ChainSelectionProps) {
   const [nickname, setNickname] = useState("");
   const {
     joinHomeChain,
+    hash,
     isWritePending,
     isConfirming,
     isConfirmed,
     writeError,
   } = useBattleOfChains();
+  const { openModal, setModalState } = useContext(ModalContext);
 
   useEffect(() => {
     if (isConfirmed) {
-      // Call the callback function to inform the parent component
+      setModalState("transaction_join_success");
       onJoinSuccess();
+    } else if (writeError) {
+      setModalState("transaction_error");
+    } else if (!isWritePending && hash) {
+      setModalState("joining");
     }
-  }, [isConfirmed, onJoinSuccess]);
+  }, [
+    isConfirmed,
+    hash,
+    writeError,
+    isWritePending,
+    onJoinSuccess,
+    setModalState,
+  ]);
 
   const handleJoin = async () => {
     if (!selectedChain) return;
-    try {
-      await joinHomeChain(selectedChain, nickname);
-    } catch (error) {
-      console.error("Error joining home chain:", error);
-    }
+
+    openModal(async () => {
+      setModalState("pending_signature");
+      try {
+        await joinHomeChain(selectedChain, nickname);
+      } catch (error) {
+        console.error("Error joining home chain:", error);
+        setModalState("transaction_error");
+      }
+    }, "join_confirm");
   };
+
   return (
     <div className="min-h-screen">
       {/* Main Content */}
@@ -115,33 +104,27 @@ export function ChainSelection({ onJoinSuccess }: ChainSelectionProps) {
               }`}
             >
               <div className="relative overflow-hidden rounded-lg border-2 border-purple-500/30 bg-black">
-                {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-b ${chain.color} opacity-20 group-hover:opacity-30 transition-opacity`}
                 />
-
-                {/* Chain Icon */}
                 <div className="relative flex flex-col items-center justify-center p-4">
                   <Image
                     src={chain.icon}
                     alt={chain.name}
-                    width={150} // Base size
+                    width={150}
                     height={100}
-                    className="w-32 h-32 md:w-48 md:h-48 lg:w-54 lg:h-54" // Responsive sizes
+                    className="w-32 h-32 md:w-48 md:h-48 lg:w-54 lg:h-54"
                   />
                   <p className="text-white text-center text-xl mt-4">
                     {chain.displayName}
                   </p>
                 </div>
-
-                {/* Neon Border Effect */}
                 <div className="absolute inset-0 border border-purple-500/50 rounded-lg group-hover:border-purple-400 group-hover:shadow-[0_0_15px_rgba(147,51,234,0.5)] transition-all" />
               </div>
             </button>
           ))}
         </div>
 
-        {/* Input and Join Button (only show if chain is selected) */}
         {selectedChain && (
           <div className="mt-8 max-w-md mx-auto space-y-4">
             <input
@@ -160,19 +143,10 @@ export function ChainSelection({ onJoinSuccess }: ChainSelectionProps) {
                 ? "Joining..."
                 : "Join Home Chain"}
             </button>
-            {writeError && (
-              <>
-                <p className="text-red-500 text-xl">
-                  {writeError.message.toLowerCase().includes("user rejected")
-                    ? "Signature rejected by user"
-                    : "Oops, something went wrong"}
-                </p>
-                {console.error(writeError.message)}
-              </>
-            )}
           </div>
         )}
       </div>
+      <Modal />
     </div>
   );
 }

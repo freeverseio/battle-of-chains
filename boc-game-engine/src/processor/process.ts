@@ -7,6 +7,7 @@ import {
     PendingChainAction,
     PendingActionOption,
     RegisterMercenaryEvent,
+    DebugData,
 } from './types';
 import { getAllEvents } from './getEvents';
 import { processJoinedChain } from './processJoinedChain';
@@ -25,13 +26,6 @@ import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 import { processRegisterMercenary } from './processRegisterMercenary';
 dotenv.config({ path: '../docker/.env' });
-
-type DebugData = {
-    deadline: number;
-    useHardcodedEvents: boolean;
-    eventsFile: string;
-    gameStartTime: number;
-} 
 
 function getGameStart(debugData: DebugData | undefined) {
     if (debugData?.gameStartTime) return debugData.gameStartTime;
@@ -76,10 +70,10 @@ export class EventProcessor {
                 ? JSON.parse(await fs.readFile(this.debugData.eventsFile, 'utf-8'))
                 : await getAllEvents(this.storage.chains);
 
-            for (let event of allEvents) {
+            for (const event of allEvents) {
                 if (this.debugData?.deadline && event.timestamp > this.debugData.deadline) {
-                    console.log('returning...', event.timestamp)
-                    return;
+                    console.log('[DEBUG_MODE] bypassing event beyond deadline...', event.timestamp)
+                    continue;
                 }
 
                 processPendingActions(event.timestamp, this.storage);

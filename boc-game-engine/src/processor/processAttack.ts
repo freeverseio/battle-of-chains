@@ -37,7 +37,7 @@ export function processAttack(event: AttackEvent, storage: Storage): void {
     }
 
     const pendingAttackId = storage.processedPendingIdx;
-    for (let a of availableAssets) {
+    for (const a of availableAssets) {
         a.state = AssetState.Attaking;  
         a.pendingAttackId = pendingAttackId;  
     }

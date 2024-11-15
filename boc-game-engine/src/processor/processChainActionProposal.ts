@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
 import { Storage, ChainActionProposalEvent, ChainActionProposalOption, actionAreaNames, actionTypeNames } from './types';
-import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, chainName, findUser, hasHomechain, isCorrectOperator, log2chain, log2user, userDoesNotExist } from './utils'
+import { assignUserToChainProposal, canUserVoteInChain, chainIsNotSupported, chainName, findUser, isCorrectOperator, log2chain, log2user } from './utils'
 
 export function processChainActionProposal(event: ChainActionProposalEvent, storage: Storage): void {
     console.log(`Processing ChainType Proposal Event ${event.timestamp}, ${event.user}, Timestamp: ${event.timestamp}`);

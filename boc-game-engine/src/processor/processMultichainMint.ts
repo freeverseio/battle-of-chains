@@ -10,7 +10,7 @@ import { DefendSpeciesType, defendSpeciesStats } from './speciesDefend';
 export function processMultichainMint(event: MultichainMintEvent, storage: Storage): void {
     console.log(`Processing MultichainMint Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}, on chain ${event.eventChain}`);
     evolveTreasuryByAddress(event.user, event.timestamp, storage);
-    for (let chain of storage.chains) {
+    for (const chain of storage.chains) {
         if (isFactory(event.typeId)) {
             createFactory(chain.chain_id, event, storage);
         }
@@ -57,9 +57,9 @@ function computeSeed(chain: number, event: MultichainMintEvent) : number {
 function selectSpecies(type: AssetTypeOptions, seed: number, storage: Storage) : [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats] {
     let ranges: number[];
     let maxRnd: number;
-    let stats: [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats][];[];
+    let stats: [AttackSpeciesType | DefendSpeciesType, SpeciesTypicalyStats][];
 
-    if (type === AssetTypeOptions.AttackAsset) {
+    if (type === AssetTypeOptions.AttackAsset) {
         maxRnd = storage.attackRanges.maxRnd;
         ranges = storage.attackRanges.ranges;
         stats = attackSpeciesStats;
@@ -84,7 +84,7 @@ function createCharacter(chain: number, event: MultichainMintEvent, storage: Sto
     const isHomeChain = chain == event.homeChain;
     const [species, _stats] = selectSpecies(event.typeId, blockSeed, storage);
 
-    let stats: AssetStatsType = {
+    const stats: AssetStatsType = {
         "health": 0,
         "xp": 0,
         "level": 0,
@@ -126,7 +126,7 @@ function createCharacter(chain: number, event: MultichainMintEvent, storage: Sto
 
 
 function createFactory(chain: number, event: MultichainMintEvent, storage: Storage) {
-    let stats = {
+    const stats = {
         "health": maxHealthAtLevel(0, true),
         "xp": 0,
         "level": 0,
