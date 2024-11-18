@@ -1,4 +1,3 @@
-// components/HomeBaseInfo.tsx
 import React from "react";
 import { useAccount } from "wagmi";
 import { useUserByAddress } from "../hooks/useUserByAddress";

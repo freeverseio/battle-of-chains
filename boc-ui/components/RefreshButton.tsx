@@ -1,7 +1,6 @@
-// components/RefreshButton.tsx
 import { Button } from "@/components/ui/button";
 import { useUpdate } from "@/hooks/useUpdate";
-import { ArrowPathIcon } from "@heroicons/react/24/outline"; // If you're using heroicons
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 interface RefreshButtonProps {
   className?: string;

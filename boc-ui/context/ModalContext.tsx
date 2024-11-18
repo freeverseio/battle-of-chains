@@ -37,6 +37,8 @@ interface ModalContextType {
   setTransactionStatus: React.Dispatch<React.SetStateAction<TransactionStatus>>;
   modalData?: any;
   setModalData: React.Dispatch<React.SetStateAction<any>>;
+  modalError?: string;
+  setModalError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ModalContext = createContext<ModalContextType>({
@@ -49,6 +51,7 @@ export const ModalContext = createContext<ModalContextType>({
   transactionStatus: "idle",
   setTransactionStatus: () => {},
   setModalData: () => {},
+  setModalError: () => {},
 });
 
 interface ModalProviderProps {
@@ -63,6 +66,8 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [transactionStatus, setTransactionStatus] =
     useState<TransactionStatus>("idle");
   const [modalData, setModalData] = useState<any>(null);
+  const [modalError, setModalError] = useState<string>("");
+
   const openModal = (
     confirmCallback: () => void,
     state: ModalState,
@@ -99,6 +104,8 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
         setTransactionStatus,
         modalData,
         setModalData,
+        modalError,
+        setModalError,
       }}
     >
       {children}

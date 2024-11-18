@@ -1,4 +1,3 @@
-// components/UpgradeButton.tsx
 "use client";
 
 import { useContext } from "react";

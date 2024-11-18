@@ -1,5 +1,3 @@
-// components/AttackButton.tsx
-
 import React, { useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
@@ -26,7 +24,7 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
     isConfirmed,
     writeError,
   } = useBattleOfChains();
-  const { openModal, setModalState } = useContext(ModalContext);
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
 
   const handleAttack = async () => {
     openModal(async () => {
@@ -45,7 +43,8 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
     if (isConfirmed) {
       setModalState("transaction_attack_success");
     } else if (writeError) {
-      console.log(writeError);
+      console.error(writeError);
+      setModalError(writeError.message);
       setModalState("transaction_error");
     } else if (!isWritePending && hash) {
       setModalState("attacking");

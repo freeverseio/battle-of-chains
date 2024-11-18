@@ -12,11 +12,18 @@ import { Button } from "@/components/ui/button";
 import mintAnimation from "@/public/animations/mint_animation.gif";
 import Image from "next/image";
 import { useNftTypes } from "@/hooks/useNftTypes"; // Import the hook
-
+import { useBattleOfChains } from "@/hooks/useBattleOfChains";
 const Modal: React.FC = () => {
-  const { isModalOpen, closeModal, onConfirm, modalState, modalData } =
-    useContext(ModalContext);
+  const {
+    isModalOpen,
+    closeModal,
+    onConfirm,
+    modalState,
+    modalData,
+    modalError,
+  } = useContext(ModalContext);
   const { loading, error, nftTypes } = useNftTypes(); // Fetch asset names
+  const { writeError } = useBattleOfChains();
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading asset names: {error.message}</div>;
@@ -73,7 +80,6 @@ const Modal: React.FC = () => {
                 You are about to mint assets on Ethereum, Polygon and Arbitrum
                 in one single transaction via LAOS Network. This action will
                 require only a small gas fee on LAOS. No gas fees will be
-
                 charged on any other chain.
               </DialogDescription>
             </DialogHeader>
@@ -115,7 +121,6 @@ const Modal: React.FC = () => {
               The upgrade transaction was successfully sent. Please check your
               logs to confirm if your treasury had sufficient funds to complete
               the asset upgrade.
-
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
@@ -154,7 +159,15 @@ const Modal: React.FC = () => {
         {modalState === "transaction_error" && (
           <div className="flex flex-col items-center">
             <DialogHeader>
-              <DialogTitle>Oops, Something Went Wrong</DialogTitle>
+              <DialogDescription>
+                {modalError?.toLowerCase().includes("user rejected") &&
+                  "User rejected the request"}
+                {modalError?.toLowerCase().includes("alreadyminted") &&
+                  "You can only mint one asset per block. You'll need to wait up to 12 seconds for the next block."}
+                {!modalError?.toLowerCase().includes("user rejected") &&
+                  !modalError?.toLowerCase().includes("alreadyminted") &&
+                  "Oops, something went wrong"}
+              </DialogDescription>
             </DialogHeader>
             <DialogFooter>
               <Button variant="secondary" onClick={closeModal}>

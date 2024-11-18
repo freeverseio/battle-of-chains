@@ -1,4 +1,3 @@
-// components/ChainActionProposals.tsx
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";

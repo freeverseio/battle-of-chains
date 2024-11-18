@@ -39,7 +39,7 @@ export default function SubmitVoteButton({
     isConfirmed,
     writeError,
   } = useBattleOfChains();
-  const { openModal, setModalState } = useContext(ModalContext);
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
 
   const handleVote = async () => {
     if (!selectedOption) return;
@@ -93,7 +93,8 @@ export default function SubmitVoteButton({
     if (isConfirmed) {
       setModalState("transaction_vote_success");
     } else if (writeError) {
-      console.log(writeError);
+      console.error(writeError);
+      setModalError(writeError.message);
       setModalState("transaction_error");
     } else if (!isWritePending && hash) {
       setModalState("voting");

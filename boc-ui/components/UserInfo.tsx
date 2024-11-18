@@ -1,4 +1,3 @@
-// components/WalletInfo.tsx
 "use client";
 
 import { useAccount } from "wagmi";
