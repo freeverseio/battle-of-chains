@@ -1,7 +1,7 @@
 // components/UpgradeButton.tsx
 "use client";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import {
@@ -12,16 +12,17 @@ import {
 } from "@/components/ui/tooltip";
 import { ModalContext } from "@/context/ModalContext";
 import { Button } from "./ui/button";
-
 interface UpgradeButtonProps {
   tokenId: string;
   chainId: number;
+  areButtonsDisabled?: boolean;
   className?: string;
 }
 
 export function UpgradeButton({
   tokenId,
   chainId,
+  areButtonsDisabled,
   className,
 }: UpgradeButtonProps) {
   const {
@@ -33,21 +34,20 @@ export function UpgradeButton({
     writeError,
   } = useBattleOfChains();
 
-  const { areButtonsDisabled, openModal, setModalState } =
-    useContext(ModalContext);
+  const { openModal, setModalState } = useContext(ModalContext);
 
   const handleUpgrade = () => {
     openModal(async () => {
       setModalState("pending_signature");
       try {
         await upgrade(chainId, tokenId);
-        // Transaction initiated successfully
       } catch (err) {
         console.error("Error:", err);
         setModalState("transaction_error");
       }
     }, "upgrade_confirm");
   };
+
   useEffect(() => {
     if (isConfirmed) {
       setModalState("transaction_upgrade_success");
@@ -59,7 +59,6 @@ export function UpgradeButton({
     }
   }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
-  // Corrected return statement
   return tokenId === "0" ? (
     <Button
       onClick={handleUpgrade}
@@ -72,25 +71,23 @@ export function UpgradeButton({
       Upgrade
     </Button>
   ) : (
-    <div className="absolute -top-2 right-6 transform translate-x-1/2 -translate-y-1/2">
-      <TooltipProvider delayDuration={80}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              onClick={handleUpgrade}
-              disabled={areButtonsDisabled}
-              className={`${
-                areButtonsDisabled ? "opacity-50 cursor-not-allowed" : ""
-              } bg-[#4DAA98] border border-white text-background rounded-full`}
-            >
-              <FaArrowAltCircleUp size={24} />
-            </button>
-          </TooltipTrigger>
-          <TooltipContent className="text-lg" side="top">
-            Upgrade
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
-    </div>
+    <TooltipProvider delayDuration={80}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button
+            onClick={handleUpgrade}
+            disabled={areButtonsDisabled}
+            className={`${
+              areButtonsDisabled ? "opacity-50 cursor-not-allowed" : ""
+            } bg-[#4DAA98] border border-white text-background rounded-full`}
+          >
+            <FaArrowAltCircleUp size={24} />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent className="text-lg" side="top">
+          Upgrade
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }
