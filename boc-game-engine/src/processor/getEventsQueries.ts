@@ -177,6 +177,26 @@ export async function getTransferEventsInBatch(chainIdx: number, chain_id: numbe
   return enrichEvents(data.transfers, chain_id, EventType.TransferEvent);
 }
 
+export async function getSendGameTreasuryEventsInBatch(chainIdx: number, chain_id: number, limit: number, offset: number): Promise<AllEventTypes[]> {
+  const query = `
+    query {
+      sendGameTreasuries(limit: ${limit}, offset: ${offset}) {
+        from
+        method
+        sendTXs {
+          amount
+          recipient
+        }
+        blockNumber
+        logIndex
+        timestamp
+      }
+    }
+  `;
+  const data = await fetchGraphQL(OWNERSHIP_GRAPHQLS[chainIdx], query);
+  return enrichEvents(data.sendGameTreasuries, chain_id, EventType.SendGameTreasuryEvent);
+}
+
 export async function getRegisterMercenaryEventsInBatch(limit: number, offset: number): Promise<AllEventTypes[]> {
   const query = `
     query {
