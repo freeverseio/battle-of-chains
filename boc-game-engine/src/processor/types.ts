@@ -182,10 +182,14 @@ export type RegisterMercenaryEvent = EventWithBlockInfo & {
 
 export type SendGameTreasuryEvent = EventWithBlockInfo & {
   from: string;
-  method: number;
+  method: GameTreasurySendMethod;
   sendTXs: SendTX[];
 }
 
+export enum GameTreasurySendMethod {
+  ABSOLUTE,
+  PERCENTAGE_BPS,
+}
 
 export type UserType = {
     address: string;
