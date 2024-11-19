@@ -20,7 +20,7 @@ export const MultichainMintButton: React.FC<MultichainMintButtonProps> = ({
   const { multichainMint, isConfirmed, writeError, isWritePending, hash } =
     useBattleOfChains();
 
-  const { areButtonsDisabled, openModal, setModalState } =
+  const { areButtonsDisabled, openModal, setModalState, setModalError } =
     useContext(ModalContext);
 
   const { address } = useAccount();
@@ -121,6 +121,8 @@ export const MultichainMintButton: React.FC<MultichainMintButtonProps> = ({
     if (isConfirmed) {
       setModalState("transaction_mint_success");
     } else if (writeError) {
+      console.error(writeError);
+      setModalError(writeError.message);
       setModalState("transaction_error");
     } else if (!isWritePending && hash) {
       setModalState("minting");

@@ -1,4 +1,4 @@
-// components/AssetViewerButton.tsx
+
 "use client";
 
 import { FaRegEye } from "react-icons/fa";

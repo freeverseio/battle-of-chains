@@ -1,4 +1,3 @@
-// components/UpgradeButton.tsx
 "use client";
 
 import { useEffect, useContext } from "react";
@@ -34,7 +33,7 @@ export function UpgradeButton({
     writeError,
   } = useBattleOfChains();
 
-  const { openModal, setModalState } = useContext(ModalContext);
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
 
   const handleUpgrade = () => {
     openModal(async () => {
@@ -52,7 +51,8 @@ export function UpgradeButton({
     if (isConfirmed) {
       setModalState("transaction_upgrade_success");
     } else if (writeError) {
-      console.log(writeError);
+      console.error(writeError);
+      setModalError(writeError.message);
       setModalState("transaction_error");
     } else if (!isWritePending && hash) {
       setModalState("upgrading");

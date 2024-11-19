@@ -1,4 +1,3 @@
-// components/UserActivity.tsx
 "use client";
 
 import { useAccount } from "wagmi";

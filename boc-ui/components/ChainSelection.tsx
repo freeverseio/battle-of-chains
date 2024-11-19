@@ -45,13 +45,15 @@ export function ChainSelection({ onJoinSuccess }: ChainSelectionProps) {
     isConfirmed,
     writeError,
   } = useBattleOfChains();
-  const { openModal, setModalState } = useContext(ModalContext);
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
 
   useEffect(() => {
     if (isConfirmed) {
       setModalState("transaction_join_success");
       onJoinSuccess();
     } else if (writeError) {
+      console.error(writeError);
+      setModalError(writeError.message);
       setModalState("transaction_error");
     } else if (!isWritePending && hash) {
       setModalState("joining");
