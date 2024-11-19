@@ -1,4 +1,4 @@
-import { getAssignOperatorEventsInBatch, getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getRegisterMercenaryEventsInBatch, getTransferEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
+import { getAssignOperatorEventsInBatch, getAttackEventsInBatch, getChainActionProposalEventsInBatch, getJoinedChainEventsInBatch, getMultichainMintEventsInBatch, getRegisterMercenaryEventsInBatch, getSendGameTreasuryEventsInBatch, getTransferEventsInBatch, getUpgradeEventsInBatch } from "./getEventsQueries";
 import {  AllEventTypes } from "./types";
 import * as dotenv from "dotenv";
 
@@ -32,6 +32,10 @@ export async function getAssignOperatorEvents(chainIdx: number, chain_id: number
 
 export async function getTransferEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
   return fetchAllEventsInChain(chainIdx, chain_id, getTransferEventsInBatch);
+}
+
+export async function getSendGameTreasuryEvents(chainIdx: number, chain_id: number): Promise<AllEventTypes[]> {
+  return fetchAllEventsInChain(chainIdx, chain_id, getSendGameTreasuryEventsInBatch);
 }
 
 export async function getRegisterMercenaryEvents(): Promise<AllEventTypes[]> {

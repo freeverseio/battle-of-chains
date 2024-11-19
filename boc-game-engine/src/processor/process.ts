@@ -8,6 +8,7 @@ import {
     PendingActionOption,
     RegisterMercenaryEvent,
     DebugData,
+    SendGameTreasuryEvent,
 } from './types';
 import { getAllEvents } from './getEvents';
 import { processJoinedChain } from './processJoinedChain';
@@ -25,6 +26,7 @@ import * as dotenv from "dotenv";
 import { attackSpeciesStats } from './speciesAttack';
 import { defendSpeciesStats } from './speciesDefend';
 import { processRegisterMercenary } from './processRegisterMercenary';
+import { processSendGameTreasury } from './processSendGameTreasury';
 dotenv.config({ path: '../docker/.env' });
 
 function getGameStart(debugData: DebugData | undefined) {
@@ -102,6 +104,9 @@ export class EventProcessor {
                 }
                 else if (nextEventTypeToProcess == EventType.RegisterMercenaryEvent) {
                     processRegisterMercenary(event as RegisterMercenaryEvent, this.storage);
+                }
+                else if (nextEventTypeToProcess == EventType.SendGameTreasuryEvent) {
+                    processSendGameTreasury(event as SendGameTreasuryEvent, this.storage);
                 }
                 else {
                     throw new Error(`Event type not supported: ${nextEventTypeToProcess}`);
