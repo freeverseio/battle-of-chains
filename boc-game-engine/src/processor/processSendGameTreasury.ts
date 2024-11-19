@@ -1,6 +1,5 @@
-import { send } from 'process';
-import { AssetState, GameTreasurySendMethod, PendingActionOption, PendingAttack, PendingState, SendGameTreasuryEvent, Storage, TransferEvent } from './types';
-import { chainName, createDAO, findUser, hasHomechain, log2user, setAssetsFree, userDoesNotExist } from './utils'
+import { GameTreasurySendMethod, SendGameTreasuryEvent, Storage } from './types';
+import { findUser, hasHomechain, log2user } from './utils'
 
 export function processSendGameTreasury(event: SendGameTreasuryEvent, storage: Storage): void {
     console.log(`Processing SendGameTreasuryEvent From: ${event.from}, Timestamp: ${event.timestamp}`);
@@ -23,7 +22,18 @@ export function processSendGameTreasury(event: SendGameTreasuryEvent, storage: S
 
     const initialTreasury = sender.treasury;
     let remainingTreasury = initialTreasury;
+
     
+    if (!initialTreasury) {
+        log2user(
+            event.from,
+            `You tried to send game treasury but you do not have any treasury at all`,
+            event.timestamp,
+            storage.logs,
+        );
+        return;
+    }
+
     for (const sendTX of event.sendTXs) {
         const recipient = findUser(sendTX.recipient, storage.users);
         if (!recipient) {
