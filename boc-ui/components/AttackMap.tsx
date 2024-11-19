@@ -193,7 +193,7 @@ export const AttackMap = () => {
                   {user.name}
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl">
-                  {user.chainByHomechain?.name}
+                  {user.chainByHomechain?.name || "none"}
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl relative">
                   <button
