@@ -190,6 +190,9 @@ describe('maxHealthAtLevel', () => {
         expect(maxHealthAtLevel(1, true)).toBe(100);
         expect(maxHealthAtLevel(2, true)).toBe(500);
         expect(maxHealthAtLevel(3, true)).toBe(2500);
+
+        expect(maxHealthAtLevel(30, false)).toBe(100000000);
+        expect(maxHealthAtLevel(30, true)).toBe(1000000000);
     });
 });
 
