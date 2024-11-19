@@ -33,10 +33,7 @@ export function UpgradeButton({
     writeError,
   } = useBattleOfChains();
 
-
-  const { areButtonsDisabled, openModal, setModalState, setModalError } =
-    useContext(ModalContext);
-
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
 
   const handleUpgrade = () => {
     openModal(async () => {
