@@ -163,7 +163,7 @@ const Modal: React.FC = () => {
                 {modalError?.toLowerCase().includes("user rejected") &&
                   "User rejected the request"}
                 {modalError?.toLowerCase().includes("alreadyminted") &&
-                  "You can only mint one asset per block. You'll need to wait up to 12 seconds for the next block."}
+                  "To mitigate bot exploitation, the Battle of Chains smart contracts only allow one Multichain Atomic Mint transaction per user per block. Please try again in a few seconds."}
                 {!modalError?.toLowerCase().includes("user rejected") &&
                   !modalError?.toLowerCase().includes("alreadyminted") &&
                   "Oops, something went wrong"}
