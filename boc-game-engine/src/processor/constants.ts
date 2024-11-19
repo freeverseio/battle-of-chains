@@ -5,7 +5,7 @@ export const ONE_YEAR_IN_SECS = 365 * ONE_DAY_IN_SECS;
 export const INTERVAL_BETWEEN_CHAIN_ACTIONS = ONE_DAY_IN_SECS;
 export const ATTACK_TIME_TO_DEPART = 120; // in secs, how long it takes to gather troops to departs toward objective
 export const HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY = 15; // the % of the max health at a given level recovered by an asset, per real-life day 
-export const HEALTH_PERCENT_DECREASE_PER_REAL_LIFE_DAY_AFTER_60YO = 2; // percentage lost per real-life day after turning 60 y.o.
+export const HEALTH_PERCENT_DECREASE_PER_REAL_LIFE_DAY_AFTER_60YO = 3; // percentage lost per real-life day after turning 60 y.o.
 
 // TIME_SPEED_RATIO: how many times the game runs faster than real life.
 // - RATIO = 3600 means that 1h in the game is 1s in real life
@@ -21,6 +21,7 @@ export const XP_FACTORY_PER_LEVEL = XP_CHARACTER_PER_LEVEL.map(value => value * 
 export const AVERAGE_POTENTIAL = 6;
 
 // 
+export const HEALTH_TO_INT = 1000;
 export const HEALTH_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE = 25;
 export const XP_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE = 20;
 

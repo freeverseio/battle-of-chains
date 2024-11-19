@@ -70,7 +70,7 @@ export function createDAO(storage: Storage, address: string, chain: number, time
             score: 44,
             treasury: 0,
             treasuryLastUpdate: timestamp,
-            health: 100,
+            health: 100 * constants.HEALTH_TO_INT,
             xp: 0,
             level: 0
         }
@@ -225,10 +225,11 @@ export function isCharacter(typeId: string) : boolean {
 }
 
 export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
-    return level2xp(
-        Math.max(1, level),
-        isFactory
-    );
+    return constants.HEALTH_TO_INT * 
+        level2xp(
+            Math.max(1, level),
+            isFactory
+        );
 }
 
 export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
@@ -238,7 +239,6 @@ export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
     }
     const intDelta = Math.ceil(delta);
     if (intDelta < 0) {
-        console.log('decreasing', asset.health, intDelta);
         asset.health = asset.health + intDelta > 0 ? asset.health + intDelta : 0;
     } else {
         const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
@@ -251,7 +251,27 @@ export function age2years(ageInSec: number) : number {
     return ageInSec / constants.ONE_YEAR_IN_SECS;
 }
 
-export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
+export function computeHealthDelta(daysSinceLastUpdate: number, maxHealth: number, ageInYears: number, isFactory: boolean) : number {
+    return !isFactory && ageInYears > 60
+    ? - Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_DECREASE_PER_REAL_LIFE_DAY_AFTER_60YO / 100)
+      )
+    : !isFactory && ageInYears > 40
+    ? Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 300)
+      )
+    : Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
+      );
+}
+
+export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, storage: Storage) {
     if (asset.health === 0) {
         console.log('WARNING: trying to evolve a dead asset');
         return;
@@ -260,25 +280,26 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
     asset.age += timeSinceLast;
 
     const isFact = isFactory(asset.type);
-    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
 
-    // the default delta (applied to all factories, and to all young assets)
-    let healthDelta = Math.floor(
-        maxHealth *
-        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
-        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
-    );
-
-    if (!isFact && age2years(asset.age) > 60) healthDelta = - healthDelta / 7;
-    else if (!isFact && age2years(asset.age) > 40) healthDelta = healthDelta / 3;
+    const healthDelta = computeHealthDelta(
+        (timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS,
+        maxHealthAtLevel(asset.level, isFact),
+        age2years(asset.age),
+        isFact,
+    )
 
     addHealthDeltaToAsset(healthDelta, asset);
 
     asset.statsLastUpdate = timestamp;
 
     if (asset.health === 0) {
+        reportDeath(asset, `Natural death at age of ${toOneDecimal(age2years(asset.age))} y.o.`, timestamp, storage);
         console.log('WARNING: Asset killed by time evolution', asset);
     }
+}
+
+function toOneDecimal(x: number) : number {
+    return Math.round(x * 10)/10;
 }
 
 export function subtractFromTreasury(address: string, timestamp: number, amount: number, storage: Storage) : number {
@@ -442,13 +463,13 @@ export function updateAllTreasuries(timestamp: number, storage: Storage) {
 
 export function evolveAllAssetsStats(timestamp: number, storage: Storage) {
     for (const asset of storage.assets.filter((a) => a.health > 0)) {
-        evolveAssetStatsByAsset(asset, timestamp)
+        evolveAssetStatsByAsset(asset, timestamp, storage);
     }
 }
 
-export function evolveAssetsStats(timestamp: number, assets: AssetType[]) {
+export function evolveAssetsStats(timestamp: number, assets: AssetType[], storage: Storage) {
     for (const asset of assets) {
-        evolveAssetStatsByAsset(asset, timestamp)
+        evolveAssetStatsByAsset(asset, timestamp, storage)
     }
 }
 
@@ -594,19 +615,19 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
         return [];
     }
     if (attackArea === AttackArea.North) {
-        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.South) {
-        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.East) {
-        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.West) {
-        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner) && a.health > 0)
     } 
     else if (attackArea === AttackArea.All) {
-        return assets.filter((a) => a.chain_id === chain)
+        return assets.filter((a) => a.chain_id === chain && a.health > 0)
     }
     else {
         console.log('WARNING: chain attack area not supported');
@@ -615,7 +636,7 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
 }
 
 export function findAllAssetsNearAddress(chain: number, attackAddress: string, assets: AssetType[]) : AssetType[] {
-    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress))
+    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress) && a.health > 0)
 }
 
 export function rarityToRanges(rarities : number[]) : RangeSelection {
@@ -738,4 +759,13 @@ export function canUserAttackOrUpgradeOnChain(user: UserType, chain: number) : b
     if (hasHomechain(user)) return true;
     if (isMercenary(user)) return user.mercenaryChain === chain;
     return false;
+}
+
+export function reportDeath(asset: AssetType, reason: string, timestamp: number, storage: Storage) {
+    log2user(
+        asset.owner,
+        `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has died. Reason: ${reason}`,
+        timestamp,
+        storage.logs
+    );
 }
