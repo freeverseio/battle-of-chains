@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import { AttackButton } from "@/components/AttackButton";
 import { useAllUsers } from "@/hooks/useAllUsers";
 import { useUserAssets } from "@/hooks/useUserAssets";
-import { User } from "@/types";
+import { Chain, User } from "@/types";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,8 +33,8 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
+import { useAllChains } from "@/hooks/useAllChains";
 import Modal from "./Modal";
-import { ModalContext } from "@/context/ModalContext";
 
 interface Asset {
   tokenId: string;
@@ -53,7 +53,7 @@ export const AttackMap = () => {
   const { address: currentUserAddress } = useAccount();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [selectedTokensPerChain, setSelectedTokensPerChain] = useState<{
-    [chainName: string]: string[];
+    [chainId: number]: string[];
   }>({});
   const [copiedAddressIndex, setCopiedAddressIndex] = useState<number | null>(
     null
@@ -85,10 +85,18 @@ export const AttackMap = () => {
     defendSpecies,
   } = useSpecies();
 
-  if (usersLoading || assetsLoading || speciesLoading)
+  const {
+    data: allChainsData,
+    loading: chainsLoading,
+    error: chainsError,
+  } = useAllChains();
+
+  if (usersLoading || assetsLoading || speciesLoading || chainsLoading)
     return <div>Loading...</div>;
   if (speciesError)
     return <div>Error loading species data: {speciesError.message}</div>;
+  if (chainsError)
+    return <div>Error loading chains data: {chainsError.message}</div>;
 
   // Map species IDs to names
   const attackSpeciesMap = attackSpecies.reduce(
@@ -128,46 +136,28 @@ export const AttackMap = () => {
     return `${address?.slice(0, 6)}...${address?.slice(-4)}`;
   };
 
-  // Function to get alive assets by chain for a user
-  const getAssetsByChain = (user: User) => {
-    if (!user.assetsByOwner?.nodes || user.assetsByOwner.nodes.length === 0) {
-      // Return an object with the user's home chain if they have no assets
-      return user.chainByHomechain?.name
-        ? { [user.chainByHomechain.name]: 0 }
-        : { "Unknown Chain": 0 };
-    }
-
-    return user.assetsByOwner.nodes.reduce(
-      (acc: { [key: string]: number }, asset) => {
-        const chainName = asset.chainByChainId.name;
-        acc[chainName] = (acc[chainName] || 0) + 1;
-        return acc;
-      },
-      {}
-    );
-  };
   // Function to get current user's alive assets for a specific chain
-  const getCurrentUserAssetsForChain = (chainName: string) => {
+  const getCurrentUserAssetsForChain = (chainId: number) => {
     return (
       currentUserAssets?.userByAddress?.assetsByOwner?.nodes.filter(
         (asset: Asset) =>
-          asset.chainByChainId.name === chainName &&
+          asset.chainByChainId.chainId === chainId &&
           (asset.type === "0" || asset.type === "1") &&
           parseInt(asset.health) > 0 // Only alive assets
       ) || []
     );
   };
 
-  const handleAssetSelection = (chainName: string, tokenId: string) => {
+  const handleAssetSelection = (chainId: number, tokenId: string) => {
     setSelectedTokensPerChain((prev) => {
-      const chainTokens = prev[chainName] || [];
+      const chainTokens = prev[chainId] || [];
       const newChainTokens = chainTokens.includes(tokenId)
         ? chainTokens.filter((id) => id !== tokenId)
         : [...chainTokens, tokenId];
 
       return {
         ...prev,
-        [chainName]: newChainTokens,
+        [chainId]: newChainTokens,
       };
     });
   };
@@ -269,33 +259,38 @@ export const AttackMap = () => {
                           </DialogTitle>
                         </DialogHeader>
                         <div className="space-y-6">
-                          {Object.entries(getAssetsByChain(user)).map(
-                            ([chain, count]) => {
-                              const userAssets =
-                                getCurrentUserAssetsForChain(chain);
+                          {allChainsData.allChains.nodes.map(
+                            (chainNode: Chain) => {
+                              const chainName = chainNode.name;
+                              const chainId = chainNode.chainId;
 
-                              // Get target's alive assets for display
+                              // Get target's alive assets for this chain
                               const targetAssets = (
                                 user.assetsByOwner.nodes as Asset[]
                               ).filter(
                                 (asset: Asset) =>
-                                  asset.chainByChainId.name === chain &&
-                                  parseInt(asset.health) > 0 // Only alive assets
+                                  asset.chainByChainId.chainId === chainId &&
+                                  parseInt(asset.health) > 0
                               );
+
+                              // Get current user's alive assets for this chain
+                              const userAssets =
+                                getCurrentUserAssetsForChain(chainId);
 
                               return (
                                 <div
-                                  key={chain}
+                                  key={chainId}
                                   className="space-y-6 p-4 border border-border rounded-lg"
                                 >
                                   <div>
                                     <h2 className="text-2xl font-bold text-label-secondary mb-2">
-                                      {chain}
+                                      {chainName}
                                     </h2>
                                     <hr className="border-t border-border" />
                                   </div>
 
                                   <div className="flex flex-col md:flex-row md:space-x-4">
+                                    {/* Target's Assets */}
                                     <div className="md:w-1/2">
                                       <h3 className="text-xl font-semibold text-label mb-2">
                                         Target's Assets
@@ -304,18 +299,21 @@ export const AttackMap = () => {
                                         <div>
                                           <p className="text-lg text-muted-foreground">
                                             {user.name} has{" "}
-                                            <strong>{count}</strong> assets on{" "}
-                                            {chain}.
+                                            <strong>
+                                              {targetAssets.length}
+                                            </strong>{" "}
+                                            assets on {chainName}.
                                           </p>
                                         </div>
                                       ) : (
                                         <p className="text-lg text-muted-foreground">
                                           {user.name} has no alive assets on{" "}
-                                          {chain}.
+                                          {chainName}.
                                         </p>
                                       )}
                                     </div>
 
+                                    {/* Your Assets */}
                                     <div className="md:w-1/2 mt-4 md:mt-0">
                                       {userAssets.length > 0 ? (
                                         <div>
@@ -325,18 +323,20 @@ export const AttackMap = () => {
                                           <p className="text-lg text-muted-foreground mb-2">
                                             You have{" "}
                                             <strong>{userAssets.length}</strong>{" "}
-                                            assets on {chain}.
+                                            assets on {chainName}.
                                           </p>
 
+                                          {/* Asset Selection */}
                                           <DropdownMenu>
                                             <DropdownMenuTrigger asChild>
                                               <Button
                                                 variant="outline"
                                                 className="w-full bg-transparent text-foreground text-lg justify-between"
                                               >
-                                                {(selectedTokensPerChain[chain]
-                                                  ?.length || 0) > 0
-                                                  ? `${selectedTokensPerChain[chain].length} assets selected`
+                                                {(selectedTokensPerChain[
+                                                  chainId
+                                                ]?.length || 0) > 0
+                                                  ? `${selectedTokensPerChain[chainId].length} assets selected`
                                                   : "Select assets to attack with"}
                                               </Button>
                                             </DropdownMenuTrigger>
@@ -354,13 +354,13 @@ export const AttackMap = () => {
                                                   onClick={() => {
                                                     const allSelected =
                                                       selectedTokensPerChain[
-                                                        chain
+                                                        chainId
                                                       ]?.length ===
                                                       userAssets.length;
                                                     setSelectedTokensPerChain(
                                                       (prev) => ({
                                                         ...prev,
-                                                        [chain]: allSelected
+                                                        [chainId]: allSelected
                                                           ? []
                                                           : userAssets.map(
                                                               (asset: Asset) =>
@@ -370,8 +370,9 @@ export const AttackMap = () => {
                                                     );
                                                   }}
                                                 >
-                                                  {selectedTokensPerChain[chain]
-                                                    ?.length ===
+                                                  {selectedTokensPerChain[
+                                                    chainId
+                                                  ]?.length ===
                                                   userAssets.length
                                                     ? "Unselect All"
                                                     : "Select All"}
@@ -388,14 +389,14 @@ export const AttackMap = () => {
                                                       className="flex items-center space-x-2 p-2 hover:bg-gray-900 cursor-pointer"
                                                       onClick={() =>
                                                         handleAssetSelection(
-                                                          chain,
+                                                          chainId,
                                                           asset.tokenId
                                                         )
                                                       }
                                                     >
                                                       <Checkbox
                                                         checked={selectedTokensPerChain[
-                                                          chain
+                                                          chainId
                                                         ]?.includes(
                                                           asset.tokenId
                                                         )}
@@ -438,20 +439,18 @@ export const AttackMap = () => {
                                               )}
                                             </DropdownMenuContent>
                                           </DropdownMenu>
-                                          {selectedTokensPerChain[chain]
+
+                                          {/* Attack Button */}
+                                          {selectedTokensPerChain[chainId]
                                             ?.length > 0 && (
                                             <div className="mt-4">
                                               <AttackButton
                                                 targetAddress={user.address}
-                                                targetChain={
-                                                  chain === "Unknown Chain"
-                                                    ? user.chainByHomechain
-                                                        ?.chainId
-                                                    : userAssets[0]
-                                                        ?.chainByChainId.chainId
-                                                }
+                                                targetChain={chainId}
                                                 tokenIds={
-                                                  selectedTokensPerChain[chain]
+                                                  selectedTokensPerChain[
+                                                    chainId
+                                                  ]
                                                 }
                                                 className="w-full"
                                               />
@@ -464,8 +463,8 @@ export const AttackMap = () => {
                                             Your Assets
                                           </h3>
                                           <p className="text-lg text-muted-foreground">
-                                            You have no alive assets on {chain}{" "}
-                                            to attack with.
+                                            You have no alive assets on{" "}
+                                            {chainName} to attack with.
                                           </p>
                                         </div>
                                       )}
