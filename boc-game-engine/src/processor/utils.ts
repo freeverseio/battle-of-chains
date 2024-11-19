@@ -739,3 +739,12 @@ export function canUserAttackOrUpgradeOnChain(user: UserType, chain: number) : b
     if (isMercenary(user)) return user.mercenaryChain === chain;
     return false;
 }
+
+export function reportDeath(asset: AssetType, reason: string, timestamp: number, storage: Storage) {
+    log2user(
+        asset.owner,
+        `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has died. Reason: ${reason}`,
+        timestamp,
+        storage.logs
+    );
+}
