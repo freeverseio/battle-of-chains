@@ -252,15 +252,23 @@ export function age2years(ageInSec: number) : number {
 }
 
 export function computeHealthDelta(daysSinceLastUpdate: number, maxHealth: number, ageInYears: number, isFactory: boolean) : number {
-    const healthDelta = Math.floor(
+    return !isFactory && ageInYears > 60
+    ? - Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_DECREASE_PER_REAL_LIFE_DAY_AFTER_60YO / 100)
+      )
+    : !isFactory && ageInYears > 40
+    ? Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 300)
+      )
+    : Math.floor(
         maxHealth *
         daysSinceLastUpdate *
         (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
-    );
-
-    if (!isFactory && ageInYears > 60) return (- healthDelta / 7);
-    else if (!isFactory && ageInYears > 40) return Math.floor(healthDelta / 3);
-    return healthDelta; 
+      );
 }
 
 export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, storage: Storage) {
