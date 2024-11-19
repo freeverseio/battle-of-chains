@@ -10,10 +10,12 @@ import {
   localResolvers,
   localTypeDefs,
 } from './resolvers/MainResolver';
-
+import DatabaseConfig from './db/config/DatabaseConfig';
 
 async function getRemoteSchema() {
-  const postgraphileUrl = process.env.POSTGRAPHILE_URL || 'http://localhost:4002/graphql';
+  const currentDb = DatabaseConfig.getCurrentDb().postgraphileUrl
+  console.log("currentdb----",currentDb)
+  const postgraphileUrl = DatabaseConfig.getCurrentDb().postgraphileUrl || 'http://localhost:4002/graphql';
 
   // Crear un ejecutor HTTP
   const remoteExecutor = buildHTTPExecutor({ endpoint: postgraphileUrl });
@@ -44,11 +46,11 @@ const allowedOrigins = process.env.CORS_ALLOWED_DOMAINS
 
 (async () => {
   dotenv.config({ path: '../docker/.env' });
-  const schema = await makeGatewaySchema();
+  // const schema = await makeGatewaySchema();
 
   // Yoga server setup
   const gatewayApp = createYoga({
-    schema,
+    schema: makeGatewaySchema,
     context: ({ request }) => ({
       authHeader: request.headers.get('authorization'),
     }),

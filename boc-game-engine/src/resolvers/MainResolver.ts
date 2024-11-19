@@ -1,16 +1,16 @@
 import { update } from '../services/update';
 import { getStatus, setStatus, ProcessStatusEnum, ProcessStatusOutput } from '../services/chainService';  // Assuming you have a service to get chains
+import { switchDB } from '../db/AppDataSource';
 
-function isReadyToProcess(st: ProcessStatusOutput) : boolean {
+function isReadyToProcess(st: ProcessStatusOutput): boolean {
   if (st.status !== ProcessStatusEnum.FREE) {
     return false;
   }
   const minSecsFromLastUpdate = 5;
   const waitedEnough = (Date.now() - new Date(st.last_update).getTime()) / 1000 > minSecsFromLastUpdate;
-  console.log('Trying to update too quickly')
+  console.log('Trying to update too quickly');
   return waitedEnough;
 }
-
 
 export const localResolvers = {
   Mutation: {
@@ -30,11 +30,17 @@ export const localResolvers = {
       }
       return nProcessedEvents;
     },
+
+    async switch(): Promise<boolean> { // Move `switch` into `Mutation`
+      switchDB();
+      return true;
+    },
   },
 };
 
 export const localTypeDefs = `
     type Mutation {
-      update: String
+      update: Int
+      switch: Boolean
     }
   `;
