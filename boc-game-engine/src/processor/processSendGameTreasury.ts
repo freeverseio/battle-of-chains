@@ -22,7 +22,6 @@ export function processSendGameTreasury(event: SendGameTreasuryEvent, storage: S
 
     const initialTreasury = sender.treasury;
     let remainingTreasury = initialTreasury;
-
     
     if (!initialTreasury) {
         log2user(
@@ -43,7 +42,7 @@ export function processSendGameTreasury(event: SendGameTreasuryEvent, storage: S
                 event.timestamp,
                 storage.logs,
             );
-            return;
+            continue;
         }
 
         const toTransfer = event.method == GameTreasurySendMethod.ABSOLUTE
@@ -61,12 +60,23 @@ export function processSendGameTreasury(event: SendGameTreasuryEvent, storage: S
                 event.timestamp,
                 storage.logs,
             );
-            return;          
         }
     }
+    const totalTransferred = initialTreasury - remainingTreasury;
+
+    if (totalTransferred === 0) {
+        log2user(
+            event.from,
+            `You tried to send game treasury but the amounts selected were either larger than your treasury, or less than 1}`,
+            event.timestamp,
+            storage.logs,
+        );
+        return;
+    }
+
     log2user(
         event.from,
-        `You successfully sent ${initialTreasury - remainingTreasury} from your game treasury`,
+        `You successfully sent ${totalTransferred} from your game treasury`,
         event.timestamp,
         storage.logs,
     );
