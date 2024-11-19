@@ -251,6 +251,18 @@ export function age2years(ageInSec: number) : number {
     return ageInSec / constants.ONE_YEAR_IN_SECS;
 }
 
+export function computeHealthDelta(daysSinceLastUpdate: number, maxHealth: number, ageInYears: number, isFactory: boolean) : number {
+    const healthDelta = Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
+    );
+
+    if (!isFactory && ageInYears > 60) return (- healthDelta / 7);
+    else if (!isFactory && ageInYears > 40) return Math.floor(healthDelta / 3);
+    return healthDelta; 
+}
+
 export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, storage: Storage) {
     if (asset.health === 0) {
         console.log('WARNING: trying to evolve a dead asset');
@@ -260,17 +272,13 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, sto
     asset.age += timeSinceLast;
 
     const isFact = isFactory(asset.type);
-    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
 
-    // the default delta (applied to all factories, and to all young assets)
-    let healthDelta = Math.floor(
-        maxHealth *
-        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
-        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
-    );
-
-    if (!isFact && age2years(asset.age) > 60) healthDelta = - healthDelta / 7;
-    else if (!isFact && age2years(asset.age) > 40) healthDelta = Math.floor(healthDelta / 3);
+    const healthDelta = computeHealthDelta(
+        (timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS,
+        maxHealthAtLevel(asset.level, isFact),
+        age2years(asset.age),
+        isFact,
+    )
 
     addHealthDeltaToAsset(healthDelta, asset);
 
