@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, reportDeath, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
@@ -86,6 +86,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
         decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageAttackedDefense));
         if (asset.health === 0) {
             attackedCasulaties++;
+            reportDeath(asset, `Attack by ${attack.attacker}.`, attack.toBeExectutedAt, storage);
         } else {
             if (!isFactory(asset.type)){
                 increaseAssetXPByPercent(asset, increaseHPPercentForAttacked * asset.potential / AVERAGE_POTENTIAL);
@@ -98,6 +99,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
         decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
         if (asset.health === 0) {
             attackerCasulaties++;
+            reportDeath(asset, `Backfire when attacking ${attack.targetAddress}.`, attack.toBeExectutedAt, storage);
         } else { 
             if (!isFactory(asset.type)) {
                 increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL);
