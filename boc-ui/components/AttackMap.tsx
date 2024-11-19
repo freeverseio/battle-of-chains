@@ -128,8 +128,7 @@ export const AttackMap = () => {
   const users =
     allUsersData?.allUsers?.nodes.filter(
       (user: User) =>
-        user.address.toLowerCase() !== currentUserAddress?.toLowerCase() &&
-        user.chainByHomechain !== null
+        user.address.toLowerCase() !== currentUserAddress?.toLowerCase()
     ) || [];
 
   const formatAddress = (address: string) => {
