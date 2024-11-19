@@ -270,7 +270,7 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, sto
     );
 
     if (!isFact && age2years(asset.age) > 60) healthDelta = - healthDelta / 7;
-    else if (!isFact && age2years(asset.age) > 40) healthDelta = healthDelta / 3;
+    else if (!isFact && age2years(asset.age) > 40) healthDelta = Math.floor(healthDelta / 3);
 
     addHealthDeltaToAsset(healthDelta, asset);
 
