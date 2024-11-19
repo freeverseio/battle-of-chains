@@ -594,19 +594,19 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
         return [];
     }
     if (attackArea === AttackArea.North) {
-        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.South) {
-        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.East) {
-        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.West) {
-        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner) && a.health > 0)
     } 
     else if (attackArea === AttackArea.All) {
-        return assets.filter((a) => a.chain_id === chain)
+        return assets.filter((a) => a.chain_id === chain && a.health > 0)
     }
     else {
         console.log('WARNING: chain attack area not supported');
@@ -615,7 +615,7 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
 }
 
 export function findAllAssetsNearAddress(chain: number, attackAddress: string, assets: AssetType[]) : AssetType[] {
-    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress))
+    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress) && a.health > 0)
 }
 
 export function rarityToRanges(rarities : number[]) : RangeSelection {
