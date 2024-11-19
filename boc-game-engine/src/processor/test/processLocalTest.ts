@@ -1,4 +1,3 @@
-// Save this as processAndCompareStorage.ts
 import { promises as fs } from 'fs';
 import { getChains } from '../getChains';
 import { EventProcessor } from '../process';
