@@ -1,9 +1,7 @@
-import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea, AssetType } from './types';
-import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, getAliveInventoryInChain, log2chain, log2user, removeAllUserSupportedActions, reportDeath, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
+import { Storage, PendingChainAction, ChainActionProposalType, ChainActionProposalOption, actionAreaNames, actionTypeNames, AttackArea } from './types';
+import { chainIsNotSupported, chainName, decreaseAssetHealthByPercent, evolveAllAssetsStats, executeChainImprove, findAllAssetsInArea, getAliveInventoryInChain, log2chain, removeAllUserSupportedActions, reportDeath, selectMostVotedChainAction, shuffleArray, updateAllTreasuries } from './utils'
 import { INTERVAL_BETWEEN_CHAIN_ACTIONS } from './constants';
 import murmurhash from 'murmurhash';
-import { Timestamp } from 'typeorm';
-import { timeStamp } from 'console';
 
 export function processChainActions(action: PendingChainAction, storage: Storage) {
     const mostVotedActions: ChainActionProposalType[] = [];
