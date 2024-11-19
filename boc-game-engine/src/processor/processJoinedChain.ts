@@ -25,7 +25,7 @@ export function processJoinedChain(event: JoinedChainEvent, storage: Storage): v
             score: 0,
             treasury: constants.TREASURY_INIT_ALLOCATION,
             treasuryLastUpdate: event.timestamp,
-            health: 100,
+            health: 100 * constants.HEALTH_TO_INT,
             xp: 0,
             level: 0
         });

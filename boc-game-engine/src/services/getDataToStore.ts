@@ -5,7 +5,7 @@ import { defendSpeciesStats, DefendSpeciesType } from '../processor/speciesDefen
 import { UserType, AssetType, ChainActionProposalType, LogType, Storage, AssignOperatorType, ChainType, nftTypeNames } from '../processor/types';
 import { toChecksumAddress } from 'web3-utils';
 import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
-import { COST_PER_XP, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
+import { COST_PER_XP, HEALTH_TO_INT, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
 
 function toChecksumIfDefined(input: string | undefined): string | undefined {
   return input ? toChecksumAddress(input) : undefined;
@@ -62,7 +62,7 @@ function formUsers(processedUsers: UserType[]): User[] {
       newUser.joined_timestamp = user.joined_timestamp;
       newUser.score = user.score;
       newUser.treasury = user.treasury;
-      newUser.health = user.health;
+      newUser.health = Math.round(user.health / HEALTH_TO_INT);
       newUser.xp = user.xp;
       newUser.level = user.level;
       newUser.treasury_last_update = user.treasuryLastUpdate;
@@ -82,7 +82,7 @@ function formAssets(processedAssets: AssetType[]): Asset[] {
     newAsset.creation_timestamp = asset.creation_timestamp;
     newAsset.owner = toChecksumAddress(asset.owner);
     newAsset.xp = asset.xp;
-    newAsset.health = asset.health;
+    newAsset.health = Math.round(asset.health / HEALTH_TO_INT);
     newAsset.level = asset.level;
     newAsset.attack = asset.attack;
     newAsset.defense = asset.defense;

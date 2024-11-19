@@ -70,7 +70,7 @@ export function createDAO(storage: Storage, address: string, chain: number, time
             score: 44,
             treasury: 0,
             treasuryLastUpdate: timestamp,
-            health: 100,
+            health: 100 * constants.HEALTH_TO_INT,
             xp: 0,
             level: 0
         }
@@ -225,10 +225,11 @@ export function isCharacter(typeId: string) : boolean {
 }
 
 export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
-    return level2xp(
-        Math.max(1, level),
-        isFactory
-    );
+    return constants.HEALTH_TO_INT * 
+        level2xp(
+            Math.max(1, level),
+            isFactory
+        );
 }
 
 export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
@@ -238,7 +239,6 @@ export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
     }
     const intDelta = Math.ceil(delta);
     if (intDelta < 0) {
-        console.log('decreasing', asset.health, intDelta);
         asset.health = asset.health + intDelta > 0 ? asset.health + intDelta : 0;
     } else {
         const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
@@ -265,7 +265,7 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, sto
     // the default delta (applied to all factories, and to all young assets)
     let healthDelta = Math.floor(
         maxHealth *
-        (timeSinceLast / constants.ONE_DAY_IN_SECS)*
+        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
         (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
     );
 

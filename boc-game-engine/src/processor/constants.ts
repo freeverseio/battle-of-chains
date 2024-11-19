@@ -21,6 +21,7 @@ export const XP_FACTORY_PER_LEVEL = XP_CHARACTER_PER_LEVEL.map(value => value * 
 export const AVERAGE_POTENTIAL = 6;
 
 // 
+export const HEALTH_TO_INT = 1000;
 export const HEALTH_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE = 25;
 export const XP_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE = 20;
 
