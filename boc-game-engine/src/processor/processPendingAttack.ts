@@ -38,7 +38,7 @@ function processDepartToTravel(attack: PendingAttack, storage: Storage) {
 function processAttackArrival(attack: PendingAttack, storage: Storage) {
     // Attacker:
     const attackerAssets = getAttackingAssets(attack.id, storage.assets);
-    evolveAssetsStats(attack.toBeExectutedAt, attackerAssets);
+    evolveAssetsStats(attack.toBeExectutedAt, attackerAssets, storage);
     const availableAttackerAssets = getAlive(attackerAssets);
     if (availableAttackerAssets.length === 0) {
         const comment = `None of your assets arrived to the attack destination on ${chainName(attack.targetChain, storage.chains)}. They either died or were sold.`;
@@ -55,7 +55,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     const defenseBoostHomechain = isTargetUserInHomechain ? DEFENSE_BOOST_HOMECHAIN : 1;
 
     const attackedAssets = getFreeInventoryInChain(attack.targetAddress, attack.targetChain, storage.assets);
-    evolveAssetsStats(attack.toBeExectutedAt, attackedAssets);
+    evolveAssetsStats(attack.toBeExectutedAt, attackedAssets, storage);
     const availableAttackedAssets = getAlive(attackedAssets);
     const attackedAttack = availableAttackedAssets.reduce((sum, asset) => sum + asset.attack, 0);
     const attackedDefense = availableAttackedAssets.reduce((sum, asset) => sum + asset.defense, 0) * defenseBoostHomechain;

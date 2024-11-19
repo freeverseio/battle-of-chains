@@ -251,7 +251,7 @@ export function age2years(ageInSec: number) : number {
     return ageInSec / constants.ONE_YEAR_IN_SECS;
 }
 
-export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
+export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, storage: Storage) {
     if (asset.health === 0) {
         console.log('WARNING: trying to evolve a dead asset');
         return;
@@ -265,7 +265,7 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
     // the default delta (applied to all factories, and to all young assets)
     let healthDelta = Math.floor(
         maxHealth *
-        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
+        (timeSinceLast / constants.ONE_DAY_IN_SECS)*
         (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
     );
 
@@ -277,8 +277,13 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
     asset.statsLastUpdate = timestamp;
 
     if (asset.health === 0) {
+        reportDeath(asset, `Natural death at age of ${toOneDecimal(age2years(asset.age))} y.o.`, timestamp, storage);
         console.log('WARNING: Asset killed by time evolution', asset);
     }
+}
+
+function toOneDecimal(x: number) : number {
+    return Math.round(x * 10)/10;
 }
 
 export function subtractFromTreasury(address: string, timestamp: number, amount: number, storage: Storage) : number {
@@ -442,13 +447,13 @@ export function updateAllTreasuries(timestamp: number, storage: Storage) {
 
 export function evolveAllAssetsStats(timestamp: number, storage: Storage) {
     for (const asset of storage.assets.filter((a) => a.health > 0)) {
-        evolveAssetStatsByAsset(asset, timestamp)
+        evolveAssetStatsByAsset(asset, timestamp, storage);
     }
 }
 
-export function evolveAssetsStats(timestamp: number, assets: AssetType[]) {
+export function evolveAssetsStats(timestamp: number, assets: AssetType[], storage: Storage) {
     for (const asset of assets) {
-        evolveAssetStatsByAsset(asset, timestamp)
+        evolveAssetStatsByAsset(asset, timestamp, storage)
     }
 }
 
