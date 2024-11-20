@@ -84,9 +84,7 @@ const HomeBaseInfo: React.FC = () => {
           </p>
           <p className="text-3xl">
             <span className="text-label">Cost for Next Level: </span>
-            <span className="text-label-value">
-              {costNeededForNextLevel} treasury
-            </span>
+            <span className="text-label-value">{costNeededForNextLevel}</span>
           </p>
         </div>
       </CardContent>
