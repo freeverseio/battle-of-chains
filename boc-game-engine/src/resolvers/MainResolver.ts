@@ -1,5 +1,5 @@
 import { update } from '../services/update';
-import { ChainService, ProcessStatusEnum, ProcessStatusOutput } from '../services/chainService';  // Assuming you have a service to get chains
+import { ChainService, ProcessStatusEnum, ProcessStatusOutput } from '../services/chainService';
 import dbConfig from '../db/config/DatabaseConfig';
 import { createAppDataSource } from '../db/AppDataSource';
 import { DbKey } from '../db/config/DbKey';
@@ -17,8 +17,8 @@ export const localResolvers = {
   Mutation: {
     async update(): Promise<number> {
       const currentReadDbName = dbConfig.getCurrentReadDb().name
-      const currentWriteDbName = dbConfig.getCurrentWriteDb().name
       const currentReadDbDataSource = await createAppDataSource(currentReadDbName as DbKey)
+      const currentWriteDbName = dbConfig.getCurrentWriteDb().name
       const currentWriteDbDataSource = await createAppDataSource(currentWriteDbName as DbKey)
 
       const chainServiceReadDb = new ChainService(currentReadDbDataSource)
@@ -45,15 +45,8 @@ export const localResolvers = {
           console.log("Error finalizing update", error)
           throw new Error("Reprocessing failed. Please try again later.");
         }
-        
-
       }
       return nProcessedEvents;
-    },
-
-    async switch(): Promise<boolean> { // Move `switch` into `Mutation`
-      dbConfig.switchCurrentReadDB();
-      return true;
     },
   },
 };
@@ -61,6 +54,5 @@ export const localResolvers = {
 export const localTypeDefs = `
     type Mutation {
       update: Int
-      switch: Boolean
     }
   `;
