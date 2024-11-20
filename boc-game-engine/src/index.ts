@@ -4,7 +4,6 @@ import * as dotenv from 'dotenv';
 import { createYoga } from 'graphql-yoga';
 import { createServer } from 'http';
 import 'reflect-metadata'; // Required by TypeGraphQL
-import { AppDataSource } from './db/AppDataSource';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import { 
   localResolvers,
@@ -13,9 +12,8 @@ import {
 import DatabaseConfig from './db/config/DatabaseConfig';
 
 async function getRemoteSchema() {
-  const currentDb = DatabaseConfig.getCurrentDb().postgraphileUrl
-  console.log("currentdb----",currentDb)
-  const postgraphileUrl = DatabaseConfig.getCurrentDb().postgraphileUrl || 'http://localhost:4002/graphql';
+  const currentDb = DatabaseConfig.getCurrentReadDb().postgraphileUrl
+  const postgraphileUrl = DatabaseConfig.getCurrentReadDb().postgraphileUrl || 'http://localhost:4002/graphql';
 
   // Crear un ejecutor HTTP
   const remoteExecutor = buildHTTPExecutor({ endpoint: postgraphileUrl });
@@ -77,10 +75,6 @@ const allowedOrigins = process.env.CORS_ALLOWED_DOMAINS
       allowedHeaders: ['Content-Type', 'Authorization'],
     },
   });
-
-
-  AppDataSource.initialize()
-  .catch((error) => console.log("Error: ", error));
 
 
   const server = createServer(gatewayApp);

@@ -7,4 +7,5 @@ export default interface DbConfig {
     postgraphileUrl: string;
     user: string;
     password: string;
+    cert: string;
   }

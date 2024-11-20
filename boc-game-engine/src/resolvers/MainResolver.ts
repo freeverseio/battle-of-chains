@@ -1,6 +1,8 @@
 import { update } from '../services/update';
-import { getStatus, setStatus, ProcessStatusEnum, ProcessStatusOutput } from '../services/chainService';  // Assuming you have a service to get chains
-import { switchDB } from '../db/AppDataSource';
+import { ChainService, ProcessStatusEnum, ProcessStatusOutput } from '../services/chainService';  // Assuming you have a service to get chains
+import dbConfig from '../db/config/DatabaseConfig';
+import { createAppDataSource } from '../db/AppDataSource';
+import { DbKey } from '../db/config/DbKey';
 
 function isReadyToProcess(st: ProcessStatusOutput): boolean {
   if (st.status !== ProcessStatusEnum.FREE) {
@@ -8,31 +10,49 @@ function isReadyToProcess(st: ProcessStatusOutput): boolean {
   }
   const minSecsFromLastUpdate = 5;
   const waitedEnough = (Date.now() - new Date(st.last_update).getTime()) / 1000 > minSecsFromLastUpdate;
-  console.log('Trying to update too quickly');
   return waitedEnough;
 }
 
 export const localResolvers = {
   Mutation: {
     async update(): Promise<number> {
-      const s = await getStatus();
+      const currentReadDbName = dbConfig.getCurrentReadDb().name
+      const currentWriteDbName = dbConfig.getCurrentWriteDb().name
+      const currentReadDbDataSource = await createAppDataSource(currentReadDbName as DbKey)
+      const currentWriteDbDataSource = await createAppDataSource(currentWriteDbName as DbKey)
+
+      const chainServiceReadDb = new ChainService(currentReadDbDataSource)
+      const chainServiceWriteDb = new ChainService(currentWriteDbDataSource)
+
+      const s = await chainServiceReadDb.getStatus();
       if (!isReadyToProcess(s[0])) return 0;
 
       let nProcessedEvents = 0;
       try {
-        await setStatus(ProcessStatusEnum.PROCESSING);
-        nProcessedEvents = await update();
+        await chainServiceReadDb.setStatus(ProcessStatusEnum.PROCESSING);
+        await chainServiceWriteDb.setStatus(ProcessStatusEnum.PROCESSING);
+        nProcessedEvents = await update(currentWriteDbDataSource);
       } catch (error) {
         console.error("Error during reprocessing:", error);
         throw new Error("Reprocessing failed. Please try again later.");
       } finally {
-        await setStatus(ProcessStatusEnum.FREE);
+        try {
+          await chainServiceReadDb.setStatus(ProcessStatusEnum.FREE);
+          await chainServiceWriteDb.setStatus(ProcessStatusEnum.FREE);
+          dbConfig.switchCurrentReadDB();
+          dbConfig.switchCurrentWriteDB();
+        } catch (error) {
+          console.log("Error finalizing update", error)
+          throw new Error("Reprocessing failed. Please try again later.");
+        }
+        
+
       }
       return nProcessedEvents;
     },
 
     async switch(): Promise<boolean> { // Move `switch` into `Mutation`
-      switchDB();
+      dbConfig.switchCurrentReadDB();
       return true;
     },
   },

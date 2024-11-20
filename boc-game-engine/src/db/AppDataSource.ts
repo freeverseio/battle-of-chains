@@ -9,21 +9,20 @@ dotenv.config({ path: '../docker/.env' });
 
 const isSSLEnabled = process.env.SSL_ENABLED !== "false"; // Check if SSL is enabled, defaults to true if not set
 
-function createAppDataSource(): DataSource {
-  // Get the current DB configuration from the singleton instance
-  const currentDbConfig = dbConfig.getCurrentDb();
+export async function createAppDataSource(dbKey: DbKey): Promise<DataSource> {
+  const dbConfigs = dbConfig.getDbConfigs();
 
-  return new DataSource({
+  const dataSource = new DataSource({
     type: "postgres",
-    host: currentDbConfig.host,
-    port: currentDbConfig.port,
-    username: currentDbConfig.user,
-    password: currentDbConfig.password,
-    database: currentDbConfig.dbName,
+    host: dbConfigs[dbKey].host,
+    port: dbConfigs[dbKey].port,
+    username: dbConfigs[dbKey].user,
+    password: dbConfigs[dbKey].password,
+    database: dbConfigs[dbKey].dbName,
     ssl: isSSLEnabled
       ? {
           rejectUnauthorized: false,
-          ca: process.env.SSL_CA_CERT || "certs/ca-certificate.crt",
+          ca: dbConfigs[dbKey].cert || "certs/ca-certificate.crt",
         }
       : false, // Disable SSL if not enabled
     synchronize: false, // Set to true if you want to automatically sync schema changes in development
@@ -44,32 +43,13 @@ function createAppDataSource(): DataSource {
     migrations: [],
     subscribers: [],
   });
-}
 
-// Initialize the AppDataSource dynamically
-export let AppDataSource = createAppDataSource();
-
-export function switchDB() {
-  const currentDb = dbConfig.getCurrentDb();
-  console.log("currentDB: ", currentDb)
-  switch (currentDb.name) {
-    case DbKey.A:
-        console.log("Switching from A to B")
-        dbConfig.setCurrentDb(DbKey.B)
-        break;
-    case DbKey.B:
-        console.log("Switching from B to A")
-        dbConfig.setCurrentDb(DbKey.A)
-        break;
-    default:
-      throw new Error(`DB switch not recognized for db: ${currentDb.name}`)   
-  }
-  // Reinitialize AppDataSource whenever the current database changes
-  if (AppDataSource.isInitialized) {
-    AppDataSource.destroy().then(() => {
-      AppDataSource = createAppDataSource();
-    });
-  } else {
-    AppDataSource = createAppDataSource();
+  // Initialize the data source and return the promise
+  try {
+    await dataSource.initialize();
+    return dataSource;
+  } catch (error) {
+    console.error(`Error initializing DataSource for ${dbKey}:`, error);
+    throw error;
   }
 }
