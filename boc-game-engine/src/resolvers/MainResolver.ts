@@ -25,7 +25,10 @@ export const localResolvers = {
       const chainServiceWriteDb = new ChainService(currentWriteDbDataSource);
 
       const s = await chainServiceReadDb.getStatus();
-      if (!isReadyToProcess(s[0])) return 0;
+      if (!isReadyToProcess(s[0])) {
+        console.log("Not ready to process yet!");
+        return 0;
+      } 
 
       let nProcessedEvents = 0;
       let reprocessingError: Error | null = null;
