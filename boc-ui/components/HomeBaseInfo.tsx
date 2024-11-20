@@ -29,13 +29,14 @@ const HomeBaseInfo: React.FC = () => {
   infoData.allInfos.nodes.forEach((node: any) => {
     infoDict[node.key] = JSON.parse(node.value) as number[];
   });
-  const currentLevel = userData.userByAddress?.level;
-  const currentXp = userData.userByAddress?.xp;
+  const currentLevel = parseInt(userData.userByAddress?.level);
+  const currentXp = parseInt(userData.userByAddress?.xp);
 
   const xpPerLevel = infoDict["HOMEBASE_XP_PER_LEVEL"];
   const costPerLevel = infoDict["HOMEBASE_COST_PER_LEVEL"];
   const productionRatePerLevel = infoDict["HOMEBASE_DAILY_PRODUCTION_RATE"];
 
+  const treasuryRequiredPerXpUnit = 1;
   if (!xpPerLevel || !costPerLevel || !productionRatePerLevel) {
     return <p>Required info not available.</p>;
   }
@@ -43,15 +44,13 @@ const HomeBaseInfo: React.FC = () => {
   const maxLevel = xpPerLevel.length - 1;
   const nextLevel = Math.min(currentLevel + 1, maxLevel);
 
-  const xpForCurrentLevel = xpPerLevel[currentLevel] || 0;
   const xpForNextLevel = xpPerLevel[nextLevel] || 0;
 
-  const costForNextLevel = costPerLevel[nextLevel] || 0;
   const productionRate = productionRatePerLevel[currentLevel] || 0;
 
-  const xpDifference = xpForNextLevel - xpForCurrentLevel;
-  const xpProgress = ((currentXp - xpForCurrentLevel) / xpDifference) * 100;
   const xpNeededForNextLevel = xpForNextLevel - currentXp;
+  const costNeededForNextLevel =
+    xpNeededForNextLevel * treasuryRequiredPerXpUnit;
 
   return (
     <Card className="border border-border card-background">
@@ -86,7 +85,7 @@ const HomeBaseInfo: React.FC = () => {
           <p className="text-3xl">
             <span className="text-label">Cost for Next Level: </span>
             <span className="text-label-value">
-              {costForNextLevel} treasury
+              {costNeededForNextLevel} treasury
             </span>
           </p>
         </div>
