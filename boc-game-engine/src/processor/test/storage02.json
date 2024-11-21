@@ -5559,13 +5559,13 @@
       "id": 130,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731318957,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 11% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 11% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 131,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731318957,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 11% success. Your troops gained 2 percentual XP points. You lost 3 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 11% success. Your troops gained 2 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 132,
@@ -5925,13 +5925,13 @@
       "id": 191,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731327009,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 10% success, and they were harmed by their backfire with 17% success. Your troops gained 2 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 10% success, and they were harmed by their backfire with 17% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 192,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731327009,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 10% success; you backfired and harmed them with 17% success. Your troops gained 3 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 10% success; you backfired and harmed them with 17% success. Your troops gained 3 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 193,
@@ -5997,13 +5997,13 @@
       "id": 203,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731334098,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 3% success, and they were harmed by their backfire with 44% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 3% success, and they were harmed by their backfire with 44% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 204,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731334098,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 3% success; you backfired and harmed them with 44% success. Your troops gained 9 percentual XP points. You lost 3 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 3% success; you backfired and harmed them with 44% success. Your troops gained 9 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 205,
@@ -6099,13 +6099,13 @@
       "id": 220,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731344269,
-      "comment": "Your troops have attacked at 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, they stole 1 coins, attacked with 1% success, and they were harmed by their backfire with 6% success"
+      "comment": "Your troops on Ethereum have attacked at 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, they stole 1 coins, attacked with 1% success, and they were harmed by their backfire with 6% success"
     },
     {
       "id": 221,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731344269,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 1 coins, and attacked you with 1% success; you backfired and harmed them with 6% success. Your troops gained 1 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 1 coins, and attacked you with 1% success; you backfired and harmed them with 6% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 222,
@@ -6195,13 +6195,13 @@
       "id": 236,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731410658,
-      "comment": "Your troops have attacked at 0xb4f4458aea2d60dba9b3582664b6e80936398a50, they stole 10 coins, attacked with 4% success, and they were harmed by their backfire with 2% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0xb4f4458aea2d60dba9b3582664b6e80936398a50, they stole 10 coins, attacked with 4% success, and they were harmed by their backfire with 2% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 237,
       "user_address": "0xb4f4458aea2d60dba9b3582664b6e80936398a50",
       "timestamp": 1731410658,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 10 coins, and attacked you with 4% success; you backfired and harmed them with 2% success"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 10 coins, and attacked you with 4% success; you backfired and harmed them with 2% success"
     },
     {
       "id": 238,
@@ -6243,13 +6243,13 @@
       "id": 244,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731419377,
-      "comment": "Your troops have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 252 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 252 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 245,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1731419377,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 252 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 252 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 246,
@@ -6489,25 +6489,25 @@
       "id": 285,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731421712,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 4% success, and they were harmed by their backfire with 15% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 4% success, and they were harmed by their backfire with 15% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 286,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731421712,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 4% success; you backfired and harmed them with 15% success. Your troops gained 3 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 4% success; you backfired and harmed them with 15% success. Your troops gained 3 percentual XP points"
     },
     {
       "id": 287,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731422632,
-      "comment": "Your troops have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 260 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 260 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 288,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1731422632,
-      "comment": "You were attacked by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 260 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 260 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 289,
@@ -6585,25 +6585,25 @@
       "id": 301,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731488471,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 8% success, and they were harmed by their backfire with 100% success. Your troops gained 2 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Arbitrum have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 8% success, and they were harmed by their backfire with 100% success. Your troops gained 2 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 302,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731488471,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 8% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 8% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 303,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731488558,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 35% success, and they were harmed by their backfire with 9% success. Your troops gained 7 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 35% success, and they were harmed by their backfire with 9% success. Your troops gained 7 percentual XP points"
     },
     {
       "id": 304,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731488558,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 35% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 35% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 305,
@@ -6687,13 +6687,13 @@
       "id": 318,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731511380,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 2% success, and they were harmed by their backfire with 96% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 2% success, and they were harmed by their backfire with 96% success. You lost 1 assets in the fight"
     },
     {
       "id": 319,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731511380,
-      "comment": "You were attacked by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 0 coins, and attacked you with 2% success; you backfired and harmed them with 96% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 0 coins, and attacked you with 2% success; you backfired and harmed them with 96% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 320,
@@ -6861,13 +6861,13 @@
       "id": 347,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731572171,
-      "comment": "Your troops have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 39% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 39% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 348,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1731572171,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 39% success. Your troops gained 8 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 39% success. Your troops gained 8 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 349,
@@ -6963,13 +6963,13 @@
       "id": 364,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731572674,
-      "comment": "Your troops have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 3% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 3% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 365,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1731572674,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 3% success. Your troops gained 1 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 3% success. Your troops gained 1 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 366,
@@ -7275,49 +7275,49 @@
       "id": 416,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731574314,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 48% success, and they were harmed by their backfire with 4% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 48% success, and they were harmed by their backfire with 4% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 417,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731574314,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 48% success; you backfired and harmed them with 4% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 48% success; you backfired and harmed them with 4% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 418,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731574362,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 27% success, and they were harmed by their backfire with 9% success. Your troops gained 5 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 27% success, and they were harmed by their backfire with 9% success. Your troops gained 5 percentual XP points"
     },
     {
       "id": 419,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731574362,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 27% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 27% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 420,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731575702,
-      "comment": "Your troops have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 107 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 107 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 421,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1731575702,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 107 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 107 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 422,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731577223,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 31 coins, attacked with 8% success, and they were harmed by their backfire with 0% success. Your troops gained 2 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 31 coins, attacked with 8% success, and they were harmed by their backfire with 0% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 423,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731577223,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 31 coins, and attacked you with 8% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 31 coins, and attacked you with 8% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 424,
@@ -7419,13 +7419,13 @@
       "id": 440,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731582789,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 79 coins, attacked with 60% success, and they were harmed by their backfire with 9% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 79 coins, attacked with 60% success, and they were harmed by their backfire with 9% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 441,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731582789,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 79 coins, and attacked you with 60% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 79 coins, and attacked you with 60% success; you backfired and harmed them with 9% success. Your troops gained 2 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 442,
@@ -7467,13 +7467,13 @@
       "id": 448,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731584164,
-      "comment": "Your troops have attacked at 0xb4f4458aea2d60dba9b3582664b6e80936398a50, they stole 77 coins, attacked with 22% success, and they were harmed by their backfire with 3% success. Your troops gained 4 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0xb4f4458aea2d60dba9b3582664b6e80936398a50, they stole 77 coins, attacked with 22% success, and they were harmed by their backfire with 3% success. Your troops gained 4 percentual XP points"
     },
     {
       "id": 449,
       "user_address": "0xb4f4458aea2d60dba9b3582664b6e80936398a50",
       "timestamp": 1731584164,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 77 coins, and attacked you with 22% success; you backfired and harmed them with 3% success. Your troops gained 1 percentual XP points"
+      "comment": "You were attacked on Polygon by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 77 coins, and attacked you with 22% success; you backfired and harmed them with 3% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 450,
@@ -7497,25 +7497,25 @@
       "id": 453,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731585314,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 6% success, and they were harmed by their backfire with 31% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 6% success, and they were harmed by their backfire with 31% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 454,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731585314,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 6% success; you backfired and harmed them with 31% success. Your troops gained 6 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 6% success; you backfired and harmed them with 31% success. Your troops gained 6 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 455,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731585543,
-      "comment": "Your troops have attacked at 0xeb4f257bbdcbed34888817c71a2ee48709f8c6c7, they stole 195 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0xeb4f257bbdcbed34888817c71a2ee48709f8c6c7, they stole 195 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 456,
       "user_address": "0xeb4f257bbdcbed34888817c71a2ee48709f8c6c7",
       "timestamp": 1731585543,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 195 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 195 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 457,
@@ -7755,25 +7755,25 @@
       "id": 496,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731594585,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 12 coins, attacked with 18% success, and they were harmed by their backfire with 0% success. Your troops gained 4 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 12 coins, attacked with 18% success, and they were harmed by their backfire with 0% success. Your troops gained 4 percentual XP points"
     },
     {
       "id": 497,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731594585,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 12 coins, and attacked you with 18% success; you backfired and harmed them with 0% success. You lost 2 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 12 coins, and attacked you with 18% success; you backfired and harmed them with 0% success. You lost 2 assets in the fight"
     },
     {
       "id": 498,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731595271,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 11 coins, attacked with 3% success, and they were harmed by their backfire with 12% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 11 coins, attacked with 3% success, and they were harmed by their backfire with 12% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 499,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731595271,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 11 coins, and attacked you with 3% success; you backfired and harmed them with 12% success. Your troops gained 2 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 11 coins, and attacked you with 3% success; you backfired and harmed them with 12% success. Your troops gained 2 percentual XP points"
     },
     {
       "id": 500,
@@ -7785,13 +7785,13 @@
       "id": 501,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731596334,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
       "id": 502,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731596334,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 503,
@@ -7881,13 +7881,13 @@
       "id": 517,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731598964,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 2% success, and they were harmed by their backfire with 18% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Arbitrum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 2% success, and they were harmed by their backfire with 18% success. You lost 1 assets in the fight"
     },
     {
       "id": 518,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731598964,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 2% success; you backfired and harmed them with 18% success. Your troops gained 4 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 2% success; you backfired and harmed them with 18% success. Your troops gained 4 percentual XP points"
     },
     {
       "id": 519,
@@ -7899,13 +7899,13 @@
       "id": 520,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731599404,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 70% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 70% success. You lost 1 assets in the fight"
     },
     {
       "id": 521,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731599404,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 70% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 70% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 522,
@@ -7953,13 +7953,13 @@
       "id": 529,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731600130,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 6% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 6% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 530,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731600130,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 6% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 6% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 531,
@@ -8055,25 +8055,25 @@
       "id": 546,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731601558,
-      "comment": "Your troops have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 0 coins, attacked with 16% success, and they were harmed by their backfire with 0% success. Your troops gained 3 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 0 coins, attacked with 16% success, and they were harmed by their backfire with 0% success. Your troops gained 3 percentual XP points"
     },
     {
       "id": 547,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731601558,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 16% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 16% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 548,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731601761,
-      "comment": "Your troops have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 118 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 118 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 549,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1731601761,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 118 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 118 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 550,
@@ -8103,13 +8103,13 @@
       "id": 554,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731602211,
-      "comment": "Your troops have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 8% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 8% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 555,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731602211,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 8% success. Your troops gained 2 percentual XP points. You lost 3 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 8% success. Your troops gained 2 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 556,
@@ -8127,13 +8127,13 @@
       "id": 558,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731603467,
-      "comment": "Your troops have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 2 coins, attacked with 4% success, and they were harmed by their backfire with 67% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, they stole 2 coins, attacked with 4% success, and they were harmed by their backfire with 67% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 559,
       "user_address": "0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab",
       "timestamp": 1731603467,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 2 coins, and attacked you with 4% success; you backfired and harmed them with 67% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 2 coins, and attacked you with 4% success; you backfired and harmed them with 67% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 560,
@@ -8313,13 +8313,13 @@
       "id": 589,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662096,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
       "id": 590,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731662096,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 591,
@@ -8343,13 +8343,13 @@
       "id": 594,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662583,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 11% success, and they were harmed by their backfire with 35% success. Your troops gained 2 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Arbitrum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 11% success, and they were harmed by their backfire with 35% success. Your troops gained 2 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 595,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731662583,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 11% success; you backfired and harmed them with 35% success. Your troops gained 7 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 11% success; you backfired and harmed them with 35% success. Your troops gained 7 percentual XP points"
     },
     {
       "id": 596,
@@ -8367,13 +8367,13 @@
       "id": 598,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662784,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 1% success, and they were harmed by their backfire with 7% success"
+      "comment": "Your troops on Ethereum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 1% success, and they were harmed by their backfire with 7% success"
     },
     {
       "id": 599,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731662784,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 1% success; you backfired and harmed them with 7% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 1% success; you backfired and harmed them with 7% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 600,
@@ -8487,13 +8487,13 @@
       "id": 618,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731666480,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 13% success, and they were harmed by their backfire with 100% success. Your troops gained 3 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 13% success, and they were harmed by their backfire with 100% success. Your troops gained 3 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 619,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731666480,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 13% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 13% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 620,
@@ -8511,13 +8511,13 @@
       "id": 622,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731667032,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 2 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 2 assets in the fight"
     },
     {
       "id": 623,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731667032,
-      "comment": "You were attacked by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 624,
@@ -8529,13 +8529,13 @@
       "id": 625,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731667910,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
       "id": 626,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731667910,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 627,
@@ -8631,13 +8631,13 @@
       "id": 642,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731669069,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 86% success, and they were harmed by their backfire with 93% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 86% success, and they were harmed by their backfire with 93% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 643,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731669069,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 86% success; you backfired and harmed them with 93% success. Your troops gained 10 percentual XP points. You lost 9 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 0 coins, and attacked you with 86% success; you backfired and harmed them with 93% success. Your troops gained 10 percentual XP points. You lost 9 assets in the fight"
     },
     {
       "id": 644,
@@ -8691,25 +8691,25 @@
       "id": 652,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731669966,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 19% success, and they were harmed by their backfire with 100% success. Your troops gained 4 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 19% success, and they were harmed by their backfire with 100% success. Your troops gained 4 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 653,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731669966,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 19% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 7 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 19% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 7 assets in the fight"
     },
     {
       "id": 654,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731673548,
-      "comment": "Your troops have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 80 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 80 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 655,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1731673548,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 80 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Arbitrum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 80 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 656,
@@ -8781,13 +8781,13 @@
       "id": 667,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731679945,
-      "comment": "Your troops have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 70 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x529f48318fd5af1955bb65afb082889a5808b678, they stole 70 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 668,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1731679945,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 70 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 70 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 669,
@@ -8865,13 +8865,13 @@
       "id": 681,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731686745,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 17% success, and they were harmed by their backfire with 14% success. Your troops gained 3 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 17% success, and they were harmed by their backfire with 14% success. Your troops gained 3 percentual XP points"
     },
     {
       "id": 682,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731686745,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 17% success; you backfired and harmed them with 14% success. Your troops gained 3 percentual XP points. You lost 10 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 0 coins, and attacked you with 17% success; you backfired and harmed them with 14% success. Your troops gained 3 percentual XP points. You lost 10 assets in the fight"
     },
     {
       "id": 683,
@@ -8883,13 +8883,13 @@
       "id": 684,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731687966,
-      "comment": "Your troops have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 8 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 8 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 685,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1731687966,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 8 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Arbitrum by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 8 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 686,
@@ -8961,13 +8961,13 @@
       "id": 697,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731920550,
-      "comment": "Your troops have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 17 coins, attacked with 7% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 17 coins, attacked with 7% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 698,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731920550,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 17 coins, and attacked you with 7% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 17 coins, and attacked you with 7% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 699,
@@ -9039,13 +9039,13 @@
       "id": 710,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731924860,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 1% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
+      "comment": "Your troops on Arbitrum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 1% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
       "id": 711,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731924860,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 1% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 1% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 712,
@@ -9111,13 +9111,13 @@
       "id": 722,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731925255,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 24% success, and they were harmed by their backfire with 0% success. Your troops gained 5 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 0 coins, attacked with 24% success, and they were harmed by their backfire with 0% success. Your troops gained 5 percentual XP points"
     },
     {
       "id": 723,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731925255,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 24% success; you backfired and harmed them with 0% success. You lost 10 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 24% success; you backfired and harmed them with 0% success. You lost 10 assets in the fight"
     },
     {
       "id": 724,
@@ -9183,13 +9183,13 @@
       "id": 734,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731933374,
-      "comment": "Your troops have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 168 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 168 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 735,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1731933374,
-      "comment": "You were attacked by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 168 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Arbitrum by 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646; they stole 168 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 736,
@@ -9279,13 +9279,13 @@
       "id": 750,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731935087,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 38 coins, attacked with 6% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 12 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 38 coins, attacked with 6% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 12 assets in the fight"
     },
     {
       "id": 751,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731935087,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 38 coins, and attacked you with 6% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 38 coins, and attacked you with 6% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 752,
@@ -9303,13 +9303,13 @@
       "id": 754,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731935267,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 481 coins, attacked with 83% success, and they were harmed by their backfire with 1% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 481 coins, attacked with 83% success, and they were harmed by their backfire with 1% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 755,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731935267,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 481 coins, and attacked you with 83% success; you backfired and harmed them with 1% success. You lost 2 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 481 coins, and attacked you with 83% success; you backfired and harmed them with 1% success. You lost 2 assets in the fight"
     },
     {
       "id": 756,
@@ -9513,25 +9513,25 @@
       "id": 789,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731940488,
-      "comment": "Your troops have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 19% success, and they were harmed by their backfire with 4% success. Your troops gained 4 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 19% success, and they were harmed by their backfire with 4% success. Your troops gained 4 percentual XP points"
     },
     {
       "id": 790,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731940488,
-      "comment": "You were attacked by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 19% success; you backfired and harmed them with 4% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 19% success; you backfired and harmed them with 4% success. Your troops gained 1 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 791,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731941653,
-      "comment": "Your troops have attacked at 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b, they stole 213 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b, they stole 213 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 792,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1731941653,
-      "comment": "You were attacked by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 213 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Polygon by 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574; they stole 213 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 793,
@@ -9645,13 +9645,13 @@
       "id": 811,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731943722,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 2 assets in the fight"
+      "comment": "Your troops on Ethereum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 2 assets in the fight"
     },
     {
       "id": 812,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731943722,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Ethereum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
     },
     {
       "id": 813,
@@ -9699,13 +9699,13 @@
       "id": 820,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731944769,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 164 coins, attacked with 23% success, and they were harmed by their backfire with 24% success. Your troops gained 5 percentual XP points. You lost 1 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 164 coins, attacked with 23% success, and they were harmed by their backfire with 24% success. Your troops gained 5 percentual XP points. You lost 1 assets in the fight"
     },
     {
       "id": 821,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731944769,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 164 coins, and attacked you with 23% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points. You lost 6 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 164 coins, and attacked you with 23% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points. You lost 6 assets in the fight"
     },
     {
       "id": 822,
@@ -9741,13 +9741,13 @@
       "id": 827,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731947212,
-      "comment": "Your troops have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 5% success, and they were harmed by their backfire with 24% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 5% success, and they were harmed by their backfire with 24% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 828,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731947212,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 0 coins, and attacked you with 5% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points"
+      "comment": "You were attacked on Arbitrum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 0 coins, and attacked you with 5% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points"
     },
     {
       "id": 829,
@@ -9849,13 +9849,13 @@
       "id": 845,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731948417,
-      "comment": "Your troops have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 548 coins, attacked with 100% success, and they were harmed by their backfire with 25% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
+      "comment": "Your troops on Polygon have attacked at 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, they stole 548 coins, attacked with 100% success, and they were harmed by their backfire with 25% success. Your troops gained 10 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 846,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731948417,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 548 coins, and attacked you with 100% success; you backfired and harmed them with 25% success. Your troops gained 5 percentual XP points. You lost 10 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 548 coins, and attacked you with 100% success; you backfired and harmed them with 25% success. Your troops gained 5 percentual XP points. You lost 10 assets in the fight"
     },
     {
       "id": 847,
@@ -9873,13 +9873,13 @@
       "id": 849,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731954106,
-      "comment": "Your troops have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 13 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, they stole 13 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 850,
       "user_address": "0x22194be82e86fe2d24fa19f509d7d5f0b0065783",
       "timestamp": 1731954106,
-      "comment": "You were attacked by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 13 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
+      "comment": "You were attacked on Arbitrum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 13 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
       "id": 851,

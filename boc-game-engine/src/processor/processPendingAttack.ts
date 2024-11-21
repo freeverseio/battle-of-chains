@@ -116,11 +116,11 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
     setAssetsFree(attackerAssets);
 
-    let attackerComment = `Your troops have attacked at ${attack.targetAddress}, they stole ${subtractedAmount} coins, attacked with ${damageHPPercentOnTarget}% success, and they were harmed by their backfire with ${damageHPPercentOnAttacker}% success`;
+    let attackerComment = `Your troops on ${chainName(attack.targetChain, storage.chains)} have attacked at ${attack.targetAddress}, they stole ${subtractedAmount} coins, attacked with ${damageHPPercentOnTarget}% success, and they were harmed by their backfire with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForAttacker > 0) attackerComment += `. Your troops gained ${increaseHPPercentForAttacker} percentual XP points`;
     if (attackerCasulaties > 0) attackerComment += `. You lost ${attackerCasulaties} assets in the fight`;
 
-    let attackedComment = `You were attacked by ${attack.attacker}; they stole ${subtractedAmount} coins, and attacked you with ${damageHPPercentOnTarget}% success; you backfired and harmed them with ${damageHPPercentOnAttacker}% success`;
+    let attackedComment = `You were attacked on ${chainName(attack.targetChain, storage.chains)} by ${attack.attacker}; they stole ${subtractedAmount} coins, and attacked you with ${damageHPPercentOnTarget}% success; you backfired and harmed them with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForAttacked > 0) attackedComment += `. Your troops gained ${increaseHPPercentForAttacked} percentual XP points`;
     if (attackedCasulaties > 0) attackedComment += `. You lost ${attackedCasulaties} assets in the fight`;
 
