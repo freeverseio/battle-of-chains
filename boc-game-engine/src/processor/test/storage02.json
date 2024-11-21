@@ -5439,7 +5439,7 @@
       "id": 110,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731318957,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 772Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
+      "comment": "Your troops on Polygon have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 772Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
     },
     {
       "id": 111,
@@ -5619,7 +5619,7 @@
       "id": 140,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731327009,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 107 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 124 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 107 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 124 min."
     },
     {
       "id": 141,
@@ -5955,7 +5955,7 @@
       "id": 196,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731334098,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 772Km away, and will take 24 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 28 min."
+      "comment": "Your troops on Polygon have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 772Km away, and will take 24 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 28 min."
     },
     {
       "id": 197,
@@ -6075,7 +6075,7 @@
       "id": 216,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731344269,
-      "comment": "Your troops have departed towards 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, which is 642Km away, and will take 59 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 69 min."
+      "comment": "Your troops on Ethereum have departed towards 0x93265dd6caf87f5426b641623cbf81da1fec2bdc, which is 642Km away, and will take 59 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 69 min."
     },
     {
       "id": 217,
@@ -6183,7 +6183,7 @@
       "id": 234,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731410658,
-      "comment": "Your troops have departed towards 0xb4f4458aea2d60dba9b3582664b6e80936398a50, which is 731Km away, and will take 68 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 78 min."
+      "comment": "Your troops on Polygon have departed towards 0xb4f4458aea2d60dba9b3582664b6e80936398a50, which is 731Km away, and will take 68 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 78 min."
     },
     {
       "id": 235,
@@ -6219,7 +6219,7 @@
       "id": 240,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731419377,
-      "comment": "Your troops have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 339Km away, and will take 31 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 36 min."
+      "comment": "Your troops on Polygon have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 339Km away, and will take 31 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 36 min."
     },
     {
       "id": 241,
@@ -6339,13 +6339,13 @@
       "id": 260,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731421712,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 9 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 11 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 9 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 11 min."
     },
     {
       "id": 261,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731422632,
-      "comment": "Your troops have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 391Km away, and will take 22 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 25 min."
+      "comment": "Your troops on Polygon have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 391Km away, and will take 22 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 25 min."
     },
     {
       "id": 262,
@@ -6555,13 +6555,13 @@
       "id": 296,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731488558,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 517Km away, and will take 16 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 18 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 517Km away, and will take 16 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 18 min."
     },
     {
       "id": 297,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731488471,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 517Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 17 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 517Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 17 min."
     },
     {
       "id": 298,
@@ -6669,7 +6669,7 @@
       "id": 315,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731511380,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 371Km away, and will take 21 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 24 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 371Km away, and will take 21 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 24 min."
     },
     {
       "id": 316,
@@ -6723,13 +6723,13 @@
       "id": 324,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731574314,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
     },
     {
       "id": 325,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731574362,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
     },
     {
       "id": 326,
@@ -6837,13 +6837,13 @@
       "id": 343,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731572674,
-      "comment": "Your troops have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 308Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 20 min."
+      "comment": "Your troops on Ethereum have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 308Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 20 min."
     },
     {
       "id": 344,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731572171,
-      "comment": "Your troops have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 308Km away, and will take 10 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 11 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 308Km away, and will take 10 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 11 min."
     },
     {
       "id": 345,
@@ -7221,7 +7221,7 @@
       "id": 407,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731577223,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 51 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 59 min."
+      "comment": "Your troops on Polygon have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 51 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 59 min."
     },
     {
       "id": 408,
@@ -7257,7 +7257,7 @@
       "id": 413,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731575702,
-      "comment": "Your troops have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 286Km away, and will take 26 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
+      "comment": "Your troops on Polygon have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 286Km away, and will take 26 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
     },
     {
       "id": 414,
@@ -7371,13 +7371,13 @@
       "id": 432,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731585543,
-      "comment": "Your troops have departed towards 0xeb4f257bbdcbed34888817c71a2ee48709f8c6c7, which is 882Km away, and will take 82 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 94 min."
+      "comment": "Your troops on Polygon have departed towards 0xeb4f257bbdcbed34888817c71a2ee48709f8c6c7, which is 882Km away, and will take 82 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 94 min."
     },
     {
       "id": 433,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731582789,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
+      "comment": "Your troops on Polygon have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
     },
     {
       "id": 434,
@@ -7443,7 +7443,7 @@
       "id": 444,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731584164,
-      "comment": "Your troops have departed towards 0xb4f4458aea2d60dba9b3582664b6e80936398a50, which is 116Km away, and will take 16 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
+      "comment": "Your troops on Polygon have departed towards 0xb4f4458aea2d60dba9b3582664b6e80936398a50, which is 116Km away, and will take 16 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
     },
     {
       "id": 445,
@@ -7461,7 +7461,7 @@
       "id": 447,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731585314,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 18 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 21 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 18 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 21 min."
     },
     {
       "id": 448,
@@ -7683,13 +7683,13 @@
       "id": 484,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731594585,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
+      "comment": "Your troops on Polygon have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
     },
     {
       "id": 485,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731595271,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 50 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 58 min."
+      "comment": "Your troops on Ethereum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 50 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 58 min."
     },
     {
       "id": 486,
@@ -7737,7 +7737,7 @@
       "id": 493,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731596334,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 32 min."
+      "comment": "Your troops on Polygon have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 32 min."
     },
     {
       "id": 494,
@@ -7833,7 +7833,7 @@
       "id": 509,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731599404,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 15 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 18 min."
+      "comment": "Your troops on Ethereum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 15 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 18 min."
     },
     {
       "id": 510,
@@ -7857,13 +7857,13 @@
       "id": 513,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731600130,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 26 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 30 min."
+      "comment": "Your troops on Polygon have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 26 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 30 min."
     },
     {
       "id": 514,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731598964,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 9 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 10 min."
+      "comment": "Your troops on Arbitrum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 279Km away, and will take 9 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 10 min."
     },
     {
       "id": 515,
@@ -7923,7 +7923,7 @@
       "id": 524,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731601761,
-      "comment": "Your troops have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 323Km away, and will take 30 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 35 min."
+      "comment": "Your troops on Polygon have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 323Km away, and will take 30 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 35 min."
     },
     {
       "id": 525,
@@ -8013,7 +8013,7 @@
       "id": 539,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731602211,
-      "comment": "Your troops have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
+      "comment": "Your troops on Ethereum have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 31 min."
     },
     {
       "id": 540,
@@ -8031,13 +8031,13 @@
       "id": 542,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731603467,
-      "comment": "Your troops have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 44 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 51 min."
+      "comment": "Your troops on Polygon have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 44 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 51 min."
     },
     {
       "id": 543,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731601558,
-      "comment": "Your troops have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
+      "comment": "Your troops on Arbitrum have departed towards 0xa3fc5ff13f5cdcdde8b6b4dff670ae1510aa39ab, which is 478Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
     },
     {
       "id": 544,
@@ -8217,13 +8217,13 @@
       "id": 573,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662784,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 16 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 16 min."
     },
     {
       "id": 574,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662096,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 4 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 4 min."
+      "comment": "Your troops on Polygon have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 4 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 4 min."
     },
     {
       "id": 575,
@@ -8247,7 +8247,7 @@
       "id": 578,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731662583,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 10 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 12 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 10 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 12 min."
     },
     {
       "id": 579,
@@ -8391,7 +8391,7 @@
       "id": 602,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1731667032,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 371Km away, and will take 34 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 40 min."
+      "comment": "Your troops on Polygon have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 371Km away, and will take 34 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 40 min."
     },
     {
       "id": 603,
@@ -8409,7 +8409,7 @@
       "id": 605,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731669966,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 72 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 83 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 72 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 83 min."
     },
     {
       "id": 606,
@@ -8439,13 +8439,13 @@
       "id": 610,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731667910,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 544Km away, and will take 38 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 44 min."
+      "comment": "Your troops on Polygon have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 544Km away, and will take 38 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 44 min."
     },
     {
       "id": 611,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731666480,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 544Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 544Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 19 min."
     },
     {
       "id": 612,
@@ -8463,7 +8463,7 @@
       "id": 614,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731669069,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
     },
     {
       "id": 615,
@@ -8553,7 +8553,7 @@
       "id": 629,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731673548,
-      "comment": "Your troops have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 492Km away, and will take 68 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 79 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 492Km away, and will take 68 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 79 min."
     },
     {
       "id": 630,
@@ -8733,7 +8733,7 @@
       "id": 659,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731679945,
-      "comment": "Your troops have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 339Km away, and will take 31 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 36 min."
+      "comment": "Your troops on Polygon have departed towards 0x529f48318fd5af1955bb65afb082889a5808b678, which is 339Km away, and will take 31 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 36 min."
     },
     {
       "id": 660,
@@ -8775,7 +8775,7 @@
       "id": 666,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731686745,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 107 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 124 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 772Km away, and will take 107 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 124 min."
     },
     {
       "id": 667,
@@ -8877,7 +8877,7 @@
       "id": 683,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731687966,
-      "comment": "Your troops have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 492Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 20 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 492Km away, and will take 17 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 20 min."
     },
     {
       "id": 684,
@@ -8943,7 +8943,7 @@
       "id": 694,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731920550,
-      "comment": "Your troops have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 32 min."
+      "comment": "Your troops on Polygon have departed towards 0x4e6da57f62b9954fbb6bab531f556be08e128e75, which is 297Km away, and will take 27 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 32 min."
     },
     {
       "id": 695,
@@ -9009,7 +9009,7 @@
       "id": 705,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731925255,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 642Km away, and will take 30 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 34 min."
+      "comment": "Your troops on Ethereum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 642Km away, and will take 30 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 34 min."
     },
     {
       "id": 706,
@@ -9027,7 +9027,7 @@
       "id": 708,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731924860,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 642Km away, and will take 22 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 26 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 642Km away, and will take 22 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 26 min."
     },
     {
       "id": 709,
@@ -9135,7 +9135,7 @@
       "id": 726,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1731933374,
-      "comment": "Your troops have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 754Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 754Km away, and will take 52 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 60 min."
     },
     {
       "id": 727,
@@ -9171,13 +9171,13 @@
       "id": 732,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731935087,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 50 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 58 min."
+      "comment": "Your troops on Ethereum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 50 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 58 min."
     },
     {
       "id": 733,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731935267,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 51 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 59 min."
+      "comment": "Your troops on Polygon have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 51 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 59 min."
     },
     {
       "id": 734,
@@ -9369,7 +9369,7 @@
       "id": 765,
       "user_address": "0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574",
       "timestamp": 1731941653,
-      "comment": "Your troops have departed towards 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b, which is 395Km away, and will take 37 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 42 min."
+      "comment": "Your troops on Polygon have departed towards 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b, which is 395Km away, and will take 37 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 42 min."
     },
     {
       "id": 766,
@@ -9459,7 +9459,7 @@
       "id": 780,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1731940488,
-      "comment": "Your troops have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 16 min."
+      "comment": "Your troops on Ethereum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 296Km away, and will take 14 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 16 min."
     },
     {
       "id": 781,
@@ -9573,19 +9573,19 @@
       "id": 799,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731944769,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
+      "comment": "Your troops on Polygon have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
     },
     {
       "id": 800,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731943722,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 25 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 29 min."
+      "comment": "Your troops on Ethereum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 25 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 29 min."
     },
     {
       "id": 801,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731947212,
-      "comment": "Your troops have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 76 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 87 min."
+      "comment": "Your troops on Arbitrum have departed towards 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, which is 544Km away, and will take 76 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 87 min."
     },
     {
       "id": 802,
@@ -9735,7 +9735,7 @@
       "id": 826,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731948417,
-      "comment": "Your troops have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
+      "comment": "Your troops on Polygon have departed towards 0x0b6aa63f1a95bea0f9a18fd2e3888d4c7ec54574, which is 297Km away, and will take 41 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 48 min."
     },
     {
       "id": 827,
@@ -9765,7 +9765,7 @@
       "id": 831,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1731954106,
-      "comment": "Your troops have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 622Km away, and will take 86 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 100 min."
+      "comment": "Your troops on Arbitrum have departed towards 0x22194be82e86fe2d24fa19f509d7d5f0b0065783, which is 622Km away, and will take 86 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 100 min."
     },
     {
       "id": 832,

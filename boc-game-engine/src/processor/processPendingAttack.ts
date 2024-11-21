@@ -29,7 +29,7 @@ function processDepartToTravel(attack: PendingAttack, storage: Storage) {
     const distance = distanceMeter(attack.attacker, attack.targetAddress);
     const travelTime = time2travelDistance(distance, findSlowestAssetSpeed(attack.id, storage.assets));
     attack.toBeExectutedAt += travelTime;
-    let comment = `Your troops have departed towards ${attack.targetAddress}, which is ${Math.round(distance/1000)}Km away`;
+    let comment = `Your troops on ${chainName(attack.targetChain, storage.chains)} have departed towards ${attack.targetAddress}, which is ${Math.round(distance/1000)}Km away`;
     comment += `, and will take ${Math.round(travelTime * TIME_SPEED_RATIO / 3600)} hours of game time to arrive`;
     comment += `. Since gametime is x${TIME_SPEED_RATIO} compared to real life, this amounts to ${Math.round(travelTime / 60)} min.`
     log2user(attack.attacker, comment, attack.toBeExectutedAt, storage.logs);
