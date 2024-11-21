@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
 import { ModalContext } from "@/context/ModalContext";
-
+import { useUpdate } from "@/hooks/useUpdate";
+import { useRefetchState } from "@/hooks/useRefetchState";
 interface AttackButtonProps {
   targetAddress: `0x${string}`;
   targetChain: number;
@@ -25,6 +26,8 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
     writeError,
   } = useBattleOfChains();
   const { openModal, setModalState, setModalError } = useContext(ModalContext);
+  const { refetchAll } = useRefetchState();
+  const { update } = useUpdate();
 
   const handleAttack = async () => {
     openModal(async () => {
@@ -40,15 +43,22 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
   };
 
   useEffect(() => {
-    if (isConfirmed) {
-      setModalState("transaction_attack_success");
-    } else if (writeError) {
-      console.error(writeError);
-      setModalError(writeError.message);
-      setModalState("transaction_error");
-    } else if (!isWritePending && hash) {
-      setModalState("attacking");
-    }
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_attack_success");
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("attacking");
+      }
+    };
+    performUpdateAndRefetch();
   }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (

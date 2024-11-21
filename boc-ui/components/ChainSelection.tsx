@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
 import { ModalContext } from "@/context/ModalContext";
 import Modal from "./Modal";
+import { useRefetchState } from "@/hooks/useRefetchState";
+import { useUpdate } from "@/hooks/useUpdate";
 
 interface ChainSelectionProps {
   onJoinSuccess: () => void;
@@ -46,18 +48,27 @@ export function ChainSelection({ onJoinSuccess }: ChainSelectionProps) {
     writeError,
   } = useBattleOfChains();
   const { openModal, setModalState, setModalError } = useContext(ModalContext);
+  const { refetchAll } = useRefetchState();
+  const { update } = useUpdate();
 
   useEffect(() => {
-    if (isConfirmed) {
-      setModalState("transaction_join_success");
-      onJoinSuccess();
-    } else if (writeError) {
-      console.error(writeError);
-      setModalError(writeError.message);
-      setModalState("transaction_error");
-    } else if (!isWritePending && hash) {
-      setModalState("joining");
-    }
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_join_success");
+        onJoinSuccess();
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("joining");
+      }
+    };
+    performUpdateAndRefetch();
   }, [
     isConfirmed,
     hash,
