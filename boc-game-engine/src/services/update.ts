@@ -1,19 +1,20 @@
-import { AppDataSource } from '../db/AppDataSource';
 import { Chain, Log, User, Asset, ChainActionProposal, AssignOperator, AttackSpecies, DefendSpecies, NFTType, Info } from '../db/entity';
 import { EventProcessor } from '../processor/process';
-import { getAllChains } from './chainService';
+import { ChainService } from './chainService';
 import { formStorage } from './getDataToStore';
-import { QueryRunner } from 'typeorm';
+import { DataSource, QueryRunner } from 'typeorm';
 
-export async function update(): Promise<number> {
-  const allChains = await getAllChains();
+export async function update(dataSource: DataSource): Promise<number> {
+  const chainService = new ChainService(dataSource)
+
+  const allChains = await chainService.getAllChains();
   const eventProcessor = new EventProcessor(allChains);
   await eventProcessor.update();
 
   const storage = eventProcessor.getStorage();
   const storageToInsert = formStorage(storage);
 
-  const queryRunner: QueryRunner = AppDataSource.createQueryRunner();
+  const queryRunner: QueryRunner = dataSource.createQueryRunner();
 
   await queryRunner.connect();
   await queryRunner.startTransaction();

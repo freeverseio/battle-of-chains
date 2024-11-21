@@ -4,16 +4,15 @@ import * as dotenv from 'dotenv';
 import { createYoga } from 'graphql-yoga';
 import { createServer } from 'http';
 import 'reflect-metadata'; // Required by TypeGraphQL
-import { AppDataSource } from './db/AppDataSource';
 import { schemaFromExecutor } from '@graphql-tools/wrap';
 import { 
   localResolvers,
   localTypeDefs,
 } from './resolvers/MainResolver';
-
+import DatabaseConfig from './db/config/DatabaseConfig';
 
 async function getRemoteSchema() {
-  const postgraphileUrl = process.env.POSTGRAPHILE_URL || 'http://localhost:4002/graphql';
+  const postgraphileUrl = DatabaseConfig.getCurrentReadDb().postgraphileUrl || 'http://localhost:4002/graphql';
 
   // Crear un ejecutor HTTP
   const remoteExecutor = buildHTTPExecutor({ endpoint: postgraphileUrl });
@@ -44,11 +43,10 @@ const allowedOrigins = process.env.CORS_ALLOWED_DOMAINS
 
 (async () => {
   dotenv.config({ path: '../docker/.env' });
-  const schema = await makeGatewaySchema();
 
   // Yoga server setup
   const gatewayApp = createYoga({
-    schema,
+    schema: makeGatewaySchema,
     context: ({ request }) => ({
       authHeader: request.headers.get('authorization'),
     }),
@@ -75,10 +73,6 @@ const allowedOrigins = process.env.CORS_ALLOWED_DOMAINS
       allowedHeaders: ['Content-Type', 'Authorization'],
     },
   });
-
-
-  AppDataSource.initialize()
-  .catch((error) => console.log("Error: ", error));
 
 
   const server = createServer(gatewayApp);
