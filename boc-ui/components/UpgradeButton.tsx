@@ -17,7 +17,8 @@ interface UpgradeButtonProps {
   areButtonsDisabled?: boolean;
   className?: string;
 }
-
+import { useRefetchState } from "@/hooks/useRefetchState";
+import { useUpdate } from "@/hooks/useUpdate";
 export function UpgradeButton({
   tokenId,
   chainId,
@@ -34,6 +35,8 @@ export function UpgradeButton({
   } = useBattleOfChains();
 
   const { openModal, setModalState, setModalError } = useContext(ModalContext);
+  const { update, isUpdating, error } = useUpdate();
+  const { refetchAll } = useRefetchState();
 
   const handleUpgrade = () => {
     openModal(async () => {
@@ -46,17 +49,23 @@ export function UpgradeButton({
       }
     }, "upgrade_confirm");
   };
-
   useEffect(() => {
-    if (isConfirmed) {
-      setModalState("transaction_upgrade_success");
-    } else if (writeError) {
-      console.error(writeError);
-      setModalError(writeError.message);
-      setModalState("transaction_error");
-    } else if (!isWritePending && hash) {
-      setModalState("upgrading");
-    }
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_upgrade_success");
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("upgrading");
+      }
+    };
+    performUpdateAndRefetch();
   }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return tokenId === "0" ? (

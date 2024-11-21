@@ -8,11 +8,14 @@ interface RefreshButtonProps {
 
 export const RefreshButton = ({ className }: RefreshButtonProps) => {
   const { update, isUpdating } = useUpdate();
-
+  const updateAndRefresh = () => {
+    update();
+    window.location.reload();
+  };
   return (
     <Button
       variant="outline"
-      onClick={update}
+      onClick={updateAndRefresh}
       disabled={isUpdating}
       className={`
         text-foreground text-xl border border-border

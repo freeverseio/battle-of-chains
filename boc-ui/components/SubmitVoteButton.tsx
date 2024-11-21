@@ -11,7 +11,8 @@ import {
   optionsMap,
 } from "@/utils/enums";
 import { ethers, isAddress } from "ethers";
-
+import { useUpdate } from "@/hooks/useUpdate"; // Add this import
+import { useRefetchState } from "@/hooks/useRefetchState";
 interface SubmitVoteButtonProps {
   selectedOption: string | null;
   targetChain: number;
@@ -40,6 +41,8 @@ export default function SubmitVoteButton({
     writeError,
   } = useBattleOfChains();
   const { openModal, setModalState, setModalError } = useContext(ModalContext);
+  const { update, isUpdating, error } = useUpdate();
+  const { refetchAll } = useRefetchState();
 
   const handleVote = async () => {
     if (!selectedOption) return;
@@ -88,17 +91,24 @@ export default function SubmitVoteButton({
       }
     }, "vote_confirm");
   };
-
+  // components/SubmitVoteButton.tsx
   useEffect(() => {
-    if (isConfirmed) {
-      setModalState("transaction_vote_success");
-    } else if (writeError) {
-      console.error(writeError);
-      setModalError(writeError.message);
-      setModalState("transaction_error");
-    } else if (!isWritePending && hash) {
-      setModalState("voting");
-    }
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_vote_success");
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("voting");
+      }
+    };
+    performUpdateAndRefetch();
   }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (
