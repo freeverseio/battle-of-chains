@@ -1,5 +1,4 @@
 import dbConfig from '../DatabaseConfig';
-import IDbConfig from '../IDbConfig';
 import { DbKey } from '../DbKey';
 
 describe('DatabaseConfig Singleton', () => {
@@ -73,14 +72,14 @@ describe('DatabaseConfig Singleton', () => {
     expect(dbConfigs[DbKey.B].name).toBe(DbKey.B);
   });
 
-  test('should initialize DB configuration with environment variables', () => {
-    process.env.DB_HOST_A = 'custom-host';
-    process.env.DB_PORT_A = '9999';
-
-    const newDbConfig = require('../DatabaseConfig').default;
-    const dbA = newDbConfig.getDbConfigs()[DbKey.A];
-
-    expect(dbA.host).toBe('custom-host');
-    expect(dbA.port).toBe(9999);
-  });
+	test('should initialize DB configuration with environment variables', async () => {
+		process.env.DB_HOST_A = 'custom-host';
+		process.env.DB_PORT_A = '9999';
+	
+		const { default: newDbConfig } = await import('../DatabaseConfig');
+		const dbA = newDbConfig.getDbConfigs()[DbKey.A];
+	
+		expect(dbA.host).toBe('custom-host');
+		expect(dbA.port).toBe(9999);
+	});
 });
