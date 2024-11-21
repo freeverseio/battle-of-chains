@@ -1,4 +1,3 @@
-// Define a common type for the database configuration
 export default interface DbConfig {
     name: string;
     host: string;

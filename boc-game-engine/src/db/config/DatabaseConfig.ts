@@ -2,7 +2,6 @@ import * as dotenv from "dotenv";
 import IDbConfig from './IDbConfig'
 import { DbKey } from "./DbKey";
 
-// Load environment variables from the .env file
 dotenv.config();
 
 class DatabaseConfig {
@@ -44,9 +43,10 @@ class DatabaseConfig {
       },
     };
 
-    // Set the default currentDb to dbConfigA
+    // Set the default currentReadDb to dbConfigA
     this.currentReadDb = this.dbConfigs[DbKey.A];
 
+    // Set the default currentWriteDb to dbConfigB
     this.currentWriteDb = this.dbConfigs[DbKey.B];
 
     // Assign the instance to the static private property

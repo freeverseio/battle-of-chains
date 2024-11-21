@@ -4,7 +4,6 @@ import dbConfig from "./config/DatabaseConfig"; // Import the shared singleton i
 import * as dotenv from "dotenv";
 import { DbKey } from "./config/DbKey";
 
-// Load environment variables from the .env file
 dotenv.config({ path: '../docker/.env' });
 
 const isSSLEnabled = process.env.SSL_ENABLED !== "false"; // Check if SSL is enabled, defaults to true if not set
