@@ -19,6 +19,10 @@ interface DynamicContentProps {
 export default function DynamicContent({ activeTab }: DynamicContentProps) {
   const { address, isConnecting, isDisconnected } = useAccount();
 
+  const { loading, error, data, refetch } = useUserByAddress(address || "0x");
+  const hasChain = data?.userByAddress !== null;
+  if (loading) {
+
   const { loading, error, data, refetch } = useUserByAddress(
     address ? address : "0x"
   );

@@ -15,10 +15,10 @@ export const useRefetchState = () => {
   const { refetch: chainActionProposalsRefetch } = useChainActionProposals();
 
   const { refetch: userAssetsRefetch } = useUserAssets(
-    address ? `0x${address.toLowerCase().slice(2)}` : "0x"
+   address || "0x"
   );
   const { refetch: userByAddressRefecth } = useUserByAddress(
-    address ? `0x${address.toLowerCase().slice(2)}` : "0x"
+    address || "0x"
   );
 
   const refetchAll = useCallback(() => {
