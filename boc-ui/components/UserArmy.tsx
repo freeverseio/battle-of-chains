@@ -1,18 +1,16 @@
-// components/UserArmy.tsx
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useAccount } from "wagmi";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useUserAssets } from "@/hooks/useUserAssets";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { MultichainMintButton } from "./MintButton";
-import { UpgradeButton } from "./UpgradeButton";
 import { useNftTypes } from "@/hooks/useNftTypes";
-import { AssetViewerButton } from "./AssetViewerButton";
 import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
+import { AssetActions } from "./AssetActions";
+import { ModalContext } from "@/context/ModalContext";
 
 interface Asset {
   attack: string;
@@ -42,6 +40,7 @@ const StatDisplay = ({ label, value }: { label: string; value: string }) => (
 
 export const UserArmy = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
+  const { areButtonsDisabled } = useContext(ModalContext);
 
   const { loading, error, data } = useUserAssets(
     address || "0x"
@@ -141,12 +140,12 @@ export const UserArmy = () => {
       </CardHeader>
       <CardContent>
         <Tabs defaultValue={String(assetTypes[0])} className="w-full">
-          <TabsList className="grid grid-cols-4 lg:grid-cols-6 gap-2">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 w-full">
             {assetTypes.map((type) => (
               <TabsTrigger
                 key={type}
                 value={String(type)}
-                className="border-foreground border text-xl"
+                className="border-foreground border text-md mb-8 sm:mb-0 sm:text-md lg:text-xl whitespace-nowrap overflow-hidden text-ellipsis"
               >
                 {nftTypes[type] || `Type ${type}`} (
                 {(assetsByType[type] || []).length})
@@ -160,7 +159,7 @@ export const UserArmy = () => {
 
             return (
               <TabsContent key={type} value={String(type)}>
-                <div className="mt-6">
+                <div className="mt-14 sm:mt-6">
                   <MultichainMintButton
                     type={String(type)}
                     label={`${nftTypes[type]}`}
@@ -245,14 +244,13 @@ export const UserArmy = () => {
                                   />
                                   <StatDisplay label="XP" value={asset.xp} />
                                 </div>
-                                <AssetViewerButton
-                                  tokenId={asset.tokenId}
-                                  chainId={asset.chainByChainId.chainId}
-                                />
                               </div>
-                              <UpgradeButton
+                              {/* Asset Actions */}
+                              <AssetActions
                                 tokenId={asset.tokenId}
                                 chainId={asset.chainByChainId.chainId}
+                                health={asset.health}
+                                areButtonsDisabled={areButtonsDisabled}
                               />
                             </div>
                           </Card>

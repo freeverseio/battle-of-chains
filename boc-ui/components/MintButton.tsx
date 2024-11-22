@@ -5,7 +5,10 @@ import { ModalContext } from "@/context/ModalContext";
 import { ModalState } from "@/context/ModalContext";
 import { useUserAssetsByType } from "@/hooks/useUserAssetsByType";
 import { useAccount } from "wagmi";
-
+import { useUpdate } from "@/hooks/useUpdate";
+import { useUserLogs } from "@/hooks/useUserLogs";
+import { useAllLogs } from "@/hooks/useAllLogs";
+import { useRefetchState } from "@/hooks/useRefetchState";
 interface MultichainMintButtonProps {
   type: string;
   label: string;
@@ -19,11 +22,14 @@ export const MultichainMintButton: React.FC<MultichainMintButtonProps> = ({
 }) => {
   const { multichainMint, isConfirmed, writeError, isWritePending, hash } =
     useBattleOfChains();
+  const { update } = useUpdate();
 
-  const { areButtonsDisabled, openModal, setModalState } =
+  const { areButtonsDisabled, openModal, setModalState, setModalError } =
     useContext(ModalContext);
 
   const { address } = useAccount();
+
+  const { refetchAll } = useRefetchState();
 
   // Determine the required asset type based on the mint type
   let requiredType = "";
@@ -116,15 +122,24 @@ export const MultichainMintButton: React.FC<MultichainMintButtonProps> = ({
     proceedWithMint();
   };
 
-  // Monitor transaction state and update modalState
   useEffect(() => {
-    if (isConfirmed) {
-      setModalState("transaction_mint_success");
-    } else if (writeError) {
-      setModalState("transaction_error");
-    } else if (!isWritePending && hash) {
-      setModalState("minting");
-    }
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_mint_success");
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("minting");
+      }
+    };
+
+    performUpdateAndRefetch();
   }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (

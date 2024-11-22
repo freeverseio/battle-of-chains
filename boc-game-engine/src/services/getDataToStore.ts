@@ -5,13 +5,10 @@ import { defendSpeciesStats, DefendSpeciesType } from '../processor/speciesDefen
 import { UserType, AssetType, ChainActionProposalType, LogType, Storage, AssignOperatorType, ChainType, nftTypeNames } from '../processor/types';
 import { toChecksumAddress } from 'web3-utils';
 import { costToMintAsset, getNext2pmUTC, isFactory, level2xp, treasuryProdRatePerDay } from '../processor/utils';
-import { XP_CHARACTER_PER_LEVEL } from '../processor/constants';
+import { COST_PER_XP, HEALTH_TO_INT, XP_CHARACTER_PER_LEVEL, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from '../processor/constants';
 
-function toChecksum(input: any): any {
-  if (typeof input === 'string' && input) {
-    return toChecksumAddress(input);
-  }
-  return input;
+function toChecksumIfDefined(input: string | undefined): string | undefined {
+  return input ? toChecksumAddress(input) : undefined;
 }
 
 export type StorageToInsert = {
@@ -44,7 +41,7 @@ export function formStorage(storage: Storage): StorageToInsert {
 
 function formChains(chains: ChainType[]): Chain[] {
   const toInsert: ChainType[] = [];
-  for (let c of chains) {
+  for (const c of chains) {
     const newChain = new Chain();
     newChain.chain_id = c.chain_id;
     newChain.name = c.name;
@@ -56,16 +53,16 @@ function formChains(chains: ChainType[]): Chain[] {
 
 function formUsers(processedUsers: UserType[]): User[] {
     const usersToInsert: User[] = [];
-    for (let user of processedUsers) {
+    for (const user of processedUsers) {
       const newUser = new User();
-      newUser.address = toChecksum(user.address);
+      newUser.address = toChecksumAddress(user.address);
       newUser.name = user.name;
       newUser.homechain = user.homechain;
       newUser.mercenary_chain = user.mercenaryChain;
       newUser.joined_timestamp = user.joined_timestamp;
       newUser.score = user.score;
       newUser.treasury = user.treasury;
-      newUser.health = user.health;
+      newUser.health = Math.round(user.health / HEALTH_TO_INT);
       newUser.xp = user.xp;
       newUser.level = user.level;
       newUser.treasury_last_update = user.treasuryLastUpdate;
@@ -77,15 +74,15 @@ function formUsers(processedUsers: UserType[]): User[] {
 
 function formAssets(processedAssets: AssetType[]): Asset[] {
   const assetsToInsert: Asset[] = [];
-  for (let asset of processedAssets) {
+  for (const asset of processedAssets) {
     const newAsset = new Asset();
     newAsset.chain_id = asset.chain_id;
     newAsset.token_id = asset.token_id;
     newAsset.type = asset.type;
     newAsset.creation_timestamp = asset.creation_timestamp;
-    newAsset.owner = toChecksum(asset.owner);
+    newAsset.owner = toChecksumAddress(asset.owner);
     newAsset.xp = asset.xp;
-    newAsset.health = asset.health;
+    newAsset.health = Math.round(asset.health / HEALTH_TO_INT);
     newAsset.level = asset.level;
     newAsset.attack = asset.attack;
     newAsset.defense = asset.defense;
@@ -103,14 +100,14 @@ function formAssets(processedAssets: AssetType[]): Asset[] {
 
 function formCurrentPeriodChainActionProposals(processedProposals: ChainActionProposalType[]): ChainActionProposal[] {
   const proposalsToInsert: ChainActionProposal[] = [];
-  for (let proposal of processedProposals) {
+  for (const proposal of processedProposals) {
     const newProposal = new ChainActionProposal();
     newProposal.proposal_hash = proposal.hash;
     newProposal.source_chain_id = proposal.sourceChain;
     newProposal.target_chain_id = proposal.targetChain;
     newProposal.type = proposal.actionType;
     newProposal.attack_area = proposal.attackArea;
-    newProposal.attack_address = toChecksum(proposal.attackAddress);
+    newProposal.attack_address = toChecksumIfDefined(proposal.attackAddress);
     newProposal.votes = proposal.votes;
     proposalsToInsert.push(newProposal);
   }
@@ -119,10 +116,10 @@ function formCurrentPeriodChainActionProposals(processedProposals: ChainActionPr
 
 function formAssignOperators(processedAssignedOperators: AssignOperatorType[]): AssignOperator[] {
   const toInsert: AssignOperator[] = [];
-  for (let assignment of processedAssignedOperators) {
+  for (const assignment of processedAssignedOperators) {
     const newAssign = new AssignOperator();
-    newAssign.assigner = toChecksum(assignment.assigner);
-    newAssign.operator = toChecksum(assignment.operator);
+    newAssign.assigner = toChecksumAddress(assignment.assigner);
+    newAssign.operator = toChecksumAddress(assignment.operator);
     newAssign.chain_id = assignment.chain_id;
     newAssign.timestamp = assignment.timestamp;
     toInsert.push(newAssign);
@@ -132,10 +129,10 @@ function formAssignOperators(processedAssignedOperators: AssignOperatorType[]): 
 
 function formLogs(processedLogs: LogType[]): Log[] {
   const logsToInsert: Log[] = [];
-  for (let log of processedLogs) {
+  for (const log of processedLogs) {
     const newLog = new Log();
     newLog.id = log.id;
-    newLog.user_address = toChecksum(log.user_address);
+    newLog.user_address = toChecksumIfDefined(log.user_address);
     newLog.chain = log.chain;
     newLog.timestamp = log.timestamp;
     newLog.comment = log.comment;
@@ -203,10 +200,10 @@ export function formInfo(): Info[] {
   const nextChainAction = getNext2pmUTC(Math.floor(Date.now() / 1000));
   const isFact = true;
   const homebase_xp = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
-    level2xp(level, isFact)
+    XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY * level2xp(level, isFact)
   );
-  const homebase_cost = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
-    costToMintAsset(level, isFact)
+  const homebase_cost = Array.from({ length: homebase_xp.length }, (_, level) => 
+    COST_PER_XP * homebase_xp[level]
   );
   const homebase_prodrate = Array.from({ length: XP_CHARACTER_PER_LEVEL.length }, (_, level) => 
     treasuryProdRatePerDay(level)

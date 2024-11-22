@@ -24,6 +24,7 @@ export enum EventType {
   AssignOperatorEvent,
   TransferEvent,
   RegisterMercenaryEvent,
+  SendGameTreasuryEvent,
 }
 
 export enum AssetState {
@@ -47,7 +48,9 @@ export type AllEventTypes =
   | UpgradeEvent
   | AssignOperatorEvent
   | TransferEvent
-  | RegisterMercenaryEvent;
+  | RegisterMercenaryEvent
+  | SendGameTreasuryEvent;
+
 
 export enum PendingState {
   Departing,
@@ -58,6 +61,12 @@ export enum PendingActionOption {
   Attack,
   ChainAction,
 }
+
+export type SendTX = {
+  amount: number,
+  recipient: string,
+}
+
 
 export type PendingAction = PendingChainAction | PendingAttack;
 
@@ -171,6 +180,17 @@ export type RegisterMercenaryEvent = EventWithBlockInfo & {
   mercenaryNickname: string;
 }
 
+export type SendGameTreasuryEvent = EventWithBlockInfo & {
+  from: string;
+  method: GameTreasurySendMethod;
+  sendTXs: SendTX[];
+}
+
+export enum GameTreasurySendMethod {
+  ABSOLUTE,
+  PERCENTAGE_BPS,
+}
+
 export type UserType = {
     address: string;
     homechain?: number;
@@ -259,3 +279,11 @@ export type AssetLevelDetails = {
   levelBoost: number;
   factoryLevelUsed: number;
 }
+
+export type DebugData = {
+  deadline: number;
+  useHardcodedEvents: boolean;
+  eventsFile: string;
+  gameStartTime: number;
+  storageFile: string;
+} 

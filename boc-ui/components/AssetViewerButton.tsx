@@ -1,7 +1,6 @@
-// components/UpgradeButton.tsx
+
 "use client";
 
-import { useContext } from "react";
 import { FaRegEye } from "react-icons/fa";
 import {
   Tooltip,
@@ -9,7 +8,6 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import { ModalContext } from "@/context/ModalContext";
 import { chainIdTouERC721Address } from "@/utils/chainIdMapping";
 
 interface AssetViewerButtonProps {
@@ -31,27 +29,23 @@ export function AssetViewerButton({
   }
 
   return (
-    <div className="absolute -top-[0.1px] right-14 transform translate-x-1/2 -translate-y-1/2">
-      {address && (
-        <TooltipProvider delayDuration={80}>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <a
-                href={`${process.env.NEXT_PUBLIC_LAOS_APPS_URL}/asset/${chainId}/${address}/${tokenId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="bg-background border border-white text-foreground rounded-full p-1">
-                  <FaRegEye size={16} />
-                </div>
-              </a>
-            </TooltipTrigger>
-            <TooltipContent className="text-lg" side="top">
-              View Asset
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      )}
-    </div>
+    <TooltipProvider delayDuration={80}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <a
+            href={`${process.env.NEXT_PUBLIC_LAOS_APPS_URL}/asset/${chainId}/${address}/${tokenId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="bg-background text-foreground border border-white rounded-full p-[4px]">
+              <FaRegEye size={17} />
+            </div>
+          </a>
+        </TooltipTrigger>
+        <TooltipContent className="text-lg" side="top">
+          View Asset
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

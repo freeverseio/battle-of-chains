@@ -6,5 +6,5 @@ export class Info {
   key!: string;
 
   @Column({ type: 'jsonb' })
-  value!: any;
+  value!: unknown;
 }

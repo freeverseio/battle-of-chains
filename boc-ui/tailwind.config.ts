@@ -11,6 +11,8 @@ const config: Config = {
     extend: {
       fontFamily: { pixelade: ["var(--font-pixelade)"] }, // Optional: Define a custom CSS variable
       backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(to right, #1E90FF 0%, #7B68EE 25%, #FF00FF 50%, #FF1493 75%, #1E90FF 100%)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
@@ -84,10 +86,19 @@ const config: Config = {
             height: "0",
           },
         },
+        wave: {
+          "0%": {
+            "background-position": "0% 50%",
+          },
+          "100%": {
+            "background-position": "200% 50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        wave: "wave 3s linear infinite",
       },
     },
   },

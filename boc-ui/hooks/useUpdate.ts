@@ -3,12 +3,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE } from "@/graphql/mutations/update";
 
 export const useUpdate = () => {
-  const [updateMutation, { loading, error }] = useMutation(UPDATE, {
-    onCompleted: () => {
-      // Refresh the page on successful mutation
-      window.location.reload();
-    },
-  });
+  const [updateMutation, { loading, error }] = useMutation(UPDATE);
 
   const update = async () => {
     try {

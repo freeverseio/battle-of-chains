@@ -15,6 +15,7 @@ export interface User {
         name: string;
       };
       type: string;
+      health: string;
     }[];
   };
 }
@@ -31,8 +32,8 @@ export interface UserScore {
 export interface Chain {
   chainId: number;
   name: string;
-  score: number;
-  usersByHomechain: {
-    nodes: User[];
+  score?: number;
+  usersByHomechain?: {
+    nodes?: User[];
   };
 }

@@ -22,6 +22,7 @@ export const ALL_USERS = gql`
               chainId
             }
             type
+            health
           }
         }
       }

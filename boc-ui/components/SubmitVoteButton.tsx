@@ -1,7 +1,9 @@
 "use client";
 
+import { useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useBattleOfChains } from "@/hooks/useBattleOfChains";
+import { ModalContext } from "@/context/ModalContext";
 import {
   ChainAction,
   ChainActionType,
@@ -9,7 +11,8 @@ import {
   optionsMap,
 } from "@/utils/enums";
 import { ethers, isAddress } from "ethers";
-
+import { useUpdate } from "@/hooks/useUpdate"; // Add this import
+import { useRefetchState } from "@/hooks/useRefetchState";
 interface SubmitVoteButtonProps {
   selectedOption: string | null;
   targetChain: number;
@@ -29,11 +32,19 @@ export default function SubmitVoteButton({
   homeChain,
   className,
 }: SubmitVoteButtonProps) {
-  const { voteChainAction, isConfirming, isConfirmed, writeError } =
-    useBattleOfChains();
+  const {
+    voteChainAction,
+    hash,
+    isWritePending,
+    isConfirming,
+    isConfirmed,
+    writeError,
+  } = useBattleOfChains();
+  const { openModal, setModalState, setModalError } = useContext(ModalContext);
+  const { update, isUpdating, error } = useUpdate();
+  const { refetchAll } = useRefetchState();
 
   const handleVote = async () => {
-    console.log("selectedOption", selectedOption);
     if (!selectedOption) return;
 
     const chainActionParams = optionsMap[selectedOption];
@@ -46,73 +57,67 @@ export default function SubmitVoteButton({
       attackAddress: "0x0000000000000000000000000000000000000000",
     };
 
-    if (
-      actionType === ChainActionType.IMPROVE ||
-      actionType === ChainActionType.DEFEND
-    ) {
-      // No additional parameters needed
-    } else if (actionType === ChainActionType.ATTACK_AREA) {
-      if (targetChain === 0) {
-        alert("Please select a target chain different from 0");
-        return;
-      }
-      if (targetChain === homeChain) {
-        alert("Target chain cannot be your home chain");
-        return;
-      }
-      if (attackArea === AttackArea.NULL) {
-        alert("Please select an attack area");
+    if (actionType === ChainActionType.ATTACK_AREA) {
+      if (
+        targetChain === 0 ||
+        targetChain === homeChain ||
+        attackArea === AttackArea.NULL
+      ) {
+        setModalState("transaction_error");
         return;
       }
       chainAction.targetChain = targetChain;
       chainAction.attackArea = attackArea;
     } else if (actionType === ChainActionType.ATTACK_ADDRESS) {
-      if (targetChain === 0) {
-        alert("Please select a target chain different from 0");
-        return;
-      }
-      if (targetChain === homeChain) {
-        alert("Target chain cannot be your home chain");
-        return;
-      }
-      if (!isAddress(attackAddress)) {
-        alert("Please enter a valid attack address");
+      if (
+        targetChain === 0 ||
+        targetChain === homeChain ||
+        !isAddress(attackAddress)
+      ) {
+        setModalState("transaction_error");
         return;
       }
       chainAction.targetChain = targetChain;
       chainAction.attackAddress = attackAddress;
     }
 
-    try {
-      voteChainAction(chainAction, comment);
-    } catch (error: any) {
-      console.error("Voting failed:", error);
-    }
+    openModal(async () => {
+      setModalState("pending_signature");
+      try {
+        await voteChainAction(chainAction, comment);
+      } catch (error) {
+        console.error("Error:", error);
+        setModalState("transaction_error");
+      }
+    }, "vote_confirm");
   };
+  // components/SubmitVoteButton.tsx
+  useEffect(() => {
+    const performUpdateAndRefetch = async () => {
+      if (isConfirmed) {
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        await update();
+        await new Promise((resolve) => setTimeout(resolve, 4000));
+        refetchAll();
+        setModalState("transaction_vote_success");
+      } else if (writeError) {
+        console.error(writeError);
+        setModalError(writeError.message);
+        setModalState("transaction_error");
+      } else if (!isWritePending && hash) {
+        setModalState("voting");
+      }
+    };
+    performUpdateAndRefetch();
+  }, [hash, isWritePending, isConfirmed, writeError, setModalState]);
 
   return (
-    <>
-      <Button
-        onClick={handleVote}
-        disabled={!selectedOption || isConfirming}
-        className={`bg-primary border-[1px] border-[#FE07DD] hover:bg-[#FE07DD] hover:text-black text-2xl ${className}`}
-      >
-        {isConfirming ? "Voting. Awaiting finality..." : "Submit Vote"}
-      </Button>
-
-      {writeError && (
-        <>
-          <p className="text-red-500 text-xl">
-            {writeError.message.toLowerCase().includes("user rejected")
-              ? "Signature rejected by user"
-              : "Oops, something went wrong"}
-          </p>
-          {console.error(writeError.message)}
-        </>
-      )}
-      {isConfirmed && (
-        <p className="text-green-500 text-2xl">Vote submitted successfully!</p>
-      )}
-    </>
+    <Button
+      onClick={handleVote}
+      disabled={!selectedOption || isConfirming}
+      className={`bg-primary border-[1px] border-[#FE07DD] hover:bg-[#FE07DD] hover:text-black text-2xl ${className}`}
+    >
+      Submit Vote
+    </Button>
   );
 }

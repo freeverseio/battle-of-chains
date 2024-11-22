@@ -1,7 +1,6 @@
-import { adaptPercetangeToAverage, applyNoise, computeReferenceTreasuryCostAtLevel, costToMintAsset, costToMintCharacter, decreaseAssetHealthByPercent, getNext2pmUTC, isFactory, level2xp, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, rarityToRanges, treasuryPenaltyPerSec, treasuryProdRatePerDay, treasuryProdRatePerSec, xp2level } from './utils';
+import { adaptPercetangeToAverage, applyNoise, computeReferenceTreasuryCostAtLevel, costToMintCharacter, decreaseAssetHealthByPercent, getNext2pmUTC, isFactory, level2xp, maxCharacterLevelAllowedByTreasury, maxHealthAtLevel, rarityToRanges, treasuryPenaltyPerSec, treasuryProdRatePerDay, treasuryProdRatePerSec, xp2level } from './utils';
 import * as constants from './constants';
 import { AssetState, AssetType, AssetTypeOptions, RangeSelection } from './types';
-import { Asset } from '../db/entity';
 import { AttackSpeciesType } from './speciesAttack';
 
 describe('level2xp function', () => {
@@ -169,7 +168,9 @@ describe("decreaseAssetHealthByPercent", () => {
     });
 
     it("should properly calculate health reduction based on max health", () => {
-        const asset = mockAsset(5, 1000000, AssetTypeOptions.DefenseAsset);
+        const level = 5;
+        const health = maxHealthAtLevel(level, false);
+        const asset = mockAsset(level, health, AssetTypeOptions.DefenseAsset);
         const initialHealth = asset.health;
         const percent = 50;
         const expectedReduction = Math.ceil(maxHealthAtLevel(asset.level, isFactory(asset.type)) * percent / 100);
@@ -182,15 +183,20 @@ describe("decreaseAssetHealthByPercent", () => {
 
 describe('maxHealthAtLevel', () => {
     test('returns correct max health for level less than 1, sets level to minimum 1', () => {
-        expect(maxHealthAtLevel(0, false)).toBe(10);
-        expect(maxHealthAtLevel(1, false)).toBe(10);
-        expect(maxHealthAtLevel(2, false)).toBe(50);
-        expect(maxHealthAtLevel(3, false)).toBe(250);
+        expect(maxHealthAtLevel(0, false)).toBe(10000);
+        expect(maxHealthAtLevel(1, false)).toBe(10000);
+        expect(maxHealthAtLevel(2, false)).toBe(50000);
+        expect(maxHealthAtLevel(3, false)).toBe(250000);
 
-        expect(maxHealthAtLevel(0, true)).toBe(100);
-        expect(maxHealthAtLevel(1, true)).toBe(100);
-        expect(maxHealthAtLevel(2, true)).toBe(500);
-        expect(maxHealthAtLevel(3, true)).toBe(2500);
+        expect(maxHealthAtLevel(0, true)).toBe(100000);
+        expect(maxHealthAtLevel(1, true)).toBe(100000);
+        expect(maxHealthAtLevel(2, true)).toBe(500000);
+        expect(maxHealthAtLevel(3, true)).toBe(2500000);
+
+        expect(maxHealthAtLevel(5, false)).toBe(6000000);
+
+        expect(maxHealthAtLevel(30, false)).toBe(100000000000);
+        expect(maxHealthAtLevel(30, true)).toBe(1000000000000);
     });
 });
 
@@ -304,7 +310,7 @@ describe('treasuryProdRatePerSec', () => {
                             / constants.ONE_WEEK_IN_SECS;
         expect(treasuryProdRatePerSec(level)).toBeCloseTo(expectedRate, 5);
         expect(treasuryProdRatePerDay(level)).toBeCloseTo(treasuryProdRatePerSec(level) * 24 * 3600, 5);
-        expect(treasuryProdRatePerDay(level)).toBeCloseTo(30, 5);
+        expect(treasuryProdRatePerDay(level)).toBeCloseTo(60, 5);
     });
 
     it('should return the correct production rate per second for level 3', () => {

@@ -1,6 +1,6 @@
-// components/SummaryTable.tsx
 "use client";
 
+import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useAllLogs } from "@/hooks/useAllLogs";
 import {
@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "./ui/table";
 import { formatTimestamp } from "@/lib/utils";
+
 interface LogNode {
   chainByChain?: {
     name: string;
@@ -25,6 +26,21 @@ interface LogNode {
 }
 
 export const SummaryTable = () => {
+  const [copiedRowIndex, setCopiedRowIndex] = useState<number | null>(null);
+
+  const copyAddressToClipboard = async (address: string, index: number) => {
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopiedRowIndex(index);
+      // Clear the message after 2 seconds
+      setTimeout(() => {
+        setCopiedRowIndex(null);
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy address: ", err);
+    }
+  };
+
   const { loading, error, data } = useAllLogs();
 
   const logs = data?.allLogs?.nodes || [];
@@ -62,16 +78,30 @@ export const SummaryTable = () => {
                 <TableCell className="text-label-secondary text-2xl">
                   {formatTimestamp(log.timestamp)}
                 </TableCell>
-                <TableCell className=" text-2xl">
+                <TableCell className="text-2xl relative">
                   <div>
                     <div className="text-white">
                       {log.userByUserAddress?.name || ""}
                     </div>
-                    <div className="text-lg text-muted-foreground">
+                    <button
+                      onClick={() =>
+                        log.userByUserAddress?.address &&
+                        copyAddressToClipboard(
+                          log.userByUserAddress.address,
+                          index
+                        )
+                      }
+                      className="text-lg text-muted-foreground hover:underline cursor-pointer"
+                    >
                       {log.userByUserAddress?.address
                         ? formatAddress(log.userByUserAddress.address)
                         : "-"}
-                    </div>
+                    </button>
+                    {copiedRowIndex === index && (
+                      <div className="absolute top-4 right-0 bg-black text-card-foreground px-2 py-1 rounded text-sm">
+                        Copied to clipboard
+                      </div>
+                    )}
                   </div>
                 </TableCell>
                 <TableCell className="text-muted-foreground text-2xl">

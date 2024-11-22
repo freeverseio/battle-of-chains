@@ -1,12 +1,9 @@
-import {getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents, getRegisterMercenaryEvents} from './getEventsQueries';
+import { getJoinedChainEvents, getMultichainMintEvents, getAttackEvents, getChainActionProposalEvents, getUpgradeEvents, getAssignOperatorEvents, getTransferEvents, getRegisterMercenaryEvents, getSendGameTreasuryEvents } from './getEventsPagination';
 import { sortEvents } from './sortEvents';
 import {
     ChainType,
     AllEventTypes,
 } from './types';
-import { promises as fs } from 'fs';
-
-
 
 export async function getAllEvents(chains: ChainType[]): Promise<AllEventTypes[]> {
     const joinedChainEvents = await getJoinedChainEvents();
@@ -30,8 +27,12 @@ export async function getAllEvents(chains: ChainType[]): Promise<AllEventTypes[]
         allEvents = [...allEvents, ...assignOperatorEvents];
         const transferEvents = await getTransferEvents(i, chains[i].chain_id);
         allEvents = [...allEvents, ...transferEvents];
+        const sendGameTreasuryEvents = await getSendGameTreasuryEvents(i, chains[i].chain_id);
+        allEvents = [...allEvents, ...sendGameTreasuryEvents];
     }
 
+    // Uncomment the following two lines when you need to update the tests only:
+    // import { promises as fs } from 'fs';
     // fs.writeFile('./src/processor/test/events.json', JSON.stringify(await sortEvents(allEvents), null, 2));
     return sortEvents(allEvents);
 }

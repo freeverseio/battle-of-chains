@@ -1,7 +1,7 @@
 import { ChainType, UserType, Storage, XY, AssetType, AssetState, XYmeter, PendingAction, ChainActionProposalType, AssetTypeOptions, AttackArea, RangeSelection, MultichainMintEvent, AssetLevelDetails, UpgradeEvent } from './types';
 import * as constants from './constants';
 import { isAddress } from 'web3-validator';
-import { AssignOperator, Log, User } from '../db/entity';
+import { AssignOperator, Log } from '../db/entity';
 import { DefendSpeciesType, DefendSpeciesLore } from './speciesDefend';
 import { AttackSpeciesType, AttackSpeciesLore } from './speciesAttack';
 import murmurhash from 'murmurhash';
@@ -23,7 +23,7 @@ export function readableDate(timestamp: number): string {
 
 
 
-export function chainName(chain: Number | undefined, chains: ChainType[]) : string {
+export function chainName(chain: number | undefined, chains: ChainType[]) : string {
     if (!chain) return '';
     for (const c of chains) {
         if (c.chain_id === chain) return c.name;
@@ -49,14 +49,14 @@ export function log2chain(chain: number, comment: string, timestamp: number, log
     });
 }
 
-export function chainIsNotSupported(chain: Number, chains: ChainType[]) : boolean {
-    const chainNotSupported = chain && !chains.find(u => u.chain_id === chain);
+export function chainIsNotSupported(chain: number, chains: ChainType[]) : boolean {
+    const chainNotSupported = !!chain && !chains.some(u => u.chain_id === chain);
     if (chainNotSupported) console.log(`An event tried to act on a chain that is not yet supported: ${chain}`);
     return chainNotSupported;
 }
 
-export function userDoesNotExist(user: String, users: UserType[]) : boolean {
-    const userDoesNotExist = user && !users.find(u => u.address.toLowerCase() === user.toLowerCase());
+export function userDoesNotExist(user: string, users: UserType[]) : boolean {
+    const userDoesNotExist = !!user && !users.some(u => u.address.toLowerCase() === user.toLowerCase());
     if (userDoesNotExist) console.log(`An event tried to act on a user that does not exist: ${user}`);
     return userDoesNotExist;
 }
@@ -70,7 +70,7 @@ export function createDAO(storage: Storage, address: string, chain: number, time
             score: 44,
             treasury: 0,
             treasuryLastUpdate: timestamp,
-            health: 100,
+            health: 100 * constants.HEALTH_TO_INT,
             xp: 0,
             level: 0
         }
@@ -224,11 +224,12 @@ export function isCharacter(typeId: string) : boolean {
     return (typeId === AssetTypeOptions.AttackAsset || typeId === AssetTypeOptions.DefenseAsset);
 }
 
-export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
-    return level2xp(
-        Math.max(1, level),
-        isFactory
-    );
+export function maxHealthAtLevel(level: number, isFactory: boolean) : number {
+    return constants.HEALTH_TO_INT * 
+        level2xp(
+            Math.max(1, level),
+            isFactory
+        );
 }
 
 export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
@@ -238,7 +239,6 @@ export function addHealthDeltaToAsset(delta: number, asset: AssetType) {
     }
     const intDelta = Math.ceil(delta);
     if (intDelta < 0) {
-        console.log('decreasing', asset.health, intDelta);
         asset.health = asset.health + intDelta > 0 ? asset.health + intDelta : 0;
     } else {
         const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
@@ -251,7 +251,27 @@ export function age2years(ageInSec: number) : number {
     return ageInSec / constants.ONE_YEAR_IN_SECS;
 }
 
-export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
+export function computeHealthDelta(daysSinceLastUpdate: number, maxHealth: number, ageInYears: number, isFactory: boolean) : number {
+    return !isFactory && ageInYears > 60
+    ? - Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_DECREASE_PER_REAL_LIFE_DAY_AFTER_60YO / 100)
+      )
+    : !isFactory && ageInYears > 40
+    ? Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 300)
+      )
+    : Math.floor(
+        maxHealth *
+        daysSinceLastUpdate *
+        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
+      );
+}
+
+export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number, storage: Storage) {
     if (asset.health === 0) {
         console.log('WARNING: trying to evolve a dead asset');
         return;
@@ -260,25 +280,26 @@ export function evolveAssetStatsByAsset(asset: AssetType, timestamp: number) {
     asset.age += timeSinceLast;
 
     const isFact = isFactory(asset.type);
-    const maxHealth = maxHealthAtLevel(asset.level, isFactory(asset.type));
 
-    // the default delta (applied to all factories, and to all young assets)
-    let healthDelta = Math.floor(
-        maxHealth *
-        ((timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS)*
-        (constants.HEALTH_PERCENT_IMPROVE_PER_REAL_LIFE_DAY / 100)
-    );
-
-    if (!isFact && age2years(asset.age) > 60) healthDelta = - healthDelta / 7;
-    else if (!isFact && age2years(asset.age) > 40) healthDelta = healthDelta / 3;
+    const healthDelta = computeHealthDelta(
+        (timestamp - asset.statsLastUpdate) / constants.ONE_DAY_IN_SECS,
+        maxHealthAtLevel(asset.level, isFact),
+        age2years(asset.age),
+        isFact,
+    )
 
     addHealthDeltaToAsset(healthDelta, asset);
 
     asset.statsLastUpdate = timestamp;
 
     if (asset.health === 0) {
+        reportDeath(asset, `Natural death at age of ${toOneDecimal(age2years(asset.age))} y.o.`, timestamp, storage);
         console.log('WARNING: Asset killed by time evolution', asset);
     }
+}
+
+function toOneDecimal(x: number) : number {
+    return Math.round(x * 10)/10;
 }
 
 export function subtractFromTreasury(address: string, timestamp: number, amount: number, storage: Storage) : number {
@@ -389,7 +410,7 @@ export function time2travelDistance(distance: number, speed: number) : number {
 }
 
 export function setAssetsFree(assets: AssetType[]) {
-    for (let asset of assets) {
+    for (const asset of assets) {
         asset.state = AssetState.Free;
         asset.pendingAttackId = undefined;
     }
@@ -435,28 +456,28 @@ export function assignUserToChainProposal(userAddress: string, proposalHash: str
 }
 
 export function updateAllTreasuries(timestamp: number, storage: Storage) {
-    for (let user of storage.users) {
+    for (const user of storage.users) {
         evolveTreasuryByUser(user, timestamp, storage)
     }
 }
 
 export function evolveAllAssetsStats(timestamp: number, storage: Storage) {
-    for (let asset of storage.assets.filter((a) => a.health > 0)) {
-        evolveAssetStatsByAsset(asset, timestamp)
+    for (const asset of storage.assets.filter((a) => a.health > 0)) {
+        evolveAssetStatsByAsset(asset, timestamp, storage);
     }
 }
 
-export function evolveAssetsStats(timestamp: number, assets: AssetType[]) {
-    for (let asset of assets) {
-        evolveAssetStatsByAsset(asset, timestamp)
+export function evolveAssetsStats(timestamp: number, assets: AssetType[], storage: Storage) {
+    for (const asset of assets) {
+        evolveAssetStatsByAsset(asset, timestamp, storage)
     }
 }
 
 export function updateAllScores(storage: Storage) {
-    for (let chain of storage.chains) {
+    for (const chain of storage.chains) {
         const usersInChain = storage.users.filter((u) => u.homechain === chain.chain_id);
         let chainScore = 0;
-        for (let user of usersInChain) {
+        for (const user of usersInChain) {
             const score = storage.assets
                 .filter(asset => asset.owner === user.address && asset.health > 0)
                 .reduce((sum, asset) => sum + asset.xp, 0);
@@ -469,7 +490,7 @@ export function updateAllScores(storage: Storage) {
 
 export function updateAllChainProposalVotes(timestamp: number, storage: Storage) {
     updateAllTreasuries(timestamp, storage);
-    for (let proposal of storage.currentPeriodChainActionProposals) {
+    for (const proposal of storage.currentPeriodChainActionProposals) {
         const supporters = storage.users.filter(u => u.currentSupportedChainAction === proposal.hash);
         proposal.votes = supporters.reduce((sum, supporter) => sum + supporter.treasury, 0);
     }
@@ -497,7 +518,7 @@ export function selectMostVotedChainAction(chainId: number, timestamp: number, s
 }
 
 export function removeAllUserSupportedActions(users: UserType[]) {
-    for (let u of users) {
+    for (const u of users) {
         u.currentSupportedChainAction = undefined;
     }
 }
@@ -594,19 +615,19 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
         return [];
     }
     if (attackArea === AttackArea.North) {
-        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInNorth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.South) {
-        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInSouth(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.East) {
-        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInEast(a.owner) && a.health > 0)
     }
     else if (attackArea === AttackArea.West) {
-        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner))
+        return assets.filter((a) => a.chain_id === chain && isInWest(a.owner) && a.health > 0)
     } 
     else if (attackArea === AttackArea.All) {
-        return assets.filter((a) => a.chain_id === chain)
+        return assets.filter((a) => a.chain_id === chain && a.health > 0)
     }
     else {
         console.log('WARNING: chain attack area not supported');
@@ -615,7 +636,7 @@ export function findAllAssetsInArea(chain: number, attackArea: AttackArea, asset
 }
 
 export function findAllAssetsNearAddress(chain: number, attackAddress: string, assets: AssetType[]) : AssetType[] {
-    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress))
+    return assets.filter((a) => a.chain_id === chain && isNearAddress(a.owner, attackAddress) && a.health > 0)
 }
 
 export function rarityToRanges(rarities : number[]) : RangeSelection {
@@ -623,9 +644,9 @@ export function rarityToRanges(rarities : number[]) : RangeSelection {
     const maxRarity = Math.max(...rarities);
     // Min width is 1000, max width is max * 1000:
     const intervalWidths: number[] = rarities.map(rarity => Math.ceil((maxRarity * 1000) / rarity));
-    let ranges: number[] = [];
+    const ranges: number[] = [];
     let current = 0;
-    for (let width of intervalWidths) {
+    for (const width of intervalWidths) {
       current += width;
       ranges.push(current);
     }
@@ -695,7 +716,7 @@ export function maxCharacterLevelAllowedByTreasury(factoryLevel: number, treasur
 }
 
 export function computeRandoms(nSeeds: number, seed: number): number[] {
-    let rnds: number[] = [murmurhash.v3(seed.toString())];
+    const rnds: number[] = [murmurhash.v3(seed.toString())];
     for (let i = 1; i < nSeeds; i++) {
         rnds.push(murmurhash.v3(rnds[i - 1].toString()));
     }
@@ -738,4 +759,13 @@ export function canUserAttackOrUpgradeOnChain(user: UserType, chain: number) : b
     if (hasHomechain(user)) return true;
     if (isMercenary(user)) return user.mercenaryChain === chain;
     return false;
+}
+
+export function reportDeath(asset: AssetType, reason: string, timestamp: number, storage: Storage) {
+    log2user(
+        asset.owner,
+        `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has died. Reason: ${reason}`,
+        timestamp,
+        storage.logs
+    );
 }

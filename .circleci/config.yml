@@ -41,6 +41,11 @@ jobs:
             cd << parameters.folder >>
             npm ci
             npm run test:ci
+      - run:
+          name: Run Linter
+          command: |
+            cd << parameters.folder >>
+            npm run lint
 
   build-app:
     parameters:

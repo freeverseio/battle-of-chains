@@ -4,7 +4,13 @@ import React, { createContext, useState, ReactNode } from "react";
 export type ModalState =
   | "idle"
   | "mint_confirm"
+  | "vote_confirm"
+  | "attack_confirm"
+  | "join_confirm"
   | "minting"
+  | "voting"
+  | "attacking"
+  | "joining"
   | "pending_signature"
   | "transaction_upgrade_success"
   | "defense_factory_not_minted"
@@ -13,7 +19,10 @@ export type ModalState =
   | "transaction_error"
   | "upgrade_confirm"
   | "upgrading"
-  | "transaction_mint_success";
+  | "transaction_vote_success"
+  | "transaction_mint_success"
+  | "transaction_join_success"
+  | "transaction_attack_success";
 type TransactionStatus = "idle" | "pending" | "success" | "error";
 
 interface ModalContextType {
@@ -28,6 +37,8 @@ interface ModalContextType {
   setTransactionStatus: React.Dispatch<React.SetStateAction<TransactionStatus>>;
   modalData?: any;
   setModalData: React.Dispatch<React.SetStateAction<any>>;
+  modalError?: string;
+  setModalError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const ModalContext = createContext<ModalContextType>({
@@ -40,6 +51,7 @@ export const ModalContext = createContext<ModalContextType>({
   transactionStatus: "idle",
   setTransactionStatus: () => {},
   setModalData: () => {},
+  setModalError: () => {},
 });
 
 interface ModalProviderProps {
@@ -54,6 +66,8 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [transactionStatus, setTransactionStatus] =
     useState<TransactionStatus>("idle");
   const [modalData, setModalData] = useState<any>(null);
+  const [modalError, setModalError] = useState<string>("");
+
   const openModal = (
     confirmCallback: () => void,
     state: ModalState,
@@ -90,6 +104,8 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
         setTransactionStatus,
         modalData,
         setModalData,
+        modalError,
+        setModalError,
       }}
     >
       {children}

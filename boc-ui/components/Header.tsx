@@ -7,6 +7,7 @@ import { ConnectButton } from "@/components/ConnectButton";
 import { useAccount } from "wagmi";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { RefreshButton } from "./RefreshButton";
+import Link from "next/link";
 
 interface HeaderProps {
   activeTab: string;
@@ -90,6 +91,15 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                 >
                   All Logs
                 </TabsTrigger>
+                {process.env.NEXT_PUBLIC_TUTORIAL_URL && (
+                  <Link
+                    href={process.env.NEXT_PUBLIC_TUTORIAL_URL || ""}
+                    target="_blank"
+                    className="mx-2 text-2xl font-bold text-transparent bg-clip-text bg-[length:200%_200%] animate-wave whitespace-nowrap hover:text-white bg-custom-gradient"
+                  >
+                    Tutorial{" "}
+                  </Link>
+                )}
               </TabsList>
             </Tabs>
           </div>

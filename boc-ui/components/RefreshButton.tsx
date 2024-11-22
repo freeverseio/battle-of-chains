@@ -1,7 +1,6 @@
-// components/RefreshButton.tsx
 import { Button } from "@/components/ui/button";
 import { useUpdate } from "@/hooks/useUpdate";
-import { ArrowPathIcon } from "@heroicons/react/24/outline"; // If you're using heroicons
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 interface RefreshButtonProps {
   className?: string;
@@ -9,11 +8,14 @@ interface RefreshButtonProps {
 
 export const RefreshButton = ({ className }: RefreshButtonProps) => {
   const { update, isUpdating } = useUpdate();
-
+  const updateAndRefresh = () => {
+    update();
+    window.location.reload();
+  };
   return (
     <Button
       variant="outline"
-      onClick={update}
+      onClick={updateAndRefresh}
       disabled={isUpdating}
       className={`
         text-foreground text-xl border border-border

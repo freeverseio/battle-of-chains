@@ -20,6 +20,7 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
   const { address, isConnecting, isDisconnected } = useAccount();
 
   const { loading, error, data, refetch } = useUserByAddress(address || "0x");
+
   const hasChain = data?.userByAddress !== null;
   if (loading) {
     return <div>Loading...</div>;
@@ -34,8 +35,10 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
       if (!address) {
         return <div className="text-3xl">Please connect your wallet</div>;
       }
+      console.log("hasChain", hasChain);
+
       if (!hasChain) {
-        return <ChainSelection onJoinSuccess={() => true} />;
+        return <ChainSelection onJoinSuccess={refetch} />;
       }
     }
 

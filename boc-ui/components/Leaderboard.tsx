@@ -1,4 +1,3 @@
-// components/ChainsLeaderboard.tsx
 "use client";
 
 import React from "react";
@@ -48,7 +47,7 @@ export const ChainsLeaderboard = () => {
   return (
     <div className="space-y-8">
       {chains.map((chain: Chain) => {
-        const users = chain.usersByHomechain.nodes;
+        const users = chain.usersByHomechain?.nodes ?? [];
         const chainIcon = chainIcons[chain.chainId];
         const chainNameColor = chainNameColors[chain.chainId]; // Get the chain name color
 
