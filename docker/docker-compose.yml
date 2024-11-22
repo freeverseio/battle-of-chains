@@ -1,28 +1,57 @@
 services:
-  postgres:
+  postgres-a:
     image: postgres:latest
-    container_name: postgres_db
+    container_name: postgres_db_a
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER_A}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_A}
+      POSTGRES_DB: ${DB_NAME_A}
     ports:
-      - "${DB_PORT}:5432"
+      - "${DB_PORT_HOST_A}:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data_a:/var/lib/postgresql/data
       - ../boc-game-engine/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-network
 
-  boc-game-engine-postgraphile:
+  postgres-b:
+    image: postgres:latest
+    container_name: postgres_db_b
+    environment:
+      POSTGRES_USER: ${DB_USER_B}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_B}
+      POSTGRES_DB: ${DB_NAME_B}
+    ports:
+      - "${DB_PORT_HOST_B}:5432"
+    volumes:
+      - postgres_data_b:/var/lib/postgresql/data
+      - ../boc-game-engine/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  boc-game-engine-postgraphile-a:
     build:
       context: ../boc-game-engine-postgraphile/
-    container_name: boc-game-engine-postgraphile
-    command: -d ${DB_HOST}://${DB_USER}:${DB_PASSWORD}@postgres:${DB_PORT}/${DB_NAME}
+    container_name: boc-game-engine-postgraphile-a
+    command: -d ${DB_HOST_A}://${DB_USER_A}:${DB_PASSWORD_A}@postgres-a:${DB_PORT_CONTAINER_A}/${DB_NAME_A}
     ports:
       - "4001:4001"
     depends_on:
-      - postgres
+      - postgres-a
+      - postgres-b
+    networks:
+      - app-network
+
+  boc-game-engine-postgraphile-b:
+    build:
+      context: ../boc-game-engine-postgraphile/
+    container_name: boc-game-engine-postgraphile-b
+    command: -d ${DB_HOST_B}://${DB_USER_B}:${DB_PASSWORD_B}@postgres-b:${DB_PORT_CONTAINER_B}/${DB_NAME_B}
+    ports:
+      - "4002:4001"
+    depends_on:
+      - postgres-a
+      - postgres-b
     networks:
       - app-network
 
@@ -32,13 +61,19 @@ services:
     container_name: boc-game-engine
     command: npm run dev
     environment:
-      DB_HOST: postgres
-      DB_PORT: ${DB_PORT}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
+      DB_HOST_A: postgres-a
+      DB_HOST_B: postgres-b
+      DB_PORT_A: ${DB_PORT_CONTAINER_A}
+      DB_PORT_B: ${DB_PORT_CONTAINER_B}
+      DB_USER_A: ${DB_USER_A}
+      DB_USER_B: ${DB_USER_B}
+      DB_PASSWORD_A: ${DB_PASSWORD_A}
+      DB_PASSWORD_B: ${DB_PASSWORD_B}
+      DB_NAME_A: ${DB_NAME_A}
+      DB_NAME_B: ${DB_NAME_B}
       SSL_ENABLED: ${SSL_ENABLED}
-      POSTGRAPHILE_URL: ${POSTGRAPHILE_URL}
+      POSTGRAPHILE_URL_A: ${POSTGRAPHILE_URL_A}
+      POSTGRAPHILE_URL_B: ${POSTGRAPHILE_URL_B}
       LAOS_CHAIN_ID: ${LAOS_CHAIN_ID}
       LAOS_GRAPHQL: ${LAOS_GRAPHQL}
       OWNERSHIP_GRAPHQLS: ${OWNERSHIP_GRAPHQLS}
@@ -48,7 +83,8 @@ services:
     ports:
       - "4000:4000"
     depends_on:
-      - postgres
+      - postgres-a
+      - postgres-b
     networks:
       - app-network
 
@@ -58,4 +94,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
+  postgres_data_a:
+  postgres_data_b:

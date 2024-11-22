@@ -1,10 +1,10 @@
-import { AppDataSource } from '../db/AppDataSource';
-import { Chain, ProcessStatus} from '../db/entity';
-import { ObjectType, Field, Int } from 'type-graphql';
+import { DataSource } from "typeorm";
+import { Chain, ProcessStatus } from "../db/entity";
+import { ObjectType, Field, Int } from "type-graphql";
 
 export enum ProcessStatusEnum {
   FREE = "FREE",
-  PROCESSING = "PROCESSING"
+  PROCESSING = "PROCESSING",
 }
 
 @ObjectType()
@@ -39,23 +39,31 @@ export class ProcessStatusOutput {
   }
 }
 
-export async function getAllChains(): Promise<ChainOutput[]> {
-    const repository = AppDataSource.getRepository(Chain);
+export class ChainService {
+  private dataSource: DataSource;
+
+  constructor(dataSource: DataSource) {
+    this.dataSource = dataSource;
+  }
+
+  async getAllChains(): Promise<ChainOutput[]> {
+    const repository = this.dataSource.getRepository(Chain);
     const all = await repository.find();
-    return all.map(entry => new ChainOutput(entry));
-}
+    return all.map((entry) => new ChainOutput(entry));
+  }
 
-export async function getStatus(): Promise<ProcessStatusOutput[]> {
-  const repository = AppDataSource.getRepository(ProcessStatus);
-  const all = await repository.find();
-  return all.map(entry => new ProcessStatusOutput(entry));
-}
+  async getStatus(): Promise<ProcessStatusOutput[]> {
+    const repository = this.dataSource.getRepository(ProcessStatus);
+    const all = await repository.find();
+    return all.map((entry) => new ProcessStatusOutput(entry));
+  }
 
-export async function setStatus(status: string) {
-  const repository = AppDataSource.getRepository(ProcessStatus);
-  await repository.save({
-    id: 1,
-    status: status,
-    last_update: new Date()
-  });
+  async setStatus(status: string): Promise<void> {
+    const repository = this.dataSource.getRepository(ProcessStatus);
+    await repository.save({
+      id: 1,
+      status: status,
+      last_update: new Date(),
+    });
+  }
 }
