@@ -18,14 +18,10 @@ interface DynamicContentProps {
 
 export default function DynamicContent({ activeTab }: DynamicContentProps) {
   const { address, isConnecting, isDisconnected } = useAccount();
-  const {
-    data: hasChain,
-    isLoading: isLoadingHasHomeChain,
-    error: hasHomeChainError,
-  } = useHasHomeChain(address);
-  const { loading, error, data } = useUserByAddress(address ? address : "0x");
 
-  if (loading || isLoadingHasHomeChain) {
+  const { loading, error, data, refetch } = useUserByAddress(address || "0x");
+  const hasChain = data?.userByAddress !== null;
+  if (loading) {
     return <div>Loading...</div>;
   }
 

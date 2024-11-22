@@ -40,7 +40,6 @@ const chainNameColors: { [key: number]: string } = {
 export const ChainsLeaderboard = () => {
   const { loading, error, data } = useAllChainsScore();
   const { address } = useAccount(); // Get the connected address
-
   if (loading) return <div>Loading chain data...</div>;
   if (error) return <div>Error loading chain data: {error.message}</div>;
 
