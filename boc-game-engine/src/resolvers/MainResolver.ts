@@ -4,6 +4,8 @@ import dbConfig from '../db/config/DatabaseConfig';
 import { createAppDataSource } from '../db/AppDataSource';
 import { DbKey } from '../db/config/DbKey';
 
+const MAX_PROCESSING_STALE_TIME = parseInt(process.env.MAX_PROCESSING_STALE_TIME || "300", 10);
+
 function isReadyToProcess(st: ProcessStatusOutput): boolean {
   if (st.status !== ProcessStatusEnum.FREE) {
     return false;
@@ -11,6 +13,18 @@ function isReadyToProcess(st: ProcessStatusOutput): boolean {
   const minSecsFromLastUpdate = 5;
   const waitedEnough = (Date.now() - new Date(st.last_update).getTime()) / 1000 > minSecsFromLastUpdate;
   return waitedEnough;
+}
+
+async function cleanStaleProcessingStatus(chainService: ChainService, dbName: string): Promise<void> {
+  const status = await chainService.getStatus();
+  const processingStale =
+    status[0].status === ProcessStatusEnum.PROCESSING &&
+    (Date.now() - new Date(status[0].last_update).getTime()) / 1000 > MAX_PROCESSING_STALE_TIME;
+
+  if (processingStale) {
+    console.warn(`Detected stale PROCESSING status for ${dbName}. Resetting to FREE.`);
+    await chainService.setStatus(ProcessStatusEnum.FREE);
+  }
 }
 
 export const localResolvers = {
@@ -24,19 +38,23 @@ export const localResolvers = {
       const chainServiceReadDb = new ChainService(currentReadDbDataSource);
       const chainServiceWriteDb = new ChainService(currentWriteDbDataSource);
 
-      const s = await chainServiceReadDb.getStatus();
-      if (!isReadyToProcess(s[0])) {
+      await cleanStaleProcessingStatus(chainServiceReadDb, currentReadDbName);
+      await cleanStaleProcessingStatus(chainServiceWriteDb, currentWriteDbName);
+
+      const status = await chainServiceReadDb.getStatus();
+      if (!isReadyToProcess(status[0])) {
         console.log("Not ready to process yet!");
         return 0;
-      } 
+      }
 
       let nProcessedEvents = 0;
       let reprocessingError: Error | null = null;
 
       try {
-        await chainServiceReadDb.setStatus(ProcessStatusEnum.PROCESSING);
         await chainServiceWriteDb.setStatus(ProcessStatusEnum.PROCESSING);
         nProcessedEvents = await update(currentWriteDbDataSource);
+        dbConfig.switchCurrentReadDB();
+        dbConfig.switchCurrentWriteDB();
       } catch (error) {
         console.error("Error during reprocessing:", error);
         reprocessingError = new Error("Reprocessing failed. Please try again later.");
@@ -44,10 +62,8 @@ export const localResolvers = {
         try {
           await chainServiceReadDb.setStatus(ProcessStatusEnum.FREE);
           await chainServiceWriteDb.setStatus(ProcessStatusEnum.FREE);
-          dbConfig.switchCurrentReadDB();
-          dbConfig.switchCurrentWriteDB();
         } catch (error) {
-          console.log("Error finalizing update:", error);
+          console.error("Error finalizing update:", error);
           if (!reprocessingError) {
             reprocessingError = new Error("Error finalizing update. Please try again later.");
           }

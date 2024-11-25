@@ -33,6 +33,25 @@ async function saveInBatches<T>(
   console.timeEnd(`Batch write for ${entityName}`);
 }
 
+async function batchWrite<T>(
+  queryRunner: QueryRunner,
+  entity: any,
+  data: T[],
+  entityName: string
+): Promise<void> {
+  try {
+    await queryRunner.startTransaction();
+    console.log(`Writing ${entityName}...`);
+    await saveInBatches(queryRunner, entity, data, MAX_DB_WRITES_BATCH_SIZE, entityName);
+    await queryRunner.commitTransaction();
+    console.log(`${entityName} written successfully`);
+  } catch (error) {
+    console.error(`Error writing ${entityName}:`, error);
+    await queryRunner.rollbackTransaction();
+    throw error;
+  }
+}
+
 export async function update(dataSource: DataSource): Promise<number> {
   const chainService = new ChainService(dataSource);
 
@@ -56,7 +75,6 @@ export async function update(dataSource: DataSource): Promise<number> {
   await queryRunner.connect();
 
   try {
-    // Perform batch writes in separate transactions for scalability
     console.log("Truncating tables...");
     console.time("Truncate tables");
     await queryRunner.startTransaction();
@@ -75,31 +93,20 @@ export async function update(dataSource: DataSource): Promise<number> {
     await queryRunner.commitTransaction();
     console.timeEnd("Truncate tables");
 
-    const batchWrite = async (entity: any, data: any[], entityName: string) => {
-      try {
-        await queryRunner.startTransaction();
-        console.log(`Writing ${entityName}...`);
-        await saveInBatches(queryRunner, entity, data, MAX_DB_WRITES_BATCH_SIZE, entityName);
-        await queryRunner.commitTransaction();
-        console.log(`${entityName} written successfully`);
-      } catch (error) {
-        console.error(`Error writing ${entityName}:`, error);
-        await queryRunner.rollbackTransaction();
-        throw error;
-      }
-    };
+    const independentWrites = Promise.all([
+      batchWrite(queryRunner, AttackSpecies, storageToInsert.attackSpecies, "AttackSpecies"),
+      batchWrite(queryRunner, DefendSpecies, storageToInsert.defendSpecies, "DefendSpecies"),
+      batchWrite(queryRunner, NFTType, storageToInsert.nfttypes, "NFTTypes"),
+      batchWrite(queryRunner, Info, storageToInsert.info, "Info")
+    ]);
 
-    // Write in the appropriate order to respect foreign key constraints
-    await batchWrite(Chain, storageToInsert.chains, "Chains");
-    await batchWrite(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals, "ChainActionProposals");
-    await batchWrite(User, storageToInsert.users, "Users");
-    await batchWrite(Asset, storageToInsert.assets, "Assets");
-    await batchWrite(Log, storageToInsert.logs, "Logs");
-    await batchWrite(AssignOperator, storageToInsert.assignOperators, "AssignOperators");
-    await batchWrite(AttackSpecies, storageToInsert.attackSpecies, "AttackSpecies");
-    await batchWrite(DefendSpecies, storageToInsert.defendSpecies, "DefendSpecies");
-    await batchWrite(NFTType, storageToInsert.nfttypes, "NFTTypes");
-    await batchWrite(Info, storageToInsert.info, "Info");
+    await independentWrites;
+    await batchWrite(queryRunner, Chain, storageToInsert.chains, "Chains");
+    await batchWrite(queryRunner, ChainActionProposal, storageToInsert.currentPeriodChainActionProposals, "ChainActionProposals");
+    await batchWrite(queryRunner, User, storageToInsert.users, "Users");
+    await batchWrite(queryRunner, Asset, storageToInsert.assets, "Assets");
+    await batchWrite(queryRunner, Log, storageToInsert.logs, "Logs");
+    await batchWrite(queryRunner, AssignOperator, storageToInsert.assignOperators, "AssignOperators");
 
     console.log("All data written successfully!");
   } catch (error) {
