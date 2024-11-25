@@ -43,7 +43,7 @@ export const UserArmy = () => {
   const { areButtonsDisabled } = useContext(ModalContext);
 
   const { loading, error, data } = useUserAssets(
-    address ? `0x${address.toLowerCase().slice(2)}` : "0x"
+    address || "0x"
   );
   const { loading: nftLoading, error: nftError, nftTypes } = useNftTypes();
   const {

@@ -75,8 +75,7 @@ export const AttackMap = () => {
 
   const { data: allUsersData, loading: usersLoading } = useAllUsers();
   const { data: currentUserAssets, loading: assetsLoading } = useUserAssets(
-    currentUserAddress ? `0x${currentUserAddress.toLowerCase().slice(2)}` : "0x"
-  );
+    currentUserAddress || "0x"  );
 
   const {
     loading: speciesLoading,
