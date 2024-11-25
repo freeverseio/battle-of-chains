@@ -95,11 +95,12 @@ export default function SubmitVoteButton({
   useEffect(() => {
     const performUpdateAndRefetch = async () => {
       if (isConfirmed) {
+        setModalState("transaction_vote_success");
         await new Promise((resolve) => setTimeout(resolve, 4000));
         await update();
         await new Promise((resolve) => setTimeout(resolve, 4000));
         refetchAll();
-        setModalState("transaction_vote_success");
+       
       } else if (writeError) {
         console.error(writeError);
         setModalError(writeError.message);

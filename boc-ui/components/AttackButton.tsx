@@ -45,11 +45,12 @@ export const AttackButton: React.FC<AttackButtonProps> = ({
   useEffect(() => {
     const performUpdateAndRefetch = async () => {
       if (isConfirmed) {
+        setModalState("transaction_attack_success");
         await new Promise((resolve) => setTimeout(resolve, 2000));
         await update();
         await new Promise((resolve) => setTimeout(resolve, 4000));
         refetchAll();
-        setModalState("transaction_attack_success");
+       
       } else if (writeError) {
         console.error(writeError);
         setModalError(writeError.message);
