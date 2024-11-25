@@ -5,10 +5,10 @@ FOLDER_PATH="."
 echo "Starting script in folder: $FOLDER_PATH"
 echo "pwd is: $(pwd)"
 
-# Find all files with the .js extension within the specified folder and its subdirectories, excluding node_modules
-js_files=$(find "$FOLDER_PATH" -type d -name "node_modules" -prune -o -type f -name "*.js" -print)
+# Find all files with the .js or .html extension within the specified folder and its subdirectories, excluding node_modules
+files=$(find "$FOLDER_PATH" -type d -name "node_modules" -prune -o -type f \( -name "*.js" -o -name "*.html" \) -print)
 
-for file in $js_files; do
+for file in $files; do
   echo "Processing file: $file"
 
   # Read the entire file content as a single string
