@@ -1,26 +1,65 @@
-import { Chain, Log, User, Asset, ChainActionProposal, AssignOperator, AttackSpecies, DefendSpecies, NFTType, Info } from '../db/entity';
+import { 
+  Chain, 
+  Log, 
+  User, 
+  Asset, 
+  ChainActionProposal, 
+  AssignOperator, 
+  AttackSpecies, 
+  DefendSpecies, 
+  NFTType, 
+  Info 
+} from '../db/entity';
 import { EventProcessor } from '../processor/process';
 import { ChainService } from './chainService';
 import { formStorage } from './getDataToStore';
 import { DataSource, QueryRunner } from 'typeorm';
 
-export async function update(dataSource: DataSource): Promise<number> {
-  const chainService = new ChainService(dataSource)
+const MAX_DB_WRITES_BATCH_SIZE = parseInt(process.env.MAX_DB_WRITES_BATCH_SIZE || "1000", 10);
 
+async function saveInBatches<T>(
+  queryRunner: QueryRunner,
+  entity: any,
+  data: T[],
+  batchSize: number,
+  entityName: string
+): Promise<void> {
+  console.time(`Batch write for ${entityName}`);
+  for (let i = 0; i < data.length; i += batchSize) {
+    const batch = data.slice(i, i + batchSize);
+    console.log(`Saving batch for ${entityName}, records ${i + 1}-${Math.min(i + batchSize, data.length)} of ${data.length}`);
+    await queryRunner.manager.save(entity, batch);
+  }
+  console.timeEnd(`Batch write for ${entityName}`);
+}
+
+export async function update(dataSource: DataSource): Promise<number> {
+  const chainService = new ChainService(dataSource);
+
+  console.time("Total update process");
+  
+  // Fetch chains and process events
+  console.time("Fetch chains and process events");
   const allChains = await chainService.getAllChains();
   const eventProcessor = new EventProcessor(allChains);
   await eventProcessor.update();
+  console.timeEnd("Fetch chains and process events");
 
+  // Prepare data for storage
+  console.time("Prepare data for storage");
   const storage = eventProcessor.getStorage();
   const storageToInsert = formStorage(storage);
+  console.timeEnd("Prepare data for storage");
 
   const queryRunner: QueryRunner = dataSource.createQueryRunner();
 
   await queryRunner.connect();
-  await queryRunner.startTransaction();
 
-  // Order is important here, since some tables refer to others. Respect the table creation order.
   try {
+    // Perform batch writes in separate transactions for scalability
+    console.log("Truncating tables...");
+    console.time("Truncate tables");
+    await queryRunner.startTransaction();
     await queryRunner.query(`
       TRUNCATE TABLE public.operator_assignment,
                      public.asset,
@@ -33,24 +72,47 @@ export async function update(dataSource: DataSource): Promise<number> {
                      public.info
       RESTART IDENTITY CASCADE
     `);
-    await queryRunner.manager.save(Chain, storageToInsert.chains);
-    await queryRunner.manager.save(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals);
-    await queryRunner.manager.save(User, storageToInsert.users);
-    await queryRunner.manager.save(Log, storageToInsert.logs);
-    await queryRunner.manager.save(Asset, storageToInsert.assets);
-    await queryRunner.manager.save(AssignOperator, storageToInsert.assignOperators);
-    await queryRunner.manager.save(AttackSpecies, storageToInsert.attackSpecies);
-    await queryRunner.manager.save(DefendSpecies, storageToInsert.defendSpecies);
-    await queryRunner.manager.save(NFTType, storageToInsert.nfttypes);
-    await queryRunner.manager.save(Info, storageToInsert.info);
     await queryRunner.commitTransaction();
+    console.timeEnd("Truncate tables");
+
+    const batchWrite = async (entity: any, data: any[], entityName: string) => {
+      try {
+        await queryRunner.startTransaction();
+        console.log(`Writing ${entityName}...`);
+        await saveInBatches(queryRunner, entity, data, MAX_DB_WRITES_BATCH_SIZE, entityName);
+        await queryRunner.commitTransaction();
+        console.log(`${entityName} written successfully`);
+      } catch (error) {
+        console.error(`Error writing ${entityName}:`, error);
+        await queryRunner.rollbackTransaction();
+        throw error;
+      }
+    };
+
+    // Write in the appropriate order to respect foreign key constraints
+    await batchWrite(Chain, storageToInsert.chains, "Chains");
+    await batchWrite(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals, "ChainActionProposals");
+    await batchWrite(User, storageToInsert.users, "Users");
+    await batchWrite(Asset, storageToInsert.assets, "Assets");
+    await batchWrite(Log, storageToInsert.logs, "Logs");
+    await batchWrite(AssignOperator, storageToInsert.assignOperators, "AssignOperators");
+    await batchWrite(AttackSpecies, storageToInsert.attackSpecies, "AttackSpecies");
+    await batchWrite(DefendSpecies, storageToInsert.defendSpecies, "DefendSpecies");
+    await batchWrite(NFTType, storageToInsert.nfttypes, "NFTTypes");
+    await batchWrite(Info, storageToInsert.info, "Info");
+
+    console.log("All data written successfully!");
   } catch (error) {
-    await queryRunner.rollbackTransaction();
-    console.error('Transaction rolled back due to error:', error);
+    console.error('Error during update process:', error);
     throw new Error('Failed to process events');
   } finally {
+    console.timeEnd("Total update process");
     await queryRunner.release();
   }
 
-  return storageToInsert.users.length + storageToInsert.assets.length + storageToInsert.currentPeriodChainActionProposals.length + storageToInsert.assignOperators.length + storageToInsert.logs.length;
+  return storageToInsert.users.length +
+    storageToInsert.assets.length +
+    storageToInsert.currentPeriodChainActionProposals.length +
+    storageToInsert.assignOperators.length +
+    storageToInsert.logs.length;
 }
