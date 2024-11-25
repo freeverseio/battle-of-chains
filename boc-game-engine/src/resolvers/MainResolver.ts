@@ -17,10 +17,13 @@ function isReadyToProcess(st: ProcessStatusOutput): boolean {
 
 async function cleanStaleProcessingStatus(chainService: ChainService, dbName: string): Promise<void> {
   const status = await chainService.getStatus();
-  const processingStale =
-    status[0].status === ProcessStatusEnum.PROCESSING &&
-    (Date.now() - new Date(status[0].last_update).getTime()) / 1000 > MAX_PROCESSING_STALE_TIME;
-
+  const lastUpdateTime = new Date(status[0].last_update).getTime();
+  const timeElapsedSinceLastUpdateInSeconds = (Date.now() - lastUpdateTime) / 1000;
+  
+  const isProcessing = status[0].status === ProcessStatusEnum.PROCESSING;
+  const hasExceededStaleTime = timeElapsedSinceLastUpdateInSeconds > MAX_PROCESSING_STALE_TIME;
+  
+  const processingStale = isProcessing && hasExceededStaleTime;
   if (processingStale) {
     console.warn(`Detected stale PROCESSING status for ${dbName}. Resetting to FREE.`);
     await chainService.setStatus(ProcessStatusEnum.FREE);
