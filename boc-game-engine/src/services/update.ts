@@ -4,6 +4,8 @@ import { ChainService } from './chainService';
 import { formStorage } from './getDataToStore';
 import { DataSource, QueryRunner } from 'typeorm';
 
+const MAX_DB_WRITES_BATCH_SIZE = parseInt(process.env.MAX_DB_WRITES_BATCH_SIZE || "1000", 10);
+
 export async function update(dataSource: DataSource): Promise<number> {
   const chainService = new ChainService(dataSource)
 
@@ -33,16 +35,16 @@ export async function update(dataSource: DataSource): Promise<number> {
                      public.info
       RESTART IDENTITY CASCADE
     `);
-    await queryRunner.manager.save(Chain, storageToInsert.chains);
-    await queryRunner.manager.save(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals);
-    await queryRunner.manager.save(User, storageToInsert.users);
-    await queryRunner.manager.save(Log, storageToInsert.logs);
-    await queryRunner.manager.save(Asset, storageToInsert.assets);
-    await queryRunner.manager.save(AssignOperator, storageToInsert.assignOperators);
-    await queryRunner.manager.save(AttackSpecies, storageToInsert.attackSpecies);
-    await queryRunner.manager.save(DefendSpecies, storageToInsert.defendSpecies);
-    await queryRunner.manager.save(NFTType, storageToInsert.nfttypes);
-    await queryRunner.manager.save(Info, storageToInsert.info);
+    await queryRunner.manager.save(Chain, storageToInsert.chains, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(ChainActionProposal, storageToInsert.currentPeriodChainActionProposals, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(User, storageToInsert.users, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(Log, storageToInsert.logs, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(Asset, storageToInsert.assets, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(AssignOperator, storageToInsert.assignOperators, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(AttackSpecies, storageToInsert.attackSpecies, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(DefendSpecies, storageToInsert.defendSpecies, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(NFTType, storageToInsert.nfttypes, { chunk: MAX_DB_WRITES_BATCH_SIZE });
+    await queryRunner.manager.save(Info, storageToInsert.info, { chunk: MAX_DB_WRITES_BATCH_SIZE });
     await queryRunner.commitTransaction();
   } catch (error) {
     await queryRunner.rollbackTransaction();
