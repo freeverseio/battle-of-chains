@@ -1,4 +1,9 @@
 import { 
+  EntityTarget, 
+  DataSource, 
+  QueryRunner 
+} from 'typeorm';
+import { 
   Chain, 
   Log, 
   User, 
@@ -13,13 +18,12 @@ import {
 import { EventProcessor } from '../processor/process';
 import { ChainService } from './chainService';
 import { formStorage } from './getDataToStore';
-import { DataSource, QueryRunner } from 'typeorm';
 
 const MAX_DB_WRITES_BATCH_SIZE = parseInt(process.env.MAX_DB_WRITES_BATCH_SIZE || "1000", 10);
 
 async function saveInBatches<T>(
   queryRunner: QueryRunner,
-  entity: any,
+  entity: EntityTarget<T>,
   data: T[],
   batchSize: number,
   entityName: string
@@ -35,7 +39,7 @@ async function saveInBatches<T>(
 
 async function batchWrite<T>(
   queryRunner: QueryRunner,
-  entity: any,
+  entity: EntityTarget<T>,
   data: T[],
   entityName: string
 ): Promise<void> {
@@ -57,14 +61,12 @@ export async function update(dataSource: DataSource): Promise<number> {
 
   console.time("Total update process");
   
-  // Fetch chains and process events
   console.time("Fetch chains and process events");
   const allChains = await chainService.getAllChains();
   const eventProcessor = new EventProcessor(allChains);
   await eventProcessor.update();
   console.timeEnd("Fetch chains and process events");
 
-  // Prepare data for storage
   console.time("Prepare data for storage");
   const storage = eventProcessor.getStorage();
   const storageToInsert = formStorage(storage);
