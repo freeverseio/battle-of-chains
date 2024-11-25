@@ -21,6 +21,7 @@ export async function update(dataSource: DataSource): Promise<number> {
   await queryRunner.connect();
   await queryRunner.startTransaction();
 
+  // Order is important here, since some tables refer to others. Respect the table creation order.
   try {
     await queryRunner.query(`
       TRUNCATE TABLE public.operator_assignment,
