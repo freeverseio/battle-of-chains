@@ -125,11 +125,12 @@ export const MultichainMintButton: React.FC<MultichainMintButtonProps> = ({
   useEffect(() => {
     const performUpdateAndRefetch = async () => {
       if (isConfirmed) {
+        setModalState("transaction_mint_success");
         await new Promise((resolve) => setTimeout(resolve, 2000));
         await update();
         await new Promise((resolve) => setTimeout(resolve, 4000));
         refetchAll();
-        setModalState("transaction_mint_success");
+        
       } else if (writeError) {
         console.error(writeError);
         setModalError(writeError.message);

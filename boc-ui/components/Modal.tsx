@@ -91,7 +91,7 @@ const Modal: React.FC = () => {
               <DialogTitle>Multichain Atomic Mint Successful</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              Assets have been minted successfully.
+            Assets have been minted successfully and will appear in your inventory shortly.
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
@@ -147,7 +147,7 @@ const Modal: React.FC = () => {
               <DialogTitle>Vote Transaction Sent Successfully</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              The vote transaction was successfully sent.
+              The vote transaction was successfully sent. Your vote will be displayed shortly
             </DialogDescription>
             <DialogFooter>
               <Button variant="default" onClick={closeModal}>
@@ -383,8 +383,7 @@ const Modal: React.FC = () => {
               <DialogTitle>Joining Home Chain</DialogTitle>
             </DialogHeader>
             <DialogDescription>
-              The join transaction is being processed. Please wait until the
-              transaction reaches full finality.
+              The join transaction is being processed. Please wait ...
             </DialogDescription>
           </div>
         )}

@@ -52,11 +52,11 @@ export function UpgradeButton({
   useEffect(() => {
     const performUpdateAndRefetch = async () => {
       if (isConfirmed) {
+        setModalState("transaction_upgrade_success");
         await new Promise((resolve) => setTimeout(resolve, 3000));
         await update();
         await new Promise((resolve) => setTimeout(resolve, 4000));
         refetchAll();
-        setModalState("transaction_upgrade_success");
       } else if (writeError) {
         console.error(writeError);
         setModalError(writeError.message);
