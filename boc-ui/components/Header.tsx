@@ -97,7 +97,7 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                     target="_blank"
                     className="mx-2 text-2xl font-bold text-transparent bg-clip-text bg-[length:200%_200%] animate-wave whitespace-nowrap hover:text-white bg-custom-gradient"
                   >
-                    Tutorial{" "}
+                    Learn More{" "}
                   </Link>
                 )}
               </TabsList>
