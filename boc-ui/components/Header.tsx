@@ -8,6 +8,7 @@ import { useAccount } from "wagmi";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { RefreshButton } from "./RefreshButton";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
 
 interface HeaderProps {
   activeTab: string;
@@ -25,8 +26,12 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
         {/* Top Section */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Logo */}
-          <h1 className="text-3xl font-bold pixel-text">Battle Of Chains</h1>
-
+          <div className="flex items-center">
+            <h1 className="text-3xl font-bold pixel-text">Battle Of Chains</h1>
+            <span className="ml-4">
+              <Badge variant="alpha">Alpha</Badge>
+            </span>
+          </div>
           {/* Right Side Controls */}
           <div className="flex flex-wrap items-center gap-4">
             {!loading && !error && user && (
