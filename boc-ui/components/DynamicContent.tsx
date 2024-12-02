@@ -12,6 +12,8 @@ import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { ChainSelection } from "./ChainSelection";
 import { useHasHomeChain } from "@/hooks/useBattleOfChains";
 import { ChainsLeaderboard } from "@/components/Leaderboard";
+import {MapComponent} from "@/components/Map";
+
 interface DynamicContentProps {
   activeTab: string;
 }
@@ -52,6 +54,8 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
         return <HomeBase />;
       case "attack":
         return <AttackMap />;
+      case "map":
+        return <MapComponent />;
       case "leaderboard":
         return <ChainsLeaderboard />;
         {
