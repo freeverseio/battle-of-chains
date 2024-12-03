@@ -78,8 +78,8 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     const increaseHPPercentForAttacker = Math.min(10, Math.round(damageHPPercentOnTarget / 5));
     const increaseHPPercentForTarget = Math.min(10, Math.round(damageHPPercentOnAttacker / 5));
 
-    let attackerCasulaties = 0;
-    let targetCasulaties = 0;
+    let attackerCasualties = 0;
+    let targetCasualties = 0;
 
 
     if (targetAssets.length > 0) {
@@ -87,7 +87,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
         for (const asset of targetAssets) {
             decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageTargetDefense));
             if (asset.health === 0) {
-                targetCasulaties++;
+                targetCasualties++;
                 reportDeath(asset, `Attack by ${attack.attacker}.`, attack.toBeExectutedAt, storage);
             } else {
                 if (!isFactory(asset.type)){
@@ -102,7 +102,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
         for (const asset of attackerAssets) {
             decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
             if (asset.health === 0) {
-                attackerCasulaties++;
+                attackerCasualties++;
                 reportDeath(asset, `Backfire when attacking ${attack.targetAddress}.`, attack.toBeExectutedAt, storage);
             } else { 
                 if (!isFactory(asset.type)) {
@@ -123,17 +123,17 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
     let attackerComment = `Your troops on ${chainName(attack.targetChain, storage.chains)} have attacked at ${attack.targetAddress}, they stole ${subtractedAmount} coins, attacked with ${damageHPPercentOnTarget}% success, and they were harmed by their backfire with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForAttacker > 0) attackerComment += `. Your troops gained ${increaseHPPercentForAttacker} percentual XP points`;
-    if (attackerCasulaties > 0) attackerComment += `. You lost ${attackerCasulaties} assets in the fight`;
+    if (attackerCasualties > 0) attackerComment += `. You lost ${attackerCasualties} assets in the fight`;
 
     let targetComment = `You were attacked on ${chainName(attack.targetChain, storage.chains)} by ${attack.attacker}; they stole ${subtractedAmount} coins, and attacked you with ${damageHPPercentOnTarget}% success; you backfired and harmed them with ${damageHPPercentOnAttacker}% success`;
     if (increaseHPPercentForTarget > 0) targetComment += `. Your troops gained ${increaseHPPercentForTarget} percentual XP points`;
-    if (targetCasulaties > 0) targetComment += `. You lost ${targetCasulaties} assets in the fight`;
+    if (targetCasualties > 0) targetComment += `. You lost ${targetCasualties} assets in the fight`;
 
     log2user(attack.attacker, attackerComment, attack.toBeExectutedAt, storage.logs);
     log2user(attack.targetAddress, targetComment, attack.toBeExectutedAt, storage.logs);
 
     // If the target user was in a homechain, and no assets were left to defend it, damage the homechain.
-    if (isTargetUserInHomechain && (targetCasulaties >= availableTargetAssets.length)) {
+    if (isTargetUserInHomechain && (targetCasualties >= availableTargetAssets.length)) {
         killHomechain(targetUser, attack.toBeExectutedAt, storage);
     }
 }
