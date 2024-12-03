@@ -157,7 +157,21 @@ export const MapComponent: React.FC = () => {
           tooltipOverlay.setOffset([0, 0]);
           tooltipElement.classList.remove("right-0");
         }
- 
+        if (pixelPosition[1] < 100) {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.add("top-16");
+        } else {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.remove("top-16");
+        }
+        if (pixelPosition[1] > mapSize[1] - 100) {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.add("-bottom-16");
+        } else {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.remove("-bottom-16");
+        }
+
         tooltipOverlay.setPosition(coordinates);
  
         const chainId = feature.get("chainId");
