@@ -3,12 +3,12 @@
     {
       "chain_id": 137,
       "name": "Polygon",
-      "score": 7152
+      "score": 9830
     },
     {
       "chain_id": 1,
       "name": "Ethereum",
-      "score": 242
+      "score": 248
     },
     {
       "chain_id": 42161,
@@ -22,8 +22,8 @@
       "homechain": 137,
       "name": "GLogic",
       "joined_timestamp": 1729162728,
-      "score": 6869,
-      "treasury": 796,
+      "score": 9547,
+      "treasury": 804,
       "treasuryLastUpdate": 1730728802,
       "health": 100000,
       "xp": 300,
@@ -35,8 +35,8 @@
       "name": "Godzilla",
       "joined_timestamp": 1729163364,
       "score": 2,
-      "treasury": 409,
-      "treasuryLastUpdate": 1730728802,
+      "treasury": 0,
+      "treasuryLastUpdate": 1730125577,
       "health": 0,
       "xp": 0,
       "level": 0
@@ -47,8 +47,8 @@
       "name": "dani",
       "joined_timestamp": 1729243836,
       "score": 34,
-      "treasury": 268,
-      "treasuryLastUpdate": 1730728802,
+      "treasury": 0,
+      "treasuryLastUpdate": 1730389572,
       "health": 0,
       "xp": 0,
       "level": 0
@@ -58,8 +58,8 @@
       "homechain": 1,
       "name": "dani",
       "joined_timestamp": 1729588992,
-      "score": 234,
-      "treasury": 401,
+      "score": 240,
+      "treasury": 396,
       "treasuryLastUpdate": 1730728802,
       "health": 100000,
       "xp": 0,
@@ -83,8 +83,8 @@
       "name": "aaa",
       "joined_timestamp": 1729694808,
       "score": 0,
-      "treasury": 417,
-      "treasuryLastUpdate": 1730728802,
+      "treasury": 0,
+      "treasuryLastUpdate": 1730128168,
       "health": 0,
       "xp": 0,
       "level": 0
@@ -95,8 +95,8 @@
       "name": "Dani demo 24 Oct",
       "joined_timestamp": 1729766232,
       "score": 0,
-      "treasury": 416,
-      "treasuryLastUpdate": 1730728802,
+      "treasury": 0,
+      "treasuryLastUpdate": 1730129618,
       "health": 0,
       "xp": 0,
       "level": 0
@@ -119,8 +119,8 @@
       "name": "dani arb",
       "joined_timestamp": 1729863588,
       "score": 0,
-      "treasury": 416,
-      "treasuryLastUpdate": 1730728802,
+      "treasury": 0,
+      "treasuryLastUpdate": 1730129537,
       "health": 0,
       "xp": 0,
       "level": 0
@@ -380,16 +380,16 @@
       "type": "0",
       "creation_timestamp": 1729164120,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "xp": 297,
-      "health": 0,
-      "level": 3,
+      "xp": 2686,
+      "health": 1201457,
+      "level": 4,
       "attack": 260,
       "defense": 140,
-      "age": 651454524,
+      "age": 678182264,
       "potential": 15,
       "travelSpeed": 9,
       "species": 15,
-      "statsLastUpdate": 1730214807,
+      "statsLastUpdate": 1730728802,
       "state": 0
     },
     {
@@ -1479,7 +1479,7 @@
       "creation_timestamp": 1730121756,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 7125,
       "level": 0,
       "attack": 1,
       "defense": 10,
@@ -1803,7 +1803,7 @@
       "creation_timestamp": 1730124588,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 6,
-      "health": 10000,
+      "health": 8836,
       "level": 0,
       "attack": 17,
       "defense": 8,
@@ -1857,7 +1857,7 @@
       "creation_timestamp": 1730124612,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 9825,
       "level": 0,
       "attack": 1,
       "defense": 7,
@@ -2019,7 +2019,7 @@
       "creation_timestamp": 1730124888,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 9825,
       "level": 0,
       "attack": 4,
       "defense": 7,
@@ -2126,16 +2126,16 @@
       "type": "1",
       "creation_timestamp": 1730124972,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "xp": 3,
-      "health": 10000,
+      "xp": 2,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 13,
-      "age": 31399196,
+      "age": 12454400,
       "potential": 3,
       "travelSpeed": 8,
       "species": 13,
-      "statsLastUpdate": 1730728802,
+      "statsLastUpdate": 1730364479,
       "state": 0
     },
     {
@@ -2342,7 +2342,7 @@
       "type": "1",
       "creation_timestamp": 1730126388,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 7,
+      "xp": 8,
       "health": 10000,
       "level": 0,
       "attack": 4,
@@ -2396,7 +2396,7 @@
       "type": "1",
       "creation_timestamp": 1730126448,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 7,
+      "xp": 8,
       "health": 10000,
       "level": 0,
       "attack": 12,
@@ -2451,7 +2451,7 @@
       "creation_timestamp": 1730126712,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 6221,
+      "health": 4821,
       "level": 0,
       "attack": 6,
       "defense": 1,
@@ -2721,7 +2721,7 @@
       "creation_timestamp": 1730127240,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 7125,
       "level": 0,
       "attack": 1,
       "defense": 10,
@@ -2775,7 +2775,7 @@
       "creation_timestamp": 1730127312,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 9508,
       "level": 0,
       "attack": 3,
       "defense": 1,
@@ -2936,16 +2936,16 @@
       "type": "1",
       "creation_timestamp": 1730129064,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "xp": 4,
-      "health": 10000,
+      "xp": 3,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 15,
-      "age": 31186403,
+      "age": 12241607,
       "potential": 10,
       "travelSpeed": 2,
       "species": 1,
-      "statsLastUpdate": 1730728802,
+      "statsLastUpdate": 1730364479,
       "state": 0
     },
     {
@@ -3045,7 +3045,7 @@
       "creation_timestamp": 1730187960,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 10000,
+      "health": 9508,
       "level": 0,
       "attack": 7,
       "defense": 1,
@@ -3153,7 +3153,7 @@
       "creation_timestamp": 1730188284,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 4,
-      "health": 9876,
+      "health": 8476,
       "level": 0,
       "attack": 8,
       "defense": 2,
@@ -3261,7 +3261,7 @@
       "creation_timestamp": 1730188980,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 3,
-      "health": 6647,
+      "health": 5247,
       "level": 0,
       "attack": 4,
       "defense": 1,
@@ -3315,7 +3315,7 @@
       "creation_timestamp": 1730195592,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 1,
-      "health": 10000,
+      "health": 7125,
       "level": 0,
       "attack": 3,
       "defense": 10,
@@ -3423,7 +3423,7 @@
       "creation_timestamp": 1730200380,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 1,
-      "health": 10000,
+      "health": 8925,
       "level": 0,
       "attack": 1,
       "defense": 8,
@@ -3531,7 +3531,7 @@
       "creation_timestamp": 1730200440,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 1,
-      "health": 10000,
+      "health": 9346,
       "level": 0,
       "attack": 12,
       "defense": 1,
@@ -3584,16 +3584,16 @@
       "type": "1",
       "creation_timestamp": 1730200464,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "xp": 1,
-      "health": 10000,
+      "xp": 0,
+      "health": 0,
       "level": 0,
       "attack": 1,
       "defense": 11,
-      "age": 27473603,
+      "age": 8528807,
       "potential": 5,
       "travelSpeed": 10,
       "species": 15,
-      "statsLastUpdate": 1730728802,
+      "statsLastUpdate": 1730364479,
       "state": 0
     },
     {
@@ -4665,7 +4665,7 @@
       "creation_timestamp": 1730274912,
       "owner": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "xp": 1,
-      "health": 10000,
+      "health": 9825,
       "level": 0,
       "attack": 3,
       "defense": 7,
@@ -4880,7 +4880,7 @@
       "type": "1",
       "creation_timestamp": 1730303472,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 3,
+      "xp": 4,
       "health": 10000,
       "level": 0,
       "attack": 4,
@@ -4934,7 +4934,7 @@
       "type": "1",
       "creation_timestamp": 1730303844,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 3,
+      "xp": 4,
       "health": 10000,
       "level": 0,
       "attack": 12,
@@ -4988,7 +4988,7 @@
       "type": "1",
       "creation_timestamp": 1730304636,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 3,
+      "xp": 4,
       "health": 10000,
       "level": 0,
       "attack": 4,
@@ -5096,7 +5096,7 @@
       "type": "1",
       "creation_timestamp": 1730305932,
       "owner": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
-      "xp": 3,
+      "xp": 4,
       "health": 10000,
       "level": 0,
       "attack": 4,
@@ -10024,13 +10024,13 @@
       "id": 490,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730205376,
-      "comment": "Your troops on Polygon have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 5 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Polygon have attacked at 0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 491,
       "user_address": "0xc52293dcf9be02c6ef7e6f840bf0f0e2fc45c646",
       "timestamp": 1730205376,
-      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 5 coins, and attacked you with 100% success; you backfired and harmed them with 0% success. You lost 9 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 0% success. You lost 9 assets in the fight"
     },
     {
       "id": 492,
@@ -10552,613 +10552,613 @@
       "id": 578,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730214807,
-      "comment": "Your asset 1104016550523782237079842312905441614446811889623235855066604937361421930101 on Polygon has died. Reason: Backfire when attacking 0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd."
+      "comment": "Your troops on Polygon have attacked at 0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd, they stole 249 coins, attacked with 100% success, and they were harmed by their backfire with 6% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 579,
-      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
+      "user_address": "0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd",
       "timestamp": 1730214807,
-      "comment": "Your troops on Polygon have attacked at 0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd, they stole 249 coins, attacked with 100% success, and they were harmed by their backfire with 15% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 249 coins, and attacked you with 100% success; you backfired and harmed them with 6% success. Your troops gained 1 percentual XP points"
     },
     {
       "id": 580,
-      "user_address": "0xc0486c28bed8ca9035725f58e1d4a7adf9813ffd",
-      "timestamp": 1730214807,
-      "comment": "You were attacked on Polygon by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 249 coins, and attacked you with 100% success; you backfired and harmed them with 15% success. Your troops gained 3 percentual XP points"
-    },
-    {
-      "id": 581,
-      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "timestamp": 1730216008,
-      "comment": "Your asset 1104016550523782237079842312905441614446811889623235855066604937361421930101 on Polygon has died. Reason: Attack by 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6."
-    },
-    {
-      "id": 582,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730216008,
       "comment": "Your asset 27963641338264375095295564652300173001657331905271703465006219291685528178293 on Polygon has died. Reason: Attack by 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6."
     },
     {
-      "id": 583,
+      "id": 581,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730216008,
       "comment": "Your asset 66520293947544344560889365497505855080268127416707438362041847122193990516918 on Polygon has died. Reason: Backfire when attacking 0x4e6da57f62b9954fbb6bab531f556be08e128e75."
     },
     {
-      "id": 584,
+      "id": 582,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730216008,
       "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
-      "id": 585,
+      "id": 583,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730216008,
-      "comment": "You were attacked on Polygon by 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Polygon by 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
-      "id": 586,
+      "id": 584,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216256,
       "comment": "You have joined the game, supporting Arbitrum. Go ahead and do your first multichain atomic mints."
     },
     {
-      "id": 587,
+      "id": 585,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216340,
       "comment": "You have created an asset of type: attack, and species: European Bureaucrat, on Polygon, with tokenId = 99831261652347377698926980092971091564090687710612039115792301982206881704924. Regulates anything that moves. Attacks with endless paperwork and compliance forms. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 588,
+      "id": 586,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216340,
       "comment": "You have created an asset of type: attack, and species: White Hacker, on Ethereum, with tokenId = 99831261652347377698926980092971091564090687710612039115792301982206881704924. The 'ethical' hacker who claims to be on your side… until they aren’t. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 589,
+      "id": 587,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216340,
       "comment": "You have created an asset of type: attack, and species: SEC Lawyer, on Arbitrum, with tokenId = 99831261652347377698926980092971091564090687710612039115792301982206881704924. Attacks with paperwork and regulations. No firewall can block the law. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 590,
+      "id": 588,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216352,
       "comment": "You have created an asset of type: defense, and species: Product Owner, on Polygon, with tokenId = 38129141040390124702583944774639567060793416476355505823680720239418835479516. Has never coded a day in their life, but knows exactly why your implementation is wrong. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 591,
+      "id": 589,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216352,
       "comment": "You have created an asset of type: defense, and species: Microsoft Developer, on Ethereum, with tokenId = 38129141040390124702583944774639567060793416476355505823680720239418835479516. An expert in writing code to fit perfectly with Windows updates. Complains if it has to run on Linux. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 592,
+      "id": 590,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216352,
       "comment": "You have created an asset of type: defense, and species: Academic Professor, on Arbitrum, with tokenId = 38129141040390124702583944774639567060793416476355505823680720239418835479516. Highly knowledgeable, but only if the knowledge is 10+ years old and theoretical. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 593,
-      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
-      "timestamp": 1730216420,
-      "comment": "Your asset 1104016550523782237079842312905441614446811889623235855066604937361421930101 on Polygon has died. Reason: Attack by 0x529f48318fd5af1955bb65afb082889a5808b678."
-    },
-    {
-      "id": 594,
+      "id": 591,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730216420,
       "comment": "Your asset 27963641338264375095295564652300173001657331905271703465006219291685528178293 on Polygon has died. Reason: Attack by 0x529f48318fd5af1955bb65afb082889a5808b678."
     },
     {
-      "id": 595,
+      "id": 592,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730216420,
       "comment": "Your asset 91105346999103575317909013356817821056568209279593895367643868275406329656952 on Polygon has died. Reason: Backfire when attacking 0x4e6da57f62b9954fbb6bab531f556be08e128e75."
     },
     {
-      "id": 596,
+      "id": 593,
       "user_address": "0x529f48318fd5af1955bb65afb082889a5808b678",
       "timestamp": 1730216420,
       "comment": "Your troops on Polygon have attacked at 0x4e6da57f62b9954fbb6bab531f556be08e128e75, they stole 0 coins, attacked with 0% success, and they were harmed by their backfire with 100% success. You lost 1 assets in the fight"
     },
     {
-      "id": 597,
+      "id": 594,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730216420,
-      "comment": "You were attacked on Polygon by 0x529f48318fd5af1955bb65afb082889a5808b678; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 2 assets in the fight"
+      "comment": "You were attacked on Polygon by 0x529f48318fd5af1955bb65afb082889a5808b678; they stole 0 coins, and attacked you with 0% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
-      "id": 598,
+      "id": 595,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216580,
       "comment": "Your troops on Arbitrum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 15:45, UTC"
     },
     {
-      "id": 599,
+      "id": 596,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730216580,
       "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 15:45, UTC"
     },
     {
-      "id": 600,
+      "id": 597,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216664,
       "comment": "You have created an asset of type: defense, and species: C++ Developer, on Polygon, with tokenId = 41154298468563283047514732280574310097580241704870576819927949732061054249948. The wizard of low-level magic, with pointers, manual memory management, and a superiority complex. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 601,
+      "id": 598,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216664,
       "comment": "You have created an asset of type: defense, and species: Rust Developer, on Ethereum, with tokenId = 41154298468563283047514732280574310097580241704870576819927949732061054249948. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 602,
+      "id": 599,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216664,
       "comment": "You have created an asset of type: defense, and species: Product Owner, on Arbitrum, with tokenId = 41154298468563283047514732280574310097580241704870576819927949732061054249948. Has never coded a day in their life, but knows exactly why your implementation is wrong. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 603,
+      "id": 600,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216700,
       "comment": "Your troops on Arbitrum have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 308Km away, and will take 29 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 33 min."
     },
     {
-      "id": 604,
+      "id": 601,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216712,
       "comment": "You have created an asset of type: attack, and species: Influencer, on Polygon, with tokenId = 14668520261224692185632484053246905407501281463061314194507798902590646528988. Wields hype and misinformation like a weapon. A single tweet can bring down entire companies. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 605,
+      "id": 602,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216712,
       "comment": "You have created an asset of type: attack, and species: Satoshi Nakamoto, on Ethereum, with tokenId = 14668520261224692185632484053246905407501281463061314194507798902590646528988. The myth, the legend. No one knows what he wants, but everyone fears his return. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 606,
+      "id": 603,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730216712,
       "comment": "You have created an asset of type: attack, and species: High-School Hacker, on Arbitrum, with tokenId = 14668520261224692185632484053246905407501281463061314194507798902590646528988. Just learned SQL injection and thinks they’re the next Anonymous. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 607,
+      "id": 604,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730217594,
       "comment": "Your asset 13010011586083804083800641993364524394031242028354784446405225014994183880886 on Polygon has died. Reason: Backfire when attacking 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23."
     },
     {
-      "id": 608,
+      "id": 605,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730217594,
       "comment": "Your troops on Polygon have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 0 coins, attacked with 6% success, and they were harmed by their backfire with 100% success. Your troops gained 1 percentual XP points. You lost 1 assets in the fight"
     },
     {
-      "id": 609,
+      "id": 606,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730217594,
       "comment": "You were attacked on Polygon by 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6; they stole 0 coins, and attacked you with 6% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points"
     },
     {
-      "id": 610,
+      "id": 607,
       "chain": 42161,
       "timestamp": 1730217852,
       "comment": "User 0x93265dd6caf87f5426b641623cbf81da1fec2bdc is now supporting that Arbitrum performs an Defend action."
     },
     {
-      "id": 611,
+      "id": 608,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730217852,
       "comment": "You are now supporting that Arbitrum performs an Defend action."
     },
     {
-      "id": 612,
+      "id": 609,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730218676,
       "comment": "Your asset 66057979215653289099562052760734921540679241766849125926542385189126540013744 on Arbitrum has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 613,
+      "id": 610,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730218676,
-      "comment": "Your troops on Arbitrum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 22% success. Your troops gained 10 percentual XP points"
+      "comment": "Your troops on Arbitrum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 1% success. Your troops gained 10 percentual XP points"
     },
     {
-      "id": 614,
+      "id": 611,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730218676,
-      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 22% success. Your troops gained 4 percentual XP points. You lost 1 assets in the fight"
+      "comment": "You were attacked on Arbitrum by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 1% success. You lost 1 assets in the fight"
     },
     {
-      "id": 615,
+      "id": 612,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219700,
       "comment": "Your troops on Ethereum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
-      "id": 616,
+      "id": 613,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730219700,
       "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location on Ethereum to attack. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
-      "id": 617,
+      "id": 614,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219712,
       "comment": "Your troops on Arbitrum are getting ready to depart towards 0x971af926ae88704f804c8c847711285a743ab0b0. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
-      "id": 618,
+      "id": 615,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730219712,
       "comment": "Troops by user 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b are getting ready to travel towards your location on Arbitrum to attack. They will depart at 29/10/2024, 16:37, UTC"
     },
     {
-      "id": 619,
+      "id": 616,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219820,
       "comment": "Your troops on Ethereum have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 179Km away, and will take 8 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 10 min."
     },
     {
-      "id": 620,
+      "id": 617,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730219832,
       "comment": "Your troops on Arbitrum have departed towards 0x971af926ae88704f804c8c847711285a743ab0b0, which is 179Km away, and will take 6 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 7 min."
     },
     {
-      "id": 621,
+      "id": 618,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730220264,
       "comment": "Your asset 66057979215653289099562052760734921540679241766849125926542385189126540013744 on Arbitrum has died. Reason: Attack by 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b."
     },
     {
-      "id": 622,
+      "id": 619,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730220264,
       "comment": "Your troops on Arbitrum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
-      "id": 623,
+      "id": 620,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730220264,
       "comment": "You were attacked on Arbitrum by 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 0% success. You lost 1 assets in the fight"
     },
     {
-      "id": 624,
+      "id": 621,
       "user_address": "0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b",
       "timestamp": 1730220396,
       "comment": "Your troops on Ethereum have attacked at 0x971af926ae88704f804c8c847711285a743ab0b0, they stole 0 coins, attacked with 100% success, and they were harmed by their backfire with 0% success. Your troops gained 10 percentual XP points"
     },
     {
-      "id": 625,
+      "id": 622,
       "user_address": "0x971af926ae88704f804c8c847711285a743ab0b0",
       "timestamp": 1730220396,
       "comment": "You were attacked on Ethereum by 0x6b8b6fc6c7ab677a50da87ea7967cad921dab97b; they stole 0 coins, and attacked you with 100% success; you backfired and harmed them with 0% success"
     },
     {
-      "id": 626,
+      "id": 623,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730274912,
       "comment": "You have created an asset of type: defense, and species: Community Manager, on Polygon, with tokenId = 62126145517269934467906455054058772638032139524673815297737801252133227630197. Keeps the online mobs at bay with memes, emojis, and the occasional thinly veiled PR statement. It costed 50 from your treasury. The asset has level 2. It benefited from using your factory of level 2 in that chain. You can trade this asset in that chain."
     },
     {
-      "id": 627,
+      "id": 624,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730274912,
       "comment": "You have created an asset of type: defense, and species: C++ Developer, on Ethereum, with tokenId = 62126145517269934467906455054058772638032139524673815297737801252133227630197. The wizard of low-level magic, with pointers, manual memory management, and a superiority complex. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 628,
+      "id": 625,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730274912,
       "comment": "You have created an asset of type: defense, and species: Cook, on Arbitrum, with tokenId = 62126145517269934467906455054058772638032139524673815297737801252133227630197. Knows exactly how to slice, dice, and occasionally burn both food and code. Culinary and debugging expert. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 629,
+      "id": 626,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730280648,
       "comment": "Your troops on Polygon are getting ready to depart towards 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6. They will depart at 30/10/2024, 09:32, UTC"
     },
     {
-      "id": 630,
+      "id": 627,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730280648,
       "comment": "Troops by user 0x93265dd6caf87f5426b641623cbf81da1fec2bdc are getting ready to travel towards your location on Polygon to attack. They will depart at 30/10/2024, 09:32, UTC"
     },
     {
-      "id": 631,
+      "id": 628,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730280768,
       "comment": "Your troops on Polygon have departed towards 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6, which is 720Km away, and will take 29 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 33 min."
     },
     {
-      "id": 632,
+      "id": 629,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "Your asset 21108968094816440333191151828781309115415690224244399788178537794337524908214 on Polygon has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 633,
+      "id": 630,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "Your asset 55979555036832267372373238300000782830564791748604354267713975294555316781238 on Polygon has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 634,
+      "id": 631,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "Your asset 66520293947544344560889365497505855080268127416707438362041847122193990516918 on Polygon has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 635,
+      "id": 632,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "Your asset 13010011586083804083800641993364524394031242028354784446405225014994183880886 on Polygon has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 636,
+      "id": 633,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "Your asset 67130663319241359184020713630624703647839225954721491705638777725520473456822 on Polygon has died. Reason: Attack by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc."
     },
     {
-      "id": 637,
+      "id": 634,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730282746,
       "comment": "Your asset 14668520261224692185632484053246905407501281463061314194507798902590646528988 on Polygon has died. Reason: Backfire when attacking 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6."
     },
     {
-      "id": 638,
+      "id": 635,
       "user_address": "0x93265dd6caf87f5426b641623cbf81da1fec2bdc",
       "timestamp": 1730282746,
       "comment": "Your troops on Polygon have attacked at 0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6, they stole 0 coins, attacked with 94% success, and they were harmed by their backfire with 100% success. Your troops gained 10 percentual XP points. You lost 1 assets in the fight"
     },
     {
-      "id": 639,
+      "id": 636,
       "user_address": "0xb8fe075b9fae9057cc82ecfc2a96c7dc796b80b6",
       "timestamp": 1730282746,
       "comment": "You were attacked on Polygon by 0x93265dd6caf87f5426b641623cbf81da1fec2bdc; they stole 0 coins, and attacked you with 94% success; you backfired and harmed them with 100% success. Your troops gained 10 percentual XP points. You lost 5 assets in the fight"
     },
     {
-      "id": 640,
+      "id": 637,
       "chain": 137,
       "timestamp": 1730296800,
       "comment": "Chain Action selected! Polygon decided to Defend"
     },
     {
-      "id": 641,
+      "id": 638,
       "chain": 42161,
       "timestamp": 1730296800,
       "comment": "Chain Action selected! Arbitrum decided to Defend"
     },
     {
-      "id": 642,
+      "id": 639,
       "chain": 1,
       "timestamp": 1730296800,
       "comment": "Chain Action missed! Ethereum did not have any proposal in the current period"
     },
     {
-      "id": 643,
+      "id": 640,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730302608,
       "comment": "You have created an asset of type: attack, and species: Vilatik Tuberin, on Polygon, with tokenId = 65481666659694378721411767264248612361907262936383916097531368408137919507747. A crypto genius—or so they claim. Known for wild ideas and ‘innovations’ that cause chaos. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 644,
+      "id": 641,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730302608,
       "comment": "You have created an asset of type: attack, and species: Bullshiter, on Ethereum, with tokenId = 65481666659694378721411767264248612361907262936383916097531368408137919507747. A master of buzzwords and vague promises. Can talk for hours without actually saying anything of value. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 645,
+      "id": 642,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730302608,
       "comment": "You have created an asset of type: attack, and species: NSA Surveillor, on Arbitrum, with tokenId = 65481666659694378721411767264248612361907262936383916097531368408137919507747. Sees everything, hears everything. Your secrets are already in their database. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 646,
+      "id": 643,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303064,
       "comment": "You have created an asset of type: defense, and species: Product Owner, on Polygon, with tokenId = 109037493890283259562547310993841802398882875263649052832991423245986601512227. Has never coded a day in their life, but knows exactly why your implementation is wrong. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 647,
+      "id": 644,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303064,
       "comment": "You have created an asset of type: defense, and species: Microsoft Developer, on Ethereum, with tokenId = 109037493890283259562547310993841802398882875263649052832991423245986601512227. An expert in writing code to fit perfectly with Windows updates. Complains if it has to run on Linux. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 648,
+      "id": 645,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303064,
       "comment": "You have created an asset of type: defense, and species: Python Developer, on Arbitrum, with tokenId = 109037493890283259562547310993841802398882875263649052832991423245986601512227. Can get any job done in five lines of code, but don’t ask them about static typing. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 649,
+      "id": 646,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303100,
       "comment": "You have created an asset of type: attack, and species: Gevin Woud, on Polygon, with tokenId = 73519356427410866267252264493111788492489460229036432801623541431622296022307. The mastermind engineer whose coding skills are so advanced, it’s basically magic. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 650,
+      "id": 647,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303100,
       "comment": "You have created an asset of type: attack, and species: Mercenary Hacker, on Ethereum, with tokenId = 73519356427410866267252264493111788492489460229036432801623541431622296022307. A hacker for hire. They don’t care who you are, as long as the payment clears. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 651,
+      "id": 648,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303100,
       "comment": "You have created an asset of type: attack, and species: Influencer, on Arbitrum, with tokenId = 73519356427410866267252264493111788492489460229036432801623541431622296022307. Wields hype and misinformation like a weapon. A single tweet can bring down entire companies. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 652,
+      "id": 649,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303472,
       "comment": "You have created an asset of type: defense, and species: Product Owner, on Polygon, with tokenId = 41030063613739014892632484371455018727306631287044651621908472424205368569123. Has never coded a day in their life, but knows exactly why your implementation is wrong. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 653,
+      "id": 650,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303472,
       "comment": "You have created an asset of type: defense, and species: High-School Developer, on Ethereum, with tokenId = 41030063613739014892632484371455018727306631287044651621908472424205368569123. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 654,
+      "id": 651,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303472,
       "comment": "You have created an asset of type: defense, and species: Venture Capitalist, on Arbitrum, with tokenId = 41030063613739014892632484371455018727306631287044651621908472424205368569123. Pumps money into ideas they barely understand but insists on being the ‘visionary’. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 655,
+      "id": 652,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303844,
       "comment": "You have created an asset of type: defense, and species: Venture Capitalist, on Polygon, with tokenId = 106174006412953747075589160153853187027811673922014415485217615362907210132771. Pumps money into ideas they barely understand but insists on being the ‘visionary’. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 656,
+      "id": 653,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303844,
       "comment": "You have created an asset of type: defense, and species: Rust Developer, on Ethereum, with tokenId = 106174006412953747075589160153853187027811673922014415485217615362907210132771. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 657,
+      "id": 654,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730303844,
       "comment": "You have created an asset of type: defense, and species: IT Guy, on Arbitrum, with tokenId = 106174006412953747075589160153853187027811673922014415485217615362907210132771. Can fix your computer, network, and spirit—all while pretending to be annoyed. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 658,
+      "id": 655,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730304636,
       "comment": "You have created an asset of type: defense, and species: Cook, on Polygon, with tokenId = 94219576011303779551559492303980271253824137756336748637574676564244040396067. Knows exactly how to slice, dice, and occasionally burn both food and code. Culinary and debugging expert. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 659,
+      "id": 656,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730304636,
       "comment": "You have created an asset of type: defense, and species: Rust Developer, on Ethereum, with tokenId = 94219576011303779551559492303980271253824137756336748637574676564244040396067. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 660,
+      "id": 657,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730304636,
       "comment": "You have created an asset of type: defense, and species: QA Guy, on Arbitrum, with tokenId = 94219576011303779551559492303980271253824137756336748637574676564244040396067. Lives to find bugs you didn’t even know existed. Always has that ‘Did you test this?’ face. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 661,
+      "id": 658,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305104,
       "comment": "You have created an asset of type: defense, and species: Cybersecurity Guru, on Polygon, with tokenId = 48581908891785548414337937917213710106709075153212855134085019841350512291107. Lives for catching vulnerabilities and cryptic log files. Knows ten ways to break your app. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 662,
+      "id": 659,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305104,
       "comment": "You have created an asset of type: defense, and species: Community Manager, on Ethereum, with tokenId = 48581908891785548414337937917213710106709075153212855134085019841350512291107. Keeps the online mobs at bay with memes, emojis, and the occasional thinly veiled PR statement. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 663,
+      "id": 660,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305104,
       "comment": "You have created an asset of type: defense, and species: High-School Developer, on Arbitrum, with tokenId = 48581908891785548414337937917213710106709075153212855134085019841350512291107. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 664,
+      "id": 661,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305932,
       "comment": "You have created an asset of type: defense, and species: High-School Developer, on Polygon, with tokenId = 25906850380668868882263981757870849335251065447885683337644898582960753224995. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 665,
+      "id": 662,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305932,
       "comment": "You have created an asset of type: defense, and species: High-School Developer, on Ethereum, with tokenId = 25906850380668868882263981757870849335251065447885683337644898582960753224995. Young, hungry, and self-taught—destined to become a legend or quit for TikTok fame. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 666,
+      "id": 663,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730305932,
       "comment": "You have created an asset of type: defense, and species: Full Stack Developer, on Arbitrum, with tokenId = 25906850380668868882263981757870849335251065447885683337644898582960753224995. The mythical jack-of-all-trades who knows just enough front-end and back-end to be dangerous. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 667,
+      "id": 664,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730306124,
       "comment": "You have created an asset of type: defense, and species: Rust Developer, on Polygon, with tokenId = 15173739858175011018500508864304597457987183392275462954549554696139688258851. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 668,
+      "id": 665,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730306124,
       "comment": "You have created an asset of type: defense, and species: Full Stack Developer, on Ethereum, with tokenId = 15173739858175011018500508864304597457987183392275462954549554696139688258851. The mythical jack-of-all-trades who knows just enough front-end and back-end to be dangerous. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 669,
+      "id": 666,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730306124,
       "comment": "You have created an asset of type: defense, and species: Rust Developer, on Arbitrum, with tokenId = 15173739858175011018500508864304597457987183392275462954549554696139688258851. Brave and fearless, a developer who laughs in the face of memory leaks, yet somehow always annoyed with C++. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 670,
+      "id": 667,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730360796,
       "comment": "Your troops on Ethereum are getting ready to depart towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23. They will depart at 31/10/2024, 07:48, UTC"
     },
     {
-      "id": 671,
+      "id": 668,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730360796,
       "comment": "Troops by user 0x4e6da57f62b9954fbb6bab531f556be08e128e75 are getting ready to travel towards your location on Ethereum to attack. They will depart at 31/10/2024, 07:48, UTC"
     },
     {
-      "id": 672,
+      "id": 669,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730360916,
       "comment": "Your troops on Ethereum have departed towards 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, which is 371Km away, and will take 51 hours of game time to arrive. Since gametime is x52 compared to real life, this amounts to 59 min."
     },
     {
-      "id": 673,
+      "id": 670,
       "chain": 137,
       "timestamp": 1730361144,
       "comment": "User 0x4e6da57f62b9954fbb6bab531f556be08e128e75 is now supporting that Polygon performs an Improve action."
     },
     {
-      "id": 674,
+      "id": 671,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730361144,
       "comment": "You are now supporting that Polygon performs an Improve action."
     },
     {
-      "id": 675,
+      "id": 672,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730363904,
       "comment": "You have created an asset of type: attack, and species: High-School Hacker, on Polygon, with tokenId = 38159847889322542997490971016019417496440905040407442417909717947406593174819. Just learned SQL injection and thinks they’re the next Anonymous. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 676,
+      "id": 673,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730363904,
       "comment": "You have created an asset of type: attack, and species: Influencer, on Ethereum, with tokenId = 38159847889322542997490971016019417496440905040407442417909717947406593174819. Wields hype and misinformation like a weapon. A single tweet can bring down entire companies. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
-      "id": 677,
+      "id": 674,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730363904,
       "comment": "You have created an asset of type: attack, and species: Influencer, on Arbitrum, with tokenId = 38159847889322542997490971016019417496440905040407442417909717947406593174819. Wields hype and misinformation like a weapon. A single tweet can bring down entire companies. It costed 0 from your treasury. The asset has level 0. You can trade this asset in that chain."
     },
     {
+      "id": 675,
+      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
+      "timestamp": 1730364479,
+      "comment": "Your asset 77199993177599041663787459567103420216702402318959723337619182859961144348277 on Ethereum has died. Reason: Backfire when attacking 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23."
+    },
+    {
+      "id": 676,
+      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
+      "timestamp": 1730364479,
+      "comment": "Your asset 92408899183015232898482231648403696677624849119286401865353717854371564392053 on Ethereum has died. Reason: Backfire when attacking 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23."
+    },
+    {
+      "id": 677,
+      "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
+      "timestamp": 1730364479,
+      "comment": "Your asset 84103510036617234485793234183630272287168788673164527176592968384520020725365 on Ethereum has died. Reason: Backfire when attacking 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23."
+    },
+    {
       "id": 678,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730364479,
-      "comment": "Your troops on Ethereum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 15 coins, attacked with 3% success, and they were harmed by their backfire with 24% success. Your troops gained 1 percentual XP points"
+      "comment": "Your troops on Ethereum have attacked at 0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23, they stole 20 coins, attacked with 4% success, and they were harmed by their backfire with 51% success. Your troops gained 1 percentual XP points. You lost 3 assets in the fight"
     },
     {
       "id": 679,
       "user_address": "0x4ca1fb886e0db12d69ee50e06f146a269c1a2d23",
       "timestamp": 1730364479,
-      "comment": "You were attacked on Ethereum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 15 coins, and attacked you with 3% success; you backfired and harmed them with 24% success. Your troops gained 5 percentual XP points"
+      "comment": "You were attacked on Ethereum by 0x4e6da57f62b9954fbb6bab531f556be08e128e75; they stole 20 coins, and attacked you with 4% success; you backfired and harmed them with 51% success. Your troops gained 10 percentual XP points"
     },
     {
       "id": 680,
@@ -11326,7 +11326,7 @@
       "id": 707,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730368308,
-      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on Polygon. The asset is still 2000 XP away from next level, which costs 2000. You only have 1274 in your treasury."
+      "comment": "You tried to upgrade to level 3 your asset 13563144125359810171902646428561361119354504136356455125191899811089713630837 on Polygon. The asset is still 2000 XP away from next level, which costs 2000. You only have 1270 in your treasury."
     },
     {
       "id": 708,
@@ -11410,7 +11410,7 @@
       "id": 721,
       "user_address": "0x4e6da57f62b9954fbb6bab531f556be08e128e75",
       "timestamp": 1730370996,
-      "comment": "You tried to upgrade your homebase to level 2. You are still 1200 XP away from next level, which costs 1200. You only have 972 in your treasury."
+      "comment": "You tried to upgrade your homebase to level 2. You are still 1200 XP away from next level, which costs 1200. You only have 968 in your treasury."
     },
     {
       "id": 722,

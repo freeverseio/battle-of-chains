@@ -202,6 +202,7 @@ export function isMercenary(user: UserType) : boolean {
 
 export function evolveTreasuryByUser(user: UserType, timestamp: number, storage: Storage) {
     if (!hasHomechain(user)) return;
+    if (user.health === 0) return;
     const secSinceLast = timestamp - user.treasuryLastUpdate;
     if (secSinceLast < 0) {
         console.log('WARNING: trying to evolve a treasury towards the past', user);
