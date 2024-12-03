@@ -1,6 +1,6 @@
 import murmurhash from 'murmurhash';
 import { Storage, PendingState, PendingAttack } from './types';
-import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, increaseAssetXPByPercent, isFactory, log2user, removePendingAction, reportDeath, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
+import { adaptPercetangeToAverage, addToTreasury, chainName, computeRandoms, decreaseAssetHealthByPercent, distanceMeter, evolveAssetsStats, evolveTreasuryByAddress, findSlowestAssetSpeed, findUser, getAlive, getAttackingAssets, getFreeInventoryInChain, getUserTreasury, hasHomechain, increaseAssetXPByPercent, isFactory, killHomechain, log2user, removePendingAction, reportDeath, setAssetsFree, subtractFromTreasury, time2travelDistance, userDoesNotExist } from './utils'
 import { AVERAGE_POTENTIAL, DEFENSE_BOOST_HOMECHAIN, TIME_SPEED_RATIO } from './constants';
 
 export function processPendingAttack(attack: PendingAttack, storage: Storage) {
@@ -126,4 +126,9 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
 
     log2user(attack.attacker, attackerComment, attack.toBeExectutedAt, storage.logs);
     log2user(attack.targetAddress, attackedComment, attack.toBeExectutedAt, storage.logs);
+
+    // If the attacked user was in a homechain, and no assets were left to defend it, damage the homechain.
+    if (isTargetUserInHomechain && (attackedCasulaties >= availableAttackedAssets.length)) {
+        killHomechain(targetUser, attack.toBeExectutedAt, storage);
+    }
 }

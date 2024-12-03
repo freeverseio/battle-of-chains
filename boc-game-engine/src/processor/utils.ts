@@ -769,3 +769,13 @@ export function reportDeath(asset: AssetType, reason: string, timestamp: number,
         storage.logs
     );
 }
+
+export function killHomechain(user: UserType, timestamp: number, storage: Storage) {
+    user.health = 0;
+    log2user(
+        user.address,
+        `You were left without assets to defend your homebase. It is now destroyed, and will not produce treasury until you upgrade.`,
+        timestamp,
+        storage.logs
+    );
+}
