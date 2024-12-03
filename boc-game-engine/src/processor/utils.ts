@@ -202,6 +202,7 @@ export function isMercenary(user: UserType) : boolean {
 
 export function evolveTreasuryByUser(user: UserType, timestamp: number, storage: Storage) {
     if (!hasHomechain(user)) return;
+    if (user.health === 0) return;
     const secSinceLast = timestamp - user.treasuryLastUpdate;
     if (secSinceLast < 0) {
         console.log('WARNING: trying to evolve a treasury towards the past', user);
@@ -765,6 +766,27 @@ export function reportDeath(asset: AssetType, reason: string, timestamp: number,
     log2user(
         asset.owner,
         `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has died. Reason: ${reason}`,
+        timestamp,
+        storage.logs
+    );
+}
+
+export function killHomechain(user: UserType, timestamp: number, storage: Storage) {
+    user.health = 0;
+    log2user(
+        user.address,
+        `You were left without assets to defend your homebase. It is now destroyed, and will not produce treasury until you upgrade.`,
+        timestamp,
+        storage.logs
+    );
+}
+
+export function respawnHomechain(user: UserType, timestamp: number, storage: Storage) {
+    user.health = 100 * constants.HEALTH_TO_INT;
+    user.treasuryLastUpdate = timestamp;
+    log2user(
+        user.address,
+        `Your homechain has been respawned and will restart producing treasury again.`,
         timestamp,
         storage.logs
     );
