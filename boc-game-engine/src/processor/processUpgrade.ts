@@ -1,6 +1,6 @@
 import { COST_PER_XP, XP_RATIO_COIN_FACTORY_TO_NORMAL_FACTORY } from './constants';
 import { Storage, UpgradeEvent, UserType } from './types';
-import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, subtractFromTreasury, upgradeAssetToLevel } from './utils'
+import { canUserAttackOrUpgradeOnChain, chainIsNotSupported, chainName, evolveTreasuryByAddress, findUser, getUserTreasury, hasHomechain, isCorrectOperator, isFactory, isUpgradeHomebase, level2xp, log2user, respawnHomechain, subtractFromTreasury, upgradeAssetToLevel } from './utils'
 
 export function processUpgrade(event: UpgradeEvent, storage: Storage): void {
     console.log(`Processing Upgrade Event ${event.timestamp}, ${event.user}, TokenID: ${event.tokenId}, Timestamp: ${event.timestamp}`);
@@ -72,6 +72,10 @@ function upgradeHomebase(user: UserType, event: UpgradeEvent, storage: Storage) 
     console.log('Upgrading homebase of user', event.user);
     if (!hasHomechain(user)) {
         console.log('WARNING: user does not have an assigned homebase');
+        return;
+    }
+    if (user.health === 0) {
+        respawnHomechain(user, event.timestamp, storage);
         return;
     }
 

@@ -780,3 +780,14 @@ export function killHomechain(user: UserType, timestamp: number, storage: Storag
         storage.logs
     );
 }
+
+export function respawnHomechain(user: UserType, timestamp: number, storage: Storage) {
+    user.health = 100 * constants.HEALTH_TO_INT;
+    user.treasuryLastUpdate = timestamp;
+    log2user(
+        user.address,
+        `Your homechain has been respawned and will restart producing treasury again.`,
+        timestamp,
+        storage.logs
+    );
+}
