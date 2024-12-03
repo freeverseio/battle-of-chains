@@ -56,12 +56,13 @@ export const MapComponent: React.FC = () => {
 
   useEffect(() => {
     const extent: [number, number, number, number] = [0, 0, 1024, 1024];
+ 
     const projection = new Projection({
       code: "custom-image",
       units: "pixels",
       extent: extent,
     });
-
+ 
     const vectorSource = new VectorSource();
     const vectorLayer = new VectorLayer({
       source: vectorSource,
@@ -69,7 +70,7 @@ export const MapComponent: React.FC = () => {
         const chainId = feature.get("chainId");
         const isHomechain = feature.get("isHomechain");
         const isLoggedUser = feature.get("isLoggedUser");
-
+ 
         return new Style({
           image: new Icon({
             src: isHomechain
@@ -81,7 +82,7 @@ export const MapComponent: React.FC = () => {
         });
       },
     });
-
+ 
     const map = new Map({
       target: mapRef.current!,
       layers: [
@@ -100,24 +101,24 @@ export const MapComponent: React.FC = () => {
         center: [extent[2] / 2, extent[3] / 2],
         zoom: 2,
         maxZoom: 4,
-        minZoom: 1.5,
+        minZoom: 2,
         extent: extent,
-        constrainOnlyCenter: true,
       }),
     });
-
-    // Create tooltip container
+ 
     const tooltipElement = document.createElement("div");
-    tooltipElement.className = "tooltip-container";
+    tooltipElement.className = "absolute -translate-y-1/2 pointer-events-auto z-[1000]";
+    
     const tooltipOverlay = new Overlay({
       element: tooltipElement,
-      offset: [0, 0],
+      offset: [10, 0],
       positioning: "center-left",
+      stopEvent: false
     });
+    
     map.addOverlay(tooltipOverlay);
     tooltipRef.current = tooltipOverlay;
-
-    // Create user overlay
+ 
     const userElement = document.createElement("div");
     userElement.className = "animate-pulse p-16";
     userOverlayRef.current = new Overlay({
@@ -125,38 +126,45 @@ export const MapComponent: React.FC = () => {
       positioning: "center-center",
     });
     map.addOverlay(userOverlayRef.current);
-
-    // Variable to track whether the tooltip should remain visible
+ 
     let tooltipVisible = false;
-
-    // Add event listeners to the tooltip element
+ 
     tooltipElement.addEventListener("pointerenter", () => {
       tooltipVisible = true;
     });
-
+ 
     tooltipElement.addEventListener("pointerleave", () => {
       tooltipVisible = false;
       tooltipElement.style.display = "none";
     });
-
-    // Handle pointer movement
+ 
     map.on("pointermove", (evt) => {
-      if (tooltipVisible) {
-        return;
-      }
-
+      if (tooltipVisible) return;
+ 
       const feature = map.forEachFeatureAtPixel(evt.pixel, (feat) => feat);
-
+      
       if (feature) {
         const coordinates = (feature.getGeometry() as Point).getCoordinates();
+        const mapSize = map.getSize();
+        const pixelPosition = map.getPixelFromCoordinate(coordinates);
+        
+        if (!mapSize) return;
+        
+        if (pixelPosition[0] > mapSize[0] - 220) {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.add("right-0");
+        } else {
+          tooltipOverlay.setOffset([0, 0]);
+          tooltipElement.classList.remove("right-0");
+        }
+ 
         tooltipOverlay.setPosition(coordinates);
-
+ 
         const chainId = feature.get("chainId");
-        const chainName =
-          chainsData?.allChains.nodes.find(
-            (chain: any) => chain.chainId === chainId
-          )?.name || "Unknown Chain";
-
+        const chainName = chainsData?.allChains.nodes.find(
+          (chain: any) => chain.chainId === chainId
+        )?.name || "Unknown Chain";
+ 
         ReactDOM.render(
           <PlayerTooltip
             address={feature.get("address")}
@@ -171,17 +179,17 @@ export const MapComponent: React.FC = () => {
         tooltipElement.style.display = "none";
       }
     });
-
+ 
     map.getViewport().addEventListener("mouseleave", () => {
       if (!tooltipVisible) {
         tooltipElement.style.display = "none";
       }
     });
-
+ 
     mapObjectRef.current = map;
     vectorLayerRef.current = vectorLayer;
     vectorSourceRef.current = vectorSource;
-
+ 
     return () => {
       tooltipElement.removeEventListener("pointerenter", () => {});
       tooltipElement.removeEventListener("pointerleave", () => {});
@@ -250,7 +258,7 @@ export const MapComponent: React.FC = () => {
       {chainsLoading && <p>Loading chains...</p>}
       {chainsError && <p>Error loading chains</p>}
       {chainsData && (
-        <div className="absolute -top-16 left-2 z-10 w-[200px]">
+        <div className="absolute -top-12 left-2 z-10 w-[200px]">
           <Select
             value={selectedChainId?.toString() ?? ""}
             onValueChange={(value) =>
@@ -285,7 +293,6 @@ export const MapComponent: React.FC = () => {
           </Select>
         </div>
       )}
-      <div ref={mapRef} className="w-full h-screen mt-12" />
-    </div>
+    <div ref={mapRef} className="w-full h-[calc(100vh-230px)] mt-4 " />    </div>
   );
 };

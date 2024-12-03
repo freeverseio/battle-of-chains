@@ -25,7 +25,7 @@ export const PlayerTooltip: FC<PlayerTooltipProps> = ({
   const formattedAddress = `${address?.slice(0, 6)}...${address?.slice(-4)}`;
 
   return (
-    <div className="min-w-[200px] bg-[#12021c] rounded-lg border border-white p-4 select-none relative">
+    <div className="min-w-[200px] z-[1000] bg-[#12021c] rounded-lg border border-white p-4 select-none relative">
       <div className="space-y-4">
         <div className="gap-2">
           <div className="text-accent-foreground text-2xl truncate">{name}</div>
