@@ -91,7 +91,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
                 reportDeath(asset, `Attack by ${attack.attacker}.`, attack.toBeExectutedAt, storage);
             } else {
                 if (!isFactory(asset.type)){
-                    increaseAssetXPByPercent(asset, increaseHPPercentForTarget * asset.potential / AVERAGE_POTENTIAL);
+                    increaseAssetXPByPercent(asset, increaseHPPercentForTarget * asset.potential / AVERAGE_POTENTIAL, attack.toBeExectutedAt, storage);
                 }
             }
         }
@@ -106,7 +106,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
                 reportDeath(asset, `Backfire when attacking ${attack.targetAddress}.`, attack.toBeExectutedAt, storage);
             } else { 
                 if (!isFactory(asset.type)) {
-                    increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL);
+                    increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL, attack.toBeExectutedAt, storage);
                 }
             }
         }

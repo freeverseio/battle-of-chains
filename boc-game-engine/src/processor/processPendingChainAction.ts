@@ -66,7 +66,7 @@ function executeChainAction(action: ChainActionProposalType, timestamp: number, 
             timestamp,
             storage.logs,
         );
-        executeChainImprove(action.sourceChain, storage);
+        executeChainImprove(action.sourceChain, timestamp, storage);
         return;
     }
 
