@@ -65,7 +65,7 @@ export function createDAO(storage: Storage, address: string, chain: number, time
     storage.users.push(
         {
             address: address,
-            name: `DAO on chain ${chain}`,
+            name: `DAO on ${chainName(chain, storage.chains)}`,
             joined_timestamp: timestamp,
             score: 44,
             treasury: 0,
@@ -554,20 +554,29 @@ export function decreaseAssetHealthByPercent(asset: AssetType, percent: number) 
     asset.health = newHealth > 0 ? newHealth : 0;
 }
 
-export function increaseAssetXPByPercent(asset: AssetType, percent: number) {
+export function increaseAssetXPByPercent(asset: AssetType, percent: number, timestamp: number, storage: Storage) {
     const XPAtLevel = maxXPAtLevel(asset.level, isFactory(asset.type));
     asset.xp += Math.ceil(XPAtLevel * Math.min(100, percent) / 100);
-    asset.level = xp2level(asset.xp, isFactory(asset.type));
+    const newLevel = xp2level(asset.xp, isFactory(asset.type));
+    if (newLevel > asset.level) {
+        log2user(
+            asset.owner,
+            `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has upgraded to level ${newLevel} as a result of a gain in XP.`,
+            timestamp,
+            storage.logs,
+        );
+    }
+    asset.level = newLevel;
 }
 
-export function executeChainImprove(chain: number, storage: Storage) {
+export function executeChainImprove(chain: number, timestamp: number, storage: Storage) {
     const allAliveAssetsInChain = storage.assets.filter(e =>
         e.chain_id === chain &&
         e.health > 0
     );
     for (const asset of allAliveAssetsInChain) {
         increaseAssetHealthByPercent(asset, constants.HEALTH_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE);
-        increaseAssetXPByPercent(asset, constants.XP_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE);
+        increaseAssetXPByPercent(asset, constants.XP_INCREASE_PERCENTAGE_ON_CHAIN_IMPROVE, timestamp, storage);
     }
 }
 
