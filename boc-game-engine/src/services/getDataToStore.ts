@@ -62,7 +62,7 @@ function formUsers(processedUsers: UserType[]): User[] {
       newUser.joined_timestamp = user.joined_timestamp;
       newUser.score = user.score;
       newUser.treasury = user.treasury;
-      newUser.health = Math.round(user.health / HEALTH_TO_INT);
+      newUser.health = Math.ceil(user.health / HEALTH_TO_INT);
       newUser.xp = user.xp;
       newUser.level = user.level;
       newUser.treasury_last_update = user.treasuryLastUpdate;
@@ -82,7 +82,7 @@ function formAssets(processedAssets: AssetType[]): Asset[] {
     newAsset.creation_timestamp = asset.creation_timestamp;
     newAsset.owner = toChecksumAddress(asset.owner);
     newAsset.xp = asset.xp;
-    newAsset.health = Math.round(asset.health / HEALTH_TO_INT);
+    newAsset.health = Math.ceil(asset.health / HEALTH_TO_INT);
     newAsset.level = asset.level;
     newAsset.attack = asset.attack;
     newAsset.defense = asset.defense;
