@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import HomeBase from "@/components/HomeBase";
-import GlobalMap from "@/components/GlobalMap";
 import Inventory from "@/components/Inventory";
 import { AttackMap } from "@/components/AttackMap";
 import CDDVoting from "@/components/CDDVoting";
@@ -12,6 +11,8 @@ import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { ChainSelection } from "./ChainSelection";
 import { useHasHomeChain } from "@/hooks/useBattleOfChains";
 import { ChainsLeaderboard } from "@/components/Leaderboard";
+import { MapComponent } from "@/components/Map";
+
 interface DynamicContentProps {
   activeTab: string;
 }
@@ -20,7 +21,7 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
   const { address, isConnecting, isDisconnected } = useAccount();
   const { loading, error, data, refetch } = useUserByAddress(address || "0x");
   const hasChain = data?.userByAddress !== null;
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -52,31 +53,14 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
         return <HomeBase />;
       case "attack":
         return <AttackMap />;
+      case "map":
+        return <MapComponent />;
       case "leaderboard":
         return <ChainsLeaderboard />;
-        {
-          /* case "production":
-        return (
-          <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <SoftCoinProduction
-              coinFactoryHealth={100}
-              productionRate={10}
-              treasury={treasury}
-            />
-          </div>
-        );
-        
-      
-      case "map":
-        return <GlobalMap />;
-      
-      
-       */
-        }
       default:
         return <div>Select a tab</div>;
     }
   };
 
   return <div className="container mx-auto px-4 py-8">{renderContent()}</div>;
-  }
+}

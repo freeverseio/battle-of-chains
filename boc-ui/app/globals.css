@@ -152,4 +152,8 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  .tooltip-container {
+    z-index: 1000;
+    /* Remove pointer-events: none */
+  }
 }

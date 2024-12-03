@@ -5,9 +5,8 @@ import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useAllChainsScore } from "@/hooks/useAllChainsScore";
 import { UserScore, Chain } from "@/types";
-import arbitrumPixelated from "@/public/logos/arbitrumPixelated.svg";
-import polygonPixelated from "@/public/logos/polygonPixelated.svg";
-import ethereumPixelated from "@/public/logos/ethereumPixelated.svg";
+import { chainIcons } from "@/utils/chainIcons";
+import { chainColors } from "@/utils/chainColors";
 import { useAccount } from "wagmi"; // Import useAccount from wagmi
 import {
   Table,
@@ -22,19 +21,6 @@ function formatAddress(address: string): string {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }
 
-// Mapping of chain IDs to their corresponding icons
-const chainIcons: { [key: number]: string } = {
-  1: ethereumPixelated,
-  137: polygonPixelated,
-  42161: arbitrumPixelated,
-};
-
-// Mapping of chain IDs to their corresponding colors
-const chainNameColors: { [key: number]: string } = {
-  1: "#C9B3F4",
-  137: "#B060FF",
-  42161: "#75E0FF",
-};
 
 export const ChainsLeaderboard = () => {
   const { loading, error, data } = useAllChainsScore();
@@ -49,7 +35,7 @@ export const ChainsLeaderboard = () => {
       {chains.map((chain: Chain) => {
         const users = chain.usersByHomechain?.nodes ?? [];
         const chainIcon = chainIcons[chain.chainId];
-        const chainNameColor = chainNameColors[chain.chainId]; // Get the chain name color
+        const chainNameColor = chainColors[chain.chainId]; // Get the chain name color
 
         return (
           <Card

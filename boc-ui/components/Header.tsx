@@ -67,6 +67,12 @@ export default function Header({ activeTab, setActiveTab }: HeaderProps) {
                   Home
                 </TabsTrigger>
                 <TabsTrigger
+                  value="map"
+                  className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
+                >
+                  Map
+                </TabsTrigger>
+                <TabsTrigger
                   value="inventory"
                   className="data-[state=active]:text-accent-foreground data-[state=active]:bg-muted text-2xl text-muted hover:text-white whitespace-nowrap"
                 >
