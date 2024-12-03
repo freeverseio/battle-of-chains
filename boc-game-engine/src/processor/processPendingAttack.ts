@@ -69,6 +69,7 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     const seed = murmurhash.v3(`${attack.blockHash}${storage.processedPendingIdx}${attackerTreasury}${targetTreasury}`);
     const rnds = computeRandoms(4, seed);
     const maxRndValue = 2**32 - 1;
+
     // one asset of level N+1 is typically STATS_FACTOR_TO_NEXT_LEVEL stronger than one asset at level N
     // We want that a 1:1 of N+1 against N makes 50% of damage
     const damageHPPercentOnTarget = Math.min(100, Math.round(50 * (rnds[0]/maxRndValue) * (attackerAttack/targetDefense)));
@@ -81,28 +82,32 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     let targetCasulaties = 0;
 
 
-    const averageTargetDefense = targetDefense / targetAssets.length;
-    for (const asset of targetAssets) {
-        decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageTargetDefense));
-        if (asset.health === 0) {
-            targetCasulaties++;
-            reportDeath(asset, `Attack by ${attack.attacker}.`, attack.toBeExectutedAt, storage);
-        } else {
-            if (!isFactory(asset.type)){
-                increaseAssetXPByPercent(asset, increaseHPPercentForTarget * asset.potential / AVERAGE_POTENTIAL);
+    if (targetAssets.length > 0) {
+        const averageTargetDefense = targetDefense / targetAssets.length;
+        for (const asset of targetAssets) {
+            decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageTargetDefense));
+            if (asset.health === 0) {
+                targetCasulaties++;
+                reportDeath(asset, `Attack by ${attack.attacker}.`, attack.toBeExectutedAt, storage);
+            } else {
+                if (!isFactory(asset.type)){
+                    increaseAssetXPByPercent(asset, increaseHPPercentForTarget * asset.potential / AVERAGE_POTENTIAL);
+                }
             }
         }
     }
 
-    const averageAttackerDefense = attackerDefense / attackerAssets.length;
-    for (const asset of attackerAssets) {
-        decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
-        if (asset.health === 0) {
-            attackerCasulaties++;
-            reportDeath(asset, `Backfire when attacking ${attack.targetAddress}.`, attack.toBeExectutedAt, storage);
-        } else { 
-            if (!isFactory(asset.type)) {
-                increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL);
+    if (attackerAssets.length > 0) {
+        const averageAttackerDefense = attackerDefense / attackerAssets.length;
+        for (const asset of attackerAssets) {
+            decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
+            if (asset.health === 0) {
+                attackerCasulaties++;
+                reportDeath(asset, `Backfire when attacking ${attack.targetAddress}.`, attack.toBeExectutedAt, storage);
+            } else { 
+                if (!isFactory(asset.type)) {
+                    increaseAssetXPByPercent(asset, increaseHPPercentForAttacker * asset.potential / AVERAGE_POTENTIAL);
+                }
             }
         }
     }
