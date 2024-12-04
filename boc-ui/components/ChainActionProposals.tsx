@@ -3,7 +3,9 @@
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useChainActionProposals } from "@/hooks/useChainActionProposals";
 import { ChainActionType, AttackArea, ChainAction } from "@/utils/enums";
-
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 interface ChainActionProposal {
   attackAddress: `0x${string}`;
   attackArea: AttackArea | null;
@@ -120,10 +122,22 @@ export const ChainActionProposals = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
-        <CardTitle className="text-4xl">
-          Chain Action Proposals ({totalCount})
-        </CardTitle>
-      </CardHeader>
+      <div className="flex items-center gap-2">
+        <CardTitle className="text-4xl">Chain Action Proposals ({totalCount})</CardTitle>
+        <TooltipProvider>
+          {tooltips.chainActionProposals && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltips.chainActionProposals}</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </TooltipProvider>
+      </div>
+    </CardHeader>
       <CardContent>
         <div className="space-y-8">
           {Object.entries(proposalsByChain).map(
