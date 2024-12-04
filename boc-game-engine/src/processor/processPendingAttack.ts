@@ -82,9 +82,9 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
     let targetCasualties = 0;
 
 
-    if (targetAssets.length > 0) {
-        const averageTargetDefense = targetDefense / targetAssets.length;
-        for (const asset of targetAssets) {
+    if (availableTargetAssets.length > 0) {
+        const averageTargetDefense = targetDefense / availableTargetAssets.length;
+        for (const asset of availableTargetAssets) {
             decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnTarget, asset.defense, averageTargetDefense));
             if (asset.health === 0) {
                 targetCasualties++;
@@ -97,9 +97,9 @@ function processAttackArrival(attack: PendingAttack, storage: Storage) {
         }
     }
 
-    if (attackerAssets.length > 0) {
-        const averageAttackerDefense = attackerDefense / attackerAssets.length;
-        for (const asset of attackerAssets) {
+    if (availableAttackerAssets.length > 0) {
+        const averageAttackerDefense = attackerDefense / availableAttackerAssets.length;
+        for (const asset of availableAttackerAssets) {
             decreaseAssetHealthByPercent(asset, adaptPercetangeToAverage(damageHPPercentOnAttacker, asset.defense, averageAttackerDefense));
             if (asset.health === 0) {
                 attackerCasualties++;
