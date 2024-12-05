@@ -21,6 +21,9 @@ interface Asset {
   species: string;
   health: string;
   defense: string;
+  travelSpeed: string;
+  age: string;
+  potential: string;
   chainByChainId: {
     name: string;
     chainId: number;
@@ -215,7 +218,7 @@ export const UserArmy = () => {
                                   Level {asset.level}
                                 </span>
                               </div>
-                              {/* Token ID with Copy Functionality */}
+                              <div className="flex justify-between">
                               <button
                                 onClick={() =>
                                   copyTokenIdToClipboard(asset.tokenId)
@@ -225,24 +228,18 @@ export const UserArmy = () => {
                                 ID: {asset.tokenId.slice(0, 6)}...
                                 {asset.tokenId.slice(-4)}
                               </button>
-                              {/* Combat Stats */}
+                              <span className="text-muted-foreground text-md"                              >Age: {asset.age} </span>
+                              </div>
                               <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                  <StatDisplay
-                                    label="Attack"
-                                    value={asset.attack}
-                                  />
-                                  <StatDisplay
-                                    label="Defense"
-                                    value={asset.defense}
-                                  />
+                                <div className="space-y-1">
+                                  <StatDisplay label="Attack" value={asset.attack} />
+                                  <StatDisplay label="Defense" value={asset.defense} />
+                                  <StatDisplay label="Potential" value={asset.potential} />
                                 </div>
-                                <div className="space-y-2">
-                                  <StatDisplay
-                                    label="Health"
-                                    value={asset.health}
-                                  />
+                                <div className="space-y-1">
+                                  <StatDisplay label="Health" value={asset.health} />
                                   <StatDisplay label="XP" value={asset.xp} />
+                                  <StatDisplay label="Speed" value={asset.travelSpeed} />
                                 </div>
                               </div>
                               {/* Asset Actions */}

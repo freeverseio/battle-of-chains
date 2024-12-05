@@ -14,6 +14,9 @@ export const USER_ASSETS = gql`
           level
           health
           defense
+          travelSpeed
+          age
+          potential
           species
           chainByChainId {
             name
