@@ -101,7 +101,7 @@ const HomeBaseInfo: React.FC = () => {
               <span className="text-label-value">{productionRate}</span>
             </p>
             <p className="text-3xl">
-              <span className="text-label">Cost of 1 xp: </span>
+              <span className="text-label">Cost of 1 XP: </span>
               <span className="text-label-value">{treasuryRequiredPerXpUnit}</span>
             </p>
           </div>
