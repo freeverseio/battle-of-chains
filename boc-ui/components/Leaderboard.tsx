@@ -16,10 +16,8 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table"; // Import Table components
+import {formatAddress} from "@/utils/formatAddress";
 
-function formatAddress(address: string): string {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
-}
 
 
 export const ChainsLeaderboard = () => {

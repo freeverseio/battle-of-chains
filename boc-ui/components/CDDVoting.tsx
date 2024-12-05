@@ -16,6 +16,9 @@ import SubmitVoteButton from "@/components/SubmitVoteButton";
 import { ChainActionProposals } from "./ChainActionProposals";
 import { chainIdMapping } from "@/utils/chainIdMapping";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 
 import Modal from "./Modal";
 
@@ -44,11 +47,23 @@ export default function CDDVoting({ treasury }: CDDVotingProps) {
     <>
       <Card className="card-background border bg-transparent mb-4">
         {/* Added bg-transparent */}
-        <CardHeader className="">
-          <CardTitle className="text-4xl">
-            Chain Daily Decision (CDD) Voting
-          </CardTitle>
-        </CardHeader>
+        <CardHeader>
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-4xl">Chain Daily Decision (CDD) Voting</CardTitle>
+          <TooltipProvider>
+            {tooltips.chainDailyDecision && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltips.chainDailyDecision}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </TooltipProvider>
+        </div>
+      </CardHeader>
         <CardContent className="space-y-6">
           {/*} <p className="text-3xl mb-2">
             <span className="text-label">Voting Power:</span>
