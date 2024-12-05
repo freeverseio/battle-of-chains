@@ -91,18 +91,18 @@ const HomeBaseInfo: React.FC = () => {
   
         <CardContent>
           <div className="space-y-2">
-            <p className="text-3xl">
-              <span className="text-label">Daily Production Rate: </span>
-              <span className="text-label-value">{productionRate}</span>
-            </p>
-  
-            <p className="text-3xl">
+
+          <p className="text-3xl">
               <span className="text-label">XP Needed for Next Level: </span>
               <span className="text-label-value">{xpNeededForNextLevel}</span>
             </p>
             <p className="text-3xl">
-              <span className="text-label">Cost for Next Level: </span>
-              <span className="text-label-value">{costNeededForNextLevel}</span>
+              <span className="text-label">Daily Production Rate: </span>
+              <span className="text-label-value">{productionRate}</span>
+            </p>
+            <p className="text-3xl">
+              <span className="text-label">Cost of 1 xp: </span>
+              <span className="text-label-value">{treasuryRequiredPerXpUnit}</span>
             </p>
           </div>
         </CardContent>
