@@ -11,7 +11,7 @@ import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
 import { AssetActions } from "./AssetActions";
 import { ModalContext } from "@/context/ModalContext";
-
+import { secondsToYears } from "@/utils/secondsToYears";
 interface Asset {
   attack: string;
   xp: string;
@@ -22,7 +22,7 @@ interface Asset {
   health: string;
   defense: string;
   travelSpeed: string;
-  age: string;
+  age: number;
   potential: string;
   chainByChainId: {
     name: string;
@@ -228,7 +228,9 @@ export const UserArmy = () => {
                                 ID: {asset.tokenId.slice(0, 6)}...
                                 {asset.tokenId.slice(-4)}
                               </button>
-                              <span className="text-muted-foreground text-md"                              >Age: {asset.age} </span>
+                              <span className="text-muted-foreground text-md">
+                                Age: {secondsToYears(Number(asset.age))}
+                              </span>
                               </div>
                               <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-1">
