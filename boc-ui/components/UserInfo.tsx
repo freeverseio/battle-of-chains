@@ -6,6 +6,8 @@ import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { tooltips } from "@/constants/tooltips";
 import { Info } from "lucide-react"; // Import the info icon
+import {formatAddress} from "@/utils/formatAddress";
+
 
 export const UserInfo = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
@@ -44,9 +46,13 @@ export const UserInfo = () => {
             <span className="text-label">Name: </span>
             <span className="text-label-value">{user.name}</span>
           </p>
-          <p className="">
+          <p className="hidden lg:block">
             <span className="text-3xl text-label">Address: </span>
             <span className="text-2xl text-label-value">{user.address}</span>
+          </p>
+          <p className="block lg:hidden">
+            <span className="text-3xl text-label">Address: </span>
+            <span className="text-3xl text-label-value">{formatAddress(user.address)}</span>
           </p>
           <p className="text-3xl">
             <span className="text-foreground">Homechain: </span>

@@ -559,6 +559,7 @@ export function increaseAssetXPByPercent(asset: AssetType, percent: number, time
     asset.xp += Math.ceil(XPAtLevel * Math.min(100, percent) / 100);
     const newLevel = xp2level(asset.xp, isFactory(asset.type));
     if (newLevel > asset.level) {
+        upgradeAssetToLevel(asset, newLevel);
         log2user(
             asset.owner,
             `Your asset ${asset.token_id} on ${chainName(asset.chain_id, storage.chains)} has upgraded to level ${newLevel} as a result of a gain in XP.`,
@@ -566,7 +567,9 @@ export function increaseAssetXPByPercent(asset: AssetType, percent: number, time
             storage.logs,
         );
     }
-    asset.level = newLevel;
+    if (newLevel < asset.level) {
+        console.log('WARNING: asset should decrease level on increase of XP!')
+    }
 }
 
 export function executeChainImprove(chain: number, timestamp: number, storage: Storage) {
