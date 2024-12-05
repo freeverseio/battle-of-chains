@@ -4,7 +4,11 @@ import { useUserByAddress } from "../hooks/useUserByAddress";
 import { useAllInfos } from "../hooks/useAllInfos";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 import { UpgradeButton } from "./UpgradeButton";
+
 
 const HomeBaseInfo: React.FC = () => {
   const { address } = useAccount();
@@ -52,44 +56,59 @@ const HomeBaseInfo: React.FC = () => {
   const costNeededForNextLevel =
     xpNeededForNextLevel * treasuryRequiredPerXpUnit;
 
-  return (
-    <Card className="border border-border card-background">
-      <CardHeader className="space-y-2">
-        <div className="flex justify-between items-center">
-          <CardTitle className="text-4xl">Home Base</CardTitle>
-          <UpgradeButton tokenId={"0"} chainId={user?.chain?.chainId} />
-        </div>
-        <div className="flex justify-between items-center">
-          <p className="text-3xl">
-            <span className="text-label-secondary">Level: </span>
-            <span className="text-label-secondary">{currentLevel}</span>
-          </p>
-          <p className="text-3xl">
-            <span className="text-foreground">XP: </span>
-            <span className="text-foreground">{currentXp}</span>
-          </p>
-        </div>
-      </CardHeader>
+    return (
+      <Card className="border border-border card-background">
+        <CardHeader className="space-y-2">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <CardTitle className="text-4xl">Home Base</CardTitle>
+              <TooltipProvider>
+                {tooltips.homeBase && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{tooltips.homeBase}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                )}
+              </TooltipProvider>
+            </div>
+            <UpgradeButton tokenId={"0"} chainId={user?.chain?.chainId} />
+          </div>
+          <div className="flex justify-between items-center">
+            <p className="text-3xl">
+              <span className="text-label-secondary">Level: </span>
+              <span className="text-label-secondary">{currentLevel}</span>
+            </p>
+            <p className="text-3xl">
+              <span className="text-foreground">XP: </span>
+              <span className="text-foreground">{currentXp}</span>
+            </p>
+          </div>
+        </CardHeader>
+  
+        <CardContent>
+          <div className="space-y-2">
 
-      <CardContent>
-        <div className="space-y-2">
           <p className="text-3xl">
-            <span className="text-label">Daily Production Rate: </span>
-            <span className="text-label-value">{productionRate}</span>
-          </p>
+              <span className="text-label">XP Needed for Next Level: </span>
+              <span className="text-label-value">{xpNeededForNextLevel}</span>
+            </p>
+            <p className="text-3xl">
+              <span className="text-label">Daily Production Rate: </span>
+              <span className="text-label-value">{productionRate}</span>
+            </p>
+            <p className="text-3xl">
+              <span className="text-label">Cost of 1 XP: </span>
+              <span className="text-label-value">{treasuryRequiredPerXpUnit}</span>
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
 
-          <p className="text-3xl">
-            <span className="text-label">XP Needed for Next Level: </span>
-            <span className="text-label-value">{xpNeededForNextLevel}</span>
-          </p>
-          <p className="text-3xl">
-            <span className="text-label">Cost for Next Level: </span>
-            <span className="text-label-value">{costNeededForNextLevel}</span>
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
 
 export default HomeBaseInfo;

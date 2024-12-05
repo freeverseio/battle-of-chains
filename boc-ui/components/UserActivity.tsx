@@ -11,7 +11,11 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { tooltips } from "@/constants/tooltips";
+import { Info } from "lucide-react";
 import { formatTimestamp } from "@/lib/utils";
+
 interface Log {
   id: string;
   chain: string;
@@ -21,12 +25,9 @@ interface Log {
 
 export const UserActivity = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
-
   const { loading, error, data } = useUserLogs(address || "0x");
-
   const logs = data?.allLogs?.nodes || [];
 
-  // Handle connection states
   if (isConnecting) return <div>Connecting...</div>;
   if (isDisconnected || !address || address === "0x")
     return <div>Disconnected</div>;
@@ -37,7 +38,21 @@ export const UserActivity = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
-        <CardTitle className="text-4xl">User Activity</CardTitle>
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-4xl">User Activity</CardTitle>
+          <TooltipProvider>
+            {tooltips.userActivity && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltips.userActivity}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </TooltipProvider>
+        </div>
       </CardHeader>
       <CardContent>
         <Table>

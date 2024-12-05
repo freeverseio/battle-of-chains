@@ -31,6 +31,9 @@ import { mapCoordinates } from "utils/mapCoordinates";
 import { useAccount } from "wagmi";
 import { PlayerTooltip } from "./PlayerTooltip";
 import ReactDOM from "react-dom";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { tooltips } from "@/constants/tooltips";
+import { Info } from "lucide-react";
 
 export const MapComponent: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -272,7 +275,7 @@ export const MapComponent: React.FC = () => {
       {chainsLoading && <p>Loading chains...</p>}
       {chainsError && <p>Error loading chains</p>}
       {chainsData && (
-        <div className="absolute -top-12 left-2 z-10 w-[200px]">
+        <div className="absolute -top-12 left-2 z-10 w-[200px] flex items-center gap-2">
           <Select
             value={selectedChainId?.toString() ?? ""}
             onValueChange={(value) =>
@@ -305,6 +308,20 @@ export const MapComponent: React.FC = () => {
               ))}
             </SelectContent>
           </Select>
+          <div>
+          <TooltipProvider>
+            {tooltips.map && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltips.map}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </TooltipProvider>
+        </div>
         </div>
       )}
     <div ref={mapRef} className="w-full h-[calc(100vh-230px)] mt-4 " />    </div>

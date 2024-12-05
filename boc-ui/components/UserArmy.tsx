@@ -11,7 +11,9 @@ import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
 import { AssetActions } from "./AssetActions";
 import { ModalContext } from "@/context/ModalContext";
-
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 interface Asset {
   attack: string;
   xp: string;
@@ -134,10 +136,24 @@ export const UserArmy = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
+      <div className="flex items-center gap-2">
         <CardTitle className="text-4xl">
           Your Inventory ({totalCount})
         </CardTitle>
-      </CardHeader>
+        <TooltipProvider>
+          {tooltips.inventory && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltips.inventory}</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </TooltipProvider>
+      </div>
+    </CardHeader>
       <CardContent>
         <Tabs defaultValue={String(assetTypes[0])} className="w-full">
           <TabsList className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 w-full">

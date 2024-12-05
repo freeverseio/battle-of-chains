@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "./ui/table";
 import { formatTimestamp } from "@/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 
 interface LogNode {
   chainByChain?: {
@@ -57,15 +60,29 @@ export const SummaryTable = () => {
 
   return (
     <Card className="border border-border card-background">
-      <CardHeader>
-        <CardTitle className="text-4xl">Universe Summary</CardTitle>
-      </CardHeader>
+     <CardHeader>
+  <div className="flex items-center gap-2">
+    <CardTitle className="text-4xl">Universe Summary</CardTitle>
+    <TooltipProvider>
+      {tooltips.universeSummary && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{tooltips.universeSummary}</p>
+          </TooltipContent>
+        </Tooltip>
+      )}
+    </TooltipProvider>
+  </div>
+</CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead className="text-foreground text-2xl">Time</TableHead>
-              <TableHead className="text-foreground text-2xl">User</TableHead>
+              <TableHead className="text-foreground text-2xl">Player</TableHead>
               <TableHead className="text-foreground text-2xl">
                 Comment
               </TableHead>
