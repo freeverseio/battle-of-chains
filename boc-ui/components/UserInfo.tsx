@@ -25,7 +25,7 @@ export const UserInfo = () => {
     <Card className="border border-border card-background">
        <CardHeader>
         <div className="flex items-center gap-2">
-          <CardTitle className="text-4xl">User Information</CardTitle>
+          <CardTitle className="text-4xl">Player Information</CardTitle>
           <TooltipProvider>
             {tooltips.userInformation && (
               <Tooltip>

@@ -82,7 +82,7 @@ export const SummaryTable = () => {
           <TableHeader>
             <TableRow>
               <TableHead className="text-foreground text-2xl">Time</TableHead>
-              <TableHead className="text-foreground text-2xl">User</TableHead>
+              <TableHead className="text-foreground text-2xl">Player</TableHead>
               <TableHead className="text-foreground text-2xl">
                 Comment
               </TableHead>
