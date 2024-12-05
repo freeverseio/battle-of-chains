@@ -17,10 +17,10 @@ import {
   TableRow,
 } from "./ui/table"; // Import Table components
 import {formatAddress} from "@/utils/formatAddress";
+import { ChainsLeaderboard } from "./ChainsLeaderboard";
 
 
-
-export const ChainsLeaderboard = () => {
+export const Leaderboard = () => {
   const { loading, error, data } = useAllChainsScore();
   const { address } = useAccount(); // Get the connected address
   if (loading) return <div>Loading chain data...</div>;
@@ -30,12 +30,15 @@ export const ChainsLeaderboard = () => {
 
   return (
     <div className="space-y-8">
+     
+      <ChainsLeaderboard/>
       {chains.map((chain: Chain) => {
         const users = chain.usersByHomechain?.nodes ?? [];
         const chainIcon = chainIcons[chain.chainId];
         const chainNameColor = chainColors[chain.chainId]; // Get the chain name color
 
         return (
+          
           <Card
             key={chain.name}
             className="border border-border card-background"
