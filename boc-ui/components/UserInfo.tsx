@@ -3,16 +3,17 @@
 import { useAccount } from "wagmi";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { tooltips } from "@/constants/tooltips";
+import { Info } from "lucide-react"; // Import the info icon
 import {formatAddress} from "@/utils/formatAddress";
+
 
 export const UserInfo = () => {
   const { address, isConnecting, isDisconnected } = useAccount();
-
-  // Call the hook unconditionally
   const { loading, error, data } = useUserByAddress(address || "0x");
   const user = data?.userByAddress;
 
-  // Handle connection states after all hooks have been called
   if (isConnecting) return <div>Connecting...</div>;
   if (isDisconnected || !address || address === "0x")
     return <div>Disconnected</div>;
@@ -22,8 +23,22 @@ export const UserInfo = () => {
 
   return (
     <Card className="border border-border card-background">
-      <CardHeader>
-        <CardTitle className="text-4xl">User Information</CardTitle>
+       <CardHeader>
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-4xl">Player Information</CardTitle>
+          <TooltipProvider>
+            {tooltips.userInformation && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tooltips.userInformation}</p>
+                </TooltipContent>
+              </Tooltip>
+            )}
+          </TooltipProvider>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">

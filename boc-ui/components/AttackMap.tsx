@@ -35,7 +35,9 @@ import { useSpecies } from "@/hooks/useSpecies";
 import Image from "next/image";
 import { useAllChains } from "@/hooks/useAllChains";
 import Modal from "./Modal";
-
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { Info } from "lucide-react";
+import { tooltips } from "@/constants/tooltips";
 interface Asset {
   tokenId: string;
   level: number;
@@ -164,8 +166,22 @@ export const AttackMap = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
+      <div className="flex items-center gap-2">
         <CardTitle className="text-4xl">Players</CardTitle>
-      </CardHeader>
+        <TooltipProvider>
+          {tooltips.players && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltips.players}</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        </TooltipProvider>
+      </div>
+    </CardHeader>
       <CardContent>
         <Table>
           <TableHeader>
