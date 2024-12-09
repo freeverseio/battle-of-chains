@@ -1,3 +1,4 @@
+import { ONE_YEAR_IN_SECS } from "./constants";
 import { SpeciesLore, SpeciesTypicalyStats } from "./species";
 
 export enum DefendSpeciesType {
@@ -299,6 +300,6 @@ export const defendSpeciesStats: [DefendSpeciesType, SpeciesTypicalyStats][] =
     .filter(value => typeof value === 'number')
     .map((key) => {
       const stats = { ...DefendSpeciesCharacteristics[key as DefendSpeciesType] };
-      stats.age *= 1;
+      stats.age *= ONE_YEAR_IN_SECS;
       return [key as DefendSpeciesType, stats];
     });
