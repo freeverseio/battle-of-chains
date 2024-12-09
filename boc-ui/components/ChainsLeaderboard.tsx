@@ -16,6 +16,9 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { tooltips } from "@/constants/tooltips";
+import { Info } from "lucide-react";
 
 export const ChainsLeaderboard = () => {
   const { loading, error, data } = useAllChainsScore();
@@ -29,7 +32,22 @@ export const ChainsLeaderboard = () => {
     <Card className="border border-border card-background">
       <CardHeader>
         <CardTitle>
-          <h2 className="text-4xl font-bold">Chain Score</h2>
+        <div className="flex items-center space-x-2">
+          <h2 className="text-4xl font-bold">Chain Leaderboard</h2>
+          <TooltipProvider>
+          {tooltips.inventory && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Info className="h-5 w-5 text-muted-foreground cursor-help" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tooltips.chainLeaderboard}</p>
+              </TooltipContent>
+            </Tooltip>
+          )}
+        
+        </TooltipProvider>
+        </div>
         </CardTitle>
       </CardHeader>
       <CardContent>

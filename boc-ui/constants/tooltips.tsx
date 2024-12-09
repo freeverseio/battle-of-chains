@@ -8,4 +8,6 @@ export const tooltips = {
   chainDailyDecision: "Vote on your homechain Daily Action, which happens daily at 2 PM UTC.\nVotes are weighted by each voter's treasury and reset after execution of the action.\n'Improve' will increase XP and health of all assets in your homechain.\n'Defend' will significantly reduce potential attacks by other chains.\n'Attack' will inflict damage on an entire chain, part of it, or one single address on it.\nLeave a comment on-chain for others to support you.",
   chainActionProposals: "All current proposals across different chains and their total vote counts.\nVotes are weighted by each voter's treasury and reset after execution of the action",
   map: "Map",
+  chainLeaderboard: "Chain Leaderboard",
+  userLeaderboard: "User Leaderboard",
 };
