@@ -8,8 +8,8 @@ interface RefreshButtonProps {
 
 export const RefreshButton = ({ className }: RefreshButtonProps) => {
   const { update, isUpdating } = useUpdate();
-  const updateAndRefresh = () => {
-    update();
+  const updateAndRefresh = async() => {
+    await update();
     window.location.reload();
   };
   return (
