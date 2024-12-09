@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const ALL_CHAINS_SCORE = gql`
   query MyQuery {
-    allChains {
+    allChains(orderBy: SCORE_DESC) {
       nodes {
         chainId
         score

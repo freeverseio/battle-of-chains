@@ -10,7 +10,7 @@ import { useAccount } from "wagmi";
 import { useUserByAddress } from "@/hooks/useUserByAddress";
 import { ChainSelection } from "./ChainSelection";
 import { useHasHomeChain } from "@/hooks/useBattleOfChains";
-import { ChainsLeaderboard } from "@/components/Leaderboard";
+import { Leaderboard } from "@/components/Leaderboard";
 import { MapComponent } from "@/components/Map";
 
 interface DynamicContentProps {
@@ -56,7 +56,7 @@ export default function DynamicContent({ activeTab }: DynamicContentProps) {
       case "map":
         return <MapComponent />;
       case "leaderboard":
-        return <ChainsLeaderboard />;
+        return <Leaderboard />;
       default:
         return <div>Select a tab</div>;
     }
