@@ -31,11 +31,12 @@ export const ChainsLeaderboard = () => {
   return (
     <Card className="border border-border card-background">
       <CardHeader>
+      <div className="flex items-center space-x-2">
         <CardTitle>
-        <div className="flex items-center space-x-2">
           <h2 className="text-4xl font-bold">Chain Leaderboard</h2>
-          <TooltipProvider>
-          {tooltips.inventory && (
+        </CardTitle>
+        <TooltipProvider>
+          {tooltips.chainLeaderboard && (
             <Tooltip>
               <TooltipTrigger asChild>
                 <Info className="h-5 w-5 text-muted-foreground cursor-help" />
@@ -48,8 +49,8 @@ export const ChainsLeaderboard = () => {
         
         </TooltipProvider>
         </div>
-        </CardTitle>
       </CardHeader>
+    
       <CardContent>
         <div className="mt-4 overflow-x-auto">
           <Table>

@@ -85,21 +85,22 @@ export const GlobalUsersLeaderboard = () => {
   };
 
   return (
-    <Card className="border border-border card-background mt-8 relative">
+    <Card className="border border-border card-background mt-8">
       <CardHeader>
+      <div className="flex items-center space-x-2 mb-2">
         <CardTitle>
-          <div className="flex items-center space-x-2 mb-2">
             <span className="text-4xl font-semibold text-label-secondary">
-              User Leaderboard
-            </span>
-            <TooltipProvider>
-          {tooltips.inventory && (
+              Player Leaderboard
+            </span>        
+        </CardTitle>
+        <TooltipProvider>
+          {tooltips.userLeaderboard && (
             <Tooltip>
               <TooltipTrigger asChild>
                 <Info className="h-5 w-5 text-muted-foreground cursor-help" />
               </TooltipTrigger>
               <TooltipContent>
-                <p>{tooltips.userLeaderboard}</p>
+                <p className="text-sm">{tooltips.userLeaderboard}</p>
               </TooltipContent>
             </Tooltip>
           )}
@@ -141,8 +142,6 @@ export const GlobalUsersLeaderboard = () => {
                 ))}
             </SelectContent>
         </Select>
-        </CardTitle>
-      
       </CardHeader>
       <CardContent>
         <div className="mt-4 overflow-x-auto relative">
