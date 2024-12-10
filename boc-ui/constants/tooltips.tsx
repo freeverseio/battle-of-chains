@@ -7,7 +7,7 @@ export const tooltips = {
   universeSummary: "Chronological log of all activities across all chains, including attacks, upgrades, and chain actions.\nThe Player column specifies the target of a log.\nThe Chain column specifies the Chain Daily Actions",
   chainDailyDecision: "Vote on your homechain Daily Action, which happens daily at 2 PM UTC.\nVotes are weighted by each voter's treasury and reset after execution of the action.\n'Improve' will increase XP and health of all assets in your homechain.\n'Defend' will significantly reduce potential attacks by other chains.\n'Attack' will inflict damage on an entire chain, part of it, or one single address on it.\nLeave a comment on-chain for others to support you.",
   chainActionProposals: "All current proposals across different chains and their total vote counts.\nVotes are weighted by each voter's treasury and reset after execution of the action",
-  map: "Map",
-  chainLeaderboard: "Chain Leaderboard",
-  userLeaderboard: "User Leaderboard",
+  map: "All players' coordinates along with their respective home bases and outposts in any chain.",
+  chainLeaderboard: "Leaderboard displaying the top chains in the game.\nA chain's score is the total of the scores of users who have that chain as their homechain.",
+  userLeaderboard: "Leaderboard displaying the top users in the game",
 };
